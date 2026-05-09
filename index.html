@@ -545,20 +545,306 @@
                 opacity: 0.85;
             }
         }
+
+        /* Логотип в шапке */
+        .brand-lockup {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+        .brand-lockup:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 4px;
+            border-radius: 0.25rem;
+        }
+        .brand-lockup__mark {
+            flex-shrink: 0;
+            stroke: var(--color-accent);
+            fill: none;
+        }
+        .brand-lockup__8848 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.35rem;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            background: linear-gradient(45deg, var(--color-accent), var(--color-accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand-lockup__sub {
+            font-size: 0.58rem;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.2;
+        }
+
+        /* Заявка */
+        .lead-form-field {
+            width: 100%;
+            box-sizing: border-box;
+            background: #1a1a1a;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 0.75rem;
+            padding: 0.85rem 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .lead-form-field::placeholder {
+            color: #888;
+        }
+        .lead-form-field:focus {
+            outline: none;
+            border-color: #C9A84C;
+            box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.45);
+        }
+        .lead-form-field:focus-visible {
+            outline: 2px solid #C9A84C;
+            outline-offset: 2px;
+        }
+        select.lead-form-field {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23C9A84C'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        .lead-form-submit {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            border-radius: 9999px;
+            background: var(--color-accent);
+            color: #141414;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 1rem 1.5rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .lead-form-submit:hover {
+            background: var(--color-accent-light);
+        }
+        .lead-form-submit:active {
+            transform: scale(0.98);
+        }
+        .lead-form-panel {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.25rem;
+            padding: 1.35rem 1.25rem 1.5rem;
+            box-sizing: border-box;
+        }
+        @media (min-width: 640px) {
+            .lead-form-panel {
+                padding: 1.75rem 1.75rem 2rem;
+            }
+        }
+
+        /* Отзывы — scroll-snap */
+        .reviews-scroller {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-padding-inline: 1rem;
+            padding: 0.25rem 0 1rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        .reviews-scroller::-webkit-scrollbar {
+            height: 6px;
+        }
+        .reviews-scroller::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 4px;
+        }
+        .review-card {
+            flex: 0 0 calc(100% - 2rem);
+            max-width: calc(100% - 2rem);
+            scroll-snap-align: start;
+            background: #1a1a1a;
+            border: 1px solid rgba(201, 168, 76, 0.14);
+            border-radius: 1.35rem;
+            padding: 1.35rem 1.25rem;
+            box-sizing: border-box;
+        }
+        @media (min-width: 768px) {
+            .review-card {
+                flex: 0 0 calc((100% - 2rem - 2rem) / 3);
+                max-width: calc((100% - 2rem - 2rem) / 3);
+            }
+        }
+        .review-stars {
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            font-size: 1rem;
+            margin-top: 0;
+        }
+
+        /* Галерея работ */
+        .works-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+        @media (min-width: 768px) {
+            .works-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .works-card {
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, 0.14);
+            background: #111;
+        }
+        .works-card img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+        .works-caption {
+            padding: 0.85rem 1rem;
+            font-size: 0.8rem;
+            color: #aaa;
+            line-height: 1.45;
+        }
+
+        /* Лайтбокс */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .lightbox-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox-overlay img {
+            max-width: min(96vw, 1100px);
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: max(1rem, env(safe-area-inset-top));
+            right: max(1rem, env(safe-area-inset-right));
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            border: 1px solid rgba(201, 168, 76, 0.45);
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .lightbox-close:hover {
+            background: #2a2a2a;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .faq-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.1rem 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .faq-trigger:hover {
+            color: var(--color-accent-light);
+        }
+        .faq-arrow {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-right: 2px solid var(--color-accent);
+            border-bottom: 2px solid var(--color-accent);
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            margin-bottom: 0.35rem;
+        }
+        .faq-item.is-open .faq-arrow {
+            transform: rotate(-135deg);
+            margin-bottom: -0.35rem;
+        }
+        .faq-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        .faq-panel-inner {
+            padding: 0 0 1.1rem;
+            color: #aaa;
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        .service-icon-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.92);
+        }
     </style>
 </head>
 <body>
 
     <!-- ШАПКА -->
     <header class="site-header fixed top-0 left-0 right-0">
-        <div class="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center justify-end md:justify-center gap-4">
+        <div class="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center gap-3 sm:gap-4 justify-between md:justify-start">
+            <a href="/" class="brand-lockup min-w-0" aria-label="8848 Вершина — на главную">
+                <svg class="brand-lockup__mark w-9 h-9 sm:w-10 sm:h-10" viewBox="0 0 24 24" aria-hidden="true"><path stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 10v11h16V10l-8-7z"/><path stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M9 21v-6h6v6"/></svg>
+                <div class="flex flex-col gap-0.5">
+                    <span class="brand-lockup__8848">8848</span>
+                    <span class="brand-lockup__sub">Вершина</span>
+                </div>
+            </a>
             <!-- Меню (Desktop) -->
-            <nav class="hidden md:flex flex-wrap gap-x-6 gap-y-2 justify-center items-center text-sm font-medium uppercase tracking-widest text-white">
+            <nav class="hidden md:flex flex-1 flex-wrap gap-x-4 lg:gap-x-6 gap-y-2 justify-center items-center text-xs lg:text-sm font-medium uppercase tracking-widest text-white min-w-0">
                 <a href="/#hero" class="header-nav-hover" data-nav-anchor="hero">Главная</a>
                 <a href="catalog/" class="header-nav-hover" data-nav-anchor="catalog">Каталог</a>
                 <a href="catalog/#calc" class="header-nav-hover">Калькулятор</a>
                 <a href="/#pricing" class="header-nav-hover" data-nav-anchor="pricing">Прайс</a>
                 <a href="/#services" class="header-nav-hover" data-nav-anchor="services">Услуги</a>
+                <a href="/#reviews" class="header-nav-hover" data-nav-anchor="reviews">Отзывы</a>
+                <a href="/#faq" class="header-nav-hover" data-nav-anchor="faq">FAQ</a>
+                <a href="/#request" class="header-nav-hover" data-nav-anchor="request">Заявка</a>
                 <a href="/#contacts" class="header-nav-hover" data-nav-anchor="contacts">Контакты</a>
             </nav>
 
@@ -574,6 +860,9 @@
             <a href="catalog/#calc" class="py-2 header-nav-hover" onclick="toggleMenu()">Калькулятор</a>
             <a href="/#pricing" class="py-2 header-nav-hover" data-nav-anchor="pricing" onclick="toggleMenu()">Прайс</a>
             <a href="/#services" class="py-2 header-nav-hover" data-nav-anchor="services" onclick="toggleMenu()">Услуги</a>
+            <a href="/#reviews" class="py-2 header-nav-hover" data-nav-anchor="reviews" onclick="toggleMenu()">Отзывы</a>
+            <a href="/#faq" class="py-2 header-nav-hover" data-nav-anchor="faq" onclick="toggleMenu()">FAQ</a>
+            <a href="/#request" class="py-2 header-nav-hover" data-nav-anchor="request" onclick="toggleMenu()">Заявка</a>
             <a href="/#contacts" class="py-2 header-nav-hover" data-nav-anchor="contacts" onclick="toggleMenu()">Контакты</a>
         </div>
     </header>
@@ -654,10 +943,67 @@
                 </div>
                 <!-- Карточка 5 -->
                 <div class="service-card p-6 sm:p-8 text-center">
-                    <div class="text-5xl mb-6" aria-hidden="true">🧗</div>
+                    <div class="service-icon-wrap" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v3"/></svg>
+                    </div>
                     <h3 class="text-lg xl:text-xl mb-4 uppercase leading-tight"><span class="font-title-strong">Промышленный альпинизм</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Высотный монтаж на фасаде без автовышки.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section id="reviews" class="py-14 sm:py-20 md:py-24 bg-[#111] section-soft-y">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-title text-center mb-10 sm:mb-12 uppercase tracking-widest px-2">
+                Отзывы <span class="text-gold-gradient font-title-strong">клиентов</span>
+            </h2>
+            <div class="reviews-scroller">
+                <article class="review-card">
+                    <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="text-gray-500 text-xs mb-3 font-numbers-medium">15 мая 2025</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Профессионалы своего дела с большой буквы! Кирилл просто волшебник. Когда пришёл устанавливать кондиционер, выяснилось, что трасса не рабочая (сломана медная трубка). Подтянул на помощь Илью и вуаля! Через час в нашем доме заработал кондиционер. Большое спасибо всему коллективу: от консультации до установки легко и просто. Индивидуальный подход, профессионализм, отзывчивость — это малая доля того сервиса, что вас ждёт в этой компании.</p>
+                    <p class="text-gray-500 text-xs leading-relaxed mt-3 italic font-description"><span class="font-numbers-medium not-italic text-gray-600">PS:</span> трассу делали в другом месте полгода назад и она претерпела ремонт по выравниванию стен. В какой момент получился залом и не скажешь теперь.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="text-gray-500 text-xs mb-3 font-numbers-medium">27 мая 2025</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Производили чистку кондиционеров! Всё чётко, быстро, качественно! Ребята знают свою работу 🤝</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="text-gray-500 text-xs mb-3 font-numbers-medium">26 июня 2025</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Благодарю ребят за установку кондиционера: сделали быстро, все коробки убрали, проконсультировали по использованию. Всем рекомендую компанию и лично руководителя Кирилла! Цены адекватные, сервис на высоте, спасибо!</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="text-gray-500 text-xs mb-3 font-numbers-medium">22 июля 2025</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Отличные ребята! Установили кондиционер очень быстро, качественная работа. И это на 10 этаже! Мастера своего дела, спасибо большое!</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ РАБОТ -->
+    <section id="works" class="py-14 sm:py-20 md:py-24 bg-[#1a1a1a]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-title text-center mb-10 sm:mb-12 uppercase tracking-widest px-2">
+                Наши <span class="text-gold-gradient font-title-strong">работы</span>
+            </h2>
+            <div class="works-grid">
+                <figure class="works-card">
+                    <img src="https://placehold.co/800x450/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B" alt="Монтаж кондиционера — пример работы" data-lightbox="https://placehold.co/1200x675/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+1" loading="lazy" />
+                    <figcaption class="works-caption font-description">Квартира · 42 м² · сплит-система 12 BTU</figcaption>
+                </figure>
+                <figure class="works-card">
+                    <img src="https://placehold.co/800x450/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+2" alt="Монтаж кондиционера — пример работы" data-lightbox="https://placehold.co/1200x675/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+2" loading="lazy" />
+                    <figcaption class="works-caption font-description">Офис · 85 м² · две сплит-системы 18 BTU</figcaption>
+                </figure>
+                <figure class="works-card">
+                    <img src="https://placehold.co/800x450/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+3" alt="Монтаж кондиционера — пример работы" data-lightbox="https://placehold.co/1200x675/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+3" loading="lazy" />
+                    <figcaption class="works-caption font-description">Частный дом · 110 м² · инверторная система 24 BTU</figcaption>
+                </figure>
             </div>
         </div>
     </section>
@@ -773,6 +1119,45 @@
         </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="py-14 sm:py-20 md:py-24 bg-[#111] border-t border-white/[0.06]">
+        <div class="container mx-auto px-4 sm:px-6 max-w-3xl">
+            <h2 class="section-title text-center mb-10 sm:mb-12 uppercase tracking-widest px-2">
+                Частые <span class="text-gold-gradient font-title-strong">вопросы</span>
+            </h2>
+            <div class="faq-root border-t border-white/[0.07]">
+                <div class="faq-item">
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Оборудование входит в стоимость монтажа?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Базовый монтаж в прайсе — это работы по установке уже приобретённой сплит-системы. Стоимость блоков оборудования считается отдельно по актуальному каталогу; можем подобрать модель и включить её в общее коммерческое предложение.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Сколько времени занимает установка кондиционера?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Стандартный монтаж одной сплит-системы обычно занимает от нескольких часов до одного рабочего дня — в зависимости от сложности трассы, высоты наружного блока и объёма подготовительных работ.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Нужен ли выезд мастера для расчёта стоимости?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Для ориентира можно оценить работы удалённо по фото и параметрам помещения. Итоговую стоимость по понятным строкам сметы фиксируем после осмотра объекта или по проектной документации.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Какая гарантия на монтаж?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">На выполненные монтажные работы действует гарантия компании (на сайте указано: 1 год на монтаж). Гарантия производителя на оборудование — по правилам бренда и при условии регламентного обслуживания.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Вы работаете в выходные дни?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">График приёма заявок и выездов — ежедневно, включая выходные; точное время согласуем при записи.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Можно ли установить кондиционер на фасаде многоэтажки?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Да, при соблюдении требований УК и регламента дома. При необходимости выполняем высотные работы промышленным альпинизмом без автовышки — это отражается в смете как отдельная позиция.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Что входит в базовый монтаж?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Крепление внутреннего и наружного блоков, прокладка межблочной коммуникации в заявленный метраж, подключение дренажа к согласованной точке, электропитание в оговорённом объёме, вакуумирование, заправка и пусконаладка по чек-листу.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- КАТАЛОГ (CTA) -->
     <section id="catalog" class="py-14 sm:py-20 md:py-24 text-center bg-black">
         <div class="container mx-auto px-4 sm:px-6">
@@ -781,6 +1166,30 @@
             <a href="catalog/" class="inline-block btn-shared gold-outline-btn px-8 sm:px-12 py-4 sm:py-5 uppercase font-bold tracking-widest text-sm sm:text-base max-w-xs w-full sm:w-auto sm:max-w-none">
                 Открыть каталог
             </a>
+        </div>
+    </section>
+
+    <!-- ЗАЯВКА -->
+    <section id="request" class="py-14 sm:py-20 md:py-24 bg-[#111] border-t border-white/[0.06]">
+        <div class="container mx-auto px-4 sm:px-6 max-w-xl">
+            <h2 class="section-title text-center mb-8 sm:mb-10 uppercase tracking-widest px-2">
+                Оставить <span class="text-gold-gradient font-title-strong">заявку</span>
+            </h2>
+            <div class="lead-form-panel">
+            <form id="lead-form" class="space-y-4" action="#" method="post" novalidate>
+                <input type="text" name="name" class="lead-form-field" placeholder="Ваше имя" autocomplete="name" required />
+                <input type="tel" name="phone" class="lead-form-field" placeholder="+7 ___ ___ __ __" autocomplete="tel" inputmode="tel" required />
+                <input type="number" name="area" class="lead-form-field" placeholder="Площадь, м²" inputmode="decimal" min="1" step="0.1" />
+                <select name="time" class="lead-form-field" aria-label="Удобное время звонка">
+                    <option value="">Удобное время звонка</option>
+                    <option value="Утром 9:00–12:00">Утром 9:00–12:00</option>
+                    <option value="Днём 12:00–17:00">Днём 12:00–17:00</option>
+                    <option value="Вечером 17:00–21:00">Вечером 17:00–21:00</option>
+                </select>
+                <button type="submit" class="lead-form-submit">Отправить заявку</button>
+            </form>
+            </div>
+            <p id="lead-form-hint" class="text-center text-amber-200/90 text-xs mt-4 hidden font-description" role="alert"></p>
         </div>
     </section>
 
@@ -801,11 +1210,11 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
                     WhatsApp
                 </a>
-                <a href="https://t.me/" target="_blank" class="contact-btn contact-btn--tg flex items-center justify-center gap-3 bg-[#229ED9] text-white px-6 py-3.5 sm:py-4 hover:opacity-90 min-h-[48px] w-full sm:w-auto sm:min-w-0">
+                <a href="https://t.me/SANTA_KULAEV" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn--tg flex items-center justify-center gap-3 bg-[#229ED9] text-white px-6 py-3.5 sm:py-4 hover:opacity-90 min-h-[48px] w-full sm:w-auto sm:min-w-0">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65c-.39 0-.33-.15-.46-.52l-1.17-3.87 9.06-5.73"/><path d="M9.78 18.65c.3 0 .43-.14.6-.3l1.65-1.6-2.05-1.24"/><path d="M10 15.52l4.98 3.68c.57.31.98.15 1.12-.53l2-9.43c.2-.84-.3-1.22-.84-.98L5.5 12.8c-.8.31-.8.75-.15.95l3.02.95 7-4.41c.33-.2.64-.09.39.13"/></svg>
-                    Telegram
+                    Telegram <span class="opacity-90 font-numbers-medium normal-case tracking-normal">@SANTA_KULAEV</span>
                 </a>
-                <a href="#" class="contact-btn contact-btn--muted flex items-center justify-center gap-3 bg-[#2a2a2a] text-white px-6 py-3.5 sm:py-4 border border-[#3f3f3f] hover:border-[#C9A84C] min-h-[48px] w-full sm:w-auto sm:min-w-0">
+                <a href="https://max.ru/vershina8848" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn--muted flex items-center justify-center gap-3 bg-[#2a2a2a] text-white px-6 py-3.5 sm:py-4 border border-[#3f3f3f] hover:border-[#C9A84C] min-h-[48px] w-full sm:w-auto sm:min-w-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 7h4l4 5 4-5h4M6 19l6-7 6 7"/></svg>
                     Max
                 </a>
@@ -815,8 +1224,17 @@
                 <p class="mb-2 uppercase tracking-widest text-sm">График работы:</p>
                 <p class="text-lg font-description">Пн-Вс <span class="font-numbers-medium">9:00 – 21:00</span></p>
             </div>
+            <div class="text-gray-400 mt-8">
+                <p class="mb-2 uppercase tracking-widest text-sm">Регион работы:</p>
+                <p class="text-lg font-description">📍 Сочи</p>
+            </div>
         </div>
     </section>
+
+    <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+        <button type="button" class="lightbox-close" aria-label="Закрыть" data-lightbox-close>&times;</button>
+        <img src="" alt="" id="lightbox-img" />
+    </div>
 
     <!-- FOOTER -->
     <footer class="site-footer bg-black py-10 sm:py-12 pb-[max(2.75rem,calc(env(safe-area-inset-bottom,0)+1.75rem))]">
@@ -857,7 +1275,7 @@
             if (!h) return;
 
             /** Порядок секций сверху вниз как в разметке (для scroll-spy). */
-            var NAV_SECTION_IDS = ['hero', 'services', 'pricing', 'catalog', 'contacts'];
+            var NAV_SECTION_IDS = ['hero', 'services', 'reviews', 'works', 'pricing', 'faq', 'catalog', 'request', 'contacts'];
 
             function getActiveNavAnchorId() {
                 var linePx = Math.min(132, Math.floor(window.innerHeight * 0.18));
@@ -894,6 +1312,75 @@
                 window.requestAnimationFrame(upd);
             });
             upd();
+        })();
+
+        (function () {
+            document.querySelectorAll('[data-faq-btn]').forEach(function (btn) {
+                var item = btn.closest('.faq-item');
+                var panel = item ? item.querySelector('.faq-panel') : null;
+                var inner = panel ? panel.querySelector('.faq-panel-inner') : null;
+                if (!panel || !inner) return;
+                btn.addEventListener('click', function () {
+                    var open = item.classList.toggle('is-open');
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    panel.style.maxHeight = open ? inner.scrollHeight + 'px' : '0';
+                });
+            });
+        })();
+
+        (function () {
+            var overlay = document.getElementById('lightbox');
+            var imgEl = document.getElementById('lightbox-img');
+            var closeBtn = overlay ? overlay.querySelector('[data-lightbox-close]') : null;
+            if (!overlay || !imgEl) return;
+            function closeLb() {
+                overlay.classList.remove('is-open');
+                imgEl.src = '';
+                document.body.style.overflow = '';
+            }
+            document.querySelectorAll('.works-card img[data-lightbox]').forEach(function (thumb) {
+                thumb.addEventListener('click', function () {
+                    var full = thumb.getAttribute('data-lightbox') || thumb.src;
+                    imgEl.src = full;
+                    imgEl.alt = thumb.alt || '';
+                    overlay.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            if (closeBtn) closeBtn.addEventListener('click', closeLb);
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) closeLb();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLb();
+            });
+        })();
+
+        (function () {
+            var form = document.getElementById('lead-form');
+            var hint = document.getElementById('lead-form-hint');
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var fd = new FormData(form);
+                var name = (fd.get('name') || '').toString().trim();
+                var phone = (fd.get('phone') || '').toString().trim();
+                var area = (fd.get('area') || '').toString().trim();
+                var time = (fd.get('time') || '').toString().trim();
+                if (!name || !phone) {
+                    if (hint) {
+                        hint.textContent = 'Укажите имя и телефон.';
+                        hint.classList.remove('hidden');
+                    }
+                    return;
+                }
+                var msg = 'Заявка с сайта vershina8848.ru:%0AГород: Сочи%0AИмя: ' + encodeURIComponent(name) +
+                    '%0AТелефон: ' + encodeURIComponent(phone) +
+                    (area ? '%0AПлощадь: ' + encodeURIComponent(area) + ' м²' : '') +
+                    (time ? '%0AВремя звонка: ' + encodeURIComponent(time) : '');
+                if (hint) hint.classList.add('hidden');
+                window.open('https://wa.me/79996368698?text=' + msg, '_blank', 'noopener,noreferrer');
+            });
         })();
     </script>
 </body>

@@ -50,10 +50,17 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .gold-bg { background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%); }
-        .premium-card { background: linear-gradient(145deg, #232323 0%, #1a1a1a 100%); border: 1px solid rgba(255,255,255,0.06); }
+        .premium-card { background: #1a1a1a; border: 1px solid #2a2a2a; }
         .catalog-card-hit {
             transition: border-color 0.45s ease, box-shadow 0.45s ease, transform 0.15s ease;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.38), 0 8px 10px -6px rgba(0, 0, 0, 0.22);
+        }
+        .catalog-card-hit.premium-card {
+            background: #1a1a1a !important;
+            border-color: #2a2a2a !important;
+        }
+        .catalog-card-hit .border-t.border-white\/5 {
+            border-top-color: #2a2a2a !important;
         }
         .catalog-card-hit:hover {
             border-color: rgba(201, 168, 76, 0.42) !important;
@@ -137,6 +144,67 @@
         }
         .fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .calc-result-panel {
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(14px);
+            max-height: 0;
+            margin-top: 0;
+            transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.45s ease, margin-top 0.35s ease;
+        }
+        .calc-result-panel.calc-result-panel--visible {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 2200px;
+            margin-top: 1.75rem;
+        }
+
+        .catalog-spec-toggle {
+            margin-top: 0.75rem;
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: var(--color-accent);
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .catalog-spec-toggle:hover {
+            color: var(--color-accent-light);
+        }
+        .catalog-spec-wrap {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            border-top: 1px solid rgba(201, 168, 76, 0.28);
+            margin-top: 0.5rem;
+        }
+        .catalog-spec-wrap.catalog-spec-wrap--open {
+            max-height: 320px;
+        }
+        .catalog-spec-list {
+            padding: 0.65rem 0 0;
+            font-size: 0.72rem;
+            color: #aaa;
+            line-height: 1.55;
+        }
+        .catalog-spec-list dt {
+            color: #888;
+            margin-top: 0.35rem;
+        }
+        .catalog-spec-list dt:first-child {
+            margin-top: 0;
+        }
+        .catalog-spec-list dd {
+            margin: 0;
+            color: #ccc;
+        }
+
         /* Как на главной: контур + стекло + двойное свечение в цвет контура */
         .btn-shared {
             display: inline-flex;
@@ -544,9 +612,20 @@
             color: var(--color-accent);
         }
 
-        .catalog-card-media,
+        /* Карточка каталога: светлая только зона фото, скругление только сверху */
+        .catalog-card-media {
+            background: linear-gradient(180deg, #eeeeee 0%, #e8e8e8 100%);
+            border-radius: 1.75rem 1.75rem 0 0;
+        }
+        @media (min-width: 640px) {
+            .catalog-card-media {
+                border-radius: 3rem 3rem 0 0;
+            }
+        }
+
+        /* Модалка: зона главного фото чуть светлее корпуса */
         .modal-product-media {
-            background: linear-gradient(180deg, #ececec 0%, #d8d8d8 100%);
+            background: #1e1e1e;
         }
 
         .modal-product-header-wave {
@@ -556,6 +635,76 @@
             .modal-product-header-wave {
                 border-radius: 0 0 2rem 2rem;
             }
+        }
+
+        /* Модальное окно: тёмный корпус */
+        [role="dialog"][aria-modal="true"] > div.max-w-2xl {
+            background-color: #161616 !important;
+        }
+        @media (min-width: 640px) {
+            [role="dialog"][aria-modal="true"] > div.max-w-2xl {
+                border-color: #2a2a2a !important;
+            }
+        }
+        [role="dialog"] .border-b.border-white\/10 {
+            border-color: #2a2a2a !important;
+        }
+        [role="dialog"] .grid.grid-cols-3.gap-2 > div.rounded-xl.border {
+            border-color: #2a2a2a !important;
+        }
+        [role="dialog"] button[aria-label="Закрыть"] {
+            background-color: #2a2a2a !important;
+            border-color: #3a3a3a !important;
+            color: #ffffff !important;
+        }
+        [role="dialog"] button[aria-label="Закрыть"]:hover {
+            background-color: #c9a84c !important;
+            border-color: #c9a84c !important;
+            color: #141414 !important;
+        }
+        [role="dialog"] button[aria-label="Закрыть"] svg {
+            stroke: currentColor;
+        }
+        [role="dialog"] .text-yellow-600 {
+            color: #c9a84c !important;
+        }
+        [role="dialog"] .text-white {
+            color: #ffffff !important;
+        }
+        [role="dialog"] .text-gray-400 {
+            color: #aaaaaa !important;
+        }
+        [role="dialog"] .text-gray-500 {
+            color: #888888 !important;
+        }
+
+        /* Миниатюры в модалке (второй столбец в ряду hero + галерея) */
+        .modal-product-media .flex.flex-col.sm\:flex-row.gap-4.sm\:gap-5.items-stretch > div:nth-child(2) button {
+            width: 64px !important;
+            height: 64px !important;
+            min-width: 64px !important;
+            min-height: 64px !important;
+            padding: 0 !important;
+            box-sizing: border-box;
+            border-radius: 8px !important;
+            overflow: hidden;
+            background-color: #1a1a1a !important;
+            border: 1px solid #333333 !important;
+            box-shadow: none !important;
+            --tw-ring-offset-shadow: 0 0 #0000 !important;
+            --tw-ring-shadow: 0 0 #0000 !important;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .modal-product-media .flex.flex-col.sm\:flex-row.gap-4.sm\:gap-5.items-stretch > div:nth-child(2) button.border-yellow-500 {
+            border: 2px solid #c9a84c !important;
+            box-shadow: none !important;
+        }
+        .modal-product-media .flex.flex-col.sm\:flex-row.gap-4.sm\:gap-5.items-stretch > div:nth-child(2) button img {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            background-color: #1a1a1a !important;
         }
 
         .text-gold-gradient {
@@ -642,6 +791,7 @@
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
             const [headerScrolled, setHeaderScrolled] = useState(false);
             const [draftMissingFallback, setDraftMissingFallback] = useState(false);
+            const [expandedSpecsId, setExpandedSpecsId] = useState(null);
 
             const BTU_AREA = {
                 7: 20, 8: 21, 9: 25, 10: 26, 12: 35, 14: 40, 18: 52,
@@ -649,6 +799,31 @@
             };
             const areaForBtu = (b) => BTU_AREA[b] ?? Math.min(130, Math.round(Number(b) * 2.9));
 
+            const btuFromAreaM2 = (sq) => {
+                const s = Number(sq);
+                if (!Number.isFinite(s) || s <= 0) return 7;
+                if (s <= 20) return 7;
+                if (s <= 35) return 9;
+                if (s <= 50) return 12;
+                if (s <= 70) return 18;
+                return 24;
+            };
+            const coolingAreaLabelForBtu = (btu) => {
+                if (btu === 24) return 'Подходит для помещений свыше 70 м²';
+                const cap = { 7: 20, 9: 35, 12: 50, 18: 70 }[btu];
+                return 'Подходит для помещений до ' + cap + ' м²';
+            };
+            const getProductSpecs = (p) => {
+                const maxM = Math.max(...p.btuData.map((d) => areaForBtu(d.btu)));
+                const ty = String(p.type || '').toLowerCase();
+                return {
+                    cooling: 'до ' + maxM + ' м²',
+                    noise: p.noiseDb || '26–44 дБ',
+                    refrigerant: p.refrigerant || 'R32 / R410A',
+                    inverter: ty === 'inverter' ? 'Да' : 'Нет',
+                    warranty: p.manufacturerWarranty || 'По условиям производителя',
+                };
+            };
 
             const closeMobile = () => setMobileMenuOpen(false);
 
@@ -745,9 +920,20 @@
                 let list = products;
                 if (segmentFilter !== 'all') list = list.filter(p => p.segment === segmentFilter);
                 if (typeFilter !== 'all') list = list.filter(p => p.type === typeFilter);
-                if (calcResult) list = list.filter(p => p.btuData.some(d => d.btu === calcResult.btu));
                 return list;
-            }, [products, segmentFilter, typeFilter, calcResult]);
+            }, [products, segmentFilter, typeFilter]);
+
+            const calcRecommendations = useMemo(() => {
+                if (!calcResult || !products.length) return [];
+                const btu = calcResult.btu;
+                const matches = products.filter((p) => p.btuData.some((d) => d.btu === btu));
+                matches.sort((a, b) => {
+                    const pa = a.btuData.find((d) => d.btu === btu).price;
+                    const pb = b.btuData.find((d) => d.btu === btu).price;
+                    return pa - pb;
+                });
+                return matches.slice(0, 3);
+            }, [calcResult, products]);
 
             const openProduct = (p) => {
                 setGalleryIndex(0);
@@ -765,8 +951,15 @@
             return (
                 <div className="min-h-screen flex flex-col bg-[var(--color-bg)]">
                     <header className={`site-header fixed top-0 left-0 right-0${headerScrolled ? ' site-header--scrolled' : ''}${selectedProduct ? ' hidden' : ''}`} aria-hidden={selectedProduct ? 'true' : undefined}>
-                        <div className="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center justify-end md:justify-center gap-4">
-                            <nav className="hidden md:flex flex-wrap gap-x-6 gap-y-2 justify-center items-center text-sm font-medium uppercase tracking-widest text-white">
+                        <div className="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center gap-3 sm:gap-4 justify-between md:justify-start">
+                            <a href="/" className="flex shrink-0 items-center gap-2 no-underline outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-md" aria-label="8848 Вершина — главная">
+                                <svg className="w-9 h-9 shrink-0 text-[var(--color-accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3 4 10v11h16V10l-8-7z"/><path strokeLinecap="round" strokeLinejoin="round" d="M9 21v-6h6v6"/></svg>
+                                <span className="flex flex-col leading-none">
+                                    <span className="text-lg font-numbers-bold tracking-tight bg-gradient-to-br from-[var(--color-accent-light)] to-[var(--color-accent)] bg-clip-text text-transparent">8848</span>
+                                    <span className="text-[0.55rem] uppercase tracking-[0.35em] text-white/90 mt-0.5 font-title">Вершина</span>
+                                </span>
+                            </a>
+                            <nav className="hidden md:flex flex-1 flex-wrap gap-x-4 lg:gap-x-6 gap-y-2 justify-center items-center text-xs lg:text-sm font-medium uppercase tracking-widest text-white min-w-0">
                                 <a href="/#hero" className="header-nav-hover">Главная</a>
                                 <a
                                     href="/catalog/"
@@ -876,22 +1069,44 @@
                         <div className="px-4 sm:px-6 py-10 sm:py-12 max-w-lg mx-auto fade-in pb-[max(2.5rem,env(safe-area-inset-bottom,0px))]">
                             <div className="text-center">
                                 <h2 className="text-2xl sm:text-3xl font-title mb-4 uppercase italic tracking-tighter text-yellow-500 px-1">Ваша площадь?</h2>
-                                <p className="text-gray-500 text-xs sm:text-sm mb-10 sm:mb-12 font-main leading-relaxed px-2">Введите м², и мы подберем мощность с запасом для долгой службы.</p>
-                                <input type="number" inputMode="decimal" enterKeyHint="done" value={area} onChange={(e) => setArea(e.target.value)} placeholder="0" className="w-full min-h-[5.5rem] bg-transparent border-b-4 border-yellow-600 py-4 sm:py-6 font-numbers text-[clamp(3rem,15vw,6rem)] sm:text-7xl md:text-8xl text-center outline-none mb-10 sm:mb-12 placeholder:text-gray-900 focus:border-white transition-all" />
-                                <button onClick={() => {
+                                <p className="text-gray-500 text-xs sm:text-sm mb-10 sm:mb-12 font-main leading-relaxed px-2">Введите м² — подберём мощность по таблице охлаждения.</p>
+                                <input type="number" inputMode="decimal" enterKeyHint="done" value={area} onChange={(e) => setArea(e.target.value)} placeholder="0" className="w-full min-h-[5.5rem] bg-transparent border-b-4 border-yellow-600 py-4 sm:py-6 font-numbers text-[clamp(3rem,15vw,6rem)] sm:text-7xl md:text-8xl text-center outline-none mb-8 sm:mb-10 placeholder:text-gray-900 focus:border-white transition-all" />
+                                <button type="button" onClick={() => {
                                     const s = parseFloat(area);
-                                    if (!s) return;
-                                    let btu = 7;
-                                    let reason = "";
-                                    if (s > 17 && s <= 21) { btu = 9; reason = "Площадь близка к пределу 07 модели. Рекомендуем 09: она охладит быстрее и прослужит на 30% дольше."; }
-                                    else if (s > 21 && s <= 25) { btu = 9; }
-                                    else if (s > 25 && s <= 30) { btu = 12; reason = "Для 25+ м² 09 модели может не хватить. Выбрана 12 модель для стабильного комфорта в жару."; }
-                                    else if (s > 30 && s <= 35) { btu = 12; }
-                                    else if (s > 35) { btu = 18; }
-                                    setCalcResult({ btu, area: s, reason });
-                                    setActiveTab('catalog');
-                                    clearCalcHash();
+                                    if (!s || s <= 0) return;
+                                    const btu = btuFromAreaM2(s);
+                                    setCalcResult({ btu, area: s });
                                 }} className="w-full btn-shared-solid font-title py-5 sm:py-6 uppercase tracking-widest text-sm sm:text-base min-h-[52px]">Рассчитать</button>
+                            </div>
+                            <div className={`calc-result-panel${calcResult ? ' calc-result-panel--visible' : ''}`}>
+                                {calcResult && (
+                                    <div className="rounded-[1.5rem] border border-yellow-600/30 bg-[#161616] px-5 py-6 text-left shadow-xl">
+                                        <p className="font-title text-white uppercase tracking-tight text-lg mb-2">Рекомендуем: <span className="text-yellow-500 font-numbers-bold">{calcResult.btu}</span> BTU</p>
+                                        <p className="text-gray-400 text-sm font-main mb-6">{coolingAreaLabelForBtu(calcResult.btu)}</p>
+                                        {calcRecommendations.length > 0 ? (
+                                            <div className="space-y-4">
+                                                <p className="text-[10px] font-title uppercase tracking-[0.28em] text-gray-500">Подходящие модели</p>
+                                                {calcRecommendations.map((p) => {
+                                                    const row = p.btuData.find((d) => d.btu === calcResult.btu);
+                                                    const price = row ? row.price : Math.min(...p.btuData.map((d) => d.price));
+                                                    return (
+                                                        <div key={p.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-3 border-t border-white/10">
+                                                            <div className="min-w-0">
+                                                                <p className="text-xs text-yellow-600 font-title uppercase tracking-wider truncate">{p.brand}</p>
+                                                                <p className="text-sm text-white font-title italic truncate">{p.series}</p>
+                                                                <p className="text-yellow-500 font-numbers-bold text-lg mt-1">{price.toLocaleString()} ₽</p>
+                                                            </div>
+                                                            <button type="button" onClick={() => { goCatalogTab(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="btn-shared-solid font-title py-3 px-5 uppercase tracking-widest text-[10px] text-center shrink-0">Смотреть в каталоге</button>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        ) : (
+                                            <p className="text-gray-500 text-sm font-main">В каталоге пока нет моделей с этой мощностью — позвоните, подберём альтернативу.</p>
+                                        )}
+                                        <button type="button" onClick={() => setCalcResult(null)} className="mt-6 text-[10px] font-title uppercase tracking-widest text-gray-500 underline underline-offset-4 hover:text-yellow-500 transition-colors">Новый расчёт</button>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ) : (
@@ -908,20 +1123,7 @@
                             {!catalogLoading && !catalogError && products.length === 0 && (
                                 <p className="text-center text-gray-500 py-16 font-main">Каталог пуст. Добавьте позиции в админке.</p>
                             )}
-                            {calcResult && (
-                                <div className="p-4 sm:p-6 bg-yellow-600 text-black rounded-[1.5rem] sm:rounded-[2.5rem] mb-10 sm:mb-12 shadow-2xl fade-in border-[3px] sm:border-4 border-yellow-400/20">
-                                    <div className="flex items-start gap-4 mb-4 font-title">
-                                        <IconZap />
-                                        <div className="flex-1">
-                                            <p className="text-xl uppercase italic leading-none tracking-tight">Рекомендация: <span className="font-numbers-bold">{calcResult.btu}</span> BTU</p>
-                                            <p className="text-xs font-bold mt-3 opacity-90 leading-relaxed font-main">{calcResult.reason || `Оптимальный выбор для ${calcResult.area} м².`}</p>
-                                        </div>
-                                    </div>
-                                    <button onClick={() => setCalcResult(null)} className="text-[10px] font-title uppercase underline decoration-2 underline-offset-4">Показать все модели</button>
-                                </div>
-                            )}
-
-                            {!catalogLoading && !catalogError && !calcResult && (
+                            {!catalogLoading && !catalogError && (
                                 <div className="mb-10 space-y-4">
                                     <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                                         {SEGMENT_FILTER_IDS.map((id) => (
@@ -939,8 +1141,7 @@
                             {!catalogLoading && !catalogError && <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 items-stretch">
                                 {filteredProducts.map(p => {
                                     const minPrice = Math.min(...p.btuData.map(d => d.price));
-                                    const currentPrice = calcResult ? p.btuData.find(d => d.btu === calcResult.btu)?.price : minPrice;
-                                    
+                                    const specs = getProductSpecs(p);
                                     return (
                                         <div key={p.id} onClick={() => openProduct(p)} className="fade-in group catalog-card-hit premium-card rounded-[1.75rem] sm:rounded-[3rem] overflow-hidden border border-white/5 cursor-pointer active:scale-[0.985] h-full min-h-[21rem] sm:min-h-[24rem] flex flex-col">
                                             <div className="h-44 sm:h-52 md:h-56 shrink-0 relative overflow-hidden catalog-card-media">
@@ -963,8 +1164,32 @@
                                                 <div className="border-t border-white/5 pt-5 mt-auto">
                                                     <span className="text-[8px] text-gray-500 font-title uppercase tracking-tighter block">Цена</span>
                                                     <p className="text-yellow-500 font-numbers-bold text-xl leading-none tracking-tight mt-1">
-                                                        {calcResult ? `${currentPrice.toLocaleString()} р.` : `от ${minPrice.toLocaleString()} р.`}
+                                                        от {minPrice.toLocaleString()} р.
                                                     </p>
+                                                    <div onClick={(e) => e.stopPropagation()}>
+                                                        <button
+                                                            type="button"
+                                                            className="catalog-spec-toggle"
+                                                            aria-expanded={expandedSpecsId === p.id}
+                                                            onClick={() => setExpandedSpecsId((id) => (id === p.id ? null : p.id))}
+                                                        >
+                                                            Подробнее ↓
+                                                        </button>
+                                                        <div className={`catalog-spec-wrap${expandedSpecsId === p.id ? ' catalog-spec-wrap--open' : ''}`}>
+                                                            <dl className="catalog-spec-list font-main">
+                                                                <dt>Площадь охлаждения</dt>
+                                                                <dd>{specs.cooling}</dd>
+                                                                <dt>Уровень шума (дБ)</dt>
+                                                                <dd>{specs.noise}</dd>
+                                                                <dt>Тип фреона</dt>
+                                                                <dd>{specs.refrigerant}</dd>
+                                                                <dt>Инвертор</dt>
+                                                                <dd>{specs.inverter}</dd>
+                                                                <dt>Гарантия производителя</dt>
+                                                                <dd>{specs.warranty}</dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
