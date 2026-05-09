@@ -590,6 +590,7 @@
             box-sizing: border-box;
             background: #1a1a1a;
             color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 0.75rem;
             padding: 0.85rem 1rem;
@@ -610,11 +611,19 @@
             outline-offset: 2px;
         }
         select.lead-form-field {
+            color-scheme: dark;
             appearance: none;
+            background-color: #1a1a1a;
+            color: #fff;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23C9A84C'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             padding-right: 2.5rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        select.lead-form-field option {
+            background: #1a1a1a;
+            color: #fff;
         }
         .lead-form-submit {
             width: 100%;
@@ -689,6 +698,14 @@
             font-size: 1rem;
             margin-top: 0;
         }
+        .review-author {
+            font-weight: 600;
+            color: #fff;
+            font-size: 15px;
+            line-height: 1.35;
+            margin-bottom: 0.35rem;
+            font-family: 'Raleway', sans-serif;
+        }
 
         /* Галерея работ */
         .works-grid {
@@ -702,10 +719,11 @@
             }
         }
         .works-card {
-            border-radius: 1rem;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(201, 168, 76, 0.14);
-            background: #111;
+            border: 1px solid #2a2a2a;
+            background: #1a1a1a;
+            transition: border-color 0.3s ease;
         }
         .works-card img {
             width: 100%;
@@ -714,11 +732,58 @@
             display: block;
             cursor: zoom-in;
         }
+        .works-placeholder {
+            aspect-ratio: 16 / 9;
+            background: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            transition: background-color 0.3s ease;
+        }
+        .works-placeholder svg {
+            width: 48px;
+            height: 48px;
+            color: #c9a84c;
+            flex-shrink: 0;
+        }
+        .works-placeholder-label {
+            font-size: 0.72rem;
+            color: #555;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
         .works-caption {
             padding: 0.85rem 1rem;
             font-size: 0.8rem;
             color: #aaa;
             line-height: 1.45;
+            background: #1a1a1a;
+        }
+
+        .hero-trust-line {
+            margin-top: 16px;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            color: #aaa;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .footer-legal {
+            font-size: 0.75rem;
+            color: #555;
+        }
+        .footer-legal a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-legal a:hover {
+            color: #aaa;
         }
 
         /* Лайтбокс */
@@ -805,7 +870,7 @@
         .faq-panel {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.35s ease;
+            transition: max-height 0.3s ease;
         }
         .faq-panel-inner {
             padding: 0 0 1.1rem;
@@ -887,13 +952,14 @@
                     Позвонить
                 </a>
             </div>
+            <p class="hero-trust-line max-w-xl mx-auto px-2">✓ Выезд мастера за 24 часа · Работаем по Сочи и краю</p>
         </div>
     </section>
 
     <!-- ПОЧЕМУ МЫ -->
     <section class="py-14 sm:py-20 md:py-24 bg-[#151515] section-soft-y">
         <div class="container mx-auto px-4 sm:px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 text-center max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 xl:gap-8 text-center max-w-5xl mx-auto">
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">10+</span> лет</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">опыта на рынке</p>
@@ -905,6 +971,10 @@
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">1</span> год</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">гарантия на монтаж</p>
+                </div>
+                <div class="stats-item">
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">24</span> ч</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs">выезд мастера</p>
                 </div>
             </div>
         </div>
@@ -943,9 +1013,7 @@
                 </div>
                 <!-- Карточка 5 -->
                 <div class="service-card p-6 sm:p-8 text-center">
-                    <div class="service-icon-wrap" aria-hidden="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v3"/></svg>
-                    </div>
+                    <div class="text-5xl mb-6" aria-hidden="true">🧗‍♂️</div>
                     <h3 class="text-lg xl:text-xl mb-4 uppercase leading-tight"><span class="font-title-strong">Промышленный альпинизм</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Высотный монтаж на фасаде без автовышки.</p>
                 </div>
@@ -962,22 +1030,26 @@
             <div class="reviews-scroller">
                 <article class="review-card">
                     <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="review-author">Марина В.</p>
                     <p class="text-gray-500 text-xs mb-3 font-numbers-medium">15 мая 2025</p>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Профессионалы своего дела с большой буквы! Кирилл просто волшебник. Когда пришёл устанавливать кондиционер, выяснилось, что трасса не рабочая (сломана медная трубка). Подтянул на помощь Илью и вуаля! Через час в нашем доме заработал кондиционер. Большое спасибо всему коллективу: от консультации до установки легко и просто. Индивидуальный подход, профессионализм, отзывчивость — это малая доля того сервиса, что вас ждёт в этой компании.</p>
                     <p class="text-gray-500 text-xs leading-relaxed mt-3 italic font-description"><span class="font-numbers-medium not-italic text-gray-600">PS:</span> трассу делали в другом месте полгода назад и она претерпела ремонт по выравниванию стен. В какой момент получился залом и не скажешь теперь.</p>
                 </article>
                 <article class="review-card">
                     <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="review-author">Анна Л.</p>
                     <p class="text-gray-500 text-xs mb-3 font-numbers-medium">27 мая 2025</p>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Производили чистку кондиционеров! Всё чётко, быстро, качественно! Ребята знают свою работу 🤝</p>
                 </article>
                 <article class="review-card">
                     <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="review-author">Денис П.</p>
                     <p class="text-gray-500 text-xs mb-3 font-numbers-medium">26 июня 2025</p>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Благодарю ребят за установку кондиционера: сделали быстро, все коробки убрали, проконсультировали по использованию. Всем рекомендую компанию и лично руководителя Кирилла! Цены адекватные, сервис на высоте, спасибо!</p>
                 </article>
                 <article class="review-card">
                     <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="review-author">Елена С.</p>
                     <p class="text-gray-500 text-xs mb-3 font-numbers-medium">22 июля 2025</p>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Отличные ребята! Установили кондиционер очень быстро, качественная работа. И это на 10 этаже! Мастера своего дела, спасибо большое!</p>
                 </article>
@@ -993,15 +1065,24 @@
             </h2>
             <div class="works-grid">
                 <figure class="works-card">
-                    <img src="https://placehold.co/800x450/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B" alt="Монтаж кондиционера — пример работы" data-lightbox="https://placehold.co/1200x675/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+1" loading="lazy" />
+                    <div class="works-placeholder" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                        <span class="works-placeholder-label">Фото скоро</span>
+                    </div>
                     <figcaption class="works-caption font-description">Квартира · 42 м² · сплит-система 12 BTU</figcaption>
                 </figure>
                 <figure class="works-card">
-                    <img src="https://placehold.co/800x450/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+2" alt="Монтаж кондиционера — пример работы" data-lightbox="https://placehold.co/1200x675/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+2" loading="lazy" />
+                    <div class="works-placeholder" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                        <span class="works-placeholder-label">Фото скоро</span>
+                    </div>
                     <figcaption class="works-caption font-description">Офис · 85 м² · две сплит-системы 18 BTU</figcaption>
                 </figure>
                 <figure class="works-card">
-                    <img src="https://placehold.co/800x450/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+3" alt="Монтаж кондиционера — пример работы" data-lightbox="https://placehold.co/1200x675/1a1a1a/C9A84C?text=%D0%A4%D0%BE%D1%82%D0%BE+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B+3" loading="lazy" />
+                    <div class="works-placeholder" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                        <span class="works-placeholder-label">Фото скоро</span>
+                    </div>
                     <figcaption class="works-caption font-description">Частный дом · 110 м² · инверторная система 24 BTU</figcaption>
                 </figure>
             </div>
@@ -1128,31 +1209,31 @@
             <div class="faq-root border-t border-white/[0.07]">
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Оборудование входит в стоимость монтажа?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">Базовый монтаж в прайсе — это работы по установке уже приобретённой сплит-системы. Стоимость блоков оборудования считается отдельно по актуальному каталогу; можем подобрать модель и включить её в общее коммерческое предложение.</div></div>
+                    <div class="faq-panel"><div class="faq-panel-inner">Нет, монтаж и оборудование оплачиваются отдельно. Стоимость кондиционера зависит от модели и мощности — подбираем под ваш бюджет.</div></div>
                 </div>
                 <div class="faq-item">
-                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Сколько времени занимает установка кондиционера?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">Стандартный монтаж одной сплит-системы обычно занимает от нескольких часов до одного рабочего дня — в зависимости от сложности трассы, высоты наружного блока и объёма подготовительных работ.</div></div>
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Сколько времени занимает установка?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Стандартный монтаж сплит-системы занимает 2–4 часа. Сложные объекты и мультизональные системы — по согласованию.</div></div>
                 </div>
                 <div class="faq-item">
-                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Нужен ли выезд мастера для расчёта стоимости?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">Для ориентира можно оценить работы удалённо по фото и параметрам помещения. Итоговую стоимость по понятным строкам сметы фиксируем после осмотра объекта или по проектной документации.</div></div>
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Нужен ли выезд мастера для расчёта?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Предварительный расчёт делаем бесплатно по фото и замерам. Для сложных объектов организуем бесплатный выезд.</div></div>
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Какая гарантия на монтаж?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">На выполненные монтажные работы действует гарантия компании (на сайте указано: 1 год на монтаж). Гарантия производителя на оборудование — по правилам бренда и при условии регламентного обслуживания.</div></div>
+                    <div class="faq-panel"><div class="faq-panel-inner">1 год гарантии на монтажные работы. Гарантия производителя на оборудование — от 1 до 3 лет в зависимости от модели.</div></div>
                 </div>
                 <div class="faq-item">
-                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Вы работаете в выходные дни?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">График приёма заявок и выездов — ежедневно, включая выходные; точное время согласуем при записи.</div></div>
+                    <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Вы работаете в выходные?<span class="faq-arrow" aria-hidden="true"></span></button>
+                    <div class="faq-panel"><div class="faq-panel-inner">Да, работаем ежедневно с 9:00 до 21:00, включая субботу и воскресенье.</div></div>
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Можно ли установить кондиционер на фасаде многоэтажки?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">Да, при соблюдении требований УК и регламента дома. При необходимости выполняем высотные работы промышленным альпинизмом без автовышки — это отражается в смете как отдельная позиция.</div></div>
+                    <div class="faq-panel"><div class="faq-panel-inner">Да, выполняем высотные работы методом промышленного альпинизма без автовышки. Работаем на любых этажах.</div></div>
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Что входит в базовый монтаж?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">Крепление внутреннего и наружного блоков, прокладка межблочной коммуникации в заявленный метраж, подключение дренажа к согласованной точке, электропитание в оговорённом объёме, вакуумирование, заправка и пусконаладка по чек-листу.</div></div>
+                    <div class="faq-panel"><div class="faq-panel-inner">Установка внутреннего и наружного блоков, прокладка межблочной трассы до 2 м, подключение электрики, пусконаладка, сдача по чек-листу.</div></div>
                 </div>
             </div>
         </div>
@@ -1239,8 +1320,15 @@
     <!-- FOOTER -->
     <footer class="site-footer bg-black py-10 sm:py-12 pb-[max(2.75rem,calc(env(safe-area-inset-bottom,0)+1.75rem))]">
         <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-5 sm:gap-6 text-center md:text-left">
-            <div class="text-sm text-gray-500 uppercase tracking-widest">
-                © 2026 8848 ВЕРШИНА
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <div class="text-sm text-gray-500 uppercase tracking-widest">
+                    © 2026 8848 ВЕРШИНА
+                </div>
+                <div class="footer-legal">
+                    <a href="/privacy">Политика конфиденциальности</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="/terms">Пользовательское соглашение</a>
+                </div>
             </div>
             <div class="italic text-gold-gradient font-light">
                 после нас, свежее только на Эвересте
