@@ -1,0 +1,435 @@
+[
+  {
+    "id": 1,
+    "brand": "Rovex",
+    "factory": "Midea",
+    "series": "City CST",
+    "model": "RS-07CST4",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 14900
+      },
+      {
+        "btu": 9,
+        "price": 16900
+      }
+    ],
+    "description": "Rovex. Midea. City CST. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 2,
+    "brand": "Ballu",
+    "factory": "Hisense",
+    "series": "Platinum City (Hisense)",
+    "model": "BSEP-07HN",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 22900
+      },
+      {
+        "btu": 9,
+        "price": 25590
+      }
+    ],
+    "description": "Ballu. Hisense. Platinum City (Hisense). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 3,
+    "brand": "Ballu",
+    "factory": "Hisense",
+    "series": "Platinum DC (Hisense)",
+    "model": "BSEI-09HN",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 32990
+      }
+    ],
+    "description": "Ballu. Hisense. Platinum DC (Hisense). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 4,
+    "brand": "Ecoletta",
+    "factory": "Haier",
+    "series": "A (Haier)",
+    "model": "ECO07A2C/LETTA07A2C",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 23990
+      },
+      {
+        "btu": 9,
+        "price": 25990
+      },
+      {
+        "btu": 12,
+        "price": 34990
+      },
+      {
+        "btu": 18,
+        "price": 59990
+      },
+      {
+        "btu": 24,
+        "price": 76990
+      }
+    ],
+    "description": "Ecoletta. Haier. A (Haier). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 5,
+    "brand": "Ecoletta",
+    "factory": "Haier",
+    "series": "A inverter (Haier)",
+    "model": "ECO07AN",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 32990
+      },
+      {
+        "btu": 9,
+        "price": 35990
+      },
+      {
+        "btu": 12,
+        "price": 39990
+      },
+      {
+        "btu": 18,
+        "price": 65990
+      }
+    ],
+    "description": "Ecoletta. Haier. A inverter (Haier). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 6,
+    "brand": "Loriot",
+    "factory": "MBO",
+    "series": "Diamond White ON-OFF NEW 2025 (MBO) ВСТРОЕННЫЙ WI-FI, компрессор GREE на 7-9-12",
+    "model": "LAC-07MD",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 23360
+      },
+      {
+        "btu": 9,
+        "price": 25920
+      },
+      {
+        "btu": 12,
+        "price": 34350
+      },
+      {
+        "btu": 18,
+        "price": 54400
+      },
+      {
+        "btu": 24,
+        "price": 70580
+      }
+    ],
+    "description": "Loriot. MBO. Diamond White ON-OFF NEW 2025 (MBO) ВСТРОЕННЫЙ WI-FI, компрессор GREE на 7-9-12. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 7,
+    "brand": "Ballu",
+    "factory": "Midea",
+    "series": "Lagoon серия INVERTER (Midea)",
+    "model": "BSDI-07HN8",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 40390
+      },
+      {
+        "btu": 9,
+        "price": 43990
+      },
+      {
+        "btu": 12,
+        "price": 51790
+      },
+      {
+        "btu": 18,
+        "price": 87390
+      }
+    ],
+    "description": "Ballu. Midea. Lagoon серия INVERTER (Midea). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 8,
+    "brand": "Ballu",
+    "factory": "Midea",
+    "series": "Lagoon ON-OFF серия (Midea)",
+    "model": "BSD-07HN1",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 26990
+      },
+      {
+        "btu": 9,
+        "price": 29990
+      },
+      {
+        "btu": 18,
+        "price": 66990
+      }
+    ],
+    "description": "Ballu. Midea. Lagoon ON-OFF серия (Midea). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 9,
+    "brand": "Loriot",
+    "factory": "TCL",
+    "series": "Nocturne DC INVERTER Black Edition (TCL) ВСТРОЕННЫЙ WI-FI",
+    "model": "LAC-09TNI",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 40830
+      },
+      {
+        "btu": 12,
+        "price": 48540
+      }
+    ],
+    "description": "Loriot. TCL. Nocturne DC INVERTER Black Edition (TCL) ВСТРОЕННЫЙ WI-FI. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 10,
+    "brand": "Loriot",
+    "factory": "TCL",
+    "series": "Nocturne ON-OFF Black Edition (TCL) ВСТРОЕННЫЙ WI-FI",
+    "model": "LAC-07TN",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 29630
+      },
+      {
+        "btu": 9,
+        "price": 32850
+      },
+      {
+        "btu": 12,
+        "price": 42640
+      }
+    ],
+    "description": "Loriot. TCL. Nocturne ON-OFF Black Edition (TCL) ВСТРОЕННЫЙ WI-FI. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 11,
+    "brand": "Midea",
+    "factory": "Midea",
+    "series": "Primary (завод MIDEA)",
+    "model": "MSAG3-24HRN1-I/MSAG3-24HRN1-O",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 24,
+        "price": 88390
+      }
+    ],
+    "description": "Midea. Midea. Primary (завод MIDEA). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 12,
+    "brand": "Midea",
+    "factory": "Midea",
+    "series": "Primary Inverter (завод MIDEA) A++",
+    "model": "MSAG3-07N8C2S-I/MSAG3-07N8C2S-O",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 39290
+      }
+    ],
+    "description": "Midea. Midea. Primary Inverter (завод MIDEA) A++. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 13,
+    "brand": "Roda",
+    "factory": "TCL",
+    "series": "PROGRESS (TCL)",
+    "model": "ZAC-PG18NPZ",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 18,
+        "price": 62090
+      }
+    ],
+    "description": "Roda. TCL. PROGRESS (TCL). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 14,
+    "brand": "Loriot",
+    "factory": "AUX",
+    "series": "Résidence Smart DC INVERTER (AUX)",
+    "model": "LAC-09AJI",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 37360
+      },
+      {
+        "btu": 12,
+        "price": 42020
+      },
+      {
+        "btu": 18,
+        "price": 66640
+      },
+      {
+        "btu": 24,
+        "price": 84290
+      }
+    ],
+    "description": "Loriot. AUX. Résidence Smart DC INVERTER (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 15,
+    "brand": "Loriot",
+    "factory": "AUX",
+    "series": "Résidence Smart ON-OFF (AUX)",
+    "model": "LAC-07AJ",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 24780
+      },
+      {
+        "btu": 9,
+        "price": 27490
+      },
+      {
+        "btu": 12,
+        "price": 36450
+      },
+      {
+        "btu": 18,
+        "price": 60860
+      },
+      {
+        "btu": 24,
+        "price": 75580
+      }
+    ],
+    "description": "Loriot. AUX. Résidence Smart ON-OFF (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 16,
+    "brand": "Loriot",
+    "factory": "AUX",
+    "series": "Skyline inverter (AUX)",
+    "model": "LAC-07AQI",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 31040
+      },
+      {
+        "btu": 9,
+        "price": 33550
+      },
+      {
+        "btu": 12,
+        "price": 37730
+      },
+      {
+        "btu": 18,
+        "price": 62260
+      },
+      {
+        "btu": 24,
+        "price": 78720
+      }
+    ],
+    "description": "Loriot. AUX. Skyline inverter (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 17,
+    "brand": "Loriot",
+    "factory": "AUX",
+    "series": "Skyline ON-OFF (AUX)",
+    "model": "LAC-07AQ",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 22350
+      },
+      {
+        "btu": 9,
+        "price": 24800
+      },
+      {
+        "btu": 12,
+        "price": 32860
+      },
+      {
+        "btu": 18,
+        "price": 52540
+      },
+      {
+        "btu": 24,
+        "price": 68180
+      }
+    ],
+    "description": "Loriot. AUX. Skyline ON-OFF (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  }
+]

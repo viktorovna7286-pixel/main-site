@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Raleway:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Raleway:ital,wght@0,500;0,700;1,600&display=swap" rel="stylesheet">
     <!-- Tailwind CSS for layout utilities -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -19,6 +19,10 @@
             --color-card: #2a2a2a;
         }
 
+        html {
+            scroll-padding-top: 5.75rem;
+        }
+
         body {
             background-color: var(--color-bg);
             color: var(--color-text);
@@ -26,8 +30,29 @@
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, .logo-text {
+        h1, h2, h3 {
             font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+        }
+
+        .font-title-strong {
+            font-weight: 700;
+        }
+
+        .font-description {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .font-numbers-medium {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .font-numbers-bold {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
         /* Custom Scrollbar */
@@ -42,42 +67,142 @@
             border-radius: 4px;
         }
 
-        /* Header Glassmorphism */
-        header {
-            background: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        /* Шапка: вверху — прозрачно; после прокрутки — матовое стекло + затемнение */
+        header.site-header {
             z-index: 1000;
+            transition:
+                background 0.42s ease,
+                backdrop-filter 0.42s ease,
+                -webkit-backdrop-filter 0.42s ease,
+                border-color 0.42s ease,
+                box-shadow 0.42s ease;
+        }
+        header.site-header:not(.site-header--scrolled) {
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: none;
+            box-shadow: none;
+        }
+        header.site-header.site-header--scrolled {
+            background: rgba(14, 14, 16, 0.74);
+            backdrop-filter: blur(18px) saturate(1.35);
+            -webkit-backdrop-filter: blur(18px) saturate(1.35);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 10px 36px rgba(0, 0, 0, 0.38);
         }
 
         /* Hero Section Styling */
         .hero-section {
             background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.9)), 
-                        url('https://images.unsplash.com/photo-1590483734731-0775e1730030?q=80&w=2070&auto=format&fit=crop');
+                        url('./assets/hero-bg.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
         }
 
+        /* Кнопки-«таблетки»: контур + полупрозрачный фон + свечение в цвет контура */
+        .btn-shared {
+            display: inline-block;
+            border-radius: 9999px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.35s ease,
+                transform 0.22s ease;
+        }
+
         .gold-outline-btn {
             border: 2px solid var(--color-accent);
             color: var(--color-accent);
-            transition: all 0.3s ease;
+            background: rgba(201, 168, 76, 0.1);
+            box-shadow:
+                0 0 14px rgba(201, 168, 76, 0.32),
+                0 0 36px rgba(201, 168, 76, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
         .gold-outline-btn:hover {
-            background-color: var(--color-accent);
-            color: #1a1a1a;
-            box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+            background-color: rgba(201, 168, 76, 0.22);
+            color: #ffe6a6;
+            border-color: var(--color-accent-light);
+            box-shadow:
+                0 0 28px rgba(201, 168, 76, 0.55),
+                0 0 52px rgba(201, 168, 76, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        }
+        .gold-outline-btn:focus-visible {
+            outline: none;
+            color: #fff0c9;
+            box-shadow:
+                0 0 0 2px rgba(232, 201, 107, 0.55),
+                0 0 30px rgba(201, 168, 76, 0.45);
         }
 
         .white-outline-btn {
-            border: 2px solid white;
-            color: white;
-            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.94);
+            color: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow:
+                0 0 16px rgba(255, 255, 255, 0.18),
+                0 0 40px rgba(255, 255, 255, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         .white-outline-btn:hover {
-            background-color: white;
-            color: #1a1a1a;
+            background-color: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            box-shadow:
+                0 0 26px rgba(255, 255, 255, 0.42),
+                0 0 48px rgba(255, 255, 255, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+        .white-outline-btn:focus-visible {
+            outline: none;
+            box-shadow:
+                0 0 0 2px rgba(255, 255, 255, 0.55),
+                0 0 28px rgba(255, 255, 255, 0.35);
+        }
+
+        /* Сплошные контакт-кнопки: тот же принцип объёма + цветное свечение под бренд */
+        .contact-btn {
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            font-weight: 700;
+            transition: transform 0.22s ease, box-shadow 0.35s ease, filter 0.25s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+        .contact-btn--phone:hover {
+            box-shadow:
+                0 10px 32px rgba(0, 0, 0, 0.45),
+                0 0 24px rgba(255, 255, 255, 0.28);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+        .contact-btn--wa:hover {
+            border-color: rgba(180, 255, 215, 0.45);
+            box-shadow:
+                0 10px 34px rgba(0, 0, 0, 0.45),
+                0 0 28px rgba(37, 211, 102, 0.45);
+        }
+        .contact-btn--tg:hover {
+            border-color: rgba(180, 230, 255, 0.45);
+            box-shadow:
+                0 10px 34px rgba(0, 0, 0, 0.45),
+                0 0 28px rgba(34, 158, 217, 0.45);
+        }
+        .contact-btn--muted:hover {
+            border-color: rgba(201, 168, 76, 0.55);
+            box-shadow:
+                0 10px 34px rgba(0, 0, 0, 0.5),
+                0 0 22px rgba(201, 168, 76, 0.28);
+        }
+        .contact-btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(232, 201, 107, 0.65), 0 12px 36px rgba(0, 0, 0, 0.45);
         }
 
         /* Service Cards */
@@ -85,10 +210,39 @@
             background-color: var(--color-card);
             transition: transform 0.3s ease, border-color 0.3s ease;
             border-bottom: 4px solid transparent;
+            border-radius: 1.5rem;
         }
         .service-card:hover {
             transform: translateY(-10px);
             border-bottom: 4px solid var(--color-accent);
+        }
+
+        .stats-item {
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .stats-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -1.5rem;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 64px;
+            background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.55), transparent);
+        }
+
+        @media (max-width: 767px) {
+            .stats-item:not(:last-child)::after {
+                right: 50%;
+                top: auto;
+                bottom: -0.5rem;
+                transform: translateX(50%);
+                width: 80px;
+                height: 1px;
+                background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.55), transparent);
+            }
         }
 
         /* Gold Gradient Text */
@@ -116,102 +270,236 @@
         .phone-link:hover {
             color: var(--color-accent-light);
         }
+
+        header.site-header nav a.header-nav-hover,
+        header.site-header nav button.catalog-nav-btn.header-nav-hover {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0.35rem 0.85rem;
+            margin: -0.35rem -0.85rem;
+            border-radius: 9999px;
+            border: none;
+            background: transparent;
+            outline: none;
+            box-shadow: none;
+            transition: color 0.25s ease, background 0.25s ease, text-shadow 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header.site-header nav a.header-nav-hover:hover,
+        header.site-header nav button.catalog-nav-btn.header-nav-hover:hover {
+            color: var(--color-accent-light);
+            background: rgba(201, 168, 76, 0.08);
+            text-shadow: 0 0 18px rgba(232, 201, 107, 0.45), 0 0 40px rgba(201, 168, 76, 0.2);
+        }
+
+        header.site-header nav a.header-nav-hover:focus-visible,
+        header.site-header nav button.catalog-nav-btn.header-nav-hover:focus-visible {
+            outline: none;
+            color: var(--color-accent-light);
+            background: rgba(201, 168, 76, 0.1);
+            text-shadow: 0 0 20px rgba(232, 201, 107, 0.5), 0 0 48px rgba(201, 168, 76, 0.22);
+        }
+
+        #mobile-menu .header-nav-hover {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .brand-logo {
+            width: 108px;
+            height: auto;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.1;
+        }
+
+        /* Блок ориентиров по ценам — карточки, не «как у конкурента» */
+        .price-card {
+            position: relative;
+            border-radius: 1.35rem;
+            background: linear-gradient(155deg, #222 0%, #141414 55%, #101010 100%);
+            border: 1px solid rgba(201, 168, 76, 0.14);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent), transparent);
+            opacity: 0.85;
+        }
+        .price-card-inner {
+            padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+        }
+        .price-card-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            border: 1px solid rgba(201, 168, 76, 0.35);
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .price-card h3 {
+            font-size: 1.05rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 0 0 0.35rem;
+        }
+        .price-card-sub {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin: 0 0 1rem;
+            font-style: italic;
+        }
+        .price-table-head {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 0.5rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #6b7280;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            margin-bottom: 0.25rem;
+        }
+        .price-line {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 0.5rem;
+            align-items: baseline;
+            padding: 0.55rem 0;
+            font-size: 0.82rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .price-line:last-of-type {
+            border-bottom: none;
+        }
+        .price-line-2 {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.75rem;
+            align-items: baseline;
+            padding: 0.55rem 0;
+            font-size: 0.82rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .price-line-2:last-of-type {
+            border-bottom: none;
+        }
+        .price-card-foot {
+            font-size: 0.72rem;
+            color: #8b8b8b;
+            line-height: 1.5;
+            margin: 1rem 0 0;
+        }
+        .price-card-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.4);
+            padding-bottom: 2px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .price-card-cta:hover {
+            color: var(--color-accent-light);
+            border-color: var(--color-accent-light);
+            text-shadow: 0 0 18px rgba(201, 168, 76, 0.38);
+        }
+        @media (max-width: 480px) {
+            .price-table-head,
+            .price-line {
+                grid-template-columns: 1fr;
+                gap: 0.15rem;
+            }
+            .price-table-head span:nth-child(2),
+            .price-table-head span:nth-child(3) {
+                opacity: 0.85;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- ШАПКА -->
-    <header class="fixed top-0 left-0 right-0 py-4">
+    <header class="site-header fixed top-0 left-0 right-0 py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Логотип -->
-            <div class="flex flex-col leading-none">
-                <span class="text-3xl font-extrabold tracking-wider text-gold-gradient">8848</span>
-                <span class="text-xs font-semibold tracking-[0.3em] uppercase text-gold-gradient">ВЕРШИНА</span>
-            </div>
+            <a href="/" aria-label="8848 ВЕРШИНА" class="block">
+                <img src="./assets/logo-8848.png" alt="8848 ВЕРШИНА" class="brand-logo">
+            </a>
 
             <!-- Меню (Desktop) -->
-            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
-                <a href="#" class="hover:text-gold-gradient transition-colors">Главная</a>
-                <a href="#catalog" class="hover:text-gold-gradient transition-colors">Каталог</a>
-                <a href="#services" class="hover:text-gold-gradient transition-colors">Услуги</a>
-                <a href="#contacts" class="hover:text-gold-gradient transition-colors">Контакты</a>
+            <nav class="hidden md:flex flex-wrap gap-x-6 gap-y-2 justify-end items-center text-sm font-medium uppercase tracking-widest text-white">
+                <a href="/#hero" class="header-nav-hover">Главная</a>
+                <a href="/#catalog" class="header-nav-hover">Каталог</a>
+                <a href="/catalog/#calc" class="header-nav-hover">Калькулятор</a>
+                <a href="/#pricing" class="header-nav-hover">Прайс</a>
+                <a href="/#services" class="header-nav-hover">Услуги</a>
+                <a href="/#contacts" class="header-nav-hover">Контакты</a>
             </nav>
 
             <!-- Контакты в шапке -->
             <div class="hidden lg:flex items-center">
-                <a href="tel:89996368698" class="text-lg font-bold phone-link">8 999 636 86 98</a>
+                <a href="tel:89996368698" class="text-lg phone-link font-numbers-bold text-white">8 999 636 86 98</a>
             </div>
 
             <!-- Mobile Menu Toggle -->
-            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+            <button type="button" class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
 
         <!-- Mobile Menu content -->
         <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 text-center">
-            <a href="#" class="py-2" onclick="toggleMenu()">Главная</a>
-            <a href="#catalog" class="py-2" onclick="toggleMenu()">Каталог</a>
-            <a href="#services" class="py-2" onclick="toggleMenu()">Услуги</a>
-            <a href="#contacts" class="py-2" onclick="toggleMenu()">Контакты</a>
-            <a href="tel:89996368698" class="text-gold-gradient font-bold">8 999 636 86 98</a>
+            <a href="/#hero" class="py-2 header-nav-hover" onclick="toggleMenu()">Главная</a>
+            <a href="/#catalog" class="py-2 header-nav-hover" onclick="toggleMenu()">Каталог</a>
+            <a href="/catalog/#calc" class="py-2 header-nav-hover" onclick="toggleMenu()">Калькулятор</a>
+            <a href="/#pricing" class="py-2 header-nav-hover" onclick="toggleMenu()">Прайс</a>
+            <a href="/#services" class="py-2 header-nav-hover" onclick="toggleMenu()">Услуги</a>
+            <a href="/#contacts" class="py-2 header-nav-hover" onclick="toggleMenu()">Контакты</a>
+            <a href="tel:89996368698" class="text-gold-gradient font-numbers-bold">8 999 636 86 98</a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero-section flex items-center justify-center text-center px-6">
+    <section id="hero" class="hero-section flex items-center justify-center text-center px-6">
         <div class="max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 uppercase leading-tight tracking-tight">
-                Кондиционеры <span class="block">под ключ</span>
+            <h1 class="text-5xl md:text-7xl mb-4 uppercase leading-tight tracking-tight">
+                Кондиционеры <span class="block font-title-strong">под ключ</span>
             </h1>
-            <p class="text-xl md:text-2xl font-light italic text-gold-gradient mb-4">
+            <p class="text-xl md:text-2xl text-gold-gradient mb-4 font-description">
                 от подбора до установки
             </p>
             <p class="text-sm md:text-base text-gray-400 uppercase tracking-[0.2em] mb-10">
                 после нас, свежее только на Эвересте
             </p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="#catalog" class="gold-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm rounded-sm">
+                <a href="/catalog/" class="btn-shared gold-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm">
                     Смотреть каталог
                 </a>
-                <a href="tel:89996368698" class="white-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm rounded-sm">
+                <a href="tel:89996368698" class="btn-shared white-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm">
                     Позвонить
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- УСЛУГИ -->
-    <section id="services" class="py-24 bg-[#1a1a1a]">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase tracking-widest">
-                Наши <span class="text-gold-gradient">Услуги</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Карточка 1 -->
-                <div class="service-card p-10 text-center">
-                    <div class="text-5xl mb-6">🏔</div>
-                    <h3 class="text-xl font-bold mb-4 uppercase">Продажа</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Широкий выбор сплит-систем от мировых брендов с гарантией.</p>
-                </div>
-                <!-- Карточка 2 -->
-                <div class="service-card p-10 text-center">
-                    <div class="text-5xl mb-6">🔧</div>
-                    <h3 class="text-xl font-bold mb-4 uppercase">Монтаж</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Профессиональная установка любой сложности за один день.</p>
-                </div>
-                <!-- Карточка 3 -->
-                <div class="service-card p-10 text-center">
-                    <div class="text-5xl mb-6">❄</div>
-                    <h3 class="text-xl font-bold mb-4 uppercase">Обслуживание</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Чистка, дезинфекция и заправка для долгой службы техники.</p>
-                </div>
-                <!-- Карточка 4 -->
-                <div class="service-card p-10 text-center">
-                    <div class="text-5xl mb-6">🛠</div>
-                    <h3 class="text-xl font-bold mb-4 uppercase">Ремонт</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Быстрое устранение неисправностей и замена комплектующих.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -219,29 +507,197 @@
     <!-- ПОЧЕМУ МЫ -->
     <section class="py-20 bg-[#151515] border-y border-gray-800">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                <div>
-                    <div class="text-5xl font-extrabold text-gold-gradient mb-2">5+ лет</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 text-center max-w-4xl mx-auto">
+                <div class="stats-item">
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">10+</span> лет</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">опыта на рынке</p>
                 </div>
-                <div>
-                    <div class="text-5xl font-extrabold text-gold-gradient mb-2">500+</div>
+                <div class="stats-item">
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">700+</span></div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">успешных монтажей</p>
                 </div>
-                <div>
-                    <div class="text-5xl font-extrabold text-gold-gradient mb-2">Гарантия</div>
-                    <p class="text-gray-400 uppercase tracking-widest text-xs">на все виды работ</p>
+                <div class="stats-item">
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">1</span> год</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs">гарантия на монтаж</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- УСЛУГИ -->
+    <section id="services" class="py-24 bg-[#1a1a1a]">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center mb-16 uppercase tracking-widest">
+                Наши <span class="text-gold-gradient font-title-strong">Услуги</span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                <!-- Карточка 1 -->
+                <div class="service-card p-8 text-center">
+                    <div class="text-5xl mb-6">🏔</div>
+                    <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Продажа</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Широкий выбор сплит-систем от мировых брендов с гарантией.</p>
+                </div>
+                <!-- Карточка 2 -->
+                <div class="service-card p-8 text-center">
+                    <div class="text-5xl mb-6">🔧</div>
+                    <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Монтаж</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Подготовка узлов крепления, прокладка трасс, вакуумирование, пусконаладка и сдача по чек-листу.</p>
+                </div>
+                <!-- Карточка 3 -->
+                <div class="service-card p-8 text-center">
+                    <div class="text-5xl mb-6">❄</div>
+                    <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Обслуживание</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Чистка, дезинфекция и заправка для долгой службы техники.</p>
+                </div>
+                <!-- Карточка 4 -->
+                <div class="service-card p-8 text-center">
+                    <div class="text-5xl mb-6">🛠</div>
+                    <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Ремонт</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Быстрое устранение неисправностей и замена комплектующих.</p>
+                </div>
+                <!-- Карточка 5 -->
+                <div class="service-card p-8 text-center">
+                    <div class="text-5xl mb-6" aria-hidden="true">🧗</div>
+                    <h3 class="text-lg xl:text-xl mb-4 uppercase leading-tight"><span class="font-title-strong">Промышленный альпинизм</span></h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">(высотные работы без автовышки)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ориентиры по стоимости работ (оформление своё, не копия чужих макетов) -->
+    <section id="pricing" class="py-24 bg-[#0f0f0f] border-t border-gray-800/60">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title text-center mb-4 uppercase tracking-widest">
+                Ориентиры <span class="text-gold-gradient font-title-strong">по работам</span>
+            </h2>
+            <p class="text-center text-gray-500 text-sm max-w-2xl mx-auto mb-14 font-description">
+                Ниже — ориентировочные вилки. Точную смету согласуем после осмотра: подскажем оптимальный вариант под ваш объект.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <article class="price-card">
+                    <div class="price-card-inner">
+                        <span class="price-card-badge">МОНТАЖ</span>
+                        <h3>Базовый комплект</h3>
+                        <p class="price-card-sub font-description">Сплит-система, межблочная трасса до 2 м, типовая точка установки</p>
+                        <div class="price-table-head font-title">
+                            <span>Мощность</span>
+                            <span>Площадь</span>
+                            <span class="text-right">От</span>
+                        </div>
+                        <div class="price-line">
+                            <span>7–9 BTU</span>
+                            <span class="text-gray-400">до 25 м²</span>
+                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">10 500 ₽</span>
+                        </div>
+                        <div class="price-line">
+                            <span>12 BTU</span>
+                            <span class="text-gray-400">до 35 м²</span>
+                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">11 500 ₽</span>
+                        </div>
+                        <div class="price-line">
+                            <span>18 BTU</span>
+                            <span class="text-gray-400">до 50 м²</span>
+                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">13 500 ₽</span>
+                        </div>
+                        <div class="price-line">
+                            <span>24 BTU</span>
+                            <span class="text-gray-400">до 70 м²</span>
+                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">15 500 ₽</span>
+                        </div>
+                        <p class="price-card-foot">
+                            В базу входят: крепление внутреннего и наружного блоков, прокладка коммуникаций в заявленный метраж, слив в ближайшую канализацию/точку, электропитание в пределах оговорённого объёма работ.
+                        </p>
+                        <a href="#contacts" class="price-card-cta">Запросить расчёт</a>
+                    </div>
+                </article>
+
+                <article class="price-card">
+                    <div class="price-card-inner">
+                        <span class="price-card-badge">ДОПОЛНЕНИЯ</span>
+                        <h3>Сверх базового</h3>
+                        <p class="price-card-sub font-description">Оплачивается отдельно, если объект требует нестандартных решений</p>
+                        <div class="price-line-2">
+                            <span>Удлинение трассы</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 2 400 ₽ / м</span>
+                        </div>
+                        <div class="price-line-2">
+                            <span>Штроба (кирпич / газоблок)</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 1 100 ₽ / м</span>
+                        </div>
+                        <div class="price-line-2">
+                            <span>Штроба (бетон)</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 1 600 ₽ / м</span>
+                        </div>
+                        <div class="price-line-2">
+                            <span>Высотные работы — свой штатный промальпинист</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 9 500 ₽</span>
+                        </div>
+                        <div class="price-line-2">
+                            <span>Демонтаж сплит-системы</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 3 800 ₽</span>
+                        </div>
+                        <p class="price-card-foot">
+                            Перед стартом работ проговариваем смету прозрачно: без скрытых строк и «сюрпризов» в процессе.
+                        </p>
+                        <a href="#contacts" class="price-card-cta">Обсудить объект</a>
+                    </div>
+                </article>
+
+                <article class="price-card">
+                    <div class="price-card-inner">
+                        <span class="price-card-badge">СЕРВИС</span>
+                        <h3>Обслуживание</h3>
+                        <p class="price-card-sub font-description">Поддерживаем технику в форме и продлеваем ресурс</p>
+                        <div class="price-line-2">
+                            <span>Чистка и санитарная обработка</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 3 600 ₽</span>
+                        </div>
+                        <div class="price-line-2">
+                            <span>Полное ТО с разбором внутреннего блока</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 4 200 ₽</span>
+                        </div>
+                        <p class="price-card-foot">
+                            Регулярное обслуживание снижает риск запахов, утечек и перегруза компрессора — особенно перед сезоном.
+                        </p>
+                        <a href="#contacts" class="price-card-cta">Записаться на сервис</a>
+                    </div>
+                </article>
+
+                <article class="price-card">
+                    <div class="price-card-inner">
+                        <span class="price-card-badge">B2B</span>
+                        <h3>Для бизнеса</h3>
+                        <p class="price-card-sub font-description">Офисы, ритейл, объекты с проектной документацией</p>
+                        <div class="price-line-2">
+                            <span>Монтаж мульти-сплит / VRF (по проекту)</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">по смете</span>
+                        </div>
+                        <div class="price-line-2">
+                            <span>Вентиляция и приточные решения</span>
+                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">индивидуально</span>
+                        </div>
+                        <p class="price-card-foot">
+                            Выезжаем на замер, согласуем этапы и сроки. Работаем по договору, при необходимости — с актами и закрывающими документами.
+                        </p>
+                        <a href="#contacts" class="price-card-cta">Коммерческое предложение</a>
+                    </div>
+                </article>
+            </div>
+
+            <p class="text-center text-gray-600 text-xs mt-12 max-w-2xl mx-auto uppercase tracking-widest leading-relaxed">
+                Итоговая стоимость — после осмотра. Консультацию и выезд мастера согласуем по телефону.
+            </p>
         </div>
     </section>
 
     <!-- КАТАЛОГ (CTA) -->
     <section id="catalog" class="py-24 text-center">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-5xl font-bold mb-8 uppercase">Готовы к выбору?</h2>
-            <p class="text-gray-400 mb-12 max-w-2xl mx-auto">Ознакомьтесь с актуальными моделями кондиционеров в нашем каталоге. Подберем оптимальный вариант под ваш бюджет и площадь.</p>
-            <a href="/catalog/" class="inline-block gold-outline-btn px-12 py-5 uppercase font-bold tracking-widest rounded-sm">
+            <h2 class="section-title mb-8 uppercase tracking-widest text-center">Готовы к <span class="font-title-strong text-gold-gradient">выбору?</span></h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto font-description">Ознакомьтесь с актуальными моделями кондиционеров в нашем каталоге. Подберем оптимальный вариант под ваш бюджет и площадь.</p>
+            <a href="/catalog/" class="inline-block btn-shared gold-outline-btn px-12 py-5 uppercase font-bold tracking-widest">
                 Открыть каталог
             </a>
         </div>
@@ -250,30 +706,39 @@
     <!-- КОНТАКТЫ -->
     <section id="contacts" class="py-24 bg-[#212121]">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-2xl uppercase tracking-[0.3em] mb-10 text-gray-500">Свяжитесь с нами</h2>
-            <a href="tel:89996368698" class="text-4xl md:text-6xl font-bold text-gold-gradient mb-12 block hover:opacity-80 transition-opacity">
+            <h2 class="section-title uppercase tracking-widest mb-10 text-center">Свяжитесь <span class="font-title-strong text-gold-gradient">с нами</span></h2>
+            <a href="tel:89996368698" class="text-4xl md:text-6xl text-gold-gradient mb-12 block hover:opacity-80 transition-opacity font-numbers-bold">
                 8 999 636 86 98
             </a>
             
-            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
-                <a href="https://wa.me/79996368698" target="_blank" class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-md font-bold hover:opacity-90 transition-all">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
+                <a href="tel:89996368698" class="contact-btn contact-btn--phone flex items-center justify-center gap-3 bg-white text-black px-8 py-4 hover:bg-gray-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.2a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.28 1.04L8.6 9.8a14 14 0 005.6 5.6l1.48-1.47a1 1 0 011.04-.28l3.6 1.2A1 1 0 0121 15.8V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
+                    Позвонить
+                </a>
+                <a href="https://wa.me/79996368698" target="_blank" class="contact-btn contact-btn--wa flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-4 hover:opacity-90">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
                     WhatsApp
                 </a>
-                <a href="tel:89996368698" class="flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-md font-bold hover:bg-gray-200 transition-all">
-                    Позвонить
+                <a href="https://t.me/" target="_blank" class="contact-btn contact-btn--tg flex items-center justify-center gap-3 bg-[#229ED9] text-white px-6 py-4 hover:opacity-90">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65c-.39 0-.33-.15-.46-.52l-1.17-3.87 9.06-5.73"/><path d="M9.78 18.65c.3 0 .43-.14.6-.3l1.65-1.6-2.05-1.24"/><path d="M10 15.52l4.98 3.68c.57.31.98.15 1.12-.53l2-9.43c.2-.84-.3-1.22-.84-.98L5.5 12.8c-.8.31-.8.75-.15.95l3.02.95 7-4.41c.33-.2.64-.09.39.13"/></svg>
+                    Telegram
+                </a>
+                <a href="#" class="contact-btn contact-btn--muted flex items-center justify-center gap-3 bg-[#2a2a2a] text-white px-6 py-4 border border-[#3f3f3f] hover:border-[#C9A84C]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 7h4l4 5 4-5h4M6 19l6-7 6 7"/></svg>
+                    Max
                 </a>
             </div>
 
             <div class="text-gray-400">
                 <p class="mb-2 uppercase tracking-widest text-sm">График работы:</p>
-                <p class="text-lg font-semibold">Пн-Вс 9:00 – 21:00</p>
+                <p class="text-lg font-description">Пн-Вс <span class="font-numbers-medium">9:00 – 21:00</span></p>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-12 border-t border-gray-800">
+    <footer class="site-footer py-12 border-t border-gray-800">
         <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-sm text-gray-500 uppercase tracking-widest">
                 © 2026 8848 ВЕРШИНА
@@ -293,6 +758,15 @@
                 menu.style.display = 'flex';
             }
         }
+        (function () {
+            var h = document.querySelector('header.site-header');
+            if (!h) return;
+            function upd() {
+                h.classList.toggle('site-header--scrolled', window.scrollY > 40);
+            }
+            window.addEventListener('scroll', upd, { passive: true });
+            upd();
+        })();
     </script>
 </body>
 </html>
