@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>8848 ВЕРШИНА — Кондиционеры под ключ</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +23,19 @@
             scroll-padding-top: 5.75rem;
         }
 
+        @media (max-width: 767px) {
+            html {
+                scroll-padding-top: clamp(4.5rem, 18vw + 2rem, 6rem);
+            }
+        }
+
         body {
             background-color: var(--color-bg);
             color: var(--color-text);
             font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
+            padding-left: env(safe-area-inset-left, 0);
+            padding-right: env(safe-area-inset-right, 0);
         }
 
         h1, h2, h3 {
@@ -70,6 +78,10 @@
         /* Шапка: вверху — прозрачно; после прокрутки — матовое стекло + затемнение */
         header.site-header {
             z-index: 1000;
+            padding-left: max(0px, env(safe-area-inset-left, 0px));
+            padding-right: max(0px, env(safe-area-inset-right, 0px));
+            padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+            padding-bottom: 1rem;
             transition:
                 background 0.42s ease,
                 backdrop-filter 0.42s ease,
@@ -98,7 +110,12 @@
                         url('./assets/hero-bg.jpg');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            min-height: 100vh;
+            min-height: 100dvh;
+            min-height: 100svh;
+            padding-top: max(6rem, calc(env(safe-area-inset-top, 0px) + 5rem));
+            padding-bottom: max(2.5rem, env(safe-area-inset-bottom, 0px));
+            box-sizing: border-box;
         }
 
         /* Кнопки-«таблетки»: контур + полупрозрачный фон + свечение в цвет контура */
@@ -212,9 +229,11 @@
             border-bottom: 4px solid transparent;
             border-radius: 1.5rem;
         }
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-bottom: 4px solid var(--color-accent);
+        @media (hover: hover) and (pointer: fine) {
+            .service-card:hover {
+                transform: translateY(-10px);
+                border-bottom: 4px solid var(--color-accent);
+            }
         }
 
         .stats-item {
@@ -228,9 +247,12 @@
             top: 50%;
             right: -1.5rem;
             transform: translateY(-50%);
-            width: 1px;
-            height: 64px;
-            background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.55), transparent);
+            width: 2px;
+            height: 72px;
+            border-radius: 2px;
+            background: linear-gradient(to bottom, transparent 0%, rgba(201, 168, 76, 0.22) 35%, rgba(201, 168, 76, 0.38) 50%, rgba(201, 168, 76, 0.22) 65%, transparent 100%);
+            box-shadow: 0 0 14px rgba(201, 168, 76, 0.18), 0 0 28px rgba(0, 0, 0, 0.45);
+            opacity: 0.92;
         }
 
         @media (max-width: 767px) {
@@ -239,10 +261,43 @@
                 top: auto;
                 bottom: -0.5rem;
                 transform: translateX(50%);
-                width: 80px;
-                height: 1px;
-                background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.55), transparent);
+                width: 88px;
+                height: 2px;
+                border-radius: 2px;
+                background: linear-gradient(to right, transparent 0%, rgba(201, 168, 76, 0.22) 30%, rgba(201, 168, 76, 0.36) 50%, rgba(201, 168, 76, 0.22) 70%, transparent 100%);
+                box-shadow: 0 0 12px rgba(201, 168, 76, 0.16), 0 4px 20px rgba(0, 0, 0, 0.4);
             }
+        }
+
+        /* Мягкие границы между секциями (без резких линий) */
+        .section-soft-y {
+            position: relative;
+            box-shadow:
+                inset 0 80px 64px -48px rgba(0, 0, 0, 0.55),
+                inset 0 -72px 60px -44px rgba(0, 0, 0, 0.5),
+                inset 0 40px 32px -20px rgba(201, 168, 76, 0.04),
+                inset 0 -36px 28px -18px rgba(201, 168, 76, 0.03),
+                0 -28px 48px -24px rgba(0, 0, 0, 0.28),
+                0 36px 56px -28px rgba(0, 0, 0, 0.32);
+        }
+
+        .section-soft-t {
+            position: relative;
+            box-shadow:
+                inset 0 72px 56px -40px rgba(0, 0, 0, 0.52),
+                inset 0 36px 36px -16px rgba(201, 168, 76, 0.045),
+                0 -36px 56px -28px rgba(0, 0, 0, 0.34);
+        }
+
+        /* Контакты: лёгкий градиент в той же холодной палитре, что и страница (без «грязного» #3a) */
+        .section-contacts-panel {
+            background: linear-gradient(
+                180deg,
+                #151515 0%,
+                var(--color-bg) 38%,
+                #171717 68%,
+                #0d0d0d 100%
+            );
         }
 
         /* Gold Gradient Text */
@@ -255,13 +310,25 @@
         /* Responsive Mobile Menu */
         #mobile-menu {
             display: none;
-            background: var(--color-bg);
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
-            padding: 1rem;
-            border-bottom: 1px solid var(--color-accent);
+            padding: 1rem 1rem max(1.25rem, env(safe-area-inset-bottom, 0px));
+            border-bottom: 1px solid rgba(201, 168, 76, 0.35);
+            max-height: min(75vh, calc(100dvh - 4rem));
+            max-height: min(75vh, calc(100svh - 4rem));
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+
+        body.mobile-nav-open {
+            overflow: hidden;
+            touch-action: none;
         }
 
         .phone-link {
@@ -304,6 +371,27 @@
             text-shadow: 0 0 20px rgba(232, 201, 107, 0.5), 0 0 48px rgba(201, 168, 76, 0.22);
         }
 
+        /* Текущий пункт меню при скролле — золотая «таблетка» + тёмный текст и свечение */
+        header.site-header a.header-nav-hover.header-nav-hover--current {
+            color: #141414;
+            background: linear-gradient(135deg, rgba(232, 201, 107, 0.88), rgba(201, 168, 76, 0.92));
+            text-shadow: none;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.38),
+                0 0 22px rgba(201, 168, 76, 0.38),
+                0 0 40px rgba(201, 168, 76, 0.15);
+        }
+
+        header.site-header a.header-nav-hover.header-nav-hover--current:hover,
+        header.site-header a.header-nav-hover.header-nav-hover--current:focus-visible {
+            color: #0a0a0a;
+            background: linear-gradient(135deg, rgba(237, 210, 130, 0.94), rgba(201, 168, 76, 0.96));
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.42),
+                0 0 28px rgba(201, 168, 76, 0.48),
+                0 0 52px rgba(201, 168, 76, 0.18);
+        }
+
         #mobile-menu .header-nav-hover {
             margin-left: auto;
             margin-right: auto;
@@ -324,7 +412,12 @@
         .price-card {
             position: relative;
             border-radius: 1.35rem;
-            background: linear-gradient(155deg, #222 0%, #141414 55%, #101010 100%);
+            background: linear-gradient(
+                155deg,
+                #1f1f1f 0%,
+                var(--color-bg) 42%,
+                #141414 100%
+            );
             border: 1px solid rgba(201, 168, 76, 0.14);
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
             overflow: hidden;
@@ -402,12 +495,6 @@
         .price-line-2:last-of-type {
             border-bottom: none;
         }
-        .price-card-foot {
-            font-size: 0.72rem;
-            color: #8b8b8b;
-            line-height: 1.5;
-            margin: 1rem 0 0;
-        }
         .price-card-cta {
             display: inline-block;
             margin-top: 1rem;
@@ -425,7 +512,29 @@
             border-color: var(--color-accent-light);
             text-shadow: 0 0 18px rgba(201, 168, 76, 0.38);
         }
+        @media (max-width: 639px) {
+            .price-line-2 {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+            .price-line-2 .font-numbers-bold {
+                justify-self: start;
+            }
+        }
         @media (max-width: 480px) {
+            .price-card-inner {
+                padding: 1.15rem 1.1rem 1.35rem 1.35rem;
+            }
+            .price-card-badge {
+                font-size: 0.6rem;
+                letter-spacing: 0.14em;
+            }
+            .price-card h3 {
+                font-size: 0.97rem;
+            }
+            .price-card-sub {
+                font-size: 0.76rem;
+            }
             .price-table-head,
             .price-line {
                 grid-template-columns: 1fr;
@@ -441,63 +550,51 @@
 <body>
 
     <!-- ШАПКА -->
-    <header class="site-header fixed top-0 left-0 right-0 py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <!-- Логотип -->
-            <a href="/" aria-label="8848 ВЕРШИНА" class="block">
-                <img src="./assets/logo-8848.png" alt="8848 ВЕРШИНА" class="brand-logo">
-            </a>
-
+    <header class="site-header fixed top-0 left-0 right-0">
+        <div class="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center justify-end md:justify-center gap-4">
             <!-- Меню (Desktop) -->
-            <nav class="hidden md:flex flex-wrap gap-x-6 gap-y-2 justify-end items-center text-sm font-medium uppercase tracking-widest text-white">
-                <a href="/#hero" class="header-nav-hover">Главная</a>
-                <a href="/#catalog" class="header-nav-hover">Каталог</a>
-                <a href="/catalog/#calc" class="header-nav-hover">Калькулятор</a>
-                <a href="/#pricing" class="header-nav-hover">Прайс</a>
-                <a href="/#services" class="header-nav-hover">Услуги</a>
-                <a href="/#contacts" class="header-nav-hover">Контакты</a>
+            <nav class="hidden md:flex flex-wrap gap-x-6 gap-y-2 justify-center items-center text-sm font-medium uppercase tracking-widest text-white">
+                <a href="/#hero" class="header-nav-hover" data-nav-anchor="hero">Главная</a>
+                <a href="catalog/" class="header-nav-hover" data-nav-anchor="catalog">Каталог</a>
+                <a href="catalog/#calc" class="header-nav-hover">Калькулятор</a>
+                <a href="/#pricing" class="header-nav-hover" data-nav-anchor="pricing">Прайс</a>
+                <a href="/#services" class="header-nav-hover" data-nav-anchor="services">Услуги</a>
+                <a href="/#contacts" class="header-nav-hover" data-nav-anchor="contacts">Контакты</a>
             </nav>
 
-            <!-- Контакты в шапке -->
-            <div class="hidden lg:flex items-center">
-                <a href="tel:89996368698" class="text-lg phone-link font-numbers-bold text-white">8 999 636 86 98</a>
-            </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button type="button" class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+            <button type="button" class="md:hidden text-white focus:outline-none p-1 js-mobile-nav-toggle shrink-0" onclick="toggleMenu()" aria-expanded="false" aria-controls="mobile-menu" aria-label="Меню">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
 
         <!-- Mobile Menu content -->
-        <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 text-center">
-            <a href="/#hero" class="py-2 header-nav-hover" onclick="toggleMenu()">Главная</a>
-            <a href="/#catalog" class="py-2 header-nav-hover" onclick="toggleMenu()">Каталог</a>
-            <a href="/catalog/#calc" class="py-2 header-nav-hover" onclick="toggleMenu()">Калькулятор</a>
-            <a href="/#pricing" class="py-2 header-nav-hover" onclick="toggleMenu()">Прайс</a>
-            <a href="/#services" class="py-2 header-nav-hover" onclick="toggleMenu()">Услуги</a>
-            <a href="/#contacts" class="py-2 header-nav-hover" onclick="toggleMenu()">Контакты</a>
-            <a href="tel:89996368698" class="text-gold-gradient font-numbers-bold">8 999 636 86 98</a>
+        <div id="mobile-menu" class="md:hidden flex flex-col space-y-3 text-center text-base">
+            <a href="/#hero" class="py-2 header-nav-hover" data-nav-anchor="hero" onclick="toggleMenu()">Главная</a>
+            <a href="catalog/" class="py-2 header-nav-hover" data-nav-anchor="catalog" onclick="toggleMenu()">Каталог</a>
+            <a href="catalog/#calc" class="py-2 header-nav-hover" onclick="toggleMenu()">Калькулятор</a>
+            <a href="/#pricing" class="py-2 header-nav-hover" data-nav-anchor="pricing" onclick="toggleMenu()">Прайс</a>
+            <a href="/#services" class="py-2 header-nav-hover" data-nav-anchor="services" onclick="toggleMenu()">Услуги</a>
+            <a href="/#contacts" class="py-2 header-nav-hover" data-nav-anchor="contacts" onclick="toggleMenu()">Контакты</a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="hero-section flex items-center justify-center text-center px-6">
-        <div class="max-w-4xl">
-            <h1 class="text-5xl md:text-7xl mb-4 uppercase leading-tight tracking-tight">
+    <section id="hero" class="hero-section flex items-center justify-center text-center px-4 sm:px-6">
+        <div class="max-w-4xl w-full">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl mb-4 uppercase leading-tight tracking-tight">
                 Кондиционеры <span class="block font-title-strong">под ключ</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gold-gradient mb-4 font-description">
+            <p class="text-lg sm:text-xl md:text-2xl text-gold-gradient mb-4 font-description">
                 от подбора до установки
             </p>
-            <p class="text-sm md:text-base text-gray-400 uppercase tracking-[0.2em] mb-10">
+            <p class="text-xs sm:text-sm md:text-base text-gray-400 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-8 sm:mb-10 max-w-md mx-auto leading-relaxed">
                 после нас, свежее только на Эвересте
             </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="/catalog/" class="btn-shared gold-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto">
+                <a href="catalog/" class="btn-shared gold-outline-btn px-8 sm:px-10 py-3.5 sm:py-4 uppercase font-semibold tracking-widest text-sm text-center">
                     Смотреть каталог
                 </a>
-                <a href="tel:89996368698" class="btn-shared white-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm">
+                <a href="tel:89996368698" class="btn-shared white-outline-btn px-8 sm:px-10 py-3.5 sm:py-4 uppercase font-semibold tracking-widest text-sm text-center">
                     Позвонить
                 </a>
             </div>
@@ -505,8 +602,8 @@
     </section>
 
     <!-- ПОЧЕМУ МЫ -->
-    <section class="py-20 bg-[#151515] border-y border-gray-800">
-        <div class="container mx-auto px-6">
+    <section class="py-14 sm:py-20 md:py-24 bg-[#151515] section-soft-y">
+        <div class="container mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 text-center max-w-4xl mx-auto">
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">10+</span> лет</div>
@@ -525,62 +622,58 @@
     </section>
 
     <!-- УСЛУГИ -->
-    <section id="services" class="py-24 bg-[#1a1a1a]">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title text-center mb-16 uppercase tracking-widest">
+    <section id="services" class="py-14 sm:py-20 md:py-24 bg-[#1a1a1a]">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-title text-center mb-10 sm:mb-14 md:mb-16 uppercase tracking-widest px-2">
                 Наши <span class="text-gold-gradient font-title-strong">Услуги</span>
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-8">
                 <!-- Карточка 1 -->
-                <div class="service-card p-8 text-center">
+                <div class="service-card p-6 sm:p-8 text-center">
                     <div class="text-5xl mb-6">🏔</div>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Продажа</span></h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-description">Широкий выбор сплит-систем от мировых брендов с гарантией.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Оригинальное оборудование — подбираем под площадь и бюджет.</p>
                 </div>
                 <!-- Карточка 2 -->
-                <div class="service-card p-8 text-center">
+                <div class="service-card p-6 sm:p-8 text-center">
                     <div class="text-5xl mb-6">🔧</div>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Монтаж</span></h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-description">Подготовка узлов крепления, прокладка трасс, вакуумирование, пусконаладка и сдача по чек-листу.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Монтаж по регламенту, пусконаладка и сдача по чек-листу.</p>
                 </div>
                 <!-- Карточка 3 -->
-                <div class="service-card p-8 text-center">
+                <div class="service-card p-6 sm:p-8 text-center">
                     <div class="text-5xl mb-6">❄</div>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Обслуживание</span></h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-description">Чистка, дезинфекция и заправка для долгой службы техники.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">ТО, чистка и диагностика — техника без сюрпризов в сезон.</p>
                 </div>
                 <!-- Карточка 4 -->
-                <div class="service-card p-8 text-center">
+                <div class="service-card p-6 sm:p-8 text-center">
                     <div class="text-5xl mb-6">🛠</div>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Ремонт</span></h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-description">Быстрое устранение неисправностей и замена комплектующих.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Ищем причину, чиним и меняем узлы — комплектующие по согласованию.</p>
                 </div>
                 <!-- Карточка 5 -->
-                <div class="service-card p-8 text-center">
+                <div class="service-card p-6 sm:p-8 text-center">
                     <div class="text-5xl mb-6" aria-hidden="true">🧗</div>
                     <h3 class="text-lg xl:text-xl mb-4 uppercase leading-tight"><span class="font-title-strong">Промышленный альпинизм</span></h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-description">(высотные работы без автовышки)</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Высотный монтаж на фасаде без автовышки.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Ориентиры по стоимости работ (оформление своё, не копия чужих макетов) -->
-    <section id="pricing" class="py-24 bg-[#0f0f0f] border-t border-gray-800/60">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title text-center mb-4 uppercase tracking-widest">
-                Ориентиры <span class="text-gold-gradient font-title-strong">по работам</span>
+    <!-- Блок прайса -->
+    <section id="pricing" class="py-14 sm:py-20 md:py-24 bg-[#0f0f0f] section-soft-t">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-title text-center mb-10 sm:mb-12 md:mb-14 uppercase tracking-widest px-2">
+                <span class="text-gold-gradient font-title-strong">Прайс</span>
             </h2>
-            <p class="text-center text-gray-500 text-sm max-w-2xl mx-auto mb-14 font-description">
-                Ниже — ориентировочные вилки. Точную смету согласуем после осмотра: подскажем оптимальный вариант под ваш объект.
-            </p>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                 <article class="price-card">
                     <div class="price-card-inner">
                         <span class="price-card-badge">МОНТАЖ</span>
                         <h3>Базовый комплект</h3>
-                        <p class="price-card-sub font-description">Сплит-система, межблочная трасса до 2 м, типовая точка установки</p>
+                        <p class="price-card-sub font-description">Стандартный монтаж сплит-системы с межблочной трассой до 2 м и типовой точкой вывода коммуникаций</p>
                         <div class="price-table-head font-title">
                             <span>Мощность</span>
                             <span>Площадь</span>
@@ -606,9 +699,6 @@
                             <span class="text-gray-400">до 70 м²</span>
                             <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">15 500 ₽</span>
                         </div>
-                        <p class="price-card-foot">
-                            В базу входят: крепление внутреннего и наружного блоков, прокладка коммуникаций в заявленный метраж, слив в ближайшую канализацию/точку, электропитание в пределах оговорённого объёма работ.
-                        </p>
                         <a href="#contacts" class="price-card-cta">Запросить расчёт</a>
                     </div>
                 </article>
@@ -617,7 +707,7 @@
                     <div class="price-card-inner">
                         <span class="price-card-badge">ДОПОЛНЕНИЯ</span>
                         <h3>Сверх базового</h3>
-                        <p class="price-card-sub font-description">Оплачивается отдельно, если объект требует нестандартных решений</p>
+                        <p class="price-card-sub font-description">Допработы при нестандартной геометрии объекта, увеличенной длине трассы или осложняющих факторах — оцениваем заранее и выносим в отдельные строки сметы</p>
                         <div class="price-line-2">
                             <span>Удлинение трассы</span>
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 2 400 ₽ / м</span>
@@ -631,16 +721,13 @@
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 1 600 ₽ / м</span>
                         </div>
                         <div class="price-line-2">
-                            <span>Высотные работы — свой штатный промальпинист</span>
+                            <span>Высотные работы без автовышки</span>
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 9 500 ₽</span>
                         </div>
                         <div class="price-line-2">
                             <span>Демонтаж сплит-системы</span>
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 3 800 ₽</span>
                         </div>
-                        <p class="price-card-foot">
-                            Перед стартом работ проговариваем смету прозрачно: без скрытых строк и «сюрпризов» в процессе.
-                        </p>
                         <a href="#contacts" class="price-card-cta">Обсудить объект</a>
                     </div>
                 </article>
@@ -648,19 +735,16 @@
                 <article class="price-card">
                     <div class="price-card-inner">
                         <span class="price-card-badge">СЕРВИС</span>
-                        <h3>Обслуживание</h3>
-                        <p class="price-card-sub font-description">Поддерживаем технику в форме и продлеваем ресурс</p>
+                        <h3>Сервисное обслуживание</h3>
+                        <p class="price-card-sub font-description">Плановые работы для стабильной работы климатического оборудования и соблюдения условий гарантии производителя</p>
                         <div class="price-line-2">
-                            <span>Чистка и санитарная обработка</span>
+                            <span>Профилактика: очистка теплообменников, санитарная обработка, контроль дренажа</span>
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 3 600 ₽</span>
                         </div>
                         <div class="price-line-2">
-                            <span>Полное ТО с разбором внутреннего блока</span>
+                            <span>Полное ТО с разбором внутреннего блока и диагностикой ключевых узлов</span>
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 4 200 ₽</span>
                         </div>
-                        <p class="price-card-foot">
-                            Регулярное обслуживание снижает риск запахов, утечек и перегруза компрессора — особенно перед сезоном.
-                        </p>
                         <a href="#contacts" class="price-card-cta">Записаться на сервис</a>
                     </div>
                 </article>
@@ -668,63 +752,60 @@
                 <article class="price-card">
                     <div class="price-card-inner">
                         <span class="price-card-badge">B2B</span>
-                        <h3>Для бизнеса</h3>
-                        <p class="price-card-sub font-description">Офисы, ритейл, объекты с проектной документацией</p>
+                        <h3>Корпоративные проекты</h3>
+                        <p class="price-card-sub font-description">Офисы, ритейл, общественные и производственные площади — монтаж и поставка по проектной документации и техническому заданию</p>
                         <div class="price-line-2">
-                            <span>Монтаж мульти-сплит / VRF (по проекту)</span>
+                            <span>Монтаж мультисплит- и мультизональных систем, VRF/VRV — в соответствии с проектом</span>
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">по смете</span>
                         </div>
                         <div class="price-line-2">
-                            <span>Вентиляция и приточные решения</span>
+                            <span>Вентиляция, приточно-вытяжные решения под задачу объекта</span>
                             <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">индивидуально</span>
                         </div>
-                        <p class="price-card-foot">
-                            Выезжаем на замер, согласуем этапы и сроки. Работаем по договору, при необходимости — с актами и закрывающими документами.
-                        </p>
                         <a href="#contacts" class="price-card-cta">Коммерческое предложение</a>
                     </div>
                 </article>
             </div>
 
-            <p class="text-center text-gray-600 text-xs mt-12 max-w-2xl mx-auto uppercase tracking-widest leading-relaxed">
-                Итоговая стоимость — после осмотра. Консультацию и выезд мастера согласуем по телефону.
+            <p class="text-center text-gray-500 text-xs sm:text-sm mt-10 sm:mt-14 max-w-2xl mx-auto font-description px-2 leading-relaxed">
+                Окончательная стоимость определяется после осмотра объекта или согласования проектной документации — фиксируем понятными позициями в смете.
             </p>
         </div>
     </section>
 
     <!-- КАТАЛОГ (CTA) -->
-    <section id="catalog" class="py-24 text-center">
-        <div class="container mx-auto px-6">
-            <h2 class="section-title mb-8 uppercase tracking-widest text-center">Готовы к <span class="font-title-strong text-gold-gradient">выбору?</span></h2>
-            <p class="text-gray-400 mb-12 max-w-2xl mx-auto font-description">Ознакомьтесь с актуальными моделями кондиционеров в нашем каталоге. Подберем оптимальный вариант под ваш бюджет и площадь.</p>
-            <a href="/catalog/" class="inline-block btn-shared gold-outline-btn px-12 py-5 uppercase font-bold tracking-widest">
+    <section id="catalog" class="py-14 sm:py-20 md:py-24 text-center bg-black">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="section-title mb-6 sm:mb-8 uppercase tracking-widest text-center px-2">Готовы к <span class="font-title-strong text-gold-gradient">выбору?</span></h2>
+            <p class="text-gray-400 mb-10 sm:mb-12 max-w-2xl mx-auto font-description text-sm sm:text-base leading-relaxed px-2">Ознакомьтесь с актуальными моделями кондиционеров в нашем каталоге. Подберем оптимальный вариант под ваш бюджет и площадь.</p>
+            <a href="catalog/" class="inline-block btn-shared gold-outline-btn px-8 sm:px-12 py-4 sm:py-5 uppercase font-bold tracking-widest text-sm sm:text-base max-w-xs w-full sm:w-auto sm:max-w-none">
                 Открыть каталог
             </a>
         </div>
     </section>
 
     <!-- КОНТАКТЫ -->
-    <section id="contacts" class="py-24 bg-[#212121]">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="section-title uppercase tracking-widest mb-10 text-center">Свяжитесь <span class="font-title-strong text-gold-gradient">с нами</span></h2>
-            <a href="tel:89996368698" class="text-4xl md:text-6xl text-gold-gradient mb-12 block hover:opacity-80 transition-opacity font-numbers-bold">
+    <section id="contacts" class="section-contacts-panel py-14 sm:py-20 md:py-24 pb-[max(3.5rem,env(safe-area-inset-bottom))]">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <h2 class="section-title uppercase tracking-widest mb-8 sm:mb-10 text-center px-2">Свяжитесь <span class="font-title-strong text-gold-gradient">с нами</span></h2>
+            <a href="tel:89996368698" class="text-[clamp(1.35rem,6.8vw,3.65rem)] text-gold-gradient mb-10 sm:mb-12 inline-block max-w-full hover:opacity-80 transition-opacity font-numbers-bold tracking-tight [overflow-wrap:anywhere]">
                 8 999 636 86 98
             </a>
             
-            <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
-                <a href="tel:89996368698" class="contact-btn contact-btn--phone flex items-center justify-center gap-3 bg-white text-black px-8 py-4 hover:bg-gray-200">
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center items-stretch sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-12 max-w-md sm:max-w-none mx-auto">
+                <a href="tel:89996368698" class="contact-btn contact-btn--phone flex items-center justify-center gap-3 bg-white text-black px-6 sm:px-8 py-3.5 sm:py-4 hover:bg-gray-200 min-h-[48px] w-full sm:w-auto sm:min-w-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.2a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.28 1.04L8.6 9.8a14 14 0 005.6 5.6l1.48-1.47a1 1 0 011.04-.28l3.6 1.2A1 1 0 0121 15.8V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
                     Позвонить
                 </a>
-                <a href="https://wa.me/79996368698" target="_blank" class="contact-btn contact-btn--wa flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-4 hover:opacity-90">
+                <a href="https://wa.me/79996368698" target="_blank" class="contact-btn contact-btn--wa flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-3.5 sm:py-4 hover:opacity-90 min-h-[48px] w-full sm:w-auto sm:min-w-0">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
                     WhatsApp
                 </a>
-                <a href="https://t.me/" target="_blank" class="contact-btn contact-btn--tg flex items-center justify-center gap-3 bg-[#229ED9] text-white px-6 py-4 hover:opacity-90">
+                <a href="https://t.me/" target="_blank" class="contact-btn contact-btn--tg flex items-center justify-center gap-3 bg-[#229ED9] text-white px-6 py-3.5 sm:py-4 hover:opacity-90 min-h-[48px] w-full sm:w-auto sm:min-w-0">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65c-.39 0-.33-.15-.46-.52l-1.17-3.87 9.06-5.73"/><path d="M9.78 18.65c.3 0 .43-.14.6-.3l1.65-1.6-2.05-1.24"/><path d="M10 15.52l4.98 3.68c.57.31.98.15 1.12-.53l2-9.43c.2-.84-.3-1.22-.84-.98L5.5 12.8c-.8.31-.8.75-.15.95l3.02.95 7-4.41c.33-.2.64-.09.39.13"/></svg>
                     Telegram
                 </a>
-                <a href="#" class="contact-btn contact-btn--muted flex items-center justify-center gap-3 bg-[#2a2a2a] text-white px-6 py-4 border border-[#3f3f3f] hover:border-[#C9A84C]">
+                <a href="#" class="contact-btn contact-btn--muted flex items-center justify-center gap-3 bg-[#2a2a2a] text-white px-6 py-3.5 sm:py-4 border border-[#3f3f3f] hover:border-[#C9A84C] min-h-[48px] w-full sm:w-auto sm:min-w-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 7h4l4 5 4-5h4M6 19l6-7 6 7"/></svg>
                     Max
                 </a>
@@ -738,8 +819,8 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="site-footer py-12 border-t border-gray-800">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer class="site-footer bg-black py-10 sm:py-12 pb-[max(2.75rem,calc(env(safe-area-inset-bottom,0)+1.75rem))]">
+        <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-5 sm:gap-6 text-center md:text-left">
             <div class="text-sm text-gray-500 uppercase tracking-widest">
                 © 2026 8848 ВЕРШИНА
             </div>
@@ -751,20 +832,67 @@
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.style.display === 'flex') {
+            var menu = document.getElementById('mobile-menu');
+            var btn = document.querySelector('.js-mobile-nav-toggle');
+            if (!menu) return;
+            var open = menu.style.display === 'flex';
+            if (open) {
                 menu.style.display = 'none';
+                document.body.classList.remove('mobile-nav-open');
+                if (btn) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.setAttribute('aria-label', 'Меню');
+                }
             } else {
                 menu.style.display = 'flex';
+                document.body.classList.add('mobile-nav-open');
+                if (btn) {
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.setAttribute('aria-label', 'Закрыть меню');
+                }
             }
         }
         (function () {
             var h = document.querySelector('header.site-header');
             if (!h) return;
+
+            /** Порядок секций сверху вниз как в разметке (для scroll-spy). */
+            var NAV_SECTION_IDS = ['hero', 'services', 'pricing', 'catalog', 'contacts'];
+
+            function getActiveNavAnchorId() {
+                var linePx = Math.min(132, Math.floor(window.innerHeight * 0.18));
+                var activeId = NAV_SECTION_IDS[0];
+                for (var i = 0; i < NAV_SECTION_IDS.length; i++) {
+                    var el = document.getElementById(NAV_SECTION_IDS[i]);
+                    if (!el) continue;
+                    var top = el.getBoundingClientRect().top;
+                    if (top <= linePx) {
+                        activeId = NAV_SECTION_IDS[i];
+                    }
+                }
+                return activeId;
+            }
+
+            function updateNavCurrent() {
+                var cur = getActiveNavAnchorId();
+                h.querySelectorAll('a.header-nav-hover[data-nav-anchor]').forEach(function (a) {
+                    a.classList.toggle('header-nav-hover--current', a.getAttribute('data-nav-anchor') === cur);
+                });
+            }
+
             function upd() {
                 h.classList.toggle('site-header--scrolled', window.scrollY > 40);
+                updateNavCurrent();
             }
+
             window.addEventListener('scroll', upd, { passive: true });
+            window.addEventListener('resize', updateNavCurrent, { passive: true });
+            window.addEventListener('hashchange', function () {
+                window.requestAnimationFrame(upd);
+            });
+            window.addEventListener('load', function () {
+                window.requestAnimationFrame(upd);
+            });
             upd();
         })();
     </script>
