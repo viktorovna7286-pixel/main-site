@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8848 ВЕРШИНА — Кондиционеры под ключ</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Raleway:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS for layout utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --color-bg: #1a1a1a;
+            --color-accent: #C9A84C;
+            --color-accent-light: #e8c96b;
+            --color-text: #ffffff;
+            --color-card: #2a2a2a;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 4px;
+        }
+
+        /* Header Glassmorphism */
+        header {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            z-index: 1000;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.9)), 
+                        url('https://images.unsplash.com/photo-1590483734731-0775e1730030?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .gold-outline-btn {
+            border: 2px solid var(--color-accent);
+            color: var(--color-accent);
+            transition: all 0.3s ease;
+        }
+        .gold-outline-btn:hover {
+            background-color: var(--color-accent);
+            color: #1a1a1a;
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+        }
+
+        .white-outline-btn {
+            border: 2px solid white;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .white-outline-btn:hover {
+            background-color: white;
+            color: #1a1a1a;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background-color: var(--color-card);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(45deg, var(--color-accent), var(--color-accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Responsive Mobile Menu */
+        #mobile-menu {
+            display: none;
+            background: var(--color-bg);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-accent);
+        }
+
+        .phone-link {
+            transition: color 0.3s ease;
+        }
+        .phone-link:hover {
+            color: var(--color-accent-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header class="fixed top-0 left-0 right-0 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Логотип -->
+            <div class="flex flex-col leading-none">
+                <span class="text-3xl font-extrabold tracking-wider text-gold-gradient">8848</span>
+                <span class="text-xs font-semibold tracking-[0.3em] uppercase text-gold-gradient">ВЕРШИНА</span>
+            </div>
+
+            <!-- Меню (Desktop) -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
+                <a href="#" class="hover:text-gold-gradient transition-colors">Главная</a>
+                <a href="#catalog" class="hover:text-gold-gradient transition-colors">Каталог</a>
+                <a href="#services" class="hover:text-gold-gradient transition-colors">Услуги</a>
+                <a href="#contacts" class="hover:text-gold-gradient transition-colors">Контакты</a>
+            </nav>
+
+            <!-- Контакты в шапке -->
+            <div class="hidden lg:flex items-center">
+                <a href="tel:89996368698" class="text-lg font-bold phone-link">8 999 636 86 98</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu content -->
+        <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 text-center">
+            <a href="#" class="py-2" onclick="toggleMenu()">Главная</a>
+            <a href="#catalog" class="py-2" onclick="toggleMenu()">Каталог</a>
+            <a href="#services" class="py-2" onclick="toggleMenu()">Услуги</a>
+            <a href="#contacts" class="py-2" onclick="toggleMenu()">Контакты</a>
+            <a href="tel:89996368698" class="text-gold-gradient font-bold">8 999 636 86 98</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section flex items-center justify-center text-center px-6">
+        <div class="max-w-4xl">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 uppercase leading-tight tracking-tight">
+                Кондиционеры <span class="block">под ключ</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-light italic text-gold-gradient mb-4">
+                от подбора до установки
+            </p>
+            <p class="text-sm md:text-base text-gray-400 uppercase tracking-[0.2em] mb-10">
+                после нас, свежее только на Эвересте
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#catalog" class="gold-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm rounded-sm">
+                    Смотреть каталог
+                </a>
+                <a href="tel:89996368698" class="white-outline-btn px-10 py-4 uppercase font-semibold tracking-widest text-sm rounded-sm">
+                    Позвонить
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- УСЛУГИ -->
+    <section id="services" class="py-24 bg-[#1a1a1a]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase tracking-widest">
+                Наши <span class="text-gold-gradient">Услуги</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Карточка 1 -->
+                <div class="service-card p-10 text-center">
+                    <div class="text-5xl mb-6">🏔</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Продажа</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Широкий выбор сплит-систем от мировых брендов с гарантией.</p>
+                </div>
+                <!-- Карточка 2 -->
+                <div class="service-card p-10 text-center">
+                    <div class="text-5xl mb-6">🔧</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Монтаж</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Профессиональная установка любой сложности за один день.</p>
+                </div>
+                <!-- Карточка 3 -->
+                <div class="service-card p-10 text-center">
+                    <div class="text-5xl mb-6">❄</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Обслуживание</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Чистка, дезинфекция и заправка для долгой службы техники.</p>
+                </div>
+                <!-- Карточка 4 -->
+                <div class="service-card p-10 text-center">
+                    <div class="text-5xl mb-6">🛠</div>
+                    <h3 class="text-xl font-bold mb-4 uppercase">Ремонт</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Быстрое устранение неисправностей и замена комплектующих.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОЧЕМУ МЫ -->
+    <section class="py-20 bg-[#151515] border-y border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div>
+                    <div class="text-5xl font-extrabold text-gold-gradient mb-2">5+ лет</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs">опыта на рынке</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-extrabold text-gold-gradient mb-2">500+</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs">успешных монтажей</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-extrabold text-gold-gradient mb-2">Гарантия</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs">на все виды работ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАТАЛОГ (CTA) -->
+    <section id="catalog" class="py-24 text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 uppercase">Готовы к выбору?</h2>
+            <p class="text-gray-400 mb-12 max-w-2xl mx-auto">Ознакомьтесь с актуальными моделями кондиционеров в нашем каталоге. Подберем оптимальный вариант под ваш бюджет и площадь.</p>
+            <a href="/catalog/" class="inline-block gold-outline-btn px-12 py-5 uppercase font-bold tracking-widest rounded-sm">
+                Открыть каталог
+            </a>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" class="py-24 bg-[#212121]">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl uppercase tracking-[0.3em] mb-10 text-gray-500">Свяжитесь с нами</h2>
+            <a href="tel:89996368698" class="text-4xl md:text-6xl font-bold text-gold-gradient mb-12 block hover:opacity-80 transition-opacity">
+                8 999 636 86 98
+            </a>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+                <a href="https://wa.me/79996368698" target="_blank" class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-md font-bold hover:opacity-90 transition-all">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="tel:89996368698" class="flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-md font-bold hover:bg-gray-200 transition-all">
+                    Позвонить
+                </a>
+            </div>
+
+            <div class="text-gray-400">
+                <p class="mb-2 uppercase tracking-widest text-sm">График работы:</p>
+                <p class="text-lg font-semibold">Пн-Вс 9:00 – 21:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-sm text-gray-500 uppercase tracking-widest">
+                © 2026 8848 ВЕРШИНА
+            </div>
+            <div class="italic text-gold-gradient font-light">
+                после нас, свежее только на Эвересте
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>
