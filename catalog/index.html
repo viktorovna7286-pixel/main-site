@@ -405,7 +405,7 @@
     </style>
 </head>
 <body>
-    <!-- Данные: catalog-data.json · Редактирование на хосте (PHP): admin.php (см. admin-config.example.php) -->
+    <!-- catalog-data.json на сайте · Черновик: cookie после admin.php или ?draft=1 · Как у гостей: ?live=1 -->
     <div id="root"></div>
 
     <script type="text/babel">
@@ -438,12 +438,41 @@
             return 'catalog-chip--type-fallback';
         };
 
+        const productImages = (p) => {
+            if (!p) return [];
+            if (Array.isArray(p.images) && p.images.length > 0) {
+                return p.images.map((u) => String(u || '').trim()).filter(Boolean).slice(0, 5);
+            }
+            if (p.image && String(p.image).trim()) return [String(p.image).trim()];
+            return [];
+        };
+        const productCardImage = (p) => productImages(p)[0] || '';
+
+        const CATALOG_DRAFT_COOKIE = 'vershina8848_catalog_draft';
+        function readDraftPreviewCookie() {
+            if (typeof document === 'undefined') return false;
+            var prefix = CATALOG_DRAFT_COOKIE + '=';
+            var parts = document.cookie.split(';');
+            for (var i = 0; i < parts.length; i++) {
+                var c = parts[i].trim();
+                if (c.indexOf(prefix) === 0) return decodeURIComponent(c.substring(prefix.length)) === '1';
+            }
+            return false;
+        }
+        var __catalogQs = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
+        var __forceLiveCatalog = __catalogQs.get('live') === '1';
+        var __forceDraftParam = __catalogQs.get('draft') === '1';
+        var __useDraftCatalog = !__forceLiveCatalog && (__forceDraftParam || readDraftPreviewCookie());
+        const catalogDataSrc = __useDraftCatalog ? 'catalog-data-draft.json' : 'catalog-data.json';
+        const isDraftPreviewCatalog = __useDraftCatalog;
+
         const App = () => {
             const [activeTab, setActiveTab] = useState('catalog');
             const [segmentFilter, setSegmentFilter] = useState('all');
             const [typeFilter, setTypeFilter] = useState('all');
             const [selectedProduct, setSelectedProduct] = useState(null);
             const [selectedBtu, setSelectedBtu] = useState(null);
+            const [galleryIndex, setGalleryIndex] = useState(0);
             const [area, setArea] = useState('');
             const [calcResult, setCalcResult] = useState(null);
             const [products, setProducts] = useState([]);
@@ -451,6 +480,7 @@
             const [catalogError, setCatalogError] = useState(null);
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
             const [headerScrolled, setHeaderScrolled] = useState(false);
+            const [draftMissingFallback, setDraftMissingFallback] = useState(false);
 
             const BTU_AREA = {
                 7: 20, 8: 21, 9: 25, 10: 26, 12: 35, 14: 40, 18: 52,
@@ -486,6 +516,12 @@
             }, [applyHashTab]);
 
             useEffect(() => {
+                if (isDraftPreviewCatalog && document.title.indexOf('чернов') === -1) {
+                    document.title = 'Просмотр черновика · ' + document.title;
+                }
+            }, []);
+
+            useEffect(() => {
                 const onScroll = () => setHeaderScrolled(window.scrollY > 40);
                 onScroll();
                 window.addEventListener('scroll', onScroll, { passive: true });
@@ -498,7 +534,12 @@
                     setCatalogLoading(true);
                     setCatalogError(null);
                     try {
-                        const res = await fetch('catalog-data.json', { cache: 'no-store' });
+                        const qs = catalogDataSrc === 'catalog-data-draft.json' ? `?v=${Date.now()}` : '';
+                        let res = await fetch(catalogDataSrc + qs, { cache: 'no-store' });
+                        if (!res.ok && isDraftPreviewCatalog && res.status === 404) {
+                            res = await fetch('catalog-data.json', { cache: 'no-store' });
+                            if (res.ok && !cancelled) setDraftMissingFallback(true);
+                        }
                         if (!res.ok) throw new Error(`HTTP ${res.status}`);
                         const data = await res.json();
                         if (cancelled) return;
@@ -523,10 +564,17 @@
             }, [products, segmentFilter, typeFilter, calcResult]);
 
             const openProduct = (p) => {
+                setGalleryIndex(0);
                 setSelectedProduct(p);
                 const target = calcResult ? p.btuData.find(d => d.btu === calcResult.btu) : p.btuData[0];
                 setSelectedBtu(target || p.btuData[0]);
             };
+
+            const modalGallery = selectedProduct ? productImages(selectedProduct) : [];
+            const modalGalleryIndex = modalGallery.length
+                ? Math.min(galleryIndex, modalGallery.length - 1)
+                : 0;
+            const modalHeroSrc = modalGallery.length ? modalGallery[modalGalleryIndex] : productCardImage(selectedProduct);
 
             return (
                 <div className="min-h-screen flex flex-col bg-[var(--color-bg)]">
@@ -573,6 +621,39 @@
 
                     <div className="flex-1 pt-24 md:pt-28">
 
+                    {isDraftPreviewCatalog && draftMissingFallback && (
+                        <div
+                            className="mx-6 max-w-7xl xl:mx-auto mb-5 rounded-3xl px-5 py-3 text-center font-main border border-white/15 bg-[#2a2618] text-gray-200 shadow-xl"
+                            role="status"
+                        >
+                            <strong className="uppercase tracking-wider text-[11px] md:text-xs text-amber-200/90">Черновик ещё не создан</strong>
+                            <span className="text-[11px] md:text-sm md:ml-2 block md:inline mt-1 md:mt-0">
+                                Показан опубликованный каталог. Зайдите в админку один раз — файл черновика появится сам.
+                            </span>
+                            <a href="admin.php" className="ml-2 font-bold text-amber-400 underline underline-offset-2 hover:no-underline text-[11px] md:text-sm whitespace-nowrap inline-block mt-2 md:mt-0 md:ml-4">
+                                Админка
+                            </a>
+                        </div>
+                    )}
+                    {isDraftPreviewCatalog && !draftMissingFallback && (
+                        <div
+                            className="mx-6 max-w-7xl xl:mx-auto mb-5 rounded-3xl px-5 py-3 text-center font-main text-black border border-amber-400/70 shadow-xl"
+                            style={{ background: 'linear-gradient(90deg,rgba(250,230,158,.94),rgba(201,168,76,.92),rgba(250,230,158,.94))' }}
+                            role="status"
+                        >
+                            <strong className="uppercase tracking-wider text-[11px] md:text-xs">Просмотр черновика</strong>
+                            <span className="opacity-95 text-[11px] md:text-sm md:ml-2 block md:inline mt-1 md:mt-0">
+                                Гости видят только опубликованный каталог. Черновик подставляется автоматически после входа в админку (в этом браузере). Выйдите из админки — снова будет опубликованная версия.
+                            </span>
+                            <a
+                                href="index.html?live=1"
+                                className="ml-2 font-bold underline underline-offset-2 hover:no-underline text-[11px] md:text-sm whitespace-nowrap inline-block mt-2 md:mt-0 md:ml-4"
+                            >
+                                Смотреть как у гостей
+                            </a>
+                        </div>
+                    )}
+
                     {activeTab === 'calc' ? (
                         <div className="px-6 py-12 max-w-lg mx-auto fade-in">
                             <div className="text-center">
@@ -602,8 +683,8 @@
                             )}
                             {catalogError && !catalogLoading && (
                                 <div className="p-8 text-center rounded-3xl bg-red-950/40 border border-red-800 text-red-200 font-main">
-                                    Не удалось загрузить catalog-data.json: {catalogError}
-                                    <p className="text-sm text-gray-500 mt-2">Проверьте файл на сервере или откройте сайт по HTTP/S с папкой /catalog/</p>
+                                    Не удалось загрузить <span className="font-mono text-white">{catalogDataSrc}</span>: {catalogError}
+                                    <p className="text-sm text-gray-500 mt-2">Для режима черновика нужен файл catalog-data-draft.json в папке catalog. Откройте сайт через HTTP/S с папкой /catalog/</p>
                                 </div>
                             )}
                             {!catalogLoading && !catalogError && products.length === 0 && (
@@ -645,7 +726,7 @@
                                     return (
                                         <div key={p.id} onClick={() => openProduct(p)} className="fade-in group catalog-card-hit premium-card rounded-[3rem] overflow-hidden border border-white/5 cursor-pointer active:scale-95 h-full min-h-[24rem] flex flex-col">
                                             <div className="h-48 shrink-0 relative overflow-hidden">
-                                                <img src={p.image} className="w-full h-full object-cover grayscale-[0.35] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 opacity-80" alt={p.series} />
+                                                <img src={productCardImage(p)} className="w-full h-full object-cover grayscale-[0.35] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 opacity-80" alt={p.series} />
                                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
                                                 <div className="absolute top-5 left-5 flex flex-col gap-1">
                                                     <span className={`catalog-chip ${chipSegClass(p.segment)}`}>{CATALOG_LABELS.segment[String(p.segment || '').toLowerCase()] || p.segment}</span>
@@ -692,8 +773,22 @@
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <div className="relative h-40 sm:h-48 shrink-0">
-                                    <img src={selectedProduct.image} alt="" className="w-full h-full object-cover pointer-events-none select-none" />
+                                    <img src={modalHeroSrc} alt="" className="w-full h-full object-cover pointer-events-none select-none" />
                                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/92"></div>
+                                    {modalGallery.length > 1 && (
+                                        <div className="absolute top-14 left-3 right-14 z-[6] flex gap-1.5 overflow-x-auto no-scrollbar py-1 pointer-events-auto">
+                                            {modalGallery.map((src, idx) => (
+                                                <button
+                                                    type="button"
+                                                    key={idx}
+                                                    onClick={(e) => { e.stopPropagation(); setGalleryIndex(idx); }}
+                                                    className={`shrink-0 w-12 h-12 rounded-lg overflow-hidden border-2 transition-colors ${modalGalleryIndex === idx ? 'border-yellow-500 shadow-[0_0_12px_rgba(201,168,76,0.45)]' : 'border-white/25 hover:border-yellow-600/50'}`}
+                                                >
+                                                    <img src={src} className="w-full h-full object-cover" alt="" />
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
                                     <button
                                         type="button"
                                         onClick={() => setSelectedProduct(null)}

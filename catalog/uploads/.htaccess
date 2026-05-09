@@ -1,0 +1,7 @@
+# Запрет выполнения скриптов во всех подпапках uploads (фото каталога и т.п.)
+<IfModule mod_php.c>
+php_flag engine off
+</IfModule>
+<FilesMatch "\.(php|phtml|php5|cgi|pl)$">
+    Require all denied
+</FilesMatch>

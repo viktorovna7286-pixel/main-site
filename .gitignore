@@ -1,1 +1,8 @@
 catalog/admin-config.php
+
+# Черновик и бэкап каталога создаются на сервере / в админке
+catalog/catalog-data-draft.json
+catalog/catalog-data.json.prev
+
+# Загруженные фото (папка создаётся при первой загрузке)
+catalog/uploads/products/
