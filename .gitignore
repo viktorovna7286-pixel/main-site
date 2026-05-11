@@ -6,3 +6,11 @@ catalog/catalog-data.json.prev
 
 # Загруженные фото (папка создаётся при первой загрузке)
 catalog/uploads/products/
+uploads/reviews/
+
+# Отзывы, сохранённые через форму на сайте
+data/reviews/
+uploads/reviews/
+
+# Отзывы, сохранённые через форму на сайте
+data/reviews/

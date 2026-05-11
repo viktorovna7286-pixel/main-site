@@ -293,6 +293,68 @@
                 box-shadow: 0 0 12px rgba(201, 168, 76, 0.16), 0 4px 20px rgba(0, 0, 0, 0.4);
             }
         }
+        .promo-section {
+            padding: 0 0 3.5rem;
+            background: #151515;
+        }
+        .promo-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(201, 168, 76, 0.04));
+            border: 1px solid rgba(201, 168, 76, 0.28);
+            border-radius: 1.5rem;
+            text-align: center;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 2.35rem;
+            overflow: hidden;
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+        }
+        .promo-bg-glow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at center, rgba(201, 168, 76, 0.16) 0%, rgba(201, 168, 76, 0.06) 35%, transparent 75%);
+        }
+        .promo-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.35rem 1rem;
+            border: 1px solid rgba(201, 168, 76, 0.55);
+            border-radius: 9999px;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.67rem;
+            margin-bottom: 1.25rem;
+        }
+        .promo-title {
+            font-size: clamp(2.25rem, 8vw, 4.6rem);
+            line-height: 1.03;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .promo-divider {
+            width: 6.2rem;
+            height: 2px;
+            margin: 1.1rem auto 1rem;
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.95), transparent);
+        }
+        .promo-text {
+            margin: 0;
+            color: #e6e6e6;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: clamp(0.77rem, 2.3vw, 1.15rem);
+        }
+        @media (min-width: 768px) {
+            .promo-section {
+                padding: 0 0 4.25rem;
+            }
+            .promo-card {
+                padding: 3.2rem 2rem 3rem;
+            }
+        }
 
         /* Мягкие границы между секциями (без резких линий) */
         .section-soft-y {
@@ -721,6 +783,105 @@
                 padding: 1.75rem 1.75rem 2rem;
             }
         }
+        .review-form-card {
+            background: #1a1a1a;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 1.35rem;
+            padding: 1.35rem 1.25rem 1.5rem;
+            box-sizing: border-box;
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.3);
+        }
+        .review-form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.68rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .review-stars-pick {
+            display: flex;
+            gap: 0.45rem;
+        }
+        .review-star-btn {
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.22);
+            font-size: 1.9rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            padding: 0;
+        }
+        .review-star-btn:hover {
+            transform: scale(1.08);
+        }
+        .review-star-btn.is-active {
+            color: var(--color-accent);
+        }
+        .review-file-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            border: 1px dashed rgba(201, 168, 76, 0.55);
+            border-radius: 0.9rem;
+            padding: 0.8rem 1rem;
+            color: var(--color-accent);
+            background: rgba(201, 168, 76, 0.05);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.25s ease, border-color 0.25s ease;
+        }
+        .review-file-label:hover {
+            background: rgba(201, 168, 76, 0.12);
+            border-color: rgba(201, 168, 76, 0.75);
+        }
+        .review-file-input {
+            display: none;
+        }
+        .review-preview-grid {
+            margin-top: 0.85rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+            gap: 0.6rem;
+        }
+        .review-preview-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            border-radius: 0.7rem;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+        }
+        .review-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .review-preview-remove {
+            position: absolute;
+            top: 0.2rem;
+            right: 0.2rem;
+            border: none;
+            border-radius: 9999px;
+            width: 1.2rem;
+            height: 1.2rem;
+            background: rgba(0, 0, 0, 0.62);
+            color: #fff;
+            font-size: 0.72rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        @media (min-width: 640px) {
+            .review-form-card {
+                padding: 1.75rem 1.75rem 2rem;
+            }
+        }
 
         /* Отзывы — scroll-snap */
         .reviews-scroller {
@@ -1055,10 +1216,23 @@
         </div>
     </section>
 
+    <!-- АКЦИЯ -->
+    <section class="promo-section">
+        <div class="container mx-auto px-4 sm:px-6">
+            <article class="promo-card">
+                <div class="promo-bg-glow" aria-hidden="true"></div>
+                <p class="promo-badge font-title">Спецпредложение</p>
+                <h2 class="promo-title text-gold-gradient font-title-strong">1 монтаж<br>бесплатно</h2>
+                <div class="promo-divider" aria-hidden="true"></div>
+                <p class="promo-text font-main">при покупке 3 кондиционеров</p>
+            </article>
+        </div>
+    </section>
+
     <!-- ПОЧЕМУ МЫ -->
     <section class="py-14 sm:py-20 md:py-24 bg-[#151515] section-soft-y">
         <div class="container mx-auto px-4 sm:px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6 xl:gap-8 text-center max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 xl:gap-8 text-center max-w-5xl mx-auto">
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">10+</span> лет</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">опыта на рынке</p>
@@ -1074,10 +1248,6 @@
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">24</span> ч</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">срочный выезд</p>
-                </div>
-                <div class="stats-item">
-                    <div class="text-2xl sm:text-3xl text-gold-gradient mb-2"><span class="font-numbers-bold">1 монтаж</span> бесплатно</div>
-                    <p class="text-gray-400 uppercase tracking-widest text-xs">при покупке 3 кондиционеров</p>
                 </div>
             </div>
         </div>
@@ -1130,7 +1300,7 @@
             <h2 class="section-title text-center mb-10 sm:mb-12 uppercase tracking-widest px-2">
                 Отзывы <span class="text-gold-gradient font-title-strong">клиентов</span>
             </h2>
-            <div class="reviews-scroller">
+            <div id="reviews-scroller" class="reviews-scroller">
                 <article class="review-card">
                     <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
                     <p class="review-author">Марина В.</p>
@@ -1156,6 +1326,46 @@
                     <p class="text-gray-500 text-xs mb-3 font-numbers-medium">22 июля 2025</p>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Отличные ребята! Установили кондиционер очень быстро, качественная работа. И это на 10 этаже! Мастера своего дела, спасибо большое!</p>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФОРМА ОТЗЫВА -->
+    <section id="review-form" class="py-14 sm:py-20 md:py-24 bg-[#121212] border-t border-white/[0.06]">
+        <div class="container mx-auto px-4 sm:px-6 max-w-2xl">
+            <h2 class="section-title text-center mb-8 sm:mb-10 uppercase tracking-widest px-2">
+                Оставить <span class="text-gold-gradient font-title-strong">отзыв</span>
+            </h2>
+            <div class="review-form-card">
+                <form id="review-form-main" class="space-y-4" action="#" method="post" novalidate>
+                    <div>
+                        <label for="review-name" class="review-form-label">Ваше имя</label>
+                        <input id="review-name" type="text" class="lead-form-field" placeholder="Введите имя" autocomplete="name" required />
+                    </div>
+                    <div>
+                        <span class="review-form-label">Ваша оценка</span>
+                        <div id="review-stars-pick" class="review-stars-pick" role="radiogroup" aria-label="Оценка отзыва">
+                            <button type="button" class="review-star-btn" data-star-value="1" aria-label="1 звезда">★</button>
+                            <button type="button" class="review-star-btn" data-star-value="2" aria-label="2 звезды">★</button>
+                            <button type="button" class="review-star-btn" data-star-value="3" aria-label="3 звезды">★</button>
+                            <button type="button" class="review-star-btn" data-star-value="4" aria-label="4 звезды">★</button>
+                            <button type="button" class="review-star-btn" data-star-value="5" aria-label="5 звёзд">★</button>
+                        </div>
+                        <input id="review-rating" type="hidden" value="0" />
+                    </div>
+                    <div>
+                        <label for="review-comment" class="review-form-label">Ваш комментарий</label>
+                        <textarea id="review-comment" class="lead-form-field" rows="4" placeholder="Расскажите, как всё прошло..."></textarea>
+                    </div>
+                    <div>
+                        <span class="review-form-label">Фотографии объекта</span>
+                        <label for="review-photo" class="review-file-label">📷 Выбрать изображения</label>
+                        <input id="review-photo" class="review-file-input" type="file" accept="image/*" multiple />
+                        <div id="review-preview-grid" class="review-preview-grid"></div>
+                    </div>
+                    <button id="review-submit" type="submit" class="lead-form-submit">Отправить отзыв</button>
+                </form>
+                <p id="review-form-hint" class="text-center text-amber-200/90 text-xs mt-4 hidden font-description" role="alert"></p>
             </div>
         </div>
     </section>
@@ -1618,6 +1828,186 @@
                     panel.style.maxHeight = open ? inner.scrollHeight + 'px' : '0';
                 });
             });
+        })();
+
+        (function () {
+            var form = document.getElementById('review-form-main');
+            if (!form) return;
+            var hint = document.getElementById('review-form-hint');
+            var starsRoot = document.getElementById('review-stars-pick');
+            var ratingInput = document.getElementById('review-rating');
+            var photoInput = document.getElementById('review-photo');
+            var previewGrid = document.getElementById('review-preview-grid');
+            var submitBtn = document.getElementById('review-submit');
+            var reviewsScroller = document.getElementById('reviews-scroller');
+            var selectedFiles = [];
+
+            function setRating(nextValue) {
+                var value = Number(nextValue) || 0;
+                ratingInput.value = String(value);
+                (starsRoot ? starsRoot.querySelectorAll('[data-star-value]') : []).forEach(function (star) {
+                    var starValue = Number(star.getAttribute('data-star-value')) || 0;
+                    star.classList.toggle('is-active', starValue <= value);
+                });
+            }
+
+            function escapeHtml(value) {
+                return String(value || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function formatReviewDate(isoDate) {
+                var d = new Date(isoDate || Date.now());
+                if (isNaN(d.getTime())) return '';
+                return d.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+            }
+
+            function renderReviewCard(review, prepend) {
+                if (!reviewsScroller || !review) return;
+                var rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
+                var stars = '★★★★★'.slice(0, rating);
+                var card = document.createElement('article');
+                card.className = 'review-card';
+                var photos = Array.isArray(review.photos) ? review.photos.filter(Boolean) : [];
+                var photosHtml = photos.slice(0, 3).map(function (url) {
+                    return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 mr-2 text-xs text-gold-gradient underline">Фото</a>';
+                }).join('');
+                card.innerHTML =
+                    '<div class="review-stars mb-2" aria-label="Оценка ' + rating + ' из 5">' + stars + '</div>' +
+                    '<p class="review-author">' + escapeHtml(review.name || 'Клиент') + '</p>' +
+                    '<p class="text-gray-500 text-xs mb-3 font-numbers-medium">' + escapeHtml(formatReviewDate(review.createdAt)) + '</p>' +
+                    '<p class="text-gray-400 text-sm leading-relaxed font-description">' + escapeHtml(review.comment || '') + '</p>' +
+                    photosHtml;
+                if (prepend) {
+                    reviewsScroller.insertBefore(card, reviewsScroller.firstChild);
+                } else {
+                    reviewsScroller.appendChild(card);
+                }
+            }
+
+            function setHint(text, isError) {
+                if (!hint) return;
+                hint.textContent = text;
+                hint.classList.remove('hidden');
+                hint.classList.toggle('text-amber-200/90', !!isError);
+                hint.classList.toggle('text-emerald-200/90', !isError);
+            }
+
+            function clearHint() {
+                if (!hint) return;
+                hint.classList.add('hidden');
+                hint.textContent = '';
+            }
+
+            function loadPublishedReviews() {
+                fetch('reviews-api.php', { cache: 'no-store' })
+                    .then(function (res) { return res.ok ? res.json() : null; })
+                    .then(function (payload) {
+                        if (!payload || !payload.ok || !Array.isArray(payload.reviews)) return;
+                        payload.reviews.forEach(function (review) {
+                            renderReviewCard(review, true);
+                        });
+                    })
+                    .catch(function () {});
+            }
+
+            function redrawPreview() {
+                if (!previewGrid) return;
+                previewGrid.innerHTML = '';
+                selectedFiles.forEach(function (file, index) {
+                    var reader = new FileReader();
+                    reader.onload = function (evt) {
+                        var item = document.createElement('div');
+                        item.className = 'review-preview-item';
+                        item.innerHTML = '<img alt="Фото отзыва" /><button type="button" class="review-preview-remove" aria-label="Удалить фото">✕</button>';
+                        item.querySelector('img').src = evt.target && evt.target.result ? evt.target.result : '';
+                        var removeBtn = item.querySelector('.review-preview-remove');
+                        removeBtn.addEventListener('click', function () {
+                            selectedFiles.splice(index, 1);
+                            redrawPreview();
+                        });
+                        previewGrid.appendChild(item);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            if (starsRoot) {
+                starsRoot.querySelectorAll('[data-star-value]').forEach(function (star) {
+                    star.addEventListener('click', function () {
+                        setRating(star.getAttribute('data-star-value'));
+                    });
+                });
+            }
+
+            if (photoInput) {
+                photoInput.addEventListener('change', function (e) {
+                    var files = Array.prototype.slice.call((e.target && e.target.files) || []);
+                    files.forEach(function (file) {
+                        if (!file.type || !file.type.startsWith('image/')) return;
+                        selectedFiles.push(file);
+                    });
+                    redrawPreview();
+                    photoInput.value = '';
+                });
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var nameEl = document.getElementById('review-name');
+                var commentEl = document.getElementById('review-comment');
+                var name = (nameEl && nameEl.value || '').trim();
+                var comment = (commentEl && commentEl.value || '').trim();
+                var rating = Number(ratingInput.value || 0);
+                if (!name || rating < 1) {
+                    setHint('Укажите имя и поставьте оценку.', true);
+                    return;
+                }
+                clearHint();
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Отправляем...';
+                }
+                var fd = new FormData();
+                fd.append('name', name);
+                fd.append('rating', String(rating));
+                fd.append('comment', comment);
+                selectedFiles.forEach(function (file) {
+                    fd.append('photos[]', file, file.name || 'review-photo.jpg');
+                });
+
+                fetch('reviews-api.php', {
+                    method: 'POST',
+                    body: fd
+                })
+                    .then(function (res) { return res.json(); })
+                    .then(function (payload) {
+                        if (!payload || !payload.ok || !payload.review) {
+                            throw new Error((payload && payload.error) || 'Не удалось сохранить отзыв');
+                        }
+                        renderReviewCard(payload.review, true);
+                        form.reset();
+                        selectedFiles = [];
+                        redrawPreview();
+                        setRating(0);
+                        setHint('Спасибо! Отзыв опубликован.', false);
+                    })
+                    .catch(function (err) {
+                        setHint(err && err.message ? err.message : 'Ошибка отправки. Попробуйте ещё раз.', true);
+                    })
+                    .finally(function () {
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Отправить отзыв';
+                        }
+                    });
+            });
+
+            loadPublishedReviews();
         })();
 
         (function () {

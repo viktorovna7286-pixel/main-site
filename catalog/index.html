@@ -1255,6 +1255,9 @@
                             )}
                             {!catalogLoading && !catalogError && (
                                 <div className="mb-10 space-y-4">
+                                    <p className="text-center text-gray-400 text-xs sm:text-sm font-main leading-relaxed px-1">
+                                        Поможем подобрать модель под ваш запрос или выбрать подходящий вариант из актуального наличия в каталоге.
+                                    </p>
                                     <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                                         {SEGMENT_FILTER_IDS.map((id) => (
                                             <button type="button" key={id} onClick={() => setSegmentFilter(id)} className={`filter-chip shrink-0 px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-title uppercase tracking-widest transition-all ${segmentFilter === id ? 'filter-chip-selected' : 'filter-chip-default'}`}>{CATALOG_LABELS.segment[id]}</button>
