@@ -221,6 +221,31 @@
             outline: none;
             box-shadow: 0 0 0 2px rgba(232, 201, 107, 0.65), 0 12px 36px rgba(0, 0, 0, 0.45);
         }
+        .contact-icon-btn {
+            width: 3rem;
+            height: 3rem;
+            min-width: 3rem;
+            min-height: 3rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.25s ease;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38);
+        }
+        .contact-icon-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .contact-icon-btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(232, 201, 107, 0.65), 0 8px 24px rgba(0, 0, 0, 0.45);
+        }
+        .contact-icon-btn svg {
+            width: 1.18rem;
+            height: 1.18rem;
+        }
 
         /* Service Cards */
         .service-card {
@@ -892,7 +917,7 @@
 
     <!-- ШАПКА -->
     <header class="site-header fixed top-0 left-0 right-0">
-        <div class="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center gap-3 sm:gap-4 justify-between md:justify-start">
+        <div class="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center gap-3 sm:gap-4 justify-between md:justify-start relative">
             <a href="/" class="brand-lockup min-w-0" aria-label="8848 Вершина — на главную">
                 <svg class="brand-lockup__mark w-9 h-9 sm:w-10 sm:h-10" viewBox="0 0 24 24" aria-hidden="true"><path stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 10v11h16V10l-8-7z"/><path stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M9 21v-6h6v6"/></svg>
                 <div class="flex flex-col gap-0.5">
@@ -901,15 +926,12 @@
                 </div>
             </a>
             <!-- Меню (Desktop) -->
-            <nav class="hidden md:flex flex-1 flex-wrap gap-x-4 lg:gap-x-6 gap-y-2 justify-center items-center text-xs lg:text-sm font-medium uppercase tracking-widest text-white min-w-0">
+            <nav class="hidden md:flex flex-wrap gap-x-4 lg:gap-x-6 gap-y-2 justify-center items-center text-xs lg:text-sm font-medium uppercase tracking-widest text-white min-w-0 absolute left-1/2 -translate-x-1/2">
                 <a href="/#hero" class="header-nav-hover" data-nav-anchor="hero">Главная</a>
                 <a href="catalog/" class="header-nav-hover" data-nav-anchor="catalog">Каталог</a>
                 <a href="catalog/#calc" class="header-nav-hover">Калькулятор</a>
                 <a href="/#pricing" class="header-nav-hover" data-nav-anchor="pricing">Прайс</a>
                 <a href="/#services" class="header-nav-hover" data-nav-anchor="services">Услуги</a>
-                <a href="/#reviews" class="header-nav-hover" data-nav-anchor="reviews">Отзывы</a>
-                <a href="/#faq" class="header-nav-hover" data-nav-anchor="faq">FAQ</a>
-                <a href="/#request" class="header-nav-hover" data-nav-anchor="request">Заявка</a>
                 <a href="/#contacts" class="header-nav-hover" data-nav-anchor="contacts">Контакты</a>
             </nav>
 
@@ -925,9 +947,6 @@
             <a href="catalog/#calc" class="py-2 header-nav-hover" onclick="toggleMenu()">Калькулятор</a>
             <a href="/#pricing" class="py-2 header-nav-hover" data-nav-anchor="pricing" onclick="toggleMenu()">Прайс</a>
             <a href="/#services" class="py-2 header-nav-hover" data-nav-anchor="services" onclick="toggleMenu()">Услуги</a>
-            <a href="/#reviews" class="py-2 header-nav-hover" data-nav-anchor="reviews" onclick="toggleMenu()">Отзывы</a>
-            <a href="/#faq" class="py-2 header-nav-hover" data-nav-anchor="faq" onclick="toggleMenu()">FAQ</a>
-            <a href="/#request" class="py-2 header-nav-hover" data-nav-anchor="request" onclick="toggleMenu()">Заявка</a>
             <a href="/#contacts" class="py-2 header-nav-hover" data-nav-anchor="contacts" onclick="toggleMenu()">Контакты</a>
         </div>
     </header>
@@ -941,7 +960,7 @@
             <p class="text-lg sm:text-xl md:text-2xl text-gold-gradient mb-4 font-description">
                 от подбора до установки
             </p>
-            <p class="text-xs sm:text-sm md:text-base text-gray-400 uppercase tracking-[0.18em] sm:tracking-[0.2em] mb-8 sm:mb-10 max-w-md mx-auto leading-relaxed">
+            <p class="text-[11px] sm:text-sm md:text-base text-gray-400 uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-8 sm:mb-10 mx-auto leading-relaxed whitespace-nowrap">
                 после нас, свежее только на Эвересте
             </p>
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center max-w-md sm:max-w-none mx-auto">
@@ -952,7 +971,6 @@
                     Позвонить
                 </a>
             </div>
-            <p class="hero-trust-line max-w-xl mx-auto px-2">✓ Выезд мастера за 24 часа · Работаем по Сочи и краю</p>
         </div>
     </section>
 
@@ -974,7 +992,7 @@
                 </div>
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">24</span> ч</div>
-                    <p class="text-gray-400 uppercase tracking-widest text-xs">выезд мастера</p>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs">срочный выезд</p>
                 </div>
             </div>
         </div>
@@ -1067,9 +1085,15 @@
                 <figure class="works-card">
                     <div class="works-placeholder" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-                        <span class="works-placeholder-label">Фото скоро</span>
+                        <span class="works-placeholder-label">Кейс · этап 1</span>
                     </div>
-                    <figcaption class="works-caption font-description">Квартира · 42 м² · сплит-система 12 BTU</figcaption>
+                    <figcaption class="works-caption font-description">
+                        <strong style="color:#e8c96b;font-weight:600;">ГК «Нескучный сад», Сочи</strong><br>
+                        Завершён первый этап на объекте:
+                        <a href="https://neskuchniy-sochi.ru/" target="_blank" rel="noopener noreferrer" style="color:#e8c96b;text-decoration:none;">neskuchniy-sochi.ru</a>.<br>
+                        Для управляющей компании гостиничного комплекса заложены труботрассы под 6 кондиционеров.<br>
+                        Проект реализуется поэтапно — первый шаг выполнен чисто и в срок.
+                    </figcaption>
                 </figure>
                 <figure class="works-card">
                     <div class="works-placeholder" aria-hidden="true">
@@ -1260,12 +1284,15 @@
             <form id="lead-form" class="space-y-4" action="#" method="post" novalidate>
                 <input type="text" name="name" class="lead-form-field" placeholder="Ваше имя" autocomplete="name" required />
                 <input type="tel" name="phone" class="lead-form-field" placeholder="+7 ___ ___ __ __" autocomplete="tel" inputmode="tel" required />
+                <input type="text" name="address" class="lead-form-field" placeholder="Адрес" autocomplete="street-address" />
                 <input type="number" name="area" class="lead-form-field" placeholder="Площадь, м²" inputmode="decimal" min="1" step="0.1" />
-                <select name="time" class="lead-form-field" aria-label="Удобное время звонка">
-                    <option value="">Удобное время звонка</option>
-                    <option value="Утром 9:00–12:00">Утром 9:00–12:00</option>
-                    <option value="Днём 12:00–17:00">Днём 12:00–17:00</option>
-                    <option value="Вечером 17:00–21:00">Вечером 17:00–21:00</option>
+                <select name="service" class="lead-form-field" aria-label="Какие услуги нужны" required>
+                    <option value="" selected disabled>Какие услуги нужны</option>
+                    <option value="Подбор и продажа кондиционера">Подбор и продажа кондиционера</option>
+                    <option value="Монтаж кондиционера">Монтаж кондиционера</option>
+                    <option value="Сервис и чистка">Сервис и чистка</option>
+                    <option value="Демонтаж / перенос">Демонтаж / перенос</option>
+                    <option value="Несколько услуг">Несколько услуг</option>
                 </select>
                 <button type="submit" class="lead-form-submit">Отправить заявку</button>
             </form>
@@ -1287,18 +1314,17 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.2a1 1 0 01.95.68l1.2 3.6a1 1 0 01-.28 1.04L8.6 9.8a14 14 0 005.6 5.6l1.48-1.47a1 1 0 011.04-.28l3.6 1.2A1 1 0 0121 15.8V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
                     Позвонить
                 </a>
-                <a href="https://wa.me/79996368698" target="_blank" class="contact-btn contact-btn--wa flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-3.5 sm:py-4 hover:opacity-90 min-h-[48px] w-full sm:w-auto sm:min-w-0">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
-                    WhatsApp
-                </a>
-                <a href="https://t.me/SANTA_KULAEV" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn--tg flex items-center justify-center gap-3 bg-[#229ED9] text-white px-6 py-3.5 sm:py-4 hover:opacity-90 min-h-[48px] w-full sm:w-auto sm:min-w-0">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65c-.39 0-.33-.15-.46-.52l-1.17-3.87 9.06-5.73"/><path d="M9.78 18.65c.3 0 .43-.14.6-.3l1.65-1.6-2.05-1.24"/><path d="M10 15.52l4.98 3.68c.57.31.98.15 1.12-.53l2-9.43c.2-.84-.3-1.22-.84-.98L5.5 12.8c-.8.31-.8.75-.15.95l3.02.95 7-4.41c.33-.2.64-.09.39.13"/></svg>
-                    Telegram <span class="opacity-90 font-numbers-medium normal-case tracking-normal">@SANTA_KULAEV</span>
-                </a>
-                <a href="https://max.ru/vershina8848" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn--muted flex items-center justify-center gap-3 bg-[#2a2a2a] text-white px-6 py-3.5 sm:py-4 border border-[#3f3f3f] hover:border-[#C9A84C] min-h-[48px] w-full sm:w-auto sm:min-w-0">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 7h4l4 5 4-5h4M6 19l6-7 6 7"/></svg>
-                    Max
-                </a>
+                <div class="flex items-center justify-center gap-3 sm:gap-3.5 w-full sm:w-auto">
+                    <a href="https://wa.me/79996368698" target="_blank" rel="noopener noreferrer" class="contact-icon-btn bg-[#25D366] text-white" aria-label="WhatsApp" title="WhatsApp">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+                    </a>
+                    <a href="https://t.me/SANTA_KULAEV" target="_blank" rel="noopener noreferrer" class="contact-icon-btn bg-[#229ED9] text-white" aria-label="Telegram" title="Telegram">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65c-.39 0-.33-.15-.46-.52l-1.17-3.87 9.06-5.73"/><path d="M9.78 18.65c.3 0 .43-.14.6-.3l1.65-1.6-2.05-1.24"/><path d="M10 15.52l4.98 3.68c.57.31.98.15 1.12-.53l2-9.43c.2-.84-.3-1.22-.84-.98L5.5 12.8c-.8.31-.8.75-.15.95l3.02.95 7-4.41c.33-.2.64-.09.39.13"/></svg>
+                    </a>
+                    <a href="https://max.ru/vershina8848" target="_blank" rel="noopener noreferrer" class="contact-icon-btn bg-[#2a2a2a] text-white" aria-label="Max" title="Max">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 7h4l4 5 4-5h4M6 19l6-7 6 7"/></svg>
+                    </a>
+                </div>
             </div>
 
             <div class="text-gray-400">
@@ -1453,8 +1479,9 @@
                 var fd = new FormData(form);
                 var name = (fd.get('name') || '').toString().trim();
                 var phone = (fd.get('phone') || '').toString().trim();
+                var address = (fd.get('address') || '').toString().trim();
                 var area = (fd.get('area') || '').toString().trim();
-                var time = (fd.get('time') || '').toString().trim();
+                var service = (fd.get('service') || '').toString().trim();
                 if (!name || !phone) {
                     if (hint) {
                         hint.textContent = 'Укажите имя и телефон.';
@@ -1462,10 +1489,11 @@
                     }
                     return;
                 }
-                var msg = 'Заявка с сайта vershina8848.ru:%0AГород: Сочи%0AИмя: ' + encodeURIComponent(name) +
+                var msg = 'Заявка с сайта vershina8848.ru:%0AИмя: ' + encodeURIComponent(name) +
                     '%0AТелефон: ' + encodeURIComponent(phone) +
-                    (area ? '%0AПлощадь: ' + encodeURIComponent(area) + ' м²' : '') +
-                    (time ? '%0AВремя звонка: ' + encodeURIComponent(time) : '');
+                    (address ? '%0AАдрес: ' + encodeURIComponent(address) : '') +
+                    (service ? '%0AУслуга: ' + encodeURIComponent(service) : '') +
+                    (area ? '%0AПлощадь: ' + encodeURIComponent(area) + ' м²' : '');
                 if (hint) hint.classList.add('hidden');
                 window.open('https://wa.me/79996368698?text=' + msg, '_blank', 'noopener,noreferrer');
             });
