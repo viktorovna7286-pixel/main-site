@@ -849,6 +849,30 @@
             return [];
         };
         const productCardImage = (p) => productImages(p)[0] || '';
+        const BASE_BTU_VALUES = [7, 9, 12, 18, 24, 36];
+        const withBaseBtuRows = (product) => {
+            const sourceRows = Array.isArray(product?.btuData) ? product.btuData : [];
+            const byBtu = new Map();
+            sourceRows.forEach((row) => {
+                const btu = Number(row?.btu);
+                if (!Number.isFinite(btu)) return;
+                byBtu.set(btu, { btu, price: Number(row?.price) || 0 });
+            });
+            BASE_BTU_VALUES.forEach((btu) => {
+                if (!byBtu.has(btu)) byBtu.set(btu, { btu, price: 0 });
+            });
+            return {
+                ...product,
+                btuData: Array.from(byBtu.values()).sort((a, b) => a.btu - b.btu),
+            };
+        };
+        const normalizeBtuData = (p) => Array.isArray(p?.btuData) ? p.btuData.filter((d) => Number.isFinite(Number(d?.price))) : [];
+        const minPriceOf = (p) => {
+            const rows = normalizeBtuData(p).filter((d) => Number(d.price) > 0);
+            if (!rows.length) return null;
+            return Math.min(...rows.map((d) => Number(d.price)));
+        };
+        const formatRubPrice = (value) => (Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value).toLocaleString() + ' ₽' : 'По запросу');
 
         const CATALOG_DRAFT_COOKIE = 'vershina8848_catalog_draft';
         function readDraftPreviewCookie() {
@@ -886,7 +910,7 @@
             const [imageViewerOpen, setImageViewerOpen] = useState(false);
 
             const BTU_AREA = {
-                7: 21, 8: 21, 9: 27, 10: 30, 12: 36, 14: 42, 18: 56,
+                7: 21, 8: 21, 9: 27, 10: 30, 12: 36, 14: 42, 18: 54,
                 20: 62, 24: 72, 26: 78, 30: 90, 32: 96, 33: 99, 36: 108, 38: 115,
             };
             const areaForBtu = (b) => BTU_AREA[b] ?? Math.min(130, Math.round(Number(b) * 2.9));
@@ -1011,7 +1035,7 @@
                         const data = await res.json();
                         if (cancelled) return;
                         if (!Array.isArray(data)) throw new Error('Ожидался массив товаров');
-                        setProducts(data);
+                        setProducts(data.map(withBaseBtuRows));
                     } catch (e) {
                         if (!cancelled) setCatalogError(e.message || String(e));
                     } finally {
@@ -1032,7 +1056,7 @@
             const calcRecommendations = useMemo(() => {
                 if (!calcResult || !products.length) return [];
                 const btu = calcResult.btu;
-                const matches = products.filter((p) => p.btuData.some((d) => d.btu === btu));
+                const matches = products.filter((p) => p.btuData.some((d) => d.btu === btu && Number(d.price) > 0));
                 matches.sort((a, b) => {
                     const pa = a.btuData.find((d) => d.btu === btu).price;
                     const pb = b.btuData.find((d) => d.btu === btu).price;
@@ -1246,7 +1270,7 @@
 
                             {!catalogLoading && !catalogError && <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 items-stretch">
                                 {filteredProducts.map(p => {
-                                    const minPrice = Math.min(...p.btuData.map(d => d.price));
+                                    const minPrice = minPriceOf(p);
                                     return (
                                         <div key={p.id} onClick={() => openProduct(p)} className="fade-in group catalog-card-hit premium-card rounded-[1.75rem] sm:rounded-[3rem] overflow-hidden border border-white/5 cursor-pointer active:scale-[0.985] h-full min-h-[21rem] sm:min-h-[24rem] flex flex-col">
                                             <div className="h-44 sm:h-52 md:h-56 shrink-0 relative overflow-hidden catalog-card-media">
@@ -1269,7 +1293,7 @@
                                                 <div className="border-t border-white/5 pt-5 mt-auto">
                                                     <span className="text-[8px] text-gray-500 font-title uppercase tracking-tighter block">Цена</span>
                                                     <p className="text-yellow-500 font-numbers-bold text-xl leading-none tracking-tight mt-1">
-                                                        от {minPrice.toLocaleString()} р.
+                                                        {minPrice ? ('от ' + minPrice.toLocaleString() + ' р.') : 'по запросу'}
                                                     </p>
                                                 </div>
                                             </div>
@@ -1340,7 +1364,7 @@
                                                     ))}
                                                     <div className="modal-metric-card min-w-[148px] flex-1 flex flex-col justify-center py-2.5 px-3">
                                                         <p className="text-[9px] uppercase text-gray-500 tracking-wider font-title">Стоимость</p>
-                                                        <p className="text-xl sm:text-2xl font-numbers-bold text-[#C9A84C] tabular-nums leading-tight mt-0.5">{selectedBtu ? selectedBtu.price.toLocaleString() : '—'} ₽</p>
+                                                        <p className="text-xl sm:text-2xl font-numbers-bold text-[#C9A84C] tabular-nums leading-tight mt-0.5">{selectedBtu ? formatRubPrice(selectedBtu.price) : '—'}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1350,7 +1374,7 @@
                                                 <p className="text-gray-200 text-sm leading-relaxed font-description border-l-2 border-[#C9A84C]/45 pl-3">{String(selectedProduct.description || '').replace(/\.\s*$/, '')}</p>
                                             </div>
 
-                                            <a href={`https://wa.me/79996368698?text=Заказ: ${selectedProduct.brand} - завод ${selectedProduct.factory}. Мощность ${selectedBtu?.btu} BTU. Цена: ${selectedBtu?.price}р.`} className="w-full btn-shared-solid font-title py-3 flex items-center justify-center gap-3 uppercase tracking-[0.28em] text-xs sm:text-sm shrink-0">
+                                            <a href={`https://wa.me/79996368698?text=Заказ: ${selectedProduct.brand} - завод ${selectedProduct.factory}. Мощность ${selectedBtu?.btu} BTU. Цена: ${selectedBtu && Number(selectedBtu.price) > 0 ? selectedBtu.price + 'р.' : 'по запросу'}`} className="w-full btn-shared-solid font-title py-3 flex items-center justify-center gap-3 uppercase tracking-[0.28em] text-xs sm:text-sm shrink-0">
                                                 <IconZap /> Оформить заявку
                                             </a>
                                         </div>

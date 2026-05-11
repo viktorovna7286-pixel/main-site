@@ -484,6 +484,35 @@
             margin: 0 0 1rem;
             font-style: italic;
         }
+        .price-edit-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .price-edit-table th,
+        .price-edit-table td {
+            padding: 0.55rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: top;
+            text-align: left;
+        }
+        .price-edit-table th {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #6b7280;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            font-weight: 600;
+            padding-top: 0.2rem;
+        }
+        .price-edit-table td:last-child,
+        .price-edit-table th:last-child {
+            text-align: right;
+            white-space: nowrap;
+        }
+        .price-edit-table tr:last-child td {
+            border-bottom: none;
+        }
         .price-table-head {
             display: grid;
             grid-template-columns: 1fr 1fr auto;
@@ -544,6 +573,15 @@
             }
             .price-line-2 .font-numbers-bold {
                 justify-self: start;
+            }
+            .price-edit-table th,
+            .price-edit-table td {
+                display: block;
+                text-align: left !important;
+                white-space: normal;
+            }
+            .price-edit-table thead {
+                display: none;
             }
         }
         @media (max-width: 480px) {
@@ -787,6 +825,25 @@
             line-height: 1.45;
             background: #1a1a1a;
         }
+        .works-case-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.6rem;
+            padding: 0.6rem;
+        }
+        .works-case-main {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .works-case-thumbs {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.45rem;
+        }
+        .works-case-thumbs img {
+            border-radius: 10px;
+            aspect-ratio: 4 / 3;
+        }
 
         .hero-trust-line {
             margin-top: 16px;
@@ -834,6 +891,30 @@
             max-height: 88vh;
             object-fit: contain;
             border-radius: 0.5rem;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            border: 1px solid rgba(201, 168, 76, 0.45);
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 1.25rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .lightbox-nav:hover {
+            background: #2a2a2a;
+        }
+        .lightbox-prev {
+            left: max(1rem, env(safe-area-inset-left));
+        }
+        .lightbox-next {
+            right: max(1rem, env(safe-area-inset-right));
         }
         .lightbox-close {
             position: absolute;
@@ -977,7 +1058,7 @@
     <!-- ПОЧЕМУ МЫ -->
     <section class="py-14 sm:py-20 md:py-24 bg-[#151515] section-soft-y">
         <div class="container mx-auto px-4 sm:px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 xl:gap-8 text-center max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6 xl:gap-8 text-center max-w-6xl mx-auto">
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">10+</span> лет</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">опыта на рынке</p>
@@ -987,12 +1068,16 @@
                     <p class="text-gray-400 uppercase tracking-widest text-xs">успешных монтажей</p>
                 </div>
                 <div class="stats-item">
-                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">1</span> год</div>
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">2</span> года</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">гарантия на монтаж</p>
                 </div>
                 <div class="stats-item">
                     <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">24</span> ч</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">срочный выезд</p>
+                </div>
+                <div class="stats-item">
+                    <div class="text-2xl sm:text-3xl text-gold-gradient mb-2"><span class="font-numbers-bold">1 монтаж</span> бесплатно</div>
+                    <p class="text-gray-400 uppercase tracking-widest text-xs">при покупке 3 кондиционеров</p>
                 </div>
             </div>
         </div>
@@ -1083,7 +1168,15 @@
             </h2>
             <div class="works-grid">
                 <figure class="works-card">
-                    <img src="assets/cases/neskuchny-stage1-1.png" alt="ГК Нескучный сад — этап 1, трассы под кондиционеры" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-1.png" />
+                    <div class="works-case-gallery">
+                        <img class="works-case-main" src="assets/cases/neskuchny-stage1-1.png" alt="ГК Нескучный сад — этап 1, трассы под кондиционеры" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-1.png" />
+                        <div class="works-case-thumbs">
+                            <img src="assets/cases/neskuchny-stage1-2.png" alt="ГК Нескучный сад — этап 1, прокладка трасс" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-2.png" />
+                            <img src="assets/cases/neskuchny-stage1-3.png" alt="ГК Нескучный сад — этап 1, общий вид объекта" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-3.png" />
+                            <img src="assets/cases/neskuchny-stage1-4.png" alt="ГК Нескучный сад — этап 1, разводка коммуникаций" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-4.png" />
+                            <img src="assets/cases/neskuchny-stage1-5.png" alt="ГК Нескучный сад — этап 1, трассы под 6 кондиционеров" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-5.png" />
+                        </div>
+                    </div>
                     <figcaption class="works-caption font-description">
                         <strong style="color:#e8c96b;font-weight:600;">ГК «Нескучный сад», Сочи</strong><br>
                         Завершён первый этап на объекте:
@@ -1091,22 +1184,6 @@
                         Для управляющей компании гостиничного комплекса заложены труботрассы под 6 кондиционеров.<br>
                         Проект реализуется поэтапно — первый шаг выполнен чисто и в срок.
                     </figcaption>
-                </figure>
-                <figure class="works-card">
-                    <img src="assets/cases/neskuchny-stage1-2.png" alt="ГК Нескучный сад — этап 1, прокладка трасс" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-2.png" />
-                    <figcaption class="works-caption font-description">ГК «Нескучный сад» · этап 1 · прокладка и выводы трасс</figcaption>
-                </figure>
-                <figure class="works-card">
-                    <img src="assets/cases/neskuchny-stage1-3.png" alt="ГК Нескучный сад — этап 1, общий вид объекта" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-3.png" />
-                    <figcaption class="works-caption font-description">ГК «Нескучный сад» · этап 1 · общий вид выполненного участка</figcaption>
-                </figure>
-                <figure class="works-card">
-                    <img src="assets/cases/neskuchny-stage1-4.png" alt="ГК Нескучный сад — этап 1, разводка коммуникаций" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-4.png" />
-                    <figcaption class="works-caption font-description">ГК «Нескучный сад» · этап 1 · подготовка коммуникаций под монтаж</figcaption>
-                </figure>
-                <figure class="works-card">
-                    <img src="assets/cases/neskuchny-stage1-5.png" alt="ГК Нескучный сад — этап 1, трассы под 6 кондиционеров" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-5.png" />
-                    <figcaption class="works-caption font-description">ГК «Нескучный сад» · этап 1 · заложены труботрассы под 6 кондиционеров</figcaption>
                 </figure>
             </div>
         </div>
@@ -1122,33 +1199,79 @@
                 <article class="price-card">
                     <div class="price-card-inner">
                         <span class="price-card-badge">МОНТАЖ</span>
-                        <h3>Базовый комплект</h3>
-                        <p class="price-card-sub font-description">Стандартный монтаж сплит-системы с межблочной трассой до 2 м и типовой точкой вывода коммуникаций</p>
-                        <div class="price-table-head font-title">
-                            <span>Мощность</span>
-                            <span>Площадь</span>
-                            <span class="text-right">От</span>
-                        </div>
-                        <div class="price-line">
-                            <span>7–9 BTU</span>
-                            <span class="text-gray-400">до 25 м²</span>
-                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">10 500 ₽</span>
-                        </div>
-                        <div class="price-line">
-                            <span>12 BTU</span>
-                            <span class="text-gray-400">до 35 м²</span>
-                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">11 500 ₽</span>
-                        </div>
-                        <div class="price-line">
-                            <span>18 BTU</span>
-                            <span class="text-gray-400">до 50 м²</span>
-                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">13 500 ₽</span>
-                        </div>
-                        <div class="price-line">
-                            <span>24 BTU</span>
-                            <span class="text-gray-400">до 70 м²</span>
-                            <span class="font-numbers-bold text-gold-gradient text-right whitespace-nowrap">15 500 ₽</span>
-                        </div>
+                        <h3>Базовый комплект (с нуля)</h3>
+                        <p class="price-card-sub font-description">Монтаж сплит-системы с прокладкой новой трассы и базовыми пусконаладочными работами</p>
+                        <table class="price-edit-table" aria-label="Таблица цен базового монтажа">
+                            <thead class="font-title">
+                                <tr>
+                                    <th>Мощность</th>
+                                    <th>Площадь</th>
+                                    <th>От</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>7–9 BTU</td>
+                                    <td class="text-gray-400">до 25 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">10 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>12 BTU</td>
+                                    <td class="text-gray-400">до 35 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">10 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>18 BTU</td>
+                                    <td class="text-gray-400">до 50 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">16 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>24 BTU</td>
+                                    <td class="text-gray-400">до 70 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">22 000 ₽</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="#contacts" class="price-card-cta">Запросить расчёт</a>
+                    </div>
+                </article>
+
+                <article class="price-card">
+                    <div class="price-card-inner">
+                        <span class="price-card-badge">МОНТАЖ</span>
+                        <h3>На готовую труботрассу</h3>
+                        <p class="price-card-sub font-description">Установка кондиционера при уже подготовленной трассе и точках подключения</p>
+                        <table class="price-edit-table" aria-label="Таблица цен монтажа на готовую труботрассу">
+                            <thead class="font-title">
+                                <tr>
+                                    <th>Мощность</th>
+                                    <th>Площадь</th>
+                                    <th>От</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>7–9 BTU</td>
+                                    <td class="text-gray-400">до 25 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">7 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>12 BTU</td>
+                                    <td class="text-gray-400">до 35 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">7 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>18 BTU</td>
+                                    <td class="text-gray-400">до 50 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">9 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>24 BTU</td>
+                                    <td class="text-gray-400">до 70 м²</td>
+                                    <td class="font-numbers-bold text-gold-gradient">16 000 ₽</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <a href="#contacts" class="price-card-cta">Запросить расчёт</a>
                     </div>
                 </article>
@@ -1158,26 +1281,44 @@
                         <span class="price-card-badge">ДОПОЛНЕНИЯ</span>
                         <h3>Сверх базового</h3>
                         <p class="price-card-sub font-description">Допработы при нестандартной геометрии объекта, увеличенной длине трассы или осложняющих факторах — оцениваем заранее и выносим в отдельные строки сметы</p>
-                        <div class="price-line-2">
-                            <span>Удлинение трассы</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 2 400 ₽ / м</span>
-                        </div>
-                        <div class="price-line-2">
-                            <span>Штроба (кирпич / газоблок)</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 1 100 ₽ / м</span>
-                        </div>
-                        <div class="price-line-2">
-                            <span>Штроба (бетон)</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 1 600 ₽ / м</span>
-                        </div>
-                        <div class="price-line-2">
-                            <span>Высотные работы без автовышки</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 9 500 ₽</span>
-                        </div>
-                        <div class="price-line-2">
-                            <span>Демонтаж сплит-системы</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 3 800 ₽</span>
-                        </div>
+                        <table class="price-edit-table" aria-label="Таблица допработ">
+                            <thead class="font-title">
+                                <tr>
+                                    <th>Позиция</th>
+                                    <th>Цена</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Удлинение трассы</td>
+                                    <td class="font-numbers-bold text-gold-gradient">от 2 400 ₽ / м</td>
+                                </tr>
+                                <tr>
+                                    <td>Штроба (кирпич / газоблок)</td>
+                                    <td class="font-numbers-bold text-gold-gradient">от 600 ₽ / м</td>
+                                </tr>
+                                <tr>
+                                    <td>Штроба (бетон)</td>
+                                    <td class="font-numbers-bold text-gold-gradient">от 1 200 ₽ / м</td>
+                                </tr>
+                                <tr>
+                                    <td>Высотный монтаж без автовышки</td>
+                                    <td class="font-numbers-bold text-gold-gradient">от 12 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Демонтаж сплит-системы</td>
+                                    <td class="font-numbers-bold text-gold-gradient">от 3 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Другие высотные работы</td>
+                                    <td class="font-numbers-bold text-gold-gradient">от 6 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Алмазное бурение от 32d до 182d</td>
+                                    <td class="font-numbers-bold text-gold-gradient">2 000 — 12 000 ₽</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <a href="#contacts" class="price-card-cta">Обсудить объект</a>
                     </div>
                 </article>
@@ -1187,14 +1328,40 @@
                         <span class="price-card-badge">СЕРВИС</span>
                         <h3>Сервисное обслуживание</h3>
                         <p class="price-card-sub font-description">Плановые работы для стабильной работы климатического оборудования и соблюдения условий гарантии производителя</p>
-                        <div class="price-line-2">
-                            <span>Профилактика: очистка теплообменников, санитарная обработка, контроль дренажа</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 3 600 ₽</span>
-                        </div>
-                        <div class="price-line-2">
-                            <span>Полное ТО с разбором внутреннего блока и диагностикой ключевых узлов</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">от 4 200 ₽</span>
-                        </div>
+                        <table class="price-edit-table" aria-label="Таблица сервисного обслуживания">
+                            <thead class="font-title">
+                                <tr>
+                                    <th>Позиция</th>
+                                    <th>Цена</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Мойка сплит-системы: внутреннего блока</td>
+                                    <td class="font-numbers-bold text-gold-gradient">2 500 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Мойка сплит-системы: внутреннего и наружнего блока</td>
+                                    <td class="font-numbers-bold text-gold-gradient">4 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Диагоностика сплит-систем на поврежденные элементы</td>
+                                    <td class="font-numbers-bold text-gold-gradient">2 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Замена конденсаторов наружнего блока</td>
+                                    <td class="font-numbers-bold text-gold-gradient">3 500 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Другие ремонтные работы</td>
+                                    <td class="font-numbers-bold text-gold-gradient">от 4 000 ₽</td>
+                                </tr>
+                                <tr>
+                                    <td>Заправка фреоном (22/410/32)</td>
+                                    <td class="font-numbers-bold text-gold-gradient">9 ₽ / грамм</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <a href="#contacts" class="price-card-cta">Записаться на сервис</a>
                     </div>
                 </article>
@@ -1204,14 +1371,24 @@
                         <span class="price-card-badge">B2B</span>
                         <h3>Корпоративные проекты</h3>
                         <p class="price-card-sub font-description">Офисы, ритейл, общественные и производственные площади — монтаж и поставка по проектной документации и техническому заданию</p>
-                        <div class="price-line-2">
-                            <span>Монтаж мультисплит- и мультизональных систем, VRF/VRV — в соответствии с проектом</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">по смете</span>
-                        </div>
-                        <div class="price-line-2">
-                            <span>Вентиляция, приточно-вытяжные решения под задачу объекта</span>
-                            <span class="font-numbers-bold text-gold-gradient whitespace-nowrap">индивидуально</span>
-                        </div>
+                        <table class="price-edit-table" aria-label="Таблица B2B работ">
+                            <thead class="font-title">
+                                <tr>
+                                    <th>Позиция</th>
+                                    <th>Стоимость</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Монтаж мультисплит- и мультизональных систем, VRF/VRV — в соответствии с проектом</td>
+                                    <td class="font-numbers-bold text-gold-gradient">индивидуально</td>
+                                </tr>
+                                <tr>
+                                    <td>Вентиляция, приточно-вытяжные решения под задачу объекта</td>
+                                    <td class="font-numbers-bold text-gold-gradient">индивидуально</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <a href="#contacts" class="price-card-cta">Коммерческое предложение</a>
                     </div>
                 </article>
@@ -1236,7 +1413,7 @@
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Сколько времени занимает установка?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">Стандартный монтаж сплит-системы занимает 2–4 часа. Сложные объекты и мультизональные системы — по согласованию.</div></div>
+                    <div class="faq-panel"><div class="faq-panel-inner">Стандартный монтаж сплит-системы занимает 1-2 часа. Сложные объекты и мультизональные системы — по согласованию.</div></div>
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Нужен ли выезд мастера для расчёта?<span class="faq-arrow" aria-hidden="true"></span></button>
@@ -1244,7 +1421,7 @@
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Какая гарантия на монтаж?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">1 год гарантии на монтажные работы. Гарантия производителя на оборудование — от 1 до 3 лет в зависимости от модели.</div></div>
+                    <div class="faq-panel"><div class="faq-panel-inner">2 года гарантии на монтажные работы. Гарантия производителя на оборудование — от 1 до 5 лет в зависимости от модели.</div></div>
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Вы работаете в выходные?<span class="faq-arrow" aria-hidden="true"></span></button>
@@ -1256,7 +1433,7 @@
                 </div>
                 <div class="faq-item">
                     <button type="button" class="faq-trigger" aria-expanded="false" data-faq-btn>Что входит в базовый монтаж?<span class="faq-arrow" aria-hidden="true"></span></button>
-                    <div class="faq-panel"><div class="faq-panel-inner">Установка внутреннего и наружного блоков, прокладка межблочной трассы до 2 м, подключение электрики, пусконаладка, сдача по чек-листу.</div></div>
+                    <div class="faq-panel"><div class="faq-panel-inner">Установка внутреннего и наружного блоков, сверление отверстий без грязи и пыли, прокладка межблочной трассы до 2 м, подключение электрики, пусконаладка.</div></div>
                 </div>
             </div>
         </div>
@@ -1338,6 +1515,8 @@
     </section>
 
     <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+        <button type="button" class="lightbox-nav lightbox-prev" aria-label="Предыдущее фото" data-lightbox-prev>&#10094;</button>
+        <button type="button" class="lightbox-nav lightbox-next" aria-label="Следующее фото" data-lightbox-next>&#10095;</button>
         <button type="button" class="lightbox-close" aria-label="Закрыть" data-lightbox-close>&times;</button>
         <img src="" alt="" id="lightbox-img" />
     </div>
@@ -1445,27 +1624,51 @@
             var overlay = document.getElementById('lightbox');
             var imgEl = document.getElementById('lightbox-img');
             var closeBtn = overlay ? overlay.querySelector('[data-lightbox-close]') : null;
+            var prevBtn = overlay ? overlay.querySelector('[data-lightbox-prev]') : null;
+            var nextBtn = overlay ? overlay.querySelector('[data-lightbox-next]') : null;
             if (!overlay || !imgEl) return;
+            var thumbs = Array.prototype.slice.call(document.querySelectorAll('.works-card img[data-lightbox]'));
+            var currentIndex = 0;
+            function showImage(index) {
+                if (!thumbs.length) return;
+                currentIndex = (index + thumbs.length) % thumbs.length;
+                var thumb = thumbs[currentIndex];
+                var full = thumb.getAttribute('data-lightbox') || thumb.src;
+                imgEl.src = full;
+                imgEl.alt = thumb.alt || '';
+            }
+            function openLb(index) {
+                showImage(index);
+                overlay.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+            }
             function closeLb() {
                 overlay.classList.remove('is-open');
                 imgEl.src = '';
                 document.body.style.overflow = '';
             }
-            document.querySelectorAll('.works-card img[data-lightbox]').forEach(function (thumb) {
+            thumbs.forEach(function (thumb, index) {
                 thumb.addEventListener('click', function () {
-                    var full = thumb.getAttribute('data-lightbox') || thumb.src;
-                    imgEl.src = full;
-                    imgEl.alt = thumb.alt || '';
-                    overlay.classList.add('is-open');
-                    document.body.style.overflow = 'hidden';
+                    openLb(index);
                 });
+            });
+            if (prevBtn) prevBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showImage(currentIndex - 1);
+            });
+            if (nextBtn) nextBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showImage(currentIndex + 1);
             });
             if (closeBtn) closeBtn.addEventListener('click', closeLb);
             overlay.addEventListener('click', function (e) {
                 if (e.target === overlay) closeLb();
             });
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLb();
+                if (!overlay.classList.contains('is-open')) return;
+                if (e.key === 'Escape') closeLb();
+                if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') showImage(currentIndex + 1);
             });
         })();
 

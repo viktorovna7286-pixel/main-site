@@ -1,5 +1,209 @@
 [
   {
+    "id": 1001,
+    "brand": "AUX",
+    "factory": "AUX",
+    "series": "Classic Inverter",
+    "model": "AUX Classic Inverter",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "AUX Classic Inverter. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1002,
+    "brand": "Ballu",
+    "factory": "Ballu",
+    "series": "Boho Inverter",
+    "model": "Ballu Boho Inverter",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "Ballu Boho Inverter. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1003,
+    "brand": "Daichi",
+    "factory": "Daichi",
+    "series": "ICE",
+    "model": "ICE20AVQ1-1",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 20,
+        "price": 0
+      }
+    ],
+    "description": "Daichi ICE20AVQ1-1. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1004,
+    "brand": "Kentatsu",
+    "factory": "Kentatsu",
+    "series": "Yuki",
+    "model": "Kentatsu Yuki",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "Kentatsu Yuki. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1005,
+    "brand": "Ballu",
+    "factory": "Ballu",
+    "series": "Eco Smart Inv",
+    "model": "Ballu Eco Smart Inv",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "Ballu Eco Smart Inv. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1006,
+    "brand": "Ballu",
+    "factory": "Ballu",
+    "series": "Olimpio Edge",
+    "model": "Ballu Olimpio Edge",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "Ballu Olimpio Edge. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1007,
+    "brand": "Centek",
+    "factory": "Centek",
+    "series": "Серия F",
+    "model": "Centek серии F",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "Centek серии F. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1008,
+    "brand": "TCL",
+    "factory": "TCL",
+    "series": "TCL",
+    "model": "TCL",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "TCL. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1009,
+    "brand": "Axioma",
+    "factory": "Axioma",
+    "series": "ASX",
+    "model": "ASX07P1",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 0
+      }
+    ],
+    "description": "Axioma ASX07P1. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1010,
+    "brand": "Mitsubishi Heavy",
+    "factory": "Mitsubishi Heavy",
+    "series": "STANDARD PLUS",
+    "model": "SRK20ZTL-W/SRC20ZTL-W",
+    "segment": "premium",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 20,
+        "price": 0
+      }
+    ],
+    "description": "Mitsubishi Heavy STANDARD PLUS SRK20ZTL-W/SRC20ZTL-W. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1011,
+    "brand": "Electrolux",
+    "factory": "Gree",
+    "series": "Portofino on/off",
+    "model": "Portofino on/off (завод Gree)",
+    "segment": "comfort",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "Electrolux Portofino on/off, завод Gree. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 1012,
+    "brand": "Electrolux",
+    "factory": "Gree",
+    "series": "Portofino DC inverter",
+    "model": "EACS/I-09HP/N8",
+    "segment": "comfort",
+    "type": "inverter",
+    "btuData": [
+      {
+        "btu": 9,
+        "price": 0
+      }
+    ],
+    "description": "Portofino DC inverter, завод Gree, Electrolux EACS/I-09HP/N8. Приоритетная позиция каталога, цена уточняется.",
+    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+  },
+  {
     "id": 1,
     "brand": "Rovex",
     "factory": "Midea",
