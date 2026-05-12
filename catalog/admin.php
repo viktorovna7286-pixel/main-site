@@ -7,36 +7,19 @@ header('Content-Type: text/html; charset=utf-8');
 header('X-Robots-Tag: noindex, nofollow');
 
 $configPath = __DIR__ . '/admin-config.php';
-$jsonLivePath = __DIR__ . '/catalog-data.json';
-$jsonDraftPath = __DIR__ . '/catalog-data-draft.json';
+$jsonCatalogPath = __DIR__ . '/catalog-data.json';
+/** Раньше использовался отдельный черновик — подхватываем один раз, если основного файла ещё нет. */
+$jsonLegacyDraftPath = __DIR__ . '/catalog-data-draft.json';
 
-/** Cookie: в каталоге автоматически подгружается черновик (тот же браузер, пока вы в админке). */
-const CATALOG_DRAFT_PREVIEW_COOKIE = 'vershina8848_catalog_draft';
-
-function catalog_admin_draft_cookie_options(): array
+function catalog_admin_migrate_legacy_draft(string $catalogPath, string $legacyDraftPath): void
 {
-    $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-        || ((string)($_SERVER['SERVER_PORT'] ?? '') === '443');
-
-    return [
-        'expires' => time() + 60 * 60 * 24 * 30,
-        'path' => '/',
-        'secure' => $secure,
-        'httponly' => false,
-        'samesite' => 'Lax',
-    ];
-}
-
-function catalog_admin_set_draft_preview_cookie(): void
-{
-    setcookie(CATALOG_DRAFT_PREVIEW_COOKIE, '1', catalog_admin_draft_cookie_options());
-}
-
-function catalog_admin_clear_draft_preview_cookie(): void
-{
-    $o = catalog_admin_draft_cookie_options();
-    $o['expires'] = time() - 3600;
-    setcookie(CATALOG_DRAFT_PREVIEW_COOKIE, '', $o);
+    if (is_readable($catalogPath)) {
+        return;
+    }
+    if (!is_readable($legacyDraftPath)) {
+        return;
+    }
+    @copy($legacyDraftPath, $catalogPath);
 }
 
 function catalog_admin_escape(string $s): string
@@ -94,17 +77,6 @@ function catalog_admin_validate_products(array $data): string
 function catalog_admin_encode_catalog(array $data): string
 {
     return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR) . "\n";
-}
-
-function catalog_admin_ensure_draft(string $draftPath, string $livePath): bool
-{
-    if (is_readable($draftPath)) {
-        return true;
-    }
-    if (!is_readable($livePath)) {
-        return false;
-    }
-    return @copy($livePath, $draftPath);
 }
 
 /** @return array{ok:bool, url?:string, error?:string} */
@@ -185,17 +157,14 @@ if (
     && ($_GET['export'] === 'json')
     && !empty($_SESSION['catalog_admin'])
 ) {
-    $which = (string)($_GET['which'] ?? 'live');
-    $path = ($which === 'live') ? $jsonLivePath : $jsonDraftPath;
-    if (!is_readable($path)) {
+    if (!is_readable($jsonCatalogPath)) {
         http_response_code(404);
-        echo $which === 'live' ? 'catalog-data.json не найден' : 'catalog-data-draft.json не найден';
+        echo 'catalog-data.json не найден';
         exit;
     }
     header('Content-Type: application/json; charset=utf-8');
-    $filename = ($which === 'live') ? 'catalog-data.json' : 'catalog-data-draft.json';
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
-    readfile($path);
+    header('Content-Disposition: attachment; filename="catalog-data.json"');
+    readfile($jsonCatalogPath);
     exit;
 }
 
@@ -212,8 +181,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         } elseif (hash_equals(CATALOG_ADMIN_PASSWORD, $pass)) {
             $_SESSION['catalog_admin'] = true;
             $_SESSION['csrf_catalog'] = bin2hex(random_bytes(24));
-            catalog_admin_ensure_draft($jsonDraftPath, $jsonLivePath);
-            catalog_admin_set_draft_preview_cookie();
             header('Location: admin.php');
             exit;
         } else {
@@ -223,7 +190,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
-    catalog_admin_clear_draft_preview_cookie();
     $_SESSION = [];
     header('Location: admin.php');
     exit;
@@ -235,11 +201,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SESSION['catalog_admin']))
     $csrf = (string)($_POST['csrf'] ?? '');
     $csrfFail = !hash_equals((string)($_SESSION['csrf_catalog'] ?? ''), $csrf);
 
-    if (isset($_POST['save_draft'])) {
+    if (isset($_POST['save_catalog'])) {
         if ($csrfFail) {
             $saveErr = 'Сессия устарела, обновите страницу';
         } else {
-            $raw = (string)($_POST['draft_json'] ?? '');
+            $raw = (string)($_POST['catalog_json'] ?? '');
             $data = json_decode($raw, true);
             if (json_last_error() !== JSON_ERROR_NONE) {
                 $saveErr = 'Некорректный JSON: ' . json_last_error_msg();
@@ -250,43 +216,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SESSION['catalog_admin']))
                 if ($saveErr === '') {
                     try {
                         $out = catalog_admin_encode_catalog($data);
-                        if (@file_put_contents($jsonDraftPath, $out, LOCK_EX) === false) {
-                            $saveErr = 'Не удалось записать catalog-data-draft.json — проверьте права на каталог.';
+                        catalog_admin_migrate_legacy_draft($jsonCatalogPath, $jsonLegacyDraftPath);
+                        if (is_readable($jsonCatalogPath)) {
+                            @copy($jsonCatalogPath, $jsonCatalogPath . '.prev');
+                        }
+                        if (@file_put_contents($jsonCatalogPath, $out, LOCK_EX) === false) {
+                            $saveErr = 'Не удалось записать catalog-data.json — проверьте права на каталог.';
                         } else {
-                            $saveMsg = 'Черновик сохранён. На сайте ещё старая версия — нажмите «Опубликовать на сайт», когда будет готово.';
+                            $saveMsg = 'Каталог сохранён (catalog-data.json). Резервная копия предыдущей версии: catalog-data.json.prev';
                         }
                     } catch (\Throwable $e) {
                         $saveErr = 'Ошибка кодирования JSON';
-                    }
-                }
-            }
-        }
-    } elseif (isset($_POST['publish_draft'])) {
-        if ($csrfFail) {
-            $saveErr = 'Сессия устарела, обновите страницу';
-        } elseif (!is_readable($jsonDraftPath)) {
-            $saveErr = 'Нет файла черновика catalog-data-draft.json';
-        } else {
-            $raw = (string) file_get_contents($jsonDraftPath);
-            $data = json_decode($raw, true);
-            if (json_last_error() !== JSON_ERROR_NONE || !is_array($data)) {
-                $saveErr = 'Черновик повреждён — исправьте в режиме кода или загрузите копию';
-            } else {
-                $saveErr = catalog_admin_validate_products($data);
-                if ($saveErr === '') {
-                    catalog_admin_ensure_draft($jsonDraftPath, $jsonLivePath);
-                    try {
-                        $out = catalog_admin_encode_catalog($data);
-                        if (is_readable($jsonLivePath)) {
-                            @copy($jsonLivePath, $jsonLivePath . '.prev');
-                        }
-                        if (@file_put_contents($jsonLivePath, $out, LOCK_EX) === false) {
-                            $saveErr = 'Не удалось записать catalog-data.json — проверьте права.';
-                        } else {
-                            $saveMsg = 'Каталог опубликован на сайт (обновился catalog-data.json). Резервная копия: catalog-data.json.prev';
-                        }
-                    } catch (\Throwable $e) {
-                        $saveErr = 'Ошибка при публикации';
                     }
                 }
             }
@@ -337,38 +277,34 @@ if (empty($_SESSION['csrf_catalog'])) {
     $_SESSION['csrf_catalog'] = bin2hex(random_bytes(24));
 }
 
-catalog_admin_ensure_draft($jsonDraftPath, $jsonLivePath);
-catalog_admin_set_draft_preview_cookie();
+catalog_admin_migrate_legacy_draft($jsonCatalogPath, $jsonLegacyDraftPath);
 
-$draftContent = '';
-if (!is_readable($jsonDraftPath)) {
-    $saveErr = $saveErr === '' ? 'Не найден черновик. Должен существовать catalog-data.json или catalog-data-draft.json' : $saveErr;
-    if (is_readable($jsonLivePath)) {
-        $draftContent = (string) file_get_contents($jsonLivePath);
-    }
+$catalogContent = '';
+if (!is_readable($jsonCatalogPath)) {
+    $saveErr = $saveErr === '' ? 'Не найден catalog-data.json — положите файл в папку catalog/ или зайдите после копирования с сервера.' : $saveErr;
 } else {
-    $draftContent = (string) file_get_contents($jsonDraftPath);
+    $catalogContent = (string) file_get_contents($jsonCatalogPath);
 }
 
-$draftParsed = [];
-$draftErrJson = '';
-if ($draftContent !== '') {
-    $tmp = json_decode($draftContent, true);
+$catalogParsed = [];
+$catalogErrJson = '';
+if ($catalogContent !== '') {
+    $tmp = json_decode($catalogContent, true);
     if (json_last_error() !== JSON_ERROR_NONE || !is_array($tmp)) {
-        $draftErrJson = 'Черновик не читается как JSON: откройте режим «Код» и исправьте.';
+        $catalogErrJson = 'Каталог не читается как JSON: откройте режим «Код» и исправьте.';
     } else {
-        $draftParsed = $tmp;
+        $catalogParsed = $tmp;
     }
 }
 
-$draftEmbedJson = '[]';
+$catalogEmbedJson = '[]';
 try {
-    $draftEmbedJson = json_encode(
-        $draftParsed,
+    $catalogEmbedJson = json_encode(
+        $catalogParsed,
         JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_THROW_ON_ERROR
     );
 } catch (\Throwable $e) {
-    $draftErrJson = 'Не удалось подготовить данные для формы';
+    $catalogErrJson = 'Не удалось подготовить данные для формы';
 }
 
 ?>
@@ -477,33 +413,29 @@ try {
 <header>
     <h1>Каталог · ВЕРШИНА 8848</h1>
     <div class="actions">
-        <a class="btn" href="catalog-data.json?v=<?= (string)time(); ?>" target="_blank">Сайт (JSON)</a>
-        <a class="btn" href="catalog-data-draft.json?v=<?= (string)time(); ?>" target="_blank">Черновик (JSON)</a>
-        <a class="btn" href="admin.php?export=json&which=draft">Скачать черновик</a>
-        <a class="btn" href="admin.php?export=json&which=live">Скачать опубликованное</a>
-        <a class="btn" href="index.html" target="_blank" rel="noopener">Открыть каталог (черновик, если вы вошли)</a>
-        <a class="btn" href="index.html">Каталог сайта</a>
+        <a class="btn" href="index.html" target="_blank" rel="noopener">Каталог</a>
+        <a class="btn" href="catalog-data.json?v=<?= (string)time(); ?>" target="_blank" rel="noopener">JSON</a>
+        <a class="btn" href="admin.php?export=json">Скачать</a>
         <form method="post" style="margin:0"><button type="submit" name="logout" value="1">Выйти</button></form>
     </div>
 </header>
 <div style="padding:1rem; max-width:1100px; margin:0 auto;">
 <?php if ($saveMsg !== '') { ?><p class="msg ok"><?= catalog_admin_escape($saveMsg); ?></p><?php } ?>
 <?php if ($saveErr !== '') { ?><p class="msg err"><?= catalog_admin_escape($saveErr); ?></p><?php } ?>
-<?php if ($draftErrJson !== '') { ?><p class="msg err"><?= catalog_admin_escape($draftErrJson); ?></p><?php } ?>
+<?php if ($catalogErrJson !== '') { ?><p class="msg err"><?= catalog_admin_escape($catalogErrJson); ?></p><?php } ?>
 
 <p class="hint" style="margin-top:0">
-    Заполните форму для каждого кондиционера: названия, мощности с ценами, <strong>от 1 до 5 фото</strong>. Черновик отдельно от гостевого сайта: «Сохранить черновик» → «Опубликовать на сайт».
-    <strong>После входа сюда</strong> страница каталога в том же браузере сама открывает черновик (файл <span class="mono">catalog-data-draft.json</span>). После «Выйти» снова показывается только опубликованный каталог.
+    Всё хранится в <span class="mono">catalog-data.json</span>. «Сохранить каталог» — сразу на сайте; копия прошлой версии: <span class="mono">catalog-data.json.prev</span>. На позицию — 1–5 фото.
 </p>
 
 <div class="tabs" role="tablist">
-    <button type="button" class="tab" role="tab" aria-selected="true" data-panel="simple">Кондиционеры (форма)</button>
-    <button type="button" class="tab" role="tab" aria-selected="false" data-panel="code">Для специалистов: JSON</button>
+    <button type="button" class="tab" role="tab" aria-selected="true" data-panel="simple">Форма</button>
+    <button type="button" class="tab" role="tab" aria-selected="false" data-panel="code">JSON</button>
 </div>
 
 <div id="panel-simple" class="panel active">
     <input type="hidden" id="admin-csrf" value="<?= catalog_admin_escape((string)$_SESSION['csrf_catalog']); ?>"/>
-    <?php if ($draftErrJson === '') { ?>
+    <?php if ($catalogErrJson === '') { ?>
     <div class="layout-editor">
         <div class="col-list">
             <div class="toolbar">
@@ -545,15 +477,15 @@ try {
                 <textarea class="in" id="fld-desc" rows="4" placeholder="Краткий текст как в каталоге"></textarea>
 
                 <p class="form-section-title">Фотографии</p>
-                <p class="hint" style="margin:0 0 .6rem;">Нужно <strong>от 1 до 5</strong> картинок. Первое фото — в сетке каталога, в карточке можно листать все. До 6 МБ каждая. Файл или ссылка.</p>
+                <p class="hint" style="margin:0 0 .6rem;">1–5 шт., до 6 МБ, файл или URL. Первое — в сетке каталога.</p>
                 <div class="upload-row" style="margin-bottom:.4rem;">
                     <input type="file" id="fld-image-file" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none"/>
                     <span class="upload-status" id="upload-status" aria-live="polite"></span>
                 </div>
                 <div id="photo-slots"></div>
 
-                <p class="form-section-title">Мощности (BTU) и розничная цена</p>
-                <p class="hint" style="margin:0 0 .5rem;">Для каждой мощности из прайса — своя строка:</p>
+                <p class="form-section-title">Мощности (BTU) и цена</p>
+                <p class="hint" style="margin:0 0 .5rem;">Строка на каждую мощность из прайса.</p>
                 <div id="btu-rows"></div>
                 <button type="button" id="btn-btu-add" class="btn" style="margin-top:.35rem;">+ Строка BTU</button>
 
@@ -590,43 +522,33 @@ try {
                     </div>
                 </div>
             </div>
-            <p class="hint">Слева заполняете форму — справа обновляется вид карточки на сайте. Несколько фото листаются в подробной карточке каталога.</p>
+            <p class="hint">Предпросмотр карточки как на сайте.</p>
         </div>
     </div>
     <form method="post" id="form-save-visual">
         <input type="hidden" name="csrf" value="<?= catalog_admin_escape((string)$_SESSION['csrf_catalog']); ?>"/>
-        <input type="hidden" name="draft_json" id="draft-json-visual"/>
-        <button class="primary" type="submit" name="save_draft" value="1">Сохранить черновик</button>
+        <input type="hidden" name="catalog_json" id="catalog-json-visual"/>
+        <button class="primary" type="submit" name="save_catalog" value="1">Сохранить каталог</button>
     </form>
     <?php } else { ?>
-    <p>Откройте вкладку «Режим кода» для исправления черновика.</p>
+    <p>Откройте вкладку «JSON» и исправьте данные.</p>
     <?php } ?>
 </div>
 
 <div id="panel-code" class="panel">
     <form method="post">
         <input type="hidden" name="csrf" value="<?= catalog_admin_escape((string)$_SESSION['csrf_catalog']); ?>"/>
-        <textarea class="code mono" name="draft_json" spellcheck="false"><?= catalog_admin_esc_textarea(str_ireplace('</textarea', '<\\/textarea', $draftContent)); ?></textarea>
-        <p class="hint">
-            Только черновик. Поля: id, brand, factory, series, model (необяз.), segment, type, btuData, description, <strong>images</strong> — массив из 1–5 URL (первое = главное фото), при необходимости дублируйте первое в поле image.
-        </p>
+        <textarea class="code mono" name="catalog_json" spellcheck="false"><?= catalog_admin_esc_textarea(str_ireplace('</textarea', '<\\/textarea', $catalogContent)); ?></textarea>
+        <p class="hint">id, brand, factory, series, segment, type, btuData, description, <strong>images</strong> (1–5 URL), model по желанию.</p>
         <div class="toolbar" style="margin-top:.75rem;">
-            <button class="primary" type="submit" name="save_draft" value="1">Сохранить черновик</button>
+            <button class="primary" type="submit" name="save_catalog" value="1">Сохранить каталог</button>
         </div>
     </form>
 </div>
 
-<form method="post" style="margin-top:1.25rem;">
-    <input type="hidden" name="csrf" value="<?= catalog_admin_escape((string)$_SESSION['csrf_catalog']); ?>"/>
-    <button class="primary" type="submit" name="publish_draft" value="1">Опубликовать на сайт</button>
-    <span class="hint" style="display:inline-block; margin-left:.5rem; max-width:28rem;">
-        Перенесёт содержимое черновика в catalog-data.json (после проверки). Сайт сразу начнёт показывать новую версию.
-    </span>
-</form>
-
 </div>
 
-<script type="application/json" id="initial-draft-json"><?= $draftEmbedJson; ?></script>
+<script type="application/json" id="initial-catalog-json"><?= $catalogEmbedJson; ?></script>
 <script>
 (function () {
     const tabs = document.querySelectorAll('.tab');
@@ -642,7 +564,7 @@ try {
         });
     });
 
-    const slug = document.getElementById('initial-draft-json');
+    const slug = document.getElementById('initial-catalog-json');
     if (!slug) return;
 
     var CATALOG_LABELS = {
@@ -1002,7 +924,7 @@ try {
     });
 
     document.getElementById('btn-delete').addEventListener('click', function () {
-        if (selected < 0 || !confirm('Удалить этот товар из черновика?')) return;
+        if (selected < 0 || !confirm('Удалить этот товар из каталога?')) return;
         catalog.splice(selected, 1);
         renderList();
         showEditor(catalog.length ? 0 : -1);
@@ -1034,7 +956,7 @@ try {
                         pushFieldsToCatalog();
                         refreshCardPreview();
                         status.className = 'upload-status ok';
-                        status.textContent = 'Фото ' + (uploadSlot + 1) + ' сохранено. Сохраните черновик.';
+                        status.textContent = 'Фото ' + (uploadSlot + 1) + ' сохранено. Сохраните каталог.';
                     } else {
                         status.className = 'upload-status err';
                         status.textContent = (j && j.error) ? j.error : 'Не удалось загрузить';
@@ -1064,7 +986,7 @@ try {
                     return false;
                 }
             }
-            document.getElementById('draft-json-visual').value = JSON.stringify(catalog);
+            document.getElementById('catalog-json-visual').value = JSON.stringify(catalog);
         });
     }
 

@@ -812,7 +812,7 @@
     </style>
 </head>
 <body>
-    <!-- catalog-data.json на сайте · Черновик: cookie после admin.php или ?draft=1 · Как у гостей: ?live=1 -->
+    <!-- Данные каталога: catalog-data.json -->
     <div id="root"></div>
 
     <script type="text/babel">
@@ -874,24 +874,6 @@
         };
         const formatRubPrice = (value) => (Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value).toLocaleString() + ' ₽' : 'По запросу');
 
-        const CATALOG_DRAFT_COOKIE = 'vershina8848_catalog_draft';
-        function readDraftPreviewCookie() {
-            if (typeof document === 'undefined') return false;
-            var prefix = CATALOG_DRAFT_COOKIE + '=';
-            var parts = document.cookie.split(';');
-            for (var i = 0; i < parts.length; i++) {
-                var c = parts[i].trim();
-                if (c.indexOf(prefix) === 0) return decodeURIComponent(c.substring(prefix.length)) === '1';
-            }
-            return false;
-        }
-        var __catalogQs = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
-        var __forceLiveCatalog = __catalogQs.get('live') === '1';
-        var __forceDraftParam = __catalogQs.get('draft') === '1';
-        var __useDraftCatalog = !__forceLiveCatalog && (__forceDraftParam || readDraftPreviewCookie());
-        const catalogDataSrc = __useDraftCatalog ? 'catalog-data-draft.json' : 'catalog-data.json';
-        const isDraftPreviewCatalog = __useDraftCatalog;
-
         const App = () => {
             const [activeTab, setActiveTab] = useState('catalog');
             const [segmentFilter, setSegmentFilter] = useState('all');
@@ -906,7 +888,6 @@
             const [catalogError, setCatalogError] = useState(null);
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
             const [headerScrolled, setHeaderScrolled] = useState(false);
-            const [draftMissingFallback, setDraftMissingFallback] = useState(false);
             const [imageViewerOpen, setImageViewerOpen] = useState(false);
 
             const BTU_AREA = {
@@ -960,12 +941,6 @@
                 window.addEventListener('hashchange', applyHashTab);
                 return () => window.removeEventListener('hashchange', applyHashTab);
             }, [applyHashTab]);
-
-            useEffect(() => {
-                if (isDraftPreviewCatalog && document.title.indexOf('чернов') === -1) {
-                    document.title = 'Просмотр черновика · ' + document.title;
-                }
-            }, []);
 
             useEffect(() => {
                 const lock = !!(selectedProduct || mobileMenuOpen);
@@ -1025,12 +1000,7 @@
                     setCatalogLoading(true);
                     setCatalogError(null);
                     try {
-                        const qs = catalogDataSrc === 'catalog-data-draft.json' ? `?v=${Date.now()}` : '';
-                        let res = await fetch(catalogDataSrc + qs, { cache: 'no-store' });
-                        if (!res.ok && isDraftPreviewCatalog && res.status === 404) {
-                            res = await fetch('catalog-data.json', { cache: 'no-store' });
-                            if (res.ok && !cancelled) setDraftMissingFallback(true);
-                        }
+                        const res = await fetch('catalog-data.json?v=' + Date.now(), { cache: 'no-store' });
                         if (!res.ok) throw new Error(`HTTP ${res.status}`);
                         const data = await res.json();
                         if (cancelled) return;
@@ -1162,39 +1132,6 @@
 
                     <div className="flex-1 pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pt-24 md:pt-28">
 
-                    {isDraftPreviewCatalog && draftMissingFallback && (
-                        <div
-                            className="mx-4 sm:mx-6 max-w-7xl xl:mx-auto mb-5 rounded-2xl sm:rounded-3xl px-4 sm:px-5 py-3 text-center font-main border border-white/15 bg-[#2a2618] text-gray-200 shadow-xl"
-                            role="status"
-                        >
-                            <strong className="uppercase tracking-wider text-[11px] md:text-xs text-amber-200/90">Черновик ещё не создан</strong>
-                            <span className="text-[11px] md:text-sm md:ml-2 block md:inline mt-1 md:mt-0">
-                                Показан опубликованный каталог. Зайдите в админку один раз — файл черновика появится сам.
-                            </span>
-                            <a href="admin.php" className="ml-2 font-bold text-amber-400 underline underline-offset-2 hover:no-underline text-[11px] md:text-sm whitespace-nowrap inline-block mt-2 md:mt-0 md:ml-4">
-                                Админка
-                            </a>
-                        </div>
-                    )}
-                    {isDraftPreviewCatalog && !draftMissingFallback && (
-                        <div
-                            className="mx-4 sm:mx-6 max-w-7xl xl:mx-auto mb-5 rounded-2xl sm:rounded-3xl px-4 sm:px-5 py-3 text-center font-main text-black border border-amber-400/70 shadow-xl"
-                            style={{ background: 'linear-gradient(90deg,rgba(250,230,158,.94),rgba(201,168,76,.92),rgba(250,230,158,.94))' }}
-                            role="status"
-                        >
-                            <strong className="uppercase tracking-wider text-[11px] md:text-xs">Просмотр черновика</strong>
-                            <span className="opacity-95 text-[11px] md:text-sm md:ml-2 block md:inline mt-1 md:mt-0">
-                                Гости видят только опубликованный каталог. Черновик подставляется автоматически после входа в админку (в этом браузере). Выйдите из админки — снова будет опубликованная версия.
-                            </span>
-                            <a
-                                href="index.html?live=1"
-                                className="ml-2 font-bold underline underline-offset-2 hover:no-underline text-[11px] md:text-sm whitespace-nowrap inline-block mt-2 md:mt-0 md:ml-4"
-                            >
-                                Смотреть как у гостей
-                            </a>
-                        </div>
-                    )}
-
                     {activeTab === 'calc' ? (
                         <div className="px-4 sm:px-6 py-10 sm:py-12 max-w-lg mx-auto fade-in pb-[max(2.5rem,env(safe-area-inset-bottom,0px))]">
                             <div className="text-center">
@@ -1246,8 +1183,8 @@
                             )}
                             {catalogError && !catalogLoading && (
                                 <div className="p-8 text-center rounded-3xl bg-red-950/40 border border-red-800 text-red-200 font-main">
-                                    Не удалось загрузить <span className="font-mono text-white">{catalogDataSrc}</span>: {catalogError}
-                                    <p className="text-sm text-gray-500 mt-2">Для режима черновика нужен файл catalog-data-draft.json в папке catalog. Откройте сайт через HTTP/S с папкой /catalog/</p>
+                                    Не удалось загрузить <span className="font-mono text-white">catalog-data.json</span>: {catalogError}
+                                    <p className="text-sm text-gray-500 mt-2">Проверьте, что файл лежит рядом с index.html в папке каталога и сайт открыт по HTTP/HTTPS.</p>
                                 </div>
                             )}
                             {!catalogLoading && !catalogError && products.length === 0 && (
