@@ -849,17 +849,14 @@
             return [];
         };
         const productCardImage = (p) => productImages(p)[0] || '';
-        const BASE_BTU_VALUES = [7, 9, 12, 18, 24, 36];
-        const withBaseBtuRows = (product) => {
+        /** Только мощности из админки: сортируем и убираем дубликаты по BTU. */
+        const normalizeProductBtu = (product) => {
             const sourceRows = Array.isArray(product?.btuData) ? product.btuData : [];
             const byBtu = new Map();
             sourceRows.forEach((row) => {
                 const btu = Number(row?.btu);
-                if (!Number.isFinite(btu)) return;
+                if (!Number.isFinite(btu) || btu <= 0) return;
                 byBtu.set(btu, { btu, price: Number(row?.price) || 0 });
-            });
-            BASE_BTU_VALUES.forEach((btu) => {
-                if (!byBtu.has(btu)) byBtu.set(btu, { btu, price: 0 });
             });
             return {
                 ...product,
@@ -889,12 +886,6 @@
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
             const [headerScrolled, setHeaderScrolled] = useState(false);
             const [imageViewerOpen, setImageViewerOpen] = useState(false);
-
-            const BTU_AREA = {
-                7: 21, 8: 21, 9: 27, 10: 30, 12: 36, 14: 42, 18: 54,
-                20: 62, 24: 72, 26: 78, 30: 90, 32: 96, 33: 99, 36: 108, 38: 115,
-            };
-            const areaForBtu = (b) => BTU_AREA[b] ?? Math.min(130, Math.round(Number(b) * 2.9));
 
             const btuFromAreaM2 = (sq) => {
                 const s = Number(sq);
@@ -1005,7 +996,7 @@
                         const data = await res.json();
                         if (cancelled) return;
                         if (!Array.isArray(data)) throw new Error('Ожидался массив товаров');
-                        setProducts(data.map(withBaseBtuRows));
+                        setProducts(data.map(normalizeProductBtu));
                     } catch (e) {
                         if (!cancelled) setCatalogError(e.message || String(e));
                     } finally {
@@ -1038,8 +1029,9 @@
             const openProduct = (p) => {
                 setGalleryIndex(0);
                 setSelectedProduct(p);
-                const target = calcResult ? p.btuData.find(d => d.btu === calcResult.btu) : p.btuData[0];
-                setSelectedBtu(target || p.btuData[0]);
+                const rows = Array.isArray(p.btuData) ? p.btuData : [];
+                const target = calcResult ? rows.find((d) => d.btu === calcResult.btu) : null;
+                setSelectedBtu(target || rows[0] || null);
             };
 
             const modalGallery = selectedProduct ? productImages(selectedProduct) : [];
@@ -1228,7 +1220,6 @@
                                                 <div className="flex-1 flex flex-col">
                                                     <p className="text-[10px] text-yellow-600 font-title uppercase mb-1 tracking-widest">{p.brand} — завод {p.factory}</p>
                                                     <h3 className="text-base font-title uppercase italic text-white/90 leading-tight line-clamp-2">{p.series}</h3>
-                                                    <p className="text-[10px] sm:text-[11px] text-gray-300 font-numbers uppercase mt-1.5 tracking-wide line-clamp-2">{p.model || '—'}</p>
                                                 </div>
                                                 <div className="border-t border-white/5 pt-5 mt-auto">
                                                     <span className="text-[8px] text-gray-500 font-title uppercase tracking-tighter block">Цена</span>
@@ -1275,7 +1266,6 @@
                                                 <div className="min-w-0 flex-1">
                                                     <p className="text-[10px] text-[#C9A84C] font-title uppercase tracking-wider truncate">{selectedProduct.brand} — завод {selectedProduct.factory}</p>
                                                     <p className="text-sm sm:text-base font-title uppercase italic text-white leading-snug line-clamp-3">{selectedProduct.series}</p>
-                                                    <p className="text-[10px] text-gray-500 font-numbers uppercase tracking-wide mt-0.5 truncate">{selectedProduct.model || '—'}</p>
                                                 </div>
                                             </div>
 
@@ -1288,7 +1278,10 @@
                                             <div>
                                                 <h4 className="text-[10px] font-title text-gray-500 uppercase tracking-[0.28em] mb-2 ml-0.5 italic">Мощность (BTU)</h4>
                                                 <div className="flex flex-wrap items-stretch gap-2">
-                                                    {selectedProduct.btuData.map((item) => (
+                                                    {selectedProduct.btuData.length === 0 ? (
+                                                        <p className="text-sm text-gray-400 font-description py-1">Мощности для этой позиции не заданы в каталоге — уточните по телефону или в заявке.</p>
+                                                    ) : (
+                                                        selectedProduct.btuData.map((item) => (
                                                         <button
                                                             type="button"
                                                             key={item.btu}
@@ -1299,9 +1292,9 @@
                                                                 <span className="text-xl sm:text-2xl font-numbers-bold leading-none text-white">{item.btu}</span>
                                                                 <span className="text-[9px] sm:text-[10px] font-title uppercase tracking-wide text-gray-500">BTU</span>
                                                             </span>
-                                                            <span className="text-[8px] sm:text-[9px] font-numbers text-gray-500 leading-tight">~{areaForBtu(item.btu)} м²</span>
                                                         </button>
-                                                    ))}
+                                                        ))
+                                                    )}
                                                     <div className="modal-metric-card min-w-[148px] flex-1 flex flex-col justify-center py-2.5 px-3">
                                                         <p className="text-[9px] uppercase text-gray-500 tracking-wider font-title">Стоимость</p>
                                                         <p className="text-xl sm:text-2xl font-numbers-bold text-[#C9A84C] tabular-nums leading-tight mt-0.5">{selectedBtu ? formatRubPrice(selectedBtu.price) : '—'}</p>
@@ -1314,7 +1307,7 @@
                                                 <p className="text-gray-200 text-sm leading-relaxed font-description border-l-2 border-[#C9A84C]/45 pl-3">{String(selectedProduct.description || '').replace(/\.\s*$/, '')}</p>
                                             </div>
 
-                                            <a href={`https://wa.me/79996368698?text=Заказ: ${selectedProduct.brand} - завод ${selectedProduct.factory}. Мощность ${selectedBtu?.btu} BTU. Цена: ${selectedBtu && Number(selectedBtu.price) > 0 ? selectedBtu.price + 'р.' : 'по запросу'}`} className="w-full btn-shared-solid font-title py-3 flex items-center justify-center gap-3 uppercase tracking-[0.28em] text-xs sm:text-sm shrink-0">
+                                            <a href={'https://wa.me/79996368698?text=' + encodeURIComponent('Заказ: ' + selectedProduct.brand + ' — завод ' + selectedProduct.factory + ', серия ' + (selectedProduct.series || '') + '. Мощность: ' + (selectedBtu ? selectedBtu.btu + ' BTU' : 'не выбрана') + '. Цена: ' + (selectedBtu && Number(selectedBtu.price) > 0 ? String(selectedBtu.price) + ' ₽' : 'по запросу'))} className="w-full btn-shared-solid font-title py-3 flex items-center justify-center gap-3 uppercase tracking-[0.28em] text-xs sm:text-sm shrink-0">
                                                 <IconZap /> Оформить заявку
                                             </a>
                                         </div>
