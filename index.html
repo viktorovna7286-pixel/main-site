@@ -246,6 +246,17 @@
             width: 1.18rem;
             height: 1.18rem;
         }
+        .contact-icon-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+        .contact-icon-btn--max {
+            padding: 0;
+            background: transparent;
+            overflow: hidden;
+        }
 
         /* Service Cards */
         .service-card {
@@ -939,8 +950,25 @@
         }
         @media (min-width: 768px) {
             .works-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
+            .works-card--wide {
+                grid-column: 1 / -1;
+            }
+        }
+        .works-case-thumbs--scroll {
+            max-height: 17rem;
+            overflow-y: auto;
+            padding-right: 0.15rem;
+            scrollbar-width: thin;
+            scrollbar-color: #c9a84c #1a1a1a;
+        }
+        .works-case-thumbs--scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .works-case-thumbs--scroll::-webkit-scrollbar-thumb {
+            background: #c9a84c;
+            border-radius: 4px;
         }
         .works-card {
             border-radius: 16px;
@@ -1001,9 +1029,31 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 0.45rem;
         }
+        .works-case-thumbs--dense {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+        @media (max-width: 640px) {
+            .works-case-thumbs--dense {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
         .works-case-thumbs img {
             border-radius: 10px;
             aspect-ratio: 4 / 3;
+            opacity: 0.72;
+            transition: opacity 0.2s ease, box-shadow 0.2s ease;
+        }
+        .works-case-thumbs img.is-active {
+            opacity: 1;
+            box-shadow: 0 0 0 2px #c9a84c;
+        }
+        .works-intro {
+            text-align: center;
+            max-width: 42rem;
+            margin: 0 auto 2rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+            line-height: 1.55;
         }
 
         .hero-trust-line {
@@ -1238,7 +1288,7 @@
                     <p class="text-gray-400 uppercase tracking-widest text-xs">опыта на рынке</p>
                 </div>
                 <div class="stats-item">
-                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">700+</span></div>
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">5 000+</span></div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">успешных монтажей</p>
                 </div>
                 <div class="stats-item">
@@ -1316,12 +1366,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>7–9 BTU</td>
-                                    <td class="text-gray-400">до 25 м²</td>
-                                    <td class="font-numbers-bold text-gold-gradient">10 000 ₽</td>
-                                </tr>
-                                <tr>
-                                    <td>12 BTU</td>
+                                    <td>7–12 BTU</td>
                                     <td class="text-gray-400">до 35 м²</td>
                                     <td class="font-numbers-bold text-gold-gradient">10 000 ₽</td>
                                 </tr>
@@ -1356,12 +1401,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>7–9 BTU</td>
-                                    <td class="text-gray-400">до 25 м²</td>
-                                    <td class="font-numbers-bold text-gold-gradient">7 000 ₽</td>
-                                </tr>
-                                <tr>
-                                    <td>12 BTU</td>
+                                    <td>7–12 BTU</td>
                                     <td class="text-gray-400">до 35 м²</td>
                                     <td class="font-numbers-bold text-gold-gradient">7 000 ₽</td>
                                 </tr>
@@ -1508,9 +1548,12 @@
     <!-- ГАЛЕРЕЯ РАБОТ -->
     <section id="works" class="py-14 sm:py-20 md:py-24 bg-[#1a1a1a]">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="section-title text-center mb-10 sm:mb-12 uppercase tracking-widest px-2">
+            <h2 class="section-title text-center mb-6 sm:mb-8 uppercase tracking-widest px-2">
                 Наши <span class="text-gold-gradient font-title-strong">работы</span>
             </h2>
+            <p class="works-intro font-description px-2">
+                Объекты с названием — отдельные кейсы; ниже — общая галерея монтажа наружных блоков (корзины, кронштейны, высота).
+            </p>
             <div class="works-grid">
                 <figure class="works-card">
                     <div class="works-case-gallery">
@@ -1530,6 +1573,76 @@
                         Проект реализуется поэтапно — первый шаг выполнен чисто и в срок.
                     </figcaption>
                 </figure>
+                <figure class="works-card">
+                    <div class="works-case-gallery">
+                        <img class="works-case-main" src="assets/cases/ministerial-lakes-4.png" alt="ЖК Министерские озёра — наружные блоки на фасаде" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-4.png" />
+                        <div class="works-case-thumbs">
+                            <img src="assets/cases/ministerial-lakes-1.png" alt="ЖК Министерские озёра — наружный блок Centek" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-1.png" />
+                            <img src="assets/cases/ministerial-lakes-2.png" alt="ЖК Министерские озёра — внутренний блок" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-2.png" />
+                            <img src="assets/cases/ministerial-lakes-3.png" alt="ЖК Министерские озёра — внутренний блок на лоджии" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-3.png" />
+                        </div>
+                    </div>
+                    <figcaption class="works-caption font-description">
+                        <strong style="color:#e8c96b;font-weight:600;">ЖК «Министерские озёра»</strong><br>
+                        Демонтаж старой сплит-системы с сохранением фреона, установка нового комплекта и прокладка трассы у соседей.
+                        Работы на высоте, аккуратная обвязка, уборка после монтажа.<br>
+                        <span style="color:#9ca3af;font-style:italic;">«Рекомендую за профессионализм и чистоту!» — Татьяна С.</span>
+                    </figcaption>
+                </figure>
+                <figure class="works-card works-card--wide">
+                    <div class="works-case-gallery">
+                        <img class="works-case-main" src="assets/cases/outdoor/outdoor-01.png" alt="Монтаж наружных блоков — корзина застройщика, вид сверху" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-01.png" />
+                        <div class="works-case-thumbs works-case-thumbs--dense works-case-thumbs--scroll" aria-label="Фото монтажа наружных блоков">
+                            <img src="assets/cases/outdoor/outdoor-02.png" alt="Монтаж наружных блоков — перфорированная корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-02.png" />
+                            <img src="assets/cases/outdoor/outdoor-03.png" alt="Монтаж наружных блоков — установка в корзине на высоте" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-03.png" />
+                            <img src="assets/cases/outdoor/outdoor-04.png" alt="Монтаж наружных блоков — геометрический рисунок корзины" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-04.png" />
+                            <img src="assets/cases/outdoor/outdoor-05.png" alt="Монтаж наружных блоков — обвязка трасс у фасада" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-05.png" />
+                            <img src="assets/cases/outdoor/outdoor-06.png" alt="Монтаж наружных блоков — вид на двор с высоты" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-06.png" />
+                            <img src="assets/cases/outdoor/outdoor-07.png" alt="Монтаж наружных блоков — высотная установка" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-07.png" />
+                            <img src="assets/cases/outdoor/outdoor-08.png" alt="Монтаж наружных блоков — корзина на фасаде ЖК" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-08.png" />
+                            <img src="assets/cases/outdoor/outdoor-09.png" alt="Монтаж наружных блоков — несколько этажей" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-09.png" />
+                            <img src="assets/cases/outdoor/outdoor-10.png" alt="Монтаж наружных блоков — двор и парковка" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-10.png" />
+                            <img src="assets/cases/outdoor/outdoor-11.png" alt="Монтаж наружных блоков — ряд корзин на фасаде" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-11.png" />
+                            <img src="assets/cases/outdoor/outdoor-12.png" alt="Монтаж наружных блоков — блок на нижнем этаже" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-12.png" />
+                            <img src="assets/cases/outdoor/outdoor-13.png" alt="Монтаж наружных блоков — корзины в линию" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-13.png" />
+                            <img src="assets/cases/outdoor/outdoor-14.png" alt="Монтаж наружных блоков — соседние установки" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-14.png" />
+                            <img src="assets/cases/outdoor/outdoor-15.png" alt="Монтаж наружных блоков — фасад с несколькими блоками" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-15.png" />
+                            <img src="assets/cases/outdoor/outdoor-16.png" alt="Монтаж наружных блоков — синяя корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-16.png" />
+                            <img src="assets/cases/outdoor/outdoor-17.png" alt="Монтаж наружных блоков — жёлтая корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-17.png" />
+                            <img src="assets/cases/outdoor/outdoor-18.png" alt="Монтаж наружных блоков — синий фасад" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-18.png" />
+                            <img src="assets/cases/outdoor/outdoor-19.png" alt="Монтаж наружных блоков — бежевый блок в корзине" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-19.png" />
+                            <img src="assets/cases/outdoor/outdoor-20.png" alt="Монтаж наружных блоков — цветная корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-20.png" />
+                            <img src="assets/cases/outdoor/outdoor-21.png" alt="Монтаж наружных блоков — кронштейны" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-21.png" />
+                            <img src="assets/cases/outdoor/outdoor-22.png" alt="Монтаж наружных блоков — обвязка фольгой" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-22.png" />
+                            <img src="assets/cases/outdoor/outdoor-23.png" alt="Монтаж наружных блоков — блок на кронштейнах" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-23.png" />
+                            <img src="assets/cases/outdoor/outdoor-24.png" alt="Монтаж наружных блоков — магистраль в изоляции" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-24.png" />
+                            <img src="assets/cases/outdoor/outdoor-25.png" alt="Монтаж наружных блоков — вертикальная трасса" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-25.png" />
+                            <img src="assets/cases/outdoor/outdoor-26.png" alt="Монтаж наружных блоков — двор ЖК" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-26.png" />
+                            <img src="assets/cases/outdoor/outdoor-27.png" alt="Монтаж наружных блоков — площадка и газон" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-27.png" />
+                            <img src="assets/cases/outdoor/outdoor-28.png" alt="Монтаж наружных блоков — паркинг" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-28.png" />
+                            <img src="assets/cases/outdoor/outdoor-29.png" alt="Монтаж наружных блоков — благоустроенный двор" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-29.png" />
+                            <img src="assets/cases/outdoor/outdoor-30.png" alt="Монтаж наружных блоков — установка над двором" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-30.png" />
+                            <img src="assets/cases/outdoor/outdoor-31.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-31.png" />
+                            <img src="assets/cases/outdoor/outdoor-32.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-32.png" />
+                            <img src="assets/cases/outdoor/outdoor-33.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-33.png" />
+                            <img src="assets/cases/outdoor/outdoor-34.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-34.png" />
+                            <img src="assets/cases/outdoor/outdoor-35.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-35.png" />
+                            <img src="assets/cases/outdoor/outdoor-36.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-36.png" />
+                            <img src="assets/cases/outdoor/outdoor-37.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-37.png" />
+                            <img src="assets/cases/outdoor/outdoor-38.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-38.png" />
+                            <img src="assets/cases/outdoor/outdoor-39.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-39.png" />
+                        </div>
+                    </div>
+                    <figcaption class="works-caption font-description">
+                        <strong style="color:#e8c96b;font-weight:600;">Монтаж наружных блоков</strong><br>
+                        Более 5 000 установок в жилых комплексах Сочи и края: штатные корзины застройщика, кронштейны,
+                        работа на высоте без автовышки. Аккуратная обвязка трасс, единый стандарт на фасаде, пусконаладка и уборка после монтажа.
+                        <span style="color:#6b7280;display:block;margin-top:0.5rem;">Нажмите на миниатюру — фото откроется крупно; по большому фото — полноэкранный просмотр всех снимков.</span>
+                    </figcaption>
+                </figure>
+
+
+
             </div>
         </div>
     </section>
@@ -1620,6 +1733,12 @@
             <div id="reviews-scroller" class="reviews-scroller">
                 <article class="review-card">
                     <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
+                    <p class="review-author">Татьяна С.</p>
+                    <p class="text-gray-500 text-xs mb-3 font-numbers-medium">25 марта 2025 · ЖК «Министерские озёра»</p>
+                    <p class="text-gray-400 text-sm leading-relaxed font-description">Заказывала демонтаж старого кондиционера и установку нового. Мастера приехали вовремя, работали аккуратно. Старый блок сняли аккуратно, фреон сохранили. Новый блок установили быстро и аккуратно. У соседей новую трассу проложили ровно, новый кондиционер установили, за собой всё убрали, мусора не осталось. Кондиционер работает тихо, холодит отлично. Рекомендую за профессионализм и чистоту!</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-stars mb-2" aria-label="Оценка 5 из 5">★★★★★</div>
                     <p class="review-author">Марина В.</p>
                     <p class="text-gray-500 text-xs mb-3 font-numbers-medium">15 мая 2025</p>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Профессионалы своего дела с большой буквы! Кирилл просто волшебник. Когда пришёл устанавливать кондиционер, выяснилось, что трасса не рабочая (сломана медная трубка). Подтянул на помощь Илью и вуаля! Через час в нашем доме заработал кондиционер. Большое спасибо всему коллективу: от консультации до установки легко и просто. Индивидуальный подход, профессионализм, отзывчивость — это малая доля того сервиса, что вас ждёт в этой компании.</p>
@@ -1667,8 +1786,8 @@
                     <a href="https://t.me/SANTA_KULAEV" target="_blank" rel="noopener noreferrer" class="contact-icon-btn bg-[#229ED9] text-white" aria-label="Telegram" title="Telegram">
                         <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65c-.39 0-.33-.15-.46-.52l-1.17-3.87 9.06-5.73"/><path d="M9.78 18.65c.3 0 .43-.14.6-.3l1.65-1.6-2.05-1.24"/><path d="M10 15.52l4.98 3.68c.57.31.98.15 1.12-.53l2-9.43c.2-.84-.3-1.22-.84-.98L5.5 12.8c-.8.31-.8.75-.15.95l3.02.95 7-4.41c.33-.2.64-.09.39.13"/></svg>
                     </a>
-                    <a href="https://max.ru/vershina8848" target="_blank" rel="noopener noreferrer" class="contact-icon-btn bg-[#2a2a2a] text-white" aria-label="Max" title="Max">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 7h4l4 5 4-5h4M6 19l6-7 6 7"/></svg>
+                    <a href="https://max.ru/u/f9LHodD0cOKMXtXUE2NiUeWu5_wKaKFwVWYqZve2mAFFOgSXr2cMIzBs7xA" target="_blank" rel="noopener noreferrer" class="contact-icon-btn contact-icon-btn--max" aria-label="MAX — написать Кириллу" title="MAX">
+                        <img src="assets/max-icon.png" width="48" height="48" alt="" loading="lazy" decoding="async" />
                     </a>
                 </div>
             </div>
@@ -1845,6 +1964,26 @@
             }
 
             loadPublishedReviews();
+        })();
+
+        (function () {
+            document.querySelectorAll('.works-case-gallery').forEach(function (gallery) {
+                var main = gallery.querySelector('.works-case-main');
+                var thumbs = gallery.querySelectorAll('.works-case-thumbs img');
+                if (!main || !thumbs.length) return;
+                thumbs.forEach(function (thumb) {
+                    thumb.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var full = thumb.getAttribute('data-lightbox') || thumb.src;
+                        main.src = thumb.src;
+                        main.setAttribute('data-lightbox', full);
+                        main.alt = thumb.alt || '';
+                        thumbs.forEach(function (t) { t.classList.remove('is-active'); });
+                        thumb.classList.add('is-active');
+                    });
+                });
+            });
         })();
 
         (function () {
