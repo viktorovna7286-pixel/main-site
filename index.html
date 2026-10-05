@@ -1108,6 +1108,11 @@
         .works-case-thumbs--scroll {
             display: none;
         }
+        .works-card--compact.works-card--outdoor .works-case-thumbs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.45rem;
+        }
         .works-card {
             border-radius: 16px;
             overflow: hidden;
@@ -1185,6 +1190,19 @@
             opacity: 1;
             box-shadow: 0 0 0 2px #c9a84c;
         }
+        .service-svg-icon {
+            width: 3rem;
+            height: 3rem;
+            display: block;
+            margin: 0 auto 1.5rem;
+            flex-shrink: 0;
+            stroke: var(--color-accent);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
         .works-intro {
             text-align: center;
             max-width: 42rem;
@@ -1450,31 +1468,48 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-8">
                 <!-- Карточка 1 -->
                 <div class="service-card p-6 sm:p-8 text-center">
-                    <div class="text-5xl mb-6">🏔</div>
+                    <svg class="service-svg-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="9" width="20" height="7" rx="2"/>
+                        <path d="M7 12h2M13 12h2M7 16v2M17 16v2"/>
+                    </svg>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Продажа</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Оригинальное оборудование — подбираем под площадь и бюджет.</p>
                 </div>
                 <!-- Карточка 2 -->
                 <div class="service-card p-6 sm:p-8 text-center">
-                    <div class="text-5xl mb-6">🔧</div>
+                    <svg class="service-svg-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                    </svg>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Монтаж</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Монтаж по регламенту, пусконаладка и сдача по чек-листу.</p>
                 </div>
                 <!-- Карточка 3 -->
                 <div class="service-card p-6 sm:p-8 text-center">
-                    <div class="text-5xl mb-6">❄</div>
+                    <svg class="service-svg-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <line x1="12" y1="2" x2="12" y2="22"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                        <line x1="4.93" y1="19.07" x2="19.07" y2="4.93"/>
+                        <circle cx="12" cy="12" r="2" fill="var(--color-accent)" stroke="none"/>
+                    </svg>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Обслуживание</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">ТО, чистка и диагностика — техника без сюрпризов в сезон.</p>
                 </div>
                 <!-- Карточка 4 -->
                 <div class="service-card p-6 sm:p-8 text-center">
-                    <div class="text-5xl mb-6">🛠</div>
+                    <svg class="service-svg-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+                    </svg>
                     <h3 class="text-xl mb-4 uppercase"><span class="font-title-strong">Ремонт</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Ищем причину, чиним и меняем узлы — комплектующие по согласованию.</p>
                 </div>
                 <!-- Карточка 5 -->
                 <div class="service-card p-6 sm:p-8 text-center">
-                    <div class="text-5xl mb-6" aria-hidden="true">🧗‍♂️</div>
+                    <svg class="service-svg-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 20L12 4L21 20H3Z"/>
+                        <path d="M9 20L12 13L15 20"/>
+                    </svg>
                     <h3 class="text-lg xl:text-xl mb-4 uppercase leading-tight"><span class="font-title-strong">Промышленный альпинизм</span></h3>
                     <p class="text-gray-400 text-sm leading-relaxed font-description">Высотный монтаж на фасаде без автовышки.</p>
                 </div>
@@ -1728,54 +1763,55 @@
                         <span class="works-photo-hint">+3 фото в просмотре</span>
                     </figcaption>
                 </figure>
-                <figure class="works-card works-card--compact">
+                <figure class="works-card works-card--compact works-card--outdoor">
                     <div class="works-case-gallery">
                         <img class="works-case-main" src="assets/cases/outdoor/outdoor-01.png" alt="Монтаж наружных блоков — корзина застройщика, вид сверху" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-01.png" />
-                        <div class="works-case-thumbs works-case-thumbs--dense works-case-thumbs--scroll" aria-label="Фото монтажа наружных блоков">
-                            <img src="assets/cases/outdoor/outdoor-02.png" alt="Монтаж наружных блоков — перфорированная корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-02.png" />
+                        <div class="works-case-thumbs works-case-thumbs--dense">
                             <img src="assets/cases/outdoor/outdoor-03.png" alt="Монтаж наружных блоков — установка в корзине на высоте" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-03.png" />
-                            <img src="assets/cases/outdoor/outdoor-04.png" alt="Монтаж наружных блоков — геометрический рисунок корзины" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-04.png" />
-                            <img src="assets/cases/outdoor/outdoor-05.png" alt="Монтаж наружных блоков — обвязка трасс у фасада" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-05.png" />
-                            <img src="assets/cases/outdoor/outdoor-06.png" alt="Монтаж наружных блоков — вид на двор с высоты" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-06.png" />
                             <img src="assets/cases/outdoor/outdoor-07.png" alt="Монтаж наружных блоков — высотная установка" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-07.png" />
-                            <img src="assets/cases/outdoor/outdoor-08.png" alt="Монтаж наружных блоков — корзина на фасаде ЖК" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-08.png" />
-                            <img src="assets/cases/outdoor/outdoor-09.png" alt="Монтаж наружных блоков — несколько этажей" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-09.png" />
-                            <img src="assets/cases/outdoor/outdoor-10.png" alt="Монтаж наружных блоков — двор и парковка" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-10.png" />
                             <img src="assets/cases/outdoor/outdoor-11.png" alt="Монтаж наружных блоков — ряд корзин на фасаде" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-11.png" />
-                            <img src="assets/cases/outdoor/outdoor-12.png" alt="Монтаж наружных блоков — блок на нижнем этаже" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-12.png" />
-                            <img src="assets/cases/outdoor/outdoor-13.png" alt="Монтаж наружных блоков — корзины в линию" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-13.png" />
-                            <img src="assets/cases/outdoor/outdoor-14.png" alt="Монтаж наружных блоков — соседние установки" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-14.png" />
-                            <img src="assets/cases/outdoor/outdoor-15.png" alt="Монтаж наружных блоков — фасад с несколькими блоками" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-15.png" />
-                            <img src="assets/cases/outdoor/outdoor-16.png" alt="Монтаж наружных блоков — синяя корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-16.png" />
                             <img src="assets/cases/outdoor/outdoor-17.png" alt="Монтаж наружных блоков — жёлтая корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-17.png" />
-                            <img src="assets/cases/outdoor/outdoor-18.png" alt="Монтаж наружных блоков — синий фасад" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-18.png" />
-                            <img src="assets/cases/outdoor/outdoor-19.png" alt="Монтаж наружных блоков — бежевый блок в корзине" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-19.png" />
-                            <img src="assets/cases/outdoor/outdoor-20.png" alt="Монтаж наружных блоков — цветная корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-20.png" />
-                            <img src="assets/cases/outdoor/outdoor-21.png" alt="Монтаж наружных блоков — кронштейны" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-21.png" />
-                            <img src="assets/cases/outdoor/outdoor-22.png" alt="Монтаж наружных блоков — обвязка фольгой" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-22.png" />
-                            <img src="assets/cases/outdoor/outdoor-23.png" alt="Монтаж наружных блоков — блок на кронштейнах" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-23.png" />
-                            <img src="assets/cases/outdoor/outdoor-24.png" alt="Монтаж наружных блоков — магистраль в изоляции" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-24.png" />
-                            <img src="assets/cases/outdoor/outdoor-25.png" alt="Монтаж наружных блоков — вертикальная трасса" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-25.png" />
-                            <img src="assets/cases/outdoor/outdoor-26.png" alt="Монтаж наружных блоков — двор ЖК" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-26.png" />
-                            <img src="assets/cases/outdoor/outdoor-27.png" alt="Монтаж наружных блоков — площадка и газон" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-27.png" />
-                            <img src="assets/cases/outdoor/outdoor-28.png" alt="Монтаж наружных блоков — паркинг" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-28.png" />
-                            <img src="assets/cases/outdoor/outdoor-29.png" alt="Монтаж наружных блоков — благоустроенный двор" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-29.png" />
-                            <img src="assets/cases/outdoor/outdoor-30.png" alt="Монтаж наружных блоков — установка над двором" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-30.png" />
-                            <img src="assets/cases/outdoor/outdoor-31.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-31.png" />
-                            <img src="assets/cases/outdoor/outdoor-32.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-32.png" />
-                            <img src="assets/cases/outdoor/outdoor-33.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-33.png" />
-                            <img src="assets/cases/outdoor/outdoor-34.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-34.png" />
-                            <img src="assets/cases/outdoor/outdoor-35.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-35.png" />
-                            <img src="assets/cases/outdoor/outdoor-36.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-36.png" />
-                            <img src="assets/cases/outdoor/outdoor-37.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-37.png" />
-                            <img src="assets/cases/outdoor/outdoor-38.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-38.png" />
-                            <img src="assets/cases/outdoor/outdoor-39.png" alt="Монтаж наружных блоков — объект" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-39.png" />
+                            <!-- hidden: lightbox navigation -->
+                            <img src="assets/cases/outdoor/outdoor-02.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-02.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-04.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-04.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-05.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-05.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-06.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-06.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-08.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-08.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-09.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-09.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-10.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-10.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-12.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-12.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-13.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-13.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-14.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-14.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-15.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-15.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-16.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-16.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-18.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-18.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-19.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-19.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-20.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-20.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-21.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-21.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-22.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-22.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-23.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-23.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-24.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-24.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-25.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-25.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-26.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-26.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-27.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-27.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-28.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-28.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-29.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-29.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-30.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-30.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-31.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-31.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-32.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-32.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-33.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-33.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-34.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-34.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-35.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-35.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-36.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-36.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-37.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-37.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-38.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-38.png" style="display:none"/>
+                            <img src="assets/cases/outdoor/outdoor-39.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-39.png" style="display:none"/>
                         </div>
                     </div>
                     <figcaption class="works-caption font-description">
                         <strong style="color:#e8c96b;font-weight:600;">Монтаж наружных блоков</strong><br>
-                        5 000+ объектов: корзины ЖК, кронштейны, высота без автовышки, аккуратная обвязка.
-                        <span class="works-photo-hint">39 фото — листайте в просмотре</span>
+                        Корзины ЖК, кронштейны, высота без автовышки.
+                        <span class="works-photo-hint">+38 фото в просмотре</span>
                     </figcaption>
                 </figure>
 

@@ -1517,8 +1517,16 @@
                                                     const row = p.btuData.find((d) => d.btu === calcResult.btu);
                                                     const price = row ? row.price : Math.min(...p.btuData.map((d) => d.price));
                                                     return (
-                                                        <div key={p.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-3 border-t border-white/10">
-                                                            <div className="min-w-0">
+                                                        <div key={p.id} className="flex items-center gap-3 py-3 border-t border-white/10">
+                                                            {p.image && (
+                                                                <img
+                                                                    src={p.image}
+                                                                    alt={p.brand}
+                                                                    className="w-14 h-14 object-cover rounded-xl shrink-0"
+                                                                    style={{boxShadow: '0 0 0 1px rgba(201,168,76,0.35), 0 0 18px rgba(201,168,76,0.28)'}}
+                                                                />
+                                                            )}
+                                                            <div className="min-w-0 flex-1">
                                                                 <p className="text-xs text-yellow-600 font-title uppercase tracking-wider truncate">{p.brand}</p>
                                                                 <p className="text-sm text-white font-title italic truncate">{p.series}</p>
                                                                 <p className="text-yellow-500 font-numbers-bold text-lg mt-1">{price.toLocaleString()} ₽</p>
