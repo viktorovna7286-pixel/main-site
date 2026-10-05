@@ -935,9 +935,9 @@
             color: var(--color-accent);
         }
 
-        /* Карточка каталога: светлая только зона фото, скругление только сверху */
+        /* Карточка каталога: тёмная зона фото, скругление только сверху */
         .catalog-card-media {
-            background: #ffffff;
+            background: #252525;
             border-radius: 1.75rem 1.75rem 0 0;
         }
         @media (min-width: 640px) {
@@ -1584,7 +1584,7 @@
                                             <div className="h-44 sm:h-52 md:h-56 shrink-0 relative overflow-hidden catalog-card-media">
                                                 <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-4">
                                                     <div className="relative inline-block max-w-full max-h-full">
-                                                        <img src={productCardImage(p)} className="block max-h-[9.5rem] sm:max-h-[11.5rem] md:max-h-[12.5rem] w-auto max-w-full object-contain object-center bg-white grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 relative z-0" alt={p.series} />
+                                                        <img src={productCardImage(p)} className="block max-h-[9.5rem] sm:max-h-[11.5rem] md:max-h-[12.5rem] w-auto max-w-full object-contain object-center grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 relative z-0" alt={p.series} />
                                                         <div className="catalog-photo-badges" aria-hidden="true">
                                                             <span className={`catalog-chip ${chipSegClass(p.segment)}`}>{CATALOG_LABELS.segment[String(p.segment || '').toLowerCase()] || p.segment}</span>
                                                             <span className={`catalog-chip ${chipTypeClass(p.type)}`}>{CATALOG_LABELS.type[String(p.type || '').toLowerCase()] || p.type}</span>
