@@ -1508,42 +1508,15 @@
             100% { transform: translateY(-5vh) translateX(calc(var(--dx, 20px) * 2)) scale(0.3); opacity: 0; }
         }
 
-        /* Логотип SVG */
+        /* Логотип */
         #pl-logo {
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.6rem;
+            width: clamp(260px, 70vw, 480px);
             opacity: 0;
             transform: scale(0.82) translateY(18px);
             animation: pl-logo-in 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.6s forwards;
-            filter: drop-shadow(0 0 24px rgba(201,168,76,0.55))
-                    drop-shadow(0 0 60px rgba(201,168,76,0.2));
-        }
-        #pl-logo svg {
-            width: clamp(72px, 20vw, 110px);
-            height: auto;
-        }
-        #pl-logo .pl-logo-8848 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2.8rem, 10vw, 5rem);
-            letter-spacing: 0.18em;
-            line-height: 1;
-            background: linear-gradient(135deg, #b8882a 0%, #C9A84C 30%, #f0d878 55%, #e8c96b 75%, #C9A84C 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        #pl-logo .pl-logo-sub {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 500;
-            font-size: clamp(0.55rem, 2.5vw, 0.8rem);
-            letter-spacing: 0.55em;
-            text-transform: uppercase;
-            color: rgba(201,168,76,0.85);
-            margin-top: -0.3rem;
+            filter: drop-shadow(0 0 28px rgba(201,168,76,0.5))
+                    drop-shadow(0 0 70px rgba(201,168,76,0.2));
         }
         @keyframes pl-logo-in {
             to { opacity: 1; transform: scale(1) translateY(0); }
@@ -1616,25 +1589,12 @@
 
         /* Мобильная адаптация прелоадера */
         @media (max-width: 480px) {
-            #pl-logo svg {
-                width: clamp(56px, 16vw, 80px);
-            }
-            #pl-logo .pl-logo-8848 {
-                font-size: clamp(2.4rem, 14vw, 3.2rem);
-                letter-spacing: 0.12em;
-            }
-            #pl-logo .pl-logo-sub {
-                font-size: clamp(0.5rem, 3.5vw, 0.65rem);
-                letter-spacing: 0.45em;
+            #pl-logo {
+                width: clamp(220px, 88vw, 320px);
             }
             #pl-logo-glow {
-                width: 75vw;
-                height: 75vw;
-            }
-            .pl-tagline {
-                font-size: clamp(0.55rem, 3.2vw, 0.75rem);
-                letter-spacing: 0.1em;
-                padding: 0 1rem;
+                width: 80vw;
+                height: 80vw;
             }
             .pl-bar-wrap {
                 width: min(200px, 72vw);
@@ -1707,27 +1667,8 @@
         <!-- Свечение под логотипом -->
         <div id="pl-logo-glow"></div>
 
-        <!-- Логотип -->
-        <div id="pl-logo" aria-label="8848 Вершина">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <defs>
-                    <linearGradient id="plg" x1="3" y1="4" x2="21" y2="20" gradientUnits="userSpaceOnUse">
-                        <stop offset="0%"   stop-color="#b8882a"/>
-                        <stop offset="35%"  stop-color="#C9A84C"/>
-                        <stop offset="60%"  stop-color="#f0d878"/>
-                        <stop offset="100%" stop-color="#C9A84C"/>
-                    </linearGradient>
-                </defs>
-                <path stroke="url(#plg)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
-                      d="M3 20L12 4L21 20H3Z"/>
-                <path stroke="url(#plg)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
-                      d="M9 20L12 14L15 20"/>
-            </svg>
-            <div class="pl-logo-8848">8848</div>
-            <div class="pl-logo-sub">Вершина</div>
-        </div>
-
-        <div class="pl-tagline">после нас — свежее только на Эвересте</div>
+        <!-- Логотип (прозрачный PNG) -->
+        <img id="pl-logo" src="assets/logo-8848-t.png" alt="8848 Вершина" draggable="false">
 
         <div class="pl-bar-wrap"><div class="pl-bar"></div></div>
     </div>
