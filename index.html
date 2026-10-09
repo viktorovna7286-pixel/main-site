@@ -1426,9 +1426,190 @@
             margin-bottom: 1.5rem;
             color: rgba(255, 255, 255, 0.92);
         }
+
+        /* ===== ПРЕЛОАДЕР ===== */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #0a0a0a;
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
+                        transform 0.7s cubic-bezier(0.4,0,0.2,1);
+        }
+        #preloader.fade-out {
+            opacity: 0;
+            transform: scale(1.04);
+            pointer-events: none;
+        }
+
+        /* Фоновое изображение горы */
+        #pl-bg {
+            position: absolute;
+            inset: -5%;
+            background: url('assets/hero-bg.jpg') center center / cover no-repeat;
+            transform: scale(1.08);
+            animation: pl-bg-in 1.4s cubic-bezier(0.25,1,0.5,1) forwards;
+            filter: brightness(0.35) saturate(0.8);
+        }
+        @keyframes pl-bg-in {
+            from { transform: scale(1.18); opacity: 0; }
+            to   { transform: scale(1.04); opacity: 1; }
+        }
+
+        /* Тёмные градиенты поверх фото */
+        #pl-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 50% 55%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%),
+                linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%),
+                linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 30%);
+        }
+
+        /* Золотые световые лучи */
+        .pl-ray {
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                rgba(201,168,76,0) 20%,
+                rgba(201,168,76,0.55) 50%,
+                rgba(232,201,107,0.35) 65%,
+                transparent 100%);
+            transform-origin: top center;
+            pointer-events: none;
+            animation: pl-ray-sweep linear infinite;
+        }
+        @keyframes pl-ray-sweep {
+            0%   { opacity: 0; transform: translateX(-120vw) skewX(-18deg); }
+            15%  { opacity: 1; }
+            85%  { opacity: 0.6; }
+            100% { opacity: 0; transform: translateX(120vw) skewX(-18deg); }
+        }
+
+        /* Золотые частицы-искры */
+        .pl-spark {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pl-spark-rise linear infinite;
+        }
+        @keyframes pl-spark-rise {
+            0%   { transform: translateY(105vh) translateX(0) scale(0.5); opacity: 0; }
+            8%   { opacity: 1; }
+            50%  { transform: translateY(50vh) translateX(var(--dx, 20px)) scale(1); }
+            92%  { opacity: 0.5; }
+            100% { transform: translateY(-5vh) translateX(calc(var(--dx, 20px) * 2)) scale(0.3); opacity: 0; }
+        }
+
+        /* Логотип */
+        #pl-logo {
+            position: relative;
+            width: clamp(180px, 55vw, 340px);
+            opacity: 0;
+            transform: scale(0.82) translateY(18px);
+            animation: pl-logo-in 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.6s forwards;
+            filter: drop-shadow(0 0 28px rgba(201,168,76,0.6))
+                    drop-shadow(0 0 60px rgba(201,168,76,0.25));
+        }
+        @keyframes pl-logo-in {
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Пульсирующее свечение вокруг лого */
+        #pl-logo-glow {
+            position: absolute;
+            width: clamp(220px, 65vw, 400px);
+            height: clamp(220px, 65vw, 400px);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+            animation: pl-glow-pulse 2s ease-in-out 0.6s infinite;
+            pointer-events: none;
+        }
+        @keyframes pl-glow-pulse {
+            0%, 100% { transform: scale(0.9); opacity: 0.6; }
+            50%       { transform: scale(1.15); opacity: 1; }
+        }
+
+        .pl-tagline {
+            position: relative;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: clamp(0.6rem, 2.8vw, 0.82rem);
+            letter-spacing: 0.18em;
+            color: rgba(232,201,107,0.75);
+            margin-top: 1.2rem;
+            text-align: center;
+            padding: 0 1.5rem;
+            opacity: 0;
+            animation: pl-fadein 0.7s ease 1.3s forwards;
+            text-shadow: 0 0 12px rgba(201,168,76,0.5);
+        }
+        @keyframes pl-fadein {
+            to { opacity: 1; }
+        }
+
+        /* Полоска прогресса */
+        .pl-bar-wrap {
+            position: absolute;
+            bottom: clamp(1.5rem, 5vh, 2.5rem);
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(260px, 65vw);
+            height: 2px;
+            background: rgba(201,168,76,0.15);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .pl-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #C9A84C, #fff0a0, #C9A84C);
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: pl-progress 1.8s cubic-bezier(0.4,0,0.2,1) 0.1s forwards,
+                       pl-bar-shine 1s linear 0.1s infinite;
+            width: 0;
+        }
+        @keyframes pl-progress {
+            0%   { width: 0%; }
+            55%  { width: 70%; }
+            100% { width: 100%; }
+        }
+        @keyframes pl-bar-shine {
+            0%   { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- ПРЕЛОАДЕР -->
+    <div id="preloader" aria-hidden="true">
+        <!-- Фото горы -->
+        <div id="pl-bg"></div>
+        <div id="pl-overlay"></div>
+
+        <!-- Лучи и искры (генерируются JS) -->
+        <div id="pl-rays"></div>
+        <div id="pl-particles"></div>
+
+        <!-- Свечение под логотипом -->
+        <div id="pl-logo-glow"></div>
+
+        <!-- Логотип -->
+        <img id="pl-logo" src="assets/logo-8848.png" alt="8848 Вершина" draggable="false">
+
+        <div class="pl-tagline">после нас — свежее только на Эвересте</div>
+
+        <div class="pl-bar-wrap"><div class="pl-bar"></div></div>
+    </div>
 
     <!-- ШАПКА -->
     <header class="site-header fixed top-0 left-0 right-0">
@@ -2306,6 +2487,69 @@
                 if (hint) hint.classList.add('hidden');
                 window.open('https://wa.me/79996368698?text=' + msg, '_blank', 'noopener,noreferrer');
             });
+        })();
+    </script>
+
+    <!-- ПРЕЛОАДЕР: JS -->
+    <script>
+        (function () {
+            var preloader = document.getElementById('preloader');
+            if (!preloader) return;
+
+            /* Световые лучи */
+            var raysEl = document.getElementById('pl-rays');
+            var rayCount = 5;
+            for (var i = 0; i < rayCount; i++) {
+                var r = document.createElement('div');
+                r.className = 'pl-ray';
+                var w = Math.random() * 3 + 1;
+                r.style.cssText = [
+                    'width:' + w + 'px',
+                    'left:' + (15 + Math.random() * 70) + '%',
+                    'animation-duration:' + (Math.random() * 1.5 + 2) + 's',
+                    'animation-delay:' + (Math.random() * 1.8) + 's',
+                    'opacity:0.7',
+                ].join(';');
+                raysEl.appendChild(r);
+            }
+
+            /* Золотые искры */
+            var sparks = document.getElementById('pl-particles');
+            var sparkCount = 22;
+            for (var j = 0; j < sparkCount; j++) {
+                var s = document.createElement('div');
+                s.className = 'pl-spark';
+                var sz = Math.random() * 4 + 2;
+                var dx = (Math.random() - 0.5) * 80;
+                var bright = Math.random() > 0.5;
+                s.style.cssText = [
+                    'width:' + sz + 'px',
+                    'height:' + sz + 'px',
+                    'left:' + (10 + Math.random() * 80) + '%',
+                    '--dx:' + dx + 'px',
+                    'background:' + (bright
+                        ? 'radial-gradient(circle, #fff8dc 0%, #e8c96b 40%, transparent 70%)'
+                        : 'radial-gradient(circle, #e8c96b 0%, #C9A84C 50%, transparent 70%)'),
+                    'animation-duration:' + (Math.random() * 2 + 1.5) + 's',
+                    'animation-delay:' + (Math.random() * 1.8) + 's',
+                ].join(';');
+                sparks.appendChild(s);
+            }
+
+            /* Скрыть: минимум 2.2с и после load */
+            function dismiss() {
+                preloader.classList.add('fade-out');
+                setTimeout(function () { preloader.style.display = 'none'; }, 750);
+            }
+
+            var minTime = 2200;
+            var loaded = false;
+            var elapsed = false;
+
+            function tryDismiss() { if (loaded && elapsed) dismiss(); }
+
+            window.addEventListener('load', function () { loaded = true; tryDismiss(); });
+            setTimeout(function () { elapsed = true; tryDismiss(); }, minTime);
         })();
     </script>
 </body>
