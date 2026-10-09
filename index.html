@@ -1511,12 +1511,13 @@
         /* Логотип */
         #pl-logo {
             position: relative;
-            width: clamp(180px, 55vw, 340px);
+            width: clamp(200px, 60vw, 380px);
             opacity: 0;
             transform: scale(0.82) translateY(18px);
             animation: pl-logo-in 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.6s forwards;
-            filter: drop-shadow(0 0 28px rgba(201,168,76,0.6))
-                    drop-shadow(0 0 60px rgba(201,168,76,0.25));
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 32px rgba(201,168,76,0.7))
+                    drop-shadow(0 0 80px rgba(201,168,76,0.3));
         }
         @keyframes pl-logo-in {
             to { opacity: 1; transform: scale(1) translateY(0); }
