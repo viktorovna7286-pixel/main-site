@@ -390,7 +390,7 @@
             html { scroll-padding-top: clamp(4.5rem, 16vw + 2rem, 6rem); }
         }
         body {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             background-color: var(--color-bg);
             color: var(--color-text);
             margin: 0;
@@ -410,11 +410,11 @@
             -webkit-overflow-scrolling: touch;
             padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
         }
-        .font-numbers { font-family: 'Montserrat', sans-serif; font-weight: 500; }
-        .font-numbers-bold { font-family: 'Montserrat', sans-serif; font-weight: 700; }
-        .font-title { font-family: 'Raleway', sans-serif; font-weight: 700; }
-        .font-main { font-family: 'Raleway', sans-serif; font-weight: 500; }
-        .font-description { font-family: 'Raleway', sans-serif; font-weight: 600; font-style: italic; }
+        .font-numbers { font-family: 'Manrope', sans-serif; font-weight: 500; }
+        .font-numbers-bold { font-family: 'Manrope', sans-serif; font-weight: 700; }
+        .font-title { font-family: 'Manrope', sans-serif; font-weight: 700; }
+        .font-main { font-family: 'Manrope', sans-serif; font-weight: 500; }
+        .font-description { font-family: 'Manrope', sans-serif; font-weight: 600; font-style: italic; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .gold-bg { background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%); }
@@ -461,7 +461,7 @@
             padding: 0.34rem 0.72rem;
             border-radius: 9999px;
             font-size: clamp(8px, 2.1vw, 10px);
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.14em;
@@ -952,14 +952,14 @@
         }
 
         .modal-photo-stage {
-            background: #ffffff;
+            background: #252525;
             border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 1rem;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .modal-hero-img {
-            background-color: #ffffff !important;
+            background-color: #252525 !important;
         }
 
         .modal-info-panel {
@@ -1042,7 +1042,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 800;
             font-size: 1.1rem;
             color: #fff;
@@ -1105,7 +1105,7 @@
             box-sizing: border-box;
             border-radius: 10px !important;
             overflow: hidden;
-            background-color: #ffffff !important;
+            background-color: #252525 !important;
             border: 1px solid #e5e5e5 !important;
             box-shadow: none !important;
             --tw-ring-offset-shadow: 0 0 #0000 !important;
@@ -1121,7 +1121,7 @@
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
-            background-color: #ffffff !important;
+            background-color: #252525 !important;
         }
 
         /* Полноэкранный просмотр фото */
@@ -1177,6 +1177,34 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Two typefaces: Unbounded for headings, Manrope for all other UI. */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.035em;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+        .section-title { font-size: clamp(1.5rem, 3.2vw, 2.5rem); letter-spacing: -0.035em; line-height: 1.25; }
+        .font-title-strong { font-weight: 600; }
+        .font-description { font-style: normal; }
+
+        #calc-area { color: #f5f5f5; caret-color: #e8c96b; color-scheme: dark; }
+        #calc-area::placeholder { color: #aaa; opacity: 1; }
+        .calc-installation { padding: 1.25rem; margin: 1.5rem 0; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.25); border-radius: 1rem; }
+        .calc-installation-label { color: #e8c96b; font-weight: 700; margin-bottom: 1rem; }
+        .calc-installation dl > div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.5rem 0; font-size: 0.875rem; }
+        .calc-installation dd { white-space: nowrap; color: #e8c96b; font-weight: 700; }
+        .calc-installation-note { margin-top: 1rem; font-size: 0.75rem; color: #bbb; line-height: 1.65; }
+        .calc-installation a { display: inline-block; margin-top: 0.75rem; color: #e8c96b; font-size: 0.75rem; text-decoration: underline; text-underline-offset: 3px; }
+
+        .modal-photo-stage, button.modal-gallery-thumb { background: #252525; }
+
+        h1, h2, h3, h4, h5, h6 { font-family: 'Unbounded', sans-serif !important; font-style: normal; }
+
+        .header-brand-logo { position: relative; display: block; width: 154px; height: 58px; overflow: hidden; flex-shrink: 0; }
+        .header-brand-logo img { position: absolute; width: 200px; max-width: none; height: auto; left: -23px; top: -10px; }
     </style>
 </head>
 <body>
@@ -1216,7 +1244,14 @@
             if (p.image && String(p.image).trim()) return [String(p.image).trim()];
             return [];
         };
-        const productCardImage = (p) => productImages(p)[0] || '';
+        const installationPrices = (btu) => {
+            if (!btu) return null;
+            if (btu <= 12) return { ready: 7000, standard: 10000 };
+            if (btu <= 18) return { ready: 9000, standard: 16000 };
+            if (btu <= 24) return { ready: 16000, standard: 22000 };
+            return null;
+        };
+        const productCardImage = (p) => String(p?.image || '').trim() || productImages(p)[0] || '';
         /** Только мощности из админки: сортируем и убираем дубликаты по BTU. */
         const normalizeProductBtu = (product) => {
             const sourceRows = Array.isArray(product?.btuData) ? product.btuData : [];
@@ -1259,14 +1294,15 @@
                 const s = Number(sq);
                 if (!Number.isFinite(s) || s <= 0) return 7;
                 if (s <= 20) return 7;
-                if (s <= 35) return 9;
-                if (s <= 50) return 12;
-                if (s <= 70) return 18;
-                return 24;
+                if (s <= 25) return 9;
+                if (s <= 35) return 12;
+                if (s <= 50) return 18;
+                if (s <= 70) return 24;
+                return null;
             };
             const coolingAreaLabelForBtu = (btu) => {
-                if (btu === 24) return 'Подходит для помещений свыше 70 м²';
-                const cap = { 7: 20, 9: 35, 12: 50, 18: 70 }[btu];
+                if (!btu) return 'Для площади свыше 70 м² подберём систему индивидуально.';
+                const cap = { 7: 20, 9: 25, 12: 35, 18: 50, 24: 70 }[btu];
                 return 'Подходит для помещений до ' + cap + ' м²';
             };
             const closeMobile = () => setMobileMenuOpen(false);
@@ -1413,11 +1449,7 @@
                     <header className={`site-header fixed top-0 left-0 right-0${headerScrolled ? ' site-header--scrolled' : ''}${selectedProduct ? ' hidden' : ''}`} aria-hidden={selectedProduct ? 'true' : undefined}>
                         <div className="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center gap-3 sm:gap-4 justify-between md:justify-start relative">
                             <a href="/" className="flex shrink-0 items-center gap-2 no-underline outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-md" aria-label="8848 Вершина — главная">
-                                <svg className="w-9 h-9 shrink-0 text-[var(--color-accent)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3 4 10v11h16V10l-8-7z"/><path strokeLinecap="round" strokeLinejoin="round" d="M9 21v-6h6v6"/></svg>
-                                <span className="flex flex-col leading-none">
-                                    <span className="text-lg font-numbers-bold tracking-tight bg-gradient-to-br from-[var(--color-accent-light)] to-[var(--color-accent)] bg-clip-text text-transparent">8848</span>
-                                    <span className="text-[0.55rem] uppercase tracking-[0.35em] text-white/90 mt-0.5 font-title">Вершина</span>
-                                </span>
+                                <span className="header-brand-logo"><img src="/assets/logo-8848-clean.png" alt="8848 Вершина" width="1774" height="887" /></span>
                             </a>
                             <nav className="hidden md:flex flex-wrap gap-x-4 lg:gap-x-6 gap-y-2 justify-center items-center text-xs lg:text-sm font-medium uppercase tracking-widest text-white min-w-0 absolute left-1/2 -translate-x-1/2">
                                 <a href="/#hero" className="header-nav-hover">Главная</a>
@@ -1497,7 +1529,7 @@
                             <div className="text-center">
                                 <h2 className="text-2xl sm:text-3xl font-title mb-4 uppercase italic tracking-tighter text-yellow-500 px-1">Ваша площадь?</h2>
                                 <p className="text-gray-500 text-xs sm:text-sm mb-10 sm:mb-12 font-main leading-relaxed px-2">Введите м² — подберём мощность по таблице охлаждения.</p>
-                                <input type="number" inputMode="decimal" enterKeyHint="done" value={area} onChange={(e) => setArea(e.target.value)} placeholder="0" className="w-full min-h-[5.5rem] bg-transparent border-b-4 border-yellow-600 py-4 sm:py-6 font-numbers text-[clamp(3rem,15vw,6rem)] sm:text-7xl md:text-8xl text-center outline-none mb-8 sm:mb-10 placeholder:text-gray-900 focus:border-white transition-all" />
+                                <input type="number" id="calc-area" aria-label="Площадь помещения, квадратные метры" min="1" step="0.1" inputMode="decimal" enterKeyHint="done" value={area} onChange={(e) => setArea(e.target.value)} placeholder="0" className="w-full min-h-[5.5rem] bg-transparent border-b-4 border-yellow-600 py-4 sm:py-6 font-numbers text-[clamp(3rem,15vw,6rem)] sm:text-7xl md:text-8xl text-center outline-none mb-8 sm:mb-10 text-white placeholder:text-gray-400 focus:border-white transition-all" />
                                 <button type="button" onClick={() => {
                                     const s = parseFloat(area);
                                     if (!s || s <= 0) return;
@@ -1508,8 +1540,19 @@
                             <div className={`calc-result-panel${calcResult ? ' calc-result-panel--visible' : ''}`}>
                                 {calcResult && (
                                     <div className="rounded-[1.5rem] border border-yellow-600/30 bg-[#161616] px-5 py-6 text-left shadow-xl">
-                                        <p className="font-title text-white uppercase tracking-tight text-lg mb-2">Рекомендуем: <span className="text-yellow-500 font-numbers-bold">{calcResult.btu}</span> BTU</p>
+                                        <p className="font-title text-white uppercase tracking-tight text-lg mb-2">{calcResult.btu ? <>Рекомендуем: <span className="text-yellow-500 font-numbers-bold">{calcResult.btu}</span> BTU</> : 'Индивидуальный подбор'}</p>
                                         <p className="text-gray-400 text-sm font-main mb-6">{coolingAreaLabelForBtu(calcResult.btu)}</p>
+                                        <div className="calc-installation">
+                                            <p className="calc-installation-label">Стоимость монтажа*</p>
+                                            {installationPrices(calcResult.btu) ? (
+                                                <dl>
+                                                    <div><dt>На готовую трассу</dt><dd>от {installationPrices(calcResult.btu).ready.toLocaleString('ru-RU')} ₽</dd></div>
+                                                    <div><dt>Стандартный монтаж</dt><dd>от {installationPrices(calcResult.btu).standard.toLocaleString('ru-RU')} ₽</dd></div>
+                                                </dl>
+                                            ) : <p>Рассчитаем индивидуально под ваш объект.</p>}
+                                            <p className="calc-installation-note">* Стандартный монтаж — трасса до 2 м. Установка на готовую трассу — при подготовленных коммуникациях и точках подключения. Дополнительная длина трассы, высотные и другие работы оплачиваются отдельно. Итоговую стоимость согласуем до начала работ.</p>
+                                            <a href="/#pricing">Подробнее о монтаже и доплатах →</a>
+                                        </div>
                                         {calcRecommendations.length > 0 ? (
                                             <div className="space-y-4">
                                                 <p className="text-[10px] font-title uppercase tracking-[0.28em] text-gray-500">Подходящие модели</p>
@@ -1518,9 +1561,9 @@
                                                     const price = row ? row.price : Math.min(...p.btuData.map((d) => d.price));
                                                     return (
                                                         <div key={p.id} className="flex items-center gap-3 py-3 border-t border-white/10">
-                                                            {p.image && (
+                                                            {productCardImage(p) && (
                                                                 <img
-                                                                    src={p.image}
+                                                                    src={productCardImage(p)}
                                                                     alt={p.brand}
                                                                     className="w-14 h-14 object-cover rounded-xl shrink-0"
                                                                     style={{boxShadow: '0 0 0 1px rgba(201,168,76,0.35), 0 0 18px rgba(201,168,76,0.28)'}}

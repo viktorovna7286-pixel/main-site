@@ -193,14 +193,14 @@
         body {
             background-color: var(--color-bg);
             color: var(--color-text);
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
             scroll-behavior: smooth;
             padding-left: env(safe-area-inset-left, 0);
             padding-right: env(safe-area-inset-right, 0);
         }
 
         h1, h2, h3 {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 500;
         }
 
@@ -209,18 +209,18 @@
         }
 
         .font-description {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 600;
             font-style: italic;
         }
 
         .font-numbers-medium {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 500;
         }
 
         .font-numbers-bold {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 700;
         }
 
@@ -466,7 +466,7 @@
             }
         }
         .promo-section {
-            padding: 0 0 3.5rem;
+            padding: clamp(2rem, 5vw, 4rem) 0 3.5rem;
             background: #151515;
         }
         .promo-card {
@@ -696,7 +696,7 @@
         }
         .price-card-badge {
             display: inline-block;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-size: 0.65rem;
             font-weight: 700;
             letter-spacing: 0.2em;
@@ -863,7 +863,7 @@
             fill: none;
         }
         .brand-lockup__8848 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 800;
             font-size: 1.35rem;
             line-height: 1;
@@ -891,7 +891,7 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 0.75rem;
             padding: 0.85rem 1rem;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-size: 0.95rem;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
@@ -929,7 +929,7 @@
             border-radius: 9999px;
             background: var(--color-accent);
             color: #141414;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 700;
             font-size: 0.85rem;
             letter-spacing: 0.18em;
@@ -971,7 +971,7 @@
             text-transform: uppercase;
             letter-spacing: 0.16em;
             font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Manrope', sans-serif;
         }
         .review-stars-pick {
             display: flex;
@@ -1100,7 +1100,7 @@
             font-size: 15px;
             line-height: 1.35;
             margin-bottom: 0.35rem;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
         }
 
         /* Галерея работ — один ряд, горизонтальная прокрутка */
@@ -1213,7 +1213,7 @@
         .works-placeholder-label {
             font-size: 0.72rem;
             color: #555;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 500;
             letter-spacing: 0.04em;
         }
@@ -1284,7 +1284,7 @@
             font-size: 13px;
             letter-spacing: 0.05em;
             color: #aaa;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 500;
             line-height: 1.5;
         }
@@ -1383,7 +1383,7 @@
             background: none;
             border: none;
             color: #fff;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-size: 0.95rem;
             font-weight: 600;
             text-align: left;
@@ -1539,7 +1539,7 @@
 
         .pl-tagline {
             position: relative;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 400;
             font-style: italic;
             font-size: clamp(0.6rem, 2.8vw, 0.82rem);
@@ -1650,6 +1650,60 @@
                 transition: none !important;
             }
         }
+
+        /* Two typefaces: Unbounded for headings, Manrope for all other UI. */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+        .section-title { font-size: clamp(1.5rem, 3.2vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.25; }
+        .font-title-strong { font-weight: 600; }
+        .font-description { font-style: normal; }
+
+        #hero > div { max-width: 72rem; }
+        #hero h1 { font-size: clamp(1.5rem, 5.1vw, 4.5rem); line-height: 1.2; letter-spacing: -0.025em; }
+        .promo-title { font-size: clamp(1.8rem, 6.2vw, 3.7rem); }
+        #services h3 { font-size: clamp(0.95rem, 1.25vw, 1.125rem); }
+
+        .promo-card > :not(.promo-bg-glow) { position: relative; }
+        .promo-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 1.75rem; padding: 1rem 1.5rem; border-radius: 9999px; max-width: 100%; font-size: clamp(0.8rem, 2.5vw, 1rem); font-weight: 700; text-align: center; }
+
+        .works-track { gap: 1.5rem; }
+        .works-track .works-card { max-width: 520px; }
+        .works-card--compact .works-case-gallery { padding: 1rem; gap: 0.9rem; }
+        .works-card--compact .works-caption { padding: 0.5rem 1.25rem 1.5rem; font-size: 0.9rem; line-height: 1.7; }
+        .works-card--compact .works-caption strong { font-size: 1rem; margin-bottom: 0.5rem; }
+        .works-card--compact .works-photo-hint { margin-top: 0.75rem; font-size: 0.8rem; }
+        .works-showcase { margin-top: 3rem; padding: clamp(1rem, 3vw, 2.5rem); background: #161616; }
+        .works-showcase-heading { display: flex; justify-content: space-between; align-items: start; gap: 2rem; margin-bottom: 2rem; }
+        .works-showcase-label { font-size: 0.75rem; color: #c9a84c; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+        .works-showcase-heading h3 { font-size: clamp(1.25rem, 2.5vw, 2rem); max-width: 40rem; }
+        .works-showcase-description { max-width: 38rem; color: #aaa; margin-top: 1rem; line-height: 1.7; }
+        .works-showcase-count { flex-shrink: 0; color: #e8c96b; font-size: 1.5rem; font-weight: 700; line-height: 1.4; }
+        .works-showcase-count small { font-size: 0.75rem; color: #aaa; font-weight: 400; }
+        .works-showcase-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+        .works-showcase-grid img { aspect-ratio: 4 / 3; border-radius: 0.75rem; }
+        .works-showcase-grid img[hidden] { display: none; }
+        .works-showcase-more { display: flex; gap: 1rem; align-items: center; justify-content: center; width: 100%; padding: 1rem; margin-top: 1.5rem; border: 1px solid #63532b; border-radius: 0.75rem; color: #e8c96b; font-weight: 600; transition: background 0.2s; }
+        .works-showcase-more:hover { background: rgba(201,168,76,0.1); }
+        .works-showcase-more:focus-visible { outline: 2px solid #e8c96b; outline-offset: 4px; }
+        @media (max-width: 767px) {
+            .works-showcase-heading { flex-direction: column; gap: 1rem; }
+            .works-showcase-count br { display: none; }
+            .works-showcase-count small { margin-left: 0.5rem; }
+            .works-showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: 'Unbounded', sans-serif !important; font-style: normal; }
+
+        .header-brand-logo { position: relative; display: block; width: 154px; height: 58px; overflow: hidden; flex-shrink: 0; }
+        .header-brand-logo img { position: absolute; width: 200px; max-width: none; height: auto; left: -23px; top: -10px; }
+
+        #hero h1 { margin-bottom: 1.5rem; }
+        .hero-key-line { position: relative; display: table; margin: 0.12em auto 0; }
     </style>
 </head>
 <body>
@@ -1668,7 +1722,7 @@
         <div id="pl-logo-glow"></div>
 
         <!-- Логотип (прозрачный PNG) -->
-        <img id="pl-logo" src="assets/logo-8848-t.png" alt="8848 Вершина" draggable="false">
+        <img id="pl-logo" src="assets/logo-8848-clean.png" alt="8848 Вершина" draggable="false">
 
         <div class="pl-bar-wrap"><div class="pl-bar"></div></div>
     </div>
@@ -1677,11 +1731,7 @@
     <header class="site-header fixed top-0 left-0 right-0">
         <div class="container mx-auto px-4 sm:px-6 flex w-full max-w-none items-center gap-3 sm:gap-4 justify-between md:justify-start relative">
             <a href="/" class="brand-lockup min-w-0" aria-label="8848 Вершина — на главную">
-                <svg class="brand-lockup__mark w-9 h-9 sm:w-10 sm:h-10" viewBox="0 0 24 24" aria-hidden="true"><path stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M3 20L12 4L21 20H3Z"/><path stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" d="M9 20L12 14L15 20"/></svg>
-                <div class="flex flex-col gap-0.5">
-                    <span class="brand-lockup__8848">8848</span>
-                    <span class="brand-lockup__sub">Вершина</span>
-                </div>
+                <span class="header-brand-logo"><img src="/assets/logo-8848-clean.png" alt="8848 Вершина" width="1774" height="887"></span>
             </a>
             <!-- Меню (Desktop) -->
             <nav class="hidden md:flex flex-wrap gap-x-4 lg:gap-x-6 gap-y-2 justify-center items-center text-xs lg:text-sm font-medium uppercase tracking-widest text-white min-w-0 absolute left-1/2 -translate-x-1/2">
@@ -1713,11 +1763,9 @@
     <section id="hero" class="hero-section flex items-center justify-center text-center px-4 sm:px-6">
         <div class="max-w-4xl w-full">
             <h1 class="text-4xl sm:text-5xl md:text-7xl mb-4 uppercase leading-tight tracking-tight">
-                Кондиционеры <span class="block font-title-strong">под ключ</span><span class="block text-xl sm:text-2xl md:text-3xl font-numbers-medium text-gold-gradient normal-case tracking-normal mt-1 lowercase">в Сочи</span>
+                Кондиционеры
+                <span class="hero-key-line font-title-strong">под ключ</span>
             </h1>
-            <p class="text-lg sm:text-xl md:text-2xl text-gold-gradient mb-4 font-description">
-                от подбора до установки
-            </p>
             <p class="text-[11px] sm:text-sm md:text-base text-gray-400 uppercase tracking-[0.12em] sm:tracking-[0.16em] mb-8 sm:mb-10 mx-auto leading-relaxed whitespace-nowrap">
                 после нас, свежее только на Эвересте
             </p>
@@ -1741,6 +1789,7 @@
                 <h2 class="promo-title text-gold-gradient font-title-strong">1 монтаж<br>бесплатно</h2>
                 <div class="promo-divider" aria-hidden="true"></div>
                 <p class="promo-text font-main">при покупке 3 кондиционеров</p>
+                <a href="#request" class="promo-cta btn-shared gold-outline-btn">Получить предложение</a>
             </article>
         </div>
     </section>
@@ -1750,11 +1799,11 @@
         <div class="container mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6 xl:gap-8 text-center max-w-5xl mx-auto">
                 <div class="stats-item">
-                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">10+</span> лет</div>
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">11</span> лет</div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">опыта на рынке</p>
                 </div>
                 <div class="stats-item">
-                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">5 000+</span></div>
+                    <div class="text-5xl text-gold-gradient mb-2"><span class="font-numbers-bold">6 000</span></div>
                     <p class="text-gray-400 uppercase tracking-widest text-xs">успешных монтажей</p>
                 </div>
                 <div class="stats-item">
@@ -2035,7 +2084,7 @@
                 Наши <span class="text-gold-gradient font-title-strong">работы</span>
             </h2>
             <p class="works-intro font-description px-2">
-                Три объекта в одном ряду — листайте на телефоне. Нажмите на фото для увеличения и просмотра всех снимков.
+                От первых трасс до готовой системы. Посмотрите, как выглядят наши работы на реальных объектах в Сочи.
             </p>
             <div class="works-track">
                 <figure class="works-card works-card--compact">
@@ -2073,61 +2122,64 @@
                         <span class="works-photo-hint">+3 фото в просмотре</span>
                     </figcaption>
                 </figure>
-                <figure class="works-card works-card--compact works-card--outdoor">
-                    <div class="works-case-gallery">
-                        <img class="works-case-main" src="assets/cases/outdoor/outdoor-01.png" alt="Монтаж наружных блоков — корзина застройщика, вид сверху" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-01.png" />
-                        <div class="works-case-thumbs works-case-thumbs--dense">
-                            <img src="assets/cases/outdoor/outdoor-03.png" alt="Монтаж наружных блоков — установка в корзине на высоте" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-03.png" />
-                            <img src="assets/cases/outdoor/outdoor-07.png" alt="Монтаж наружных блоков — высотная установка" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-07.png" />
-                            <img src="assets/cases/outdoor/outdoor-11.png" alt="Монтаж наружных блоков — ряд корзин на фасаде" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-11.png" />
-                            <img src="assets/cases/outdoor/outdoor-17.png" alt="Монтаж наружных блоков — жёлтая корзина" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-17.png" />
-                            <!-- hidden: lightbox navigation -->
-                            <img src="assets/cases/outdoor/outdoor-02.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-02.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-04.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-04.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-05.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-05.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-06.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-06.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-08.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-08.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-09.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-09.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-10.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-10.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-12.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-12.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-13.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-13.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-14.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-14.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-15.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-15.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-16.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-16.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-18.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-18.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-19.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-19.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-20.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-20.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-21.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-21.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-22.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-22.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-23.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-23.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-24.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-24.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-25.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-25.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-26.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-26.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-27.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-27.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-28.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-28.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-29.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-29.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-30.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-30.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-31.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-31.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-32.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-32.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-33.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-33.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-34.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-34.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-35.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-35.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-36.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-36.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-37.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-37.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-38.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-38.png" style="display:none"/>
-                            <img src="assets/cases/outdoor/outdoor-39.png" alt="Монтаж наружных блоков" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-39.png" style="display:none"/>
-                        </div>
-                    </div>
-                    <figcaption class="works-caption font-description">
-                        <strong style="color:#e8c96b;font-weight:600;">Монтаж наружных блоков</strong><br>
-                        Корзины ЖК, кронштейны, высота без автовышки.
-                        <span class="works-photo-hint">+38 фото в просмотре</span>
-                    </figcaption>
-                </figure>
+
 
 
 
             </div>
+
+            <figure class="works-card works-showcase" id="outdoor-works">
+                <figcaption class="works-showcase-heading">
+                    <div>
+                        <p class="works-showcase-label">Результат нашей работы</p>
+                        <h3>Наружные блоки. Готово к работе.</h3>
+                        <p class="works-showcase-description">В корзинах ЖК, на кронштейнах и на высоте. Десятки установок — детали каждой можно рассмотреть на фото.</p>
+                    </div>
+                    <span class="works-showcase-count">39 фото<br><small>реальных монтажей</small></span>
+                </figcaption>
+                <div class="works-showcase-grid">
+                        <img src="assets/cases/outdoor/outdoor-01.png" alt="Установка наружного блока в Сочи — работа 1" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-01.png" />
+                        <img src="assets/cases/outdoor/outdoor-02.png" alt="Установка наружного блока в Сочи — работа 2" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-02.png" />
+                        <img src="assets/cases/outdoor/outdoor-03.png" alt="Установка наружного блока в Сочи — работа 3" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-03.png" />
+                        <img src="assets/cases/outdoor/outdoor-04.png" alt="Установка наружного блока в Сочи — работа 4" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-04.png" />
+                        <img src="assets/cases/outdoor/outdoor-05.png" alt="Установка наружного блока в Сочи — работа 5" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-05.png" />
+                        <img src="assets/cases/outdoor/outdoor-06.png" alt="Установка наружного блока в Сочи — работа 6" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-06.png" />
+                        <img src="assets/cases/outdoor/outdoor-07.png" alt="Установка наружного блока в Сочи — работа 7" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-07.png" />
+                        <img src="assets/cases/outdoor/outdoor-08.png" alt="Установка наружного блока в Сочи — работа 8" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-08.png" />
+                        <img src="assets/cases/outdoor/outdoor-09.png" alt="Установка наружного блока в Сочи — работа 9" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-09.png" />
+                        <img src="assets/cases/outdoor/outdoor-10.png" alt="Установка наружного блока в Сочи — работа 10" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-10.png" />
+                        <img src="assets/cases/outdoor/outdoor-11.png" alt="Установка наружного блока в Сочи — работа 11" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-11.png" />
+                        <img src="assets/cases/outdoor/outdoor-12.png" alt="Установка наружного блока в Сочи — работа 12" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-12.png" />
+                        <img src="assets/cases/outdoor/outdoor-13.png" alt="Установка наружного блока в Сочи — работа 13" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-13.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-14.png" alt="Установка наружного блока в Сочи — работа 14" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-14.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-15.png" alt="Установка наружного блока в Сочи — работа 15" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-15.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-16.png" alt="Установка наружного блока в Сочи — работа 16" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-16.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-17.png" alt="Установка наружного блока в Сочи — работа 17" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-17.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-18.png" alt="Установка наружного блока в Сочи — работа 18" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-18.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-19.png" alt="Установка наружного блока в Сочи — работа 19" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-19.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-20.png" alt="Установка наружного блока в Сочи — работа 20" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-20.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-21.png" alt="Установка наружного блока в Сочи — работа 21" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-21.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-22.png" alt="Установка наружного блока в Сочи — работа 22" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-22.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-23.png" alt="Установка наружного блока в Сочи — работа 23" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-23.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-24.png" alt="Установка наружного блока в Сочи — работа 24" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-24.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-25.png" alt="Установка наружного блока в Сочи — работа 25" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-25.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-26.png" alt="Установка наружного блока в Сочи — работа 26" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-26.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-27.png" alt="Установка наружного блока в Сочи — работа 27" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-27.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-28.png" alt="Установка наружного блока в Сочи — работа 28" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-28.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-29.png" alt="Установка наружного блока в Сочи — работа 29" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-29.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-30.png" alt="Установка наружного блока в Сочи — работа 30" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-30.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-31.png" alt="Установка наружного блока в Сочи — работа 31" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-31.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-32.png" alt="Установка наружного блока в Сочи — работа 32" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-32.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-33.png" alt="Установка наружного блока в Сочи — работа 33" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-33.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-34.png" alt="Установка наружного блока в Сочи — работа 34" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-34.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-35.png" alt="Установка наружного блока в Сочи — работа 35" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-35.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-36.png" alt="Установка наружного блока в Сочи — работа 36" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-36.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-37.png" alt="Установка наружного блока в Сочи — работа 37" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-37.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-38.png" alt="Установка наружного блока в Сочи — работа 38" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-38.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-39.png" alt="Установка наружного блока в Сочи — работа 39" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-39.png" hidden />
+                </div>
+                <button type="button" class="works-showcase-more" aria-expanded="false" aria-controls="outdoor-works" data-showcase-more>Показать все 39 фото <span aria-hidden="true">↓</span></button>
+            </figure>
         </div>
     </section>
 
@@ -2705,5 +2757,17 @@
             setTimeout(function () { elapsed = true; tryDismiss(); }, minTime);
         })();
     </script>
+<script>
+        document.querySelectorAll('[data-showcase-more]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var expanded = button.getAttribute('aria-expanded') === 'true';
+                var photos = button.closest('.works-showcase').querySelectorAll('.works-showcase-grid img');
+                photos.forEach(function (photo, index) { if (index >= 12) photo.hidden = expanded; });
+                button.setAttribute('aria-expanded', String(!expanded));
+                button.innerHTML = expanded ? 'Показать все 39 фото <span aria-hidden="true">↓</span>' : 'Свернуть галерею <span aria-hidden="true">↑</span>';
+                if (expanded) button.closest('.works-showcase').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+</script>
 </body>
 </html>

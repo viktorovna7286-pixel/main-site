@@ -1,0 +1,4 @@
+Mode: built-in image_gen, transparent background extraction.
+Output: assets/logo-8848-clean.png
+Prompt:
+Use case: background-extraction. Edit target: supplied gold 8848 ВЕРШИНА logo. Remove the entire dark rectangular background, all dark background remnants inside letter counters and around the mountain. Remove the small sparkle at bottom right. Output actual transparent background. Preserve precisely the original gold logo shape, brushed metal texture, mountain, text and spacing: "8848", "ВЕРШИНА", "после нас, свежее", "только на Эвересте". Keep all gold strokes solid, without accidental holes or erased portions. No new elements, no redesign. Clean anti-aliased edges. Crop around complete logo with modest transparent padding.

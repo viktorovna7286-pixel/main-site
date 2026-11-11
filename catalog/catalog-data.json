@@ -4,211 +4,444 @@
     "brand": "AUX",
     "factory": "AUX",
     "series": "Classic Inverter",
-    "model": "AUX Classic Inverter",
-    "segment": "comfort",
+    "segment": "budget",
     "type": "inverter",
     "btuData": [
       {
+        "btu": 7,
+        "price": 34800
+      },
+      {
         "btu": 9,
-        "price": 0
+        "price": 36800
+      },
+      {
+        "btu": 12,
+        "price": 43900
+      },
+      {
+        "btu": 17,
+        "price": 68400
+      },
+      {
+        "btu": 24,
+        "price": 80500
       }
     ],
-    "description": "AUX Classic Inverter. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Работает при низком напряжении (130 В). Оснащён функцией I Feel с датчиком в пульте. Имеет двусторонний дренаж. Тройная шумоизоляция компрессора обеспечивает тихую работу. Выполняет самоочистку внутреннего и внешнего блоков.",
+    "images": [
+      "https://aux-air.ru/erc/2025/02/20/fab34c467eec2631e60ee5140c1251a1d91b61a4.png",
+      "https://aux-air.ru/erc/2025/02/20/beffe2edb4b0e21113de1c73c9769c825eb1555f.png",
+      "https://aux-air.ru/erc/2025/02/20/30c45f8613bca4e12f53cf8f649a7b7286bb33df.png"
+    ],
+    "image": "/assets/products/cards/1001.jpg"
   },
   {
     "id": 1002,
     "brand": "Ballu",
     "factory": "Ballu",
     "series": "Boho Inverter",
-    "model": "Ballu Boho Inverter",
-    "segment": "comfort",
+    "segment": "premium",
     "type": "inverter",
     "btuData": [
       {
-        "btu": 9,
-        "price": 0
+        "btu": 10,
+        "price": 67990
+      },
+      {
+        "btu": 13,
+        "price": 71990
       }
     ],
-    "description": "Ballu Boho Inverter. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Отличается очень низким уровнем шума (19 дБ). Оснащён текстильной панелью, которая не бликует и не желтеет. Поддерживает воздушный поток на 180° (не дует прямо). Имеет полноразмерный фильтр. Предоставляется гарантия 5 лет.",
+    "images": [
+      "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_main.png",
+      "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_indoor1.png",
+      "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_indoor3.png",
+      "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_pult.png"
+    ],
+    "image": "/assets/products/cards/1002.jpg"
   },
   {
     "id": 1003,
     "brand": "Daichi",
     "factory": "Daichi",
-    "series": "ICE",
-    "model": "ICE20AVQ1-1",
+    "series": "ICE20",
     "segment": "comfort",
     "type": "onoff",
     "btuData": [
       {
-        "btu": 20,
-        "price": 0
+        "btu": 7,
+        "price": 33000
+      },
+      {
+        "btu": 9,
+        "price": 37000
+      },
+      {
+        "btu": 12,
+        "price": 46000
+      },
+      {
+        "btu": 18,
+        "price": 72000
+      },
+      {
+        "btu": 24,
+        "price": 98000
       }
     ],
-    "description": "Daichi ICE20AVQ1-1. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Управляется через смартфон (в базовой комплектации). Электронный внутренний блок с возможностью автоперезапуска настроек. Оснащён защитой от замерзания помещения (+8°C). Поддерживает режим осушения.",
+    "images": [
+      "https://daichi.market/upload/iblock/9e8/u3k0tnnrm1o29xag6efuikvnr6imj1aj/Oblozhka.jpg",
+      "https://daichi.market/upload/iblock/cf8/mf6oef2le7v6lekreqk4pv9il3tfqrwa/08.jpg",
+      "https://daichi.market/upload/iblock/a86/v2va6cslzbnhzs06sryt6f6z152hq7h5/10.jpg",
+      "https://daichi.market/upload/iblock/106/qpp641p915wiuqfa8jg55uiz46m54uuq/09.jpg"
+    ],
+    "image": "/assets/products/cards/1003.jpg"
   },
   {
     "id": 1004,
     "brand": "Kentatsu",
     "factory": "Kentatsu",
     "series": "Yuki",
-    "model": "Kentatsu Yuki",
     "segment": "comfort",
     "type": "inverter",
     "btuData": [
       {
+        "btu": 7,
+        "price": 37000
+      },
+      {
         "btu": 9,
-        "price": 0
+        "price": 42000
+      },
+      {
+        "btu": 12,
+        "price": 52000
+      },
+      {
+        "btu": 18,
+        "price": 82000
+      },
+      {
+        "btu": 24,
+        "price": 110000
       }
     ],
-    "description": "Kentatsu Yuki. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Оснащён фильтром высокой плотности для улавливания мелкой пыли. Покрытие Golden Fin защищает от соли и влаги. Есть система обнаружения утечки хладагента с защитой компрессора. Работает при низком напряжении. Возможна работа до -15°C.",
+    "images": [
+      "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/YUKI_20_Ozon_8-700x700.jpg",
+      "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-2-700x700.jpg",
+      "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-3-700x700.jpg",
+      "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-4-700x700.jpg"
+    ],
+    "image": "/assets/products/cards/1004.jpg"
   },
   {
     "id": 1005,
     "brand": "Ballu",
     "factory": "Ballu",
     "series": "Eco Smart Inv",
-    "model": "Ballu Eco Smart Inv",
     "segment": "comfort",
     "type": "inverter",
     "btuData": [
       {
-        "btu": 9,
-        "price": 0
+        "btu": 8,
+        "price": 29990
+      },
+      {
+        "btu": 10,
+        "price": 33490
+      },
+      {
+        "btu": 12,
+        "price": 39990
+      },
+      {
+        "btu": 18,
+        "price": 54000
+      },
+      {
+        "btu": 24,
+        "price": 85000
       }
     ],
-    "description": "Ballu Eco Smart Inv. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Поддерживает режимы I Feel и управление жалюзи в четырёх направлениях. Работает на обогрев до -15°C. Отличается увеличенной длиной трассы (до 20 м). Оснащён скрытым дисплеем.",
+    "images": [
+      "https://esmarket.kz/upload/iblock/8a0/e66t81e7yzn2inxnl1sb83x6d3dve6jv/1932383_2.jpg",
+      "https://esmarket.kz/upload/iblock/a89/ijzrkz651kfegmjoszwgqwub4l0hpxk6/1932383.jpg",
+      "https://esmarket.kz/upload/iblock/9c4/q829xus7ar8j8w2qbxwqs5sfon1hbof0/1932383_6.jpg",
+      "https://esmarket.kz/upload/iblock/751/s5nprz82vh3bksompasjos7c1tkxy4bb/1932383_7.jpg"
+    ],
+    "image": "/assets/products/cards/1005.jpg"
   },
   {
     "id": 1006,
     "brand": "Ballu",
     "factory": "Ballu",
     "series": "Olimpio Edge",
-    "model": "Ballu Olimpio Edge",
     "segment": "budget",
     "type": "onoff",
     "btuData": [
       {
+        "btu": 7,
+        "price": 29990
+      },
+      {
         "btu": 9,
-        "price": 0
+        "price": 33390
+      },
+      {
+        "btu": 12,
+        "price": 43990
+      },
+      {
+        "btu": 18,
+        "price": 71990
+      },
+      {
+        "btu": 24,
+        "price": 90490
       }
     ],
-    "description": "Ballu Olimpio Edge. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Один из самых тихих бюджетных вариантов (23 дБ). Выполнен из качественного ABS-пластика, устойчивого к пожелтению. Оснащён режимом оттаивания Defrost. Имеет усиленную систему фильтрации. Гарантия составляет 5 лет.",
+    "images": [
+      "https://images.satu.kz/218908399_w640_h640_218908399.jpg",
+      "https://images.satu.kz/218908890_w640_h640_218908890.jpg",
+      "https://images.satu.kz/218908888_w640_h640_218908888.jpg"
+    ],
+    "image": "/assets/products/cards/1006.jpg"
   },
   {
     "id": 1007,
     "brand": "Centek",
     "factory": "Centek",
     "series": "Серия F",
-    "model": "Centek серии F",
-    "segment": "budget",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 9,
-        "price": 0
-      }
-    ],
-    "description": "Centek серии F. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 1008,
-    "brand": "TCL",
-    "factory": "TCL",
-    "series": "TCL",
-    "model": "TCL",
-    "segment": "budget",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 9,
-        "price": 0
-      }
-    ],
-    "description": "TCL. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 1009,
-    "brand": "Axioma",
-    "factory": "Axioma",
-    "series": "ASX",
-    "model": "ASX07P1",
     "segment": "budget",
     "type": "onoff",
     "btuData": [
       {
         "btu": 7,
-        "price": 0
+        "price": 26000
+      },
+      {
+        "btu": 9,
+        "price": 30000
+      },
+      {
+        "btu": 12,
+        "price": 38000
+      },
+      {
+        "btu": 18,
+        "price": 60000
+      },
+      {
+        "btu": 24,
+        "price": 80000
       }
     ],
-    "description": "Axioma ASX07P1. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Оснащён компрессором Toshiba (GMCC), известным своей надёжностью. Обеспечивает мощное охлаждение. Имеет био-фильтр и функцию самоочистки. Демонстрирует один из самых сильных воздушных потоков в своём классе.",
+    "images": [
+      "https://centek-air.ru/components/com_jshopping/files/img_products/Fseries-111-new.png",
+      "https://centek-air.ru/components/com_jshopping/files/img_products/65A-XX1.jpg",
+      "https://centek-air.ru/components/com_jshopping/files/img_products/remote-control-202134.jpg"
+    ],
+    "image": "/assets/products/cards/1007.jpg"
+  },
+  {
+    "id": 1008,
+    "brand": "TCL",
+    "factory": "TCL",
+    "series": "Серия SaveIN PRO",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 36000
+      },
+      {
+        "btu": 9,
+        "price": 41000
+      },
+      {
+        "btu": 12,
+        "price": 52000
+      },
+      {
+        "btu": 18,
+        "price": 82000
+      },
+      {
+        "btu": 24,
+        "price": 110000
+      }
+    ],
+    "description": "Поддерживает работу с облаком Daichi (опционально Wi-Fi). Оснащён режимом комфортного сна. Имеет алгоритм изменения температуры. Включает защиту наружного блока и автоматическую очистку испарителя. Отличается низким энергопотреблением.",
+    "images": [
+      "https://aws-obg-image-lb-2.tcl.com/content/dam/brandsite/product/ac/split-wall-mounted/savein-ai-series/id/1.png",
+      "https://aws-obg-image-lb-1.tcl.com/content/dam/brandsite/product/ac/split-wall-mounted/savein-ai-series/id/2.jpg"
+    ],
+    "image": "/assets/products/cards/1008.jpg"
+  },
+  {
+    "id": 1009,
+    "brand": "Axioma",
+    "factory": "Midea",
+    "series": "ASX",
+    "segment": "budget",
+    "type": "onoff",
+    "btuData": [
+      {
+        "btu": 7,
+        "price": 22500
+      },
+      {
+        "btu": 9,
+        "price": 26500
+      },
+      {
+        "btu": 12,
+        "price": 33400
+      },
+      {
+        "btu": 18,
+        "price": 44000
+      },
+      {
+        "btu": 24,
+        "price": 56001
+      }
+    ],
+    "description": "Поддерживает стандартные функции охлаждения и обогрева. Оснащён базовой системой фильтрации. Отличается простотой управления и надёжной работой.",
+    "images": [
+      "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1-700x700.jpg",
+      "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_1-700x700.jpg",
+      "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_2-700x700.jpg",
+      "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_3-700x700.jpg"
+    ],
+    "image": "/assets/products/cards/1009.jpg"
   },
   {
     "id": 1010,
     "brand": "Mitsubishi Heavy",
     "factory": "Mitsubishi Heavy",
     "series": "STANDARD PLUS",
-    "model": "SRK20ZTL-W/SRC20ZTL-W",
     "segment": "premium",
     "type": "inverter",
     "btuData": [
       {
         "btu": 20,
-        "price": 0
+        "price": 98000
+      },
+      {
+        "btu": 25,
+        "price": 101000
+      },
+      {
+        "btu": 35,
+        "price": 113000
+      },
+      {
+        "btu": 50,
+        "price": 157000
+      },
+      {
+        "btu": 63,
+        "price": 194000
+      },
+      {
+        "btu": 71,
+        "price": 258000
       }
     ],
-    "description": "Mitsubishi Heavy STANDARD PLUS SRK20ZTL-W/SRC20ZTL-W. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Надёжный кондиционер японского бренда с компрессором собственного производства. Отличается стабильной работой, высокой энергоэффективностью и низким уровнем шума. Оснащён качественной системой фильтрации, функцией самоочистки и защитой от перепадов напряжения. Подходит для круглогодичного использования.",
+    "images": [
+      "https://mitsubishi-heavy.ru/image/cache/catalog/1New-tovar/SRK63ZTL-WSRC63ZTL-W/SRK63ZTL-WSRC63ZTL-W-1-1000x1000.jpg",
+      "https://mitsubishi-heavy.ru/image/cache/catalog/1New-tovar/SRK63ZTL-WSRC63ZTL-W/SRK63ZTL-WSRC63ZTL-W-2-1000x1000.jpg",
+      "https://mitsubishi-heavy.ru/image/cache/catalog/1New-tovar/SRK63ZTL-WSRC63ZTL-W/SRK63ZTL-WSRC63ZTL-W-3-1000x1000.jpg"
+    ],
+    "image": "/assets/products/cards/1010.jpg"
   },
   {
     "id": 1011,
     "brand": "Electrolux",
     "factory": "Gree",
     "series": "Portofino on/off",
-    "model": "Portofino on/off (завод Gree)",
     "segment": "comfort",
     "type": "onoff",
     "btuData": [
       {
+        "btu": 7,
+        "price": 29550
+      },
+      {
         "btu": 9,
-        "price": 0
+        "price": 31990
+      },
+      {
+        "btu": 12,
+        "price": 44100
+      },
+      {
+        "btu": 18,
+        "price": 69990
+      },
+      {
+        "btu": 24,
+        "price": 86991
       }
     ],
-    "description": "Electrolux Portofino on/off, завод Gree. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Классическая сплит-система без инвертора. Обеспечивает быстрое охлаждение и обогрев. Оснащена базовой системой фильтрации воздуха, режимом сна и таймером. Отличается простотой эксплуатации и доступной стоимостью.",
+    "images": [
+      "https://climstore.ru/upload/iblock/e17/2atbdii53jko2k7676g2qsuym0o9n2cd.jpg",
+      "https://climstore.ru/upload/resize_cache/iblock/2c8/700_700_1/wxjj6z8zize2h83d4hpf439f3n6x3ije.jpg",
+      "https://climstore.ru/upload/resize_cache/iblock/cce/700_700_1/1g5umx9c207vjyms379f4c8gb7poxkua.jpg",
+      "https://climstore.ru/upload/resize_cache/iblock/65c/700_700_1/fiasrwb9s8mb49thtmobtzyctv9l5y47.jpg",
+      "https://climstore.ru/upload/resize_cache/iblock/672/700_700_1/9jqubelyypk5a28vf5xzhdznl4sydnl3.jpg"
+    ],
+    "image": "/assets/products/cards/1011.jpg"
   },
   {
     "id": 1012,
     "brand": "Electrolux",
     "factory": "Gree",
     "series": "Portofino DC inverter",
-    "model": "EACS/I-09HP/N8",
     "segment": "comfort",
     "type": "inverter",
     "btuData": [
       {
         "btu": 9,
-        "price": 0
+        "price": 47990
+      },
+      {
+        "btu": 12,
+        "price": 53490
+      },
+      {
+        "btu": 18,
+        "price": 84650
+      },
+      {
+        "btu": 24,
+        "price": 106500
       }
     ],
-    "description": "Portofino DC inverter, завод Gree, Electrolux EACS/I-09HP/N8. Приоритетная позиция каталога, цена уточняется.",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "description": "Инверторная версия с плавной регулировкой мощности. Обеспечивает более точное поддержание температуры и сниженное энергопотребление. Работает тише по сравнению с on/off моделью. Оснащена функцией самоочистки и современными режимами комфорта.",
+    "images": [
+      "https://electrolux-home.ru/upload/resize_cache/iblock/dc9/opeqiedkv4ra3s1x1asu3gy6e66r2uk1/572_0_1/6606472320.jpg",
+      "https://electrolux-home.ru/upload/resize_cache/iblock/585/aolvwxb761o0e2xs3kge2ptyv08tvrqo/572_0_1/6606472321.jpg",
+      "https://electrolux-home.ru/upload/resize_cache/iblock/b33/hp1ymut2s9a9x0j1sx7wjd1lpgsq4pg0/572_0_1/6017087366.jpg"
+    ],
+    "image": "/assets/products/cards/1012.jpg"
   },
   {
     "id": 1,
     "brand": "Rovex",
     "factory": "Midea",
     "series": "City CST",
-    "model": "RS-07CST4",
     "segment": "budget",
     "type": "onoff",
     "btuData": [
@@ -219,421 +452,26 @@
       {
         "btu": 9,
         "price": 16900
-      }
-    ],
-    "description": "Rovex. Midea. City CST. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 2,
-    "brand": "Ballu",
-    "factory": "Hisense",
-    "series": "Platinum City (Hisense)",
-    "model": "BSEP-07HN",
-    "segment": "budget",
-    "type": "onoff",
-    "btuData": [
+      },
       {
-        "btu": 7,
+        "btu": 12,
         "price": 22900
       },
       {
-        "btu": 9,
-        "price": 25590
-      }
-    ],
-    "description": "Ballu. Hisense. Platinum City (Hisense). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 3,
-    "brand": "Ballu",
-    "factory": "Hisense",
-    "series": "Platinum DC (Hisense)",
-    "model": "BSEI-09HN",
-    "segment": "comfort",
-    "type": "inverter",
-    "btuData": [
-      {
-        "btu": 9,
-        "price": 32990
-      }
-    ],
-    "description": "Ballu. Hisense. Platinum DC (Hisense). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 4,
-    "brand": "Ecoletta",
-    "factory": "Haier",
-    "series": "A (Haier)",
-    "model": "ECO07A2C/LETTA07A2C",
-    "segment": "budget",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 23990
-      },
-      {
-        "btu": 9,
-        "price": 25990
-      },
-      {
-        "btu": 12,
-        "price": 34990
-      },
-      {
         "btu": 18,
-        "price": 59990
+        "price": 38900
       },
       {
         "btu": 24,
-        "price": 76990
+        "price": 52901
       }
     ],
-    "description": "Ecoletta. Haier. A (Haier). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 5,
-    "brand": "Ecoletta",
-    "factory": "Haier",
-    "series": "A inverter (Haier)",
-    "model": "ECO07AN",
-    "segment": "comfort",
-    "type": "inverter",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 32990
-      },
-      {
-        "btu": 9,
-        "price": 35990
-      },
-      {
-        "btu": 12,
-        "price": 39990
-      },
-      {
-        "btu": 18,
-        "price": 65990
-      }
+    "description": "Бюджетная модель с базовым функционалом для охлаждения и обогрева. Имеет стандартную систему фильтрации, режим сна и таймер. Отличается простотой конструкции и доступной ценой.",
+    "images": [
+      "https://cdn.entero.ru/l/23/1e/231ecbf97b86ab49d9756598b5876060.jpg",
+      "https://cdn.entero.ru/l/4f/1c/4f1c4a5ca6900c5587cdd371f991d6ee.jpg",
+      "https://cdn.entero.ru/l/ac/45/ac45921ed55debc734e51f9d276ac09e.jpg"
     ],
-    "description": "Ecoletta. Haier. A inverter (Haier). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 6,
-    "brand": "Loriot",
-    "factory": "MBO",
-    "series": "Diamond White ON-OFF NEW 2025 (MBO) ВСТРОЕННЫЙ WI-FI, компрессор GREE на 7-9-12",
-    "model": "LAC-07MD",
-    "segment": "comfort",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 23360
-      },
-      {
-        "btu": 9,
-        "price": 25920
-      },
-      {
-        "btu": 12,
-        "price": 34350
-      },
-      {
-        "btu": 18,
-        "price": 54400
-      },
-      {
-        "btu": 24,
-        "price": 70580
-      }
-    ],
-    "description": "Loriot. MBO. Diamond White ON-OFF NEW 2025 (MBO) ВСТРОЕННЫЙ WI-FI, компрессор GREE на 7-9-12. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 7,
-    "brand": "Ballu",
-    "factory": "Midea",
-    "series": "Lagoon серия INVERTER (Midea)",
-    "model": "BSDI-07HN8",
-    "segment": "comfort",
-    "type": "inverter",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 40390
-      },
-      {
-        "btu": 9,
-        "price": 43990
-      },
-      {
-        "btu": 12,
-        "price": 51790
-      },
-      {
-        "btu": 18,
-        "price": 87390
-      }
-    ],
-    "description": "Ballu. Midea. Lagoon серия INVERTER (Midea). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 8,
-    "brand": "Ballu",
-    "factory": "Midea",
-    "series": "Lagoon ON-OFF серия (Midea)",
-    "model": "BSD-07HN1",
-    "segment": "comfort",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 26990
-      },
-      {
-        "btu": 9,
-        "price": 29990
-      },
-      {
-        "btu": 18,
-        "price": 66990
-      }
-    ],
-    "description": "Ballu. Midea. Lagoon ON-OFF серия (Midea). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 9,
-    "brand": "Loriot",
-    "factory": "TCL",
-    "series": "Nocturne DC INVERTER Black Edition (TCL) ВСТРОЕННЫЙ WI-FI",
-    "model": "LAC-09TNI",
-    "segment": "comfort",
-    "type": "inverter",
-    "btuData": [
-      {
-        "btu": 9,
-        "price": 40830
-      },
-      {
-        "btu": 12,
-        "price": 48540
-      }
-    ],
-    "description": "Loriot. TCL. Nocturne DC INVERTER Black Edition (TCL) ВСТРОЕННЫЙ WI-FI. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 10,
-    "brand": "Loriot",
-    "factory": "TCL",
-    "series": "Nocturne ON-OFF Black Edition (TCL) ВСТРОЕННЫЙ WI-FI",
-    "model": "LAC-07TN",
-    "segment": "comfort",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 29630
-      },
-      {
-        "btu": 9,
-        "price": 32850
-      },
-      {
-        "btu": 12,
-        "price": 42640
-      }
-    ],
-    "description": "Loriot. TCL. Nocturne ON-OFF Black Edition (TCL) ВСТРОЕННЫЙ WI-FI. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 11,
-    "brand": "Midea",
-    "factory": "Midea",
-    "series": "Primary (завод MIDEA)",
-    "model": "MSAG3-24HRN1-I/MSAG3-24HRN1-O",
-    "segment": "comfort",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 24,
-        "price": 88390
-      }
-    ],
-    "description": "Midea. Midea. Primary (завод MIDEA). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 12,
-    "brand": "Midea",
-    "factory": "Midea",
-    "series": "Primary Inverter (завод MIDEA) A++",
-    "model": "MSAG3-07N8C2S-I/MSAG3-07N8C2S-O",
-    "segment": "comfort",
-    "type": "inverter",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 39290
-      }
-    ],
-    "description": "Midea. Midea. Primary Inverter (завод MIDEA) A++. РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 13,
-    "brand": "Roda",
-    "factory": "TCL",
-    "series": "PROGRESS (TCL)",
-    "model": "ZAC-PG18NPZ",
-    "segment": "comfort",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 18,
-        "price": 62090
-      }
-    ],
-    "description": "Roda. TCL. PROGRESS (TCL). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 14,
-    "brand": "Loriot",
-    "factory": "AUX",
-    "series": "Résidence Smart DC INVERTER (AUX)",
-    "model": "LAC-09AJI",
-    "segment": "comfort",
-    "type": "inverter",
-    "btuData": [
-      {
-        "btu": 9,
-        "price": 37360
-      },
-      {
-        "btu": 12,
-        "price": 42020
-      },
-      {
-        "btu": 18,
-        "price": 66640
-      },
-      {
-        "btu": 24,
-        "price": 84290
-      }
-    ],
-    "description": "Loriot. AUX. Résidence Smart DC INVERTER (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 15,
-    "brand": "Loriot",
-    "factory": "AUX",
-    "series": "Résidence Smart ON-OFF (AUX)",
-    "model": "LAC-07AJ",
-    "segment": "comfort",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 24780
-      },
-      {
-        "btu": 9,
-        "price": 27490
-      },
-      {
-        "btu": 12,
-        "price": 36450
-      },
-      {
-        "btu": 18,
-        "price": 60860
-      },
-      {
-        "btu": 24,
-        "price": 75580
-      }
-    ],
-    "description": "Loriot. AUX. Résidence Smart ON-OFF (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 16,
-    "brand": "Loriot",
-    "factory": "AUX",
-    "series": "Skyline inverter (AUX)",
-    "model": "LAC-07AQI",
-    "segment": "comfort",
-    "type": "inverter",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 31040
-      },
-      {
-        "btu": 9,
-        "price": 33550
-      },
-      {
-        "btu": 12,
-        "price": 37730
-      },
-      {
-        "btu": 18,
-        "price": 62260
-      },
-      {
-        "btu": 24,
-        "price": 78720
-      }
-    ],
-    "description": "Loriot. AUX. Skyline inverter (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "id": 17,
-    "brand": "Loriot",
-    "factory": "AUX",
-    "series": "Skyline ON-OFF (AUX)",
-    "model": "LAC-07AQ",
-    "segment": "budget",
-    "type": "onoff",
-    "btuData": [
-      {
-        "btu": 7,
-        "price": 22350
-      },
-      {
-        "btu": 9,
-        "price": 24800
-      },
-      {
-        "btu": 12,
-        "price": 32860
-      },
-      {
-        "btu": 18,
-        "price": 52540
-      },
-      {
-        "btu": 24,
-        "price": 68180
-      }
-    ],
-    "description": "Loriot. AUX. Skyline ON-OFF (AUX). РРЦ и наличие по прайсу Люксхолод «зима 2026»",
-    "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+    "image": "/assets/products/cards/1.jpg"
   }
 ]
