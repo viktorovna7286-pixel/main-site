@@ -4,6 +4,7 @@ Usage: python catalog/tools/process-gallery-images.py --manifest ../gallery-orig
 Original source URLs remain keys in gallery-index.js so admin edits still work.
 """
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -26,13 +27,16 @@ def main():
     output = project / 'assets/products/gallery'
     output.mkdir(parents=True, exist_ok=True)
     rows = json.loads(args.manifest.read_text(encoding='utf-8'))
+    mask_file = Path(__file__).with_name('reviewed-gallery-masks.json')
+    reviewed_masks = json.loads(mask_file.read_text(encoding='utf-8')) if mask_file.exists() else {}
     session = None
     mapping = {}
     report = []
     for row in rows:
         key = f"{row['id']}-{row['index'] + 1}"
+        selected = not args.only or key in args.only
         target = output / f'{key}.png'
-        if not target.exists() or (args.only and key in args.only):
+        if (not target.exists() or (args.only and key in args.only)) and key not in reviewed_masks:
             source = Image.open(row['path']).convert('RGBA')
             if row.get('transparent'):
                 result = source
@@ -50,9 +54,29 @@ def main():
             canvas = Image.new('RGBA', (result.width + padding * 2, result.height + padding * 2))
             canvas.alpha_composite(result, (padding, padding))
             canvas.save(target, optimize=True)
-        result = Image.open(target).convert('RGBA')
+        result = Image.open(target).convert('RGBA') if target.exists() else Image.open(row['path']).convert('RGBA')
         outline_repairs = {'1002-1', '1002-2', '1002-3', '1004-1', '1011-1', '1012-1', '1012-2', '1-1', '1-3'}
-        if key in outline_repairs:
+        if selected and key in reviewed_masks:
+            # Hand-reviewed source-space contours replace the generic mask only.
+            # Supersampling smooths alpha without changing source RGB or branding.
+            result = Image.open(row['path']).convert('RGBA')
+            spec = reviewed_masks[key]
+            if list(result.size) != spec['size']:
+                raise ValueError(f'Source size changed for reviewed mask {key}')
+            scale = 4
+            mask_image = Image.new('L', (result.width * scale, result.height * scale))
+            painter = ImageDraw.Draw(mask_image)
+            for polygon in spec.get('polygons', []):
+                painter.polygon([(x * scale, y * scale) for x, y in polygon], fill=255)
+            for x0, y0, x1, y1, radius in spec.get('rounded_rects', []):
+                painter.rounded_rectangle((x0 * scale, y0 * scale, x1 * scale, y1 * scale), radius=radius * scale, fill=255)
+            result.putalpha(mask_image.resize(result.size, Image.Resampling.LANCZOS))
+            result = result.crop(result.getchannel('A').getbbox())
+            padding = max(8, round(max(result.size) * .035))
+            canvas = Image.new('RGBA', (result.width + padding * 2, result.height + padding * 2))
+            canvas.alpha_composite(result, (padding, padding))
+            result = canvas
+        elif selected and key in outline_repairs:
             # Preserve bright white casing using its visible outline where the
             # general segmentation model confuses housing and white backdrop.
             result = Image.open(row['path']).convert('RGBA')
@@ -92,12 +116,13 @@ def main():
             canvas = Image.new('RGBA', (result.width + padding * 2, result.height + padding * 2))
             canvas.alpha_composite(result, (padding, padding))
             result = canvas
-        if not row.get('transparent'):
+        if selected and not row.get('transparent') and key not in reviewed_masks:
             # White casing highlights must remain solid, rather than becoming
             # translucent along with the similarly colored background.
             solid = binary_fill_holes(np.asarray(result.getchannel('A')) >= 64)
             refined = gaussian_filter(solid.astype(np.float32), sigma=0.55)
             result.putalpha(Image.fromarray(np.uint8(np.clip(refined * 255, 0, 255))))
+        if selected:
             result.save(target, optimize=True)
         alpha = np.asarray(result.getchannel('A'))
         record = {'id': row['id'], 'index': row['index'], 'source': row.get('replacement_url', row['url']),
@@ -105,7 +130,8 @@ def main():
                   'opaque_pixels': int((alpha >= 240).sum()), 'transparent_pixels': int((alpha == 0).sum())}
         if not record['opaque_pixels'] or not record['transparent_pixels']:
             raise ValueError(f'Invalid transparency for {key}')
-        mapping[row['url']] = record['file']
+        revision = hashlib.sha256(target.read_bytes()).hexdigest()[:12]
+        mapping[row['url']] = record['file'] + '?v=' + revision
         report.append(record)
         print(f'{key}: {result.size}', flush=True)
     (output.parent / 'gallery-index.js').write_text(
