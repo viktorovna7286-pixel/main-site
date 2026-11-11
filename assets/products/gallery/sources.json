@@ -1,0 +1,542 @@
+[
+  {
+    "id": 1001,
+    "index": 0,
+    "source": "https://aux-air.ru/erc/2025/02/20/fab34c467eec2631e60ee5140c1251a1d91b61a4.png",
+    "file": "/assets/products/gallery/1001-1.png",
+    "size": [
+      1712,
+      1013
+    ],
+    "opaque_pixels": 1060242,
+    "transparent_pixels": 668773
+  },
+  {
+    "id": 1001,
+    "index": 1,
+    "source": "https://aux-air.ru/erc/2025/02/20/beffe2edb4b0e21113de1c73c9769c825eb1555f.png",
+    "file": "/assets/products/gallery/1001-2.png",
+    "size": [
+      360,
+      1178
+    ],
+    "opaque_pixels": 299322,
+    "transparent_pixels": 121551
+  },
+  {
+    "id": 1001,
+    "index": 2,
+    "source": "https://aux-air.ru/erc/2025/02/20/30c45f8613bca4e12f53cf8f649a7b7286bb33df.png",
+    "file": "/assets/products/gallery/1001-3.png",
+    "size": [
+      1608,
+      1094
+    ],
+    "opaque_pixels": 1362481,
+    "transparent_pixels": 391005
+  },
+  {
+    "id": 1002,
+    "index": 0,
+    "source": "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_main.png",
+    "file": "/assets/products/gallery/1002-1.png",
+    "size": [
+      563,
+      500
+    ],
+    "opaque_pixels": 176283,
+    "transparent_pixels": 99258
+  },
+  {
+    "id": 1002,
+    "index": 1,
+    "source": "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_indoor1.png",
+    "file": "/assets/products/gallery/1002-2.png",
+    "size": [
+      561,
+      320
+    ],
+    "opaque_pixels": 118004,
+    "transparent_pixels": 58463
+  },
+  {
+    "id": 1002,
+    "index": 2,
+    "source": "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_indoor3.png",
+    "file": "/assets/products/gallery/1002-3.png",
+    "size": [
+      814,
+      604
+    ],
+    "opaque_pixels": 385297,
+    "transparent_pixels": 101291
+  },
+  {
+    "id": 1002,
+    "index": 3,
+    "source": "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_pult.png",
+    "file": "/assets/products/gallery/1002-4.png",
+    "size": [
+      158,
+      513
+    ],
+    "opaque_pixels": 56279,
+    "transparent_pixels": 22405
+  },
+  {
+    "id": 1003,
+    "index": 0,
+    "source": "https://daichi.market/upload/iblock/9e8/u3k0tnnrm1o29xag6efuikvnr6imj1aj/Oblozhka.jpg",
+    "file": "/assets/products/gallery/1003-1.png",
+    "size": [
+      1166,
+      1190
+    ],
+    "opaque_pixels": 695955,
+    "transparent_pixels": 679159
+  },
+  {
+    "id": 1003,
+    "index": 1,
+    "source": "https://daichi.market/upload/iblock/cf8/mf6oef2le7v6lekreqk4pv9il3tfqrwa/08.jpg",
+    "file": "/assets/products/gallery/1003-2.png",
+    "size": [
+      1251,
+      456
+    ],
+    "opaque_pixels": 422085,
+    "transparent_pixels": 142351
+  },
+  {
+    "id": 1003,
+    "index": 2,
+    "source": "https://daichi.market/upload/iblock/a86/v2va6cslzbnhzs06sryt6f6z152hq7h5/10.jpg",
+    "file": "/assets/products/gallery/1003-3.png",
+    "size": [
+      445,
+      1047
+    ],
+    "opaque_pixels": 351073,
+    "transparent_pixels": 109616
+  },
+  {
+    "id": 1003,
+    "index": 3,
+    "source": "https://daichi.market/upload/iblock/106/qpp641p915wiuqfa8jg55uiz46m54uuq/09.jpg",
+    "file": "/assets/products/gallery/1003-4.png",
+    "size": [
+      1003,
+      755
+    ],
+    "opaque_pixels": 578476,
+    "transparent_pixels": 172272
+  },
+  {
+    "id": 1004,
+    "index": 0,
+    "source": "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/YUKI_20_Ozon_8-700x700.jpg",
+    "file": "/assets/products/gallery/1004-1.png",
+    "size": [
+      606,
+      535
+    ],
+    "opaque_pixels": 208702,
+    "transparent_pixels": 108894
+  },
+  {
+    "id": 1004,
+    "index": 1,
+    "source": "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-2-700x700.jpg",
+    "file": "/assets/products/gallery/1004-2.png",
+    "size": [
+      669,
+      274
+    ],
+    "opaque_pixels": 136976,
+    "transparent_pixels": 42995
+  },
+  {
+    "id": 1004,
+    "index": 2,
+    "source": "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-3-700x700.jpg",
+    "file": "/assets/products/gallery/1004-3.png",
+    "size": [
+      615,
+      440
+    ],
+    "opaque_pixels": 204769,
+    "transparent_pixels": 61767
+  },
+  {
+    "id": 1004,
+    "index": 3,
+    "source": "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-4-700x700.jpg",
+    "file": "/assets/products/gallery/1004-4.png",
+    "size": [
+      151,
+      496
+    ],
+    "opaque_pixels": 52867,
+    "transparent_pixels": 19724
+  },
+  {
+    "id": 1005,
+    "index": 0,
+    "source": "https://esmarket.kz/upload/iblock/8a0/e66t81e7yzn2inxnl1sb83x6d3dve6jv/1932383_2.jpg",
+    "file": "/assets/products/gallery/1005-1.png",
+    "size": [
+      856,
+      506
+    ],
+    "opaque_pixels": 282635,
+    "transparent_pixels": 145857
+  },
+  {
+    "id": 1005,
+    "index": 1,
+    "source": "https://esmarket.kz/upload/iblock/a89/ijzrkz651kfegmjoszwgqwub4l0hpxk6/1932383.jpg",
+    "file": "/assets/products/gallery/1005-2.png",
+    "size": [
+      817,
+      556
+    ],
+    "opaque_pixels": 258801,
+    "transparent_pixels": 191009
+  },
+  {
+    "id": 1005,
+    "index": 2,
+    "source": "https://esmarket.kz/upload/iblock/9c4/q829xus7ar8j8w2qbxwqs5sfon1hbof0/1932383_6.jpg",
+    "file": "/assets/products/gallery/1005-3.png",
+    "size": [
+      781,
+      518
+    ],
+    "opaque_pixels": 308667,
+    "transparent_pixels": 91016
+  },
+  {
+    "id": 1005,
+    "index": 3,
+    "source": "https://esmarket.kz/upload/iblock/751/s5nprz82vh3bksompasjos7c1tkxy4bb/1932383_7.jpg",
+    "file": "/assets/products/gallery/1005-4.png",
+    "size": [
+      234,
+      761
+    ],
+    "opaque_pixels": 126595,
+    "transparent_pixels": 47948
+  },
+  {
+    "id": 1006,
+    "index": 0,
+    "source": "https://images.satu.kz/218908399_w640_h640_218908399.jpg",
+    "file": "/assets/products/gallery/1006-1.png",
+    "size": [
+      888,
+      447
+    ],
+    "opaque_pixels": 273468,
+    "transparent_pixels": 118825
+  },
+  {
+    "id": 1006,
+    "index": 1,
+    "source": "https://images.satu.kz/218908890_w640_h640_218908890.jpg",
+    "file": "/assets/products/gallery/1006-2.png",
+    "size": [
+      855,
+      359
+    ],
+    "opaque_pixels": 231661,
+    "transparent_pixels": 70993
+  },
+  {
+    "id": 1006,
+    "index": 2,
+    "source": "https://images.satu.kz/218908888_w640_h640_218908888.jpg",
+    "file": "/assets/products/gallery/1006-3.png",
+    "size": [
+      183,
+      598
+    ],
+    "opaque_pixels": 77105,
+    "transparent_pixels": 29563
+  },
+  {
+    "id": 1007,
+    "index": 0,
+    "source": "https://centek-climat.ru/wp-content/uploads/2023/04/Centek-CT-65F07-1.jpg",
+    "file": "/assets/products/gallery/1007-1.png",
+    "size": [
+      593,
+      240
+    ],
+    "opaque_pixels": 106328,
+    "transparent_pixels": 33031
+  },
+  {
+    "id": 1007,
+    "index": 1,
+    "source": "https://centek-climat.ru/wp-content/uploads/2023/04/Centek-CT-65F07-3.jpg",
+    "file": "/assets/products/gallery/1007-2.png",
+    "size": [
+      482,
+      351
+    ],
+    "opaque_pixels": 131506,
+    "transparent_pixels": 34528
+  },
+  {
+    "id": 1007,
+    "index": 2,
+    "source": "https://centek-climat.ru/wp-content/uploads/2023/04/Centek-CT-65F07-4.jpg",
+    "file": "/assets/products/gallery/1007-3.png",
+    "size": [
+      189,
+      471
+    ],
+    "opaque_pixels": 66947,
+    "transparent_pixels": 19742
+  },
+  {
+    "id": 1008,
+    "index": 0,
+    "source": "https://aws-obg-image-lb-2.tcl.com/content/dam/brandsite/product/ac/split-wall-mounted/savein-ai-series/id/1.png",
+    "file": "/assets/products/gallery/1008-1.png",
+    "size": [
+      716,
+      284
+    ],
+    "opaque_pixels": 157062,
+    "transparent_pixels": 44375
+  },
+  {
+    "id": 1008,
+    "index": 1,
+    "source": "https://aws-obg-image-lb-1.tcl.com/content/dam/brandsite/product/ac/split-wall-mounted/savein-ai-series/id/2.jpg",
+    "file": "/assets/products/gallery/1008-2.png",
+    "size": [
+      708,
+      355
+    ],
+    "opaque_pixels": 175670,
+    "transparent_pixels": 71957
+  },
+  {
+    "id": 1009,
+    "index": 0,
+    "source": "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1-700x700.jpg",
+    "file": "/assets/products/gallery/1009-1.png",
+    "size": [
+      518,
+      510
+    ],
+    "opaque_pixels": 139449,
+    "transparent_pixels": 118482
+  },
+  {
+    "id": 1009,
+    "index": 1,
+    "source": "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_1-700x700.jpg",
+    "file": "/assets/products/gallery/1009-2.png",
+    "size": [
+      675,
+      243
+    ],
+    "opaque_pixels": 119640,
+    "transparent_pixels": 41104
+  },
+  {
+    "id": 1009,
+    "index": 2,
+    "source": "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_2-700x700.jpg",
+    "file": "/assets/products/gallery/1009-3.png",
+    "size": [
+      674,
+      434
+    ],
+    "opaque_pixels": 225408,
+    "transparent_pixels": 62919
+  },
+  {
+    "id": 1009,
+    "index": 3,
+    "source": "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_3-700x700.jpg",
+    "file": "/assets/products/gallery/1009-4.png",
+    "size": [
+      199,
+      489
+    ],
+    "opaque_pixels": 71778,
+    "transparent_pixels": 23107
+  },
+  {
+    "id": 1010,
+    "index": 0,
+    "source": "https://mitsubishi-heavy.ru/image/cache/catalog/1New-tovar/SRK63ZTL-WSRC63ZTL-W/SRK63ZTL-WSRC63ZTL-W-1-1000x1000.jpg",
+    "file": "/assets/products/gallery/1010-1.png",
+    "size": [
+      1042,
+      383
+    ],
+    "opaque_pixels": 289512,
+    "transparent_pixels": 104569
+  },
+  {
+    "id": 1010,
+    "index": 1,
+    "source": "https://mitsubishi-heavy.ru/image/cache/catalog/1New-tovar/SRK63ZTL-WSRC63ZTL-W/SRK63ZTL-WSRC63ZTL-W-2-1000x1000.jpg",
+    "file": "/assets/products/gallery/1010-2.png",
+    "size": [
+      1006,
+      811
+    ],
+    "opaque_pixels": 629017,
+    "transparent_pixels": 180158
+  },
+  {
+    "id": 1010,
+    "index": 2,
+    "source": "https://mitsubishi-heavy.ru/image/cache/catalog/1New-tovar/SRK63ZTL-WSRC63ZTL-W/SRK63ZTL-WSRC63ZTL-W-3-1000x1000.jpg",
+    "file": "/assets/products/gallery/1010-3.png",
+    "size": [
+      388,
+      984
+    ],
+    "opaque_pixels": 284928,
+    "transparent_pixels": 92048
+  },
+  {
+    "id": 1011,
+    "index": 0,
+    "source": "https://climstore.ru/upload/iblock/e17/2atbdii53jko2k7676g2qsuym0o9n2cd.jpg",
+    "file": "/assets/products/gallery/1011-1.png",
+    "size": [
+      476,
+      454
+    ],
+    "opaque_pixels": 137047,
+    "transparent_pixels": 73592
+  },
+  {
+    "id": 1011,
+    "index": 1,
+    "source": "https://climstore.ru/upload/resize_cache/iblock/2c8/700_700_1/wxjj6z8zize2h83d4hpf439f3n6x3ije.jpg",
+    "file": "/assets/products/gallery/1011-2.png",
+    "size": [
+      742,
+      268
+    ],
+    "opaque_pixels": 145182,
+    "transparent_pixels": 50062
+  },
+  {
+    "id": 1011,
+    "index": 2,
+    "source": "https://climstore.ru/upload/resize_cache/iblock/cce/700_700_1/1g5umx9c207vjyms379f4c8gb7poxkua.jpg",
+    "file": "/assets/products/gallery/1011-3.png",
+    "size": [
+      747,
+      442
+    ],
+    "opaque_pixels": 208776,
+    "transparent_pixels": 117343
+  },
+  {
+    "id": 1011,
+    "index": 3,
+    "source": "https://climstore.ru/upload/resize_cache/iblock/65c/700_700_1/fiasrwb9s8mb49thtmobtzyctv9l5y47.jpg",
+    "file": "/assets/products/gallery/1011-4.png",
+    "size": [
+      530,
+      441
+    ],
+    "opaque_pixels": 186722,
+    "transparent_pixels": 43495
+  },
+  {
+    "id": 1011,
+    "index": 4,
+    "source": "https://climstore.ru/upload/resize_cache/iblock/672/700_700_1/9jqubelyypk5a28vf5xzhdznl4sydnl3.jpg",
+    "file": "/assets/products/gallery/1011-5.png",
+    "size": [
+      490,
+      473
+    ],
+    "opaque_pixels": 86241,
+    "transparent_pixels": 142681
+  },
+  {
+    "id": 1012,
+    "index": 0,
+    "source": "https://electrolux-home.ru/upload/resize_cache/iblock/dc9/opeqiedkv4ra3s1x1asu3gy6e66r2uk1/572_0_1/6606472320.jpg",
+    "file": "/assets/products/gallery/1012-1.png",
+    "size": [
+      1067,
+      406
+    ],
+    "opaque_pixels": 310464,
+    "transparent_pixels": 117010
+  },
+  {
+    "id": 1012,
+    "index": 1,
+    "source": "https://electrolux-home.ru/upload/resize_cache/iblock/585/aolvwxb761o0e2xs3kge2ptyv08tvrqo/572_0_1/6606472321.jpg",
+    "file": "/assets/products/gallery/1012-2.png",
+    "size": [
+      1068,
+      955
+    ],
+    "opaque_pixels": 755007,
+    "transparent_pixels": 257682
+  },
+  {
+    "id": 1012,
+    "index": 2,
+    "source": "https://electrolux-home.ru/upload/resize_cache/iblock/b33/hp1ymut2s9a9x0j1sx7wjd1lpgsq4pg0/572_0_1/6017087366.jpg",
+    "file": "/assets/products/gallery/1012-3.png",
+    "size": [
+      634,
+      614
+    ],
+    "opaque_pixels": 144736,
+    "transparent_pixels": 240810
+  },
+  {
+    "id": 1,
+    "index": 0,
+    "source": "https://cdn.entero.ru/l/23/1e/231ecbf97b86ab49d9756598b5876060.jpg",
+    "file": "/assets/products/gallery/1-1.png",
+    "size": [
+      686,
+      288
+    ],
+    "opaque_pixels": 147986,
+    "transparent_pixels": 46094
+  },
+  {
+    "id": 1,
+    "index": 1,
+    "source": "https://cdn.entero.ru/l/4f/1c/4f1c4a5ca6900c5587cdd371f991d6ee.jpg",
+    "file": "/assets/products/gallery/1-2.png",
+    "size": [
+      624,
+      412
+    ],
+    "opaque_pixels": 152266,
+    "transparent_pixels": 99113
+  },
+  {
+    "id": 1,
+    "index": 2,
+    "source": "https://cdn.entero.ru/l/ac/45/ac45921ed55debc734e51f9d276ac09e.jpg",
+    "file": "/assets/products/gallery/1-3.png",
+    "size": [
+      190,
+      551
+    ],
+    "opaque_pixels": 76609,
+    "transparent_pixels": 25448
+  }
+]

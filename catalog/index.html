@@ -1211,6 +1211,7 @@
     <!-- Данные каталога: catalog-data.json -->
     <div id="root"></div>
 
+    <script src="/assets/products/gallery-index.js?v=1"></script>
     <script type="text/babel">
         const { useState, useMemo, useEffect } = React;
 
@@ -1239,7 +1240,8 @@
         const productImages = (p) => {
             if (!p) return [];
             if (Array.isArray(p.images) && p.images.length > 0) {
-                return p.images.map((u) => String(u || '').trim()).filter(Boolean).slice(0, 5);
+                return p.images.map((u) => String(u || '').trim()).filter(Boolean).slice(0, 5)
+                    .map((url) => (window.PRODUCT_GALLERY_ASSETS || {})[url] || url);
             }
             if (p.image && String(p.image).trim()) return [String(p.image).trim()];
             return [];
@@ -1251,7 +1253,10 @@
             if (btu <= 24) return { ready: 16000, standard: 22000 };
             return null;
         };
-        const productCardImage = (p) => String(p?.image || '').trim() || productImages(p)[0] || '';
+        const productCardImage = (p) => {
+            const source = Array.isArray(p?.images) ? String(p.images[0] || '').trim() : '';
+            return (window.PRODUCT_GALLERY_ASSETS || {})[source] || String(p?.image || '').trim() || productImages(p)[0] || '';
+        };
         /** Только мощности из админки: сортируем и убираем дубликаты по BTU. */
         const normalizeProductBtu = (product) => {
             const sourceRows = Array.isArray(product?.btuData) ? product.btuData : [];
