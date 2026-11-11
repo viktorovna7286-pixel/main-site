@@ -1742,7 +1742,7 @@
                                                 <p className="text-gray-200 text-sm leading-relaxed font-description border-l-2 border-[#C9A84C]/45 pl-3">{String(selectedProduct.description || '').replace(/\.\s*$/, '')}</p>
                                             </div>
 
-                                            <a href={'https://wa.me/79996368698?text=' + encodeURIComponent('Заказ: ' + selectedProduct.brand + ' — завод ' + selectedProduct.factory + ', серия ' + (selectedProduct.series || '') + '. Мощность: ' + (selectedBtu ? selectedBtu.btu + ' BTU' : 'не выбрана') + '. Цена: ' + (selectedBtu && Number(selectedBtu.price) > 0 ? String(selectedBtu.price) + ' ₽' : 'по запросу'))} className="w-full btn-shared-solid font-title py-3 flex items-center justify-center gap-3 uppercase tracking-[0.28em] text-xs sm:text-sm shrink-0">
+                                            <a href={'/?product_id=' + encodeURIComponent(selectedProduct.id) + '&btu=' + encodeURIComponent(selectedBtu?.btu || '') + '&product_label=' + encodeURIComponent(selectedProduct.brand + ' ' + selectedProduct.series + (selectedBtu ? ' · ' + selectedBtu.btu + ' BTU' : '')) + '#request'} className="w-full btn-shared-solid font-title py-3 flex items-center justify-center gap-3 uppercase tracking-[0.28em] text-xs sm:text-sm shrink-0">
                                                 <IconZap /> Оформить заявку
                                             </a>
                                         </div>

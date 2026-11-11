@@ -412,6 +412,7 @@ try {
 <body>
 <header>
     <h1>Каталог · ВЕРШИНА 8848</h1>
+    <p><a href="/leads-admin.php" style="color:#e8c96b">Заявки с сайта и Telegram →</a></p>
     <div class="actions">
         <a class="btn" href="index.html" target="_blank" rel="noopener">Каталог</a>
         <a class="btn" href="catalog-data.json?v=<?= (string)time(); ?>" target="_blank" rel="noopener">JSON</a>

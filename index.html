@@ -2241,6 +2241,10 @@
             </h2>
             <div class="lead-form-panel">
             <form id="lead-form" class="space-y-4" action="#" method="post" novalidate>
+                <p id="lead-product-summary" hidden class="text-sm text-gold-gradient"></p>
+                <input type="hidden" name="product_id" value="">
+                <input type="hidden" name="btu" value="">
+                <div style="position:absolute;left:-10000px" aria-hidden="true"><label>Компания <input name="company" tabindex="-1" autocomplete="off"></label></div>
                 <input type="text" name="name" class="lead-form-field" placeholder="Ваше имя" autocomplete="name" required />
                 <input type="tel" name="phone" class="lead-form-field" placeholder="+7 ___ ___ __ __" autocomplete="tel" inputmode="tel" required />
                 <input type="text" name="address" class="lead-form-field" placeholder="Адрес" autocomplete="street-address" />
@@ -2574,34 +2578,7 @@
             });
         })();
 
-        (function () {
-            var form = document.getElementById('lead-form');
-            var hint = document.getElementById('lead-form-hint');
-            if (!form) return;
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var fd = new FormData(form);
-                var name = (fd.get('name') || '').toString().trim();
-                var phone = (fd.get('phone') || '').toString().trim();
-                var address = (fd.get('address') || '').toString().trim();
-                var area = (fd.get('area') || '').toString().trim();
-                var service = (fd.get('service') || '').toString().trim();
-                if (!name || !phone) {
-                    if (hint) {
-                        hint.textContent = 'Укажите имя и телефон.';
-                        hint.classList.remove('hidden');
-                    }
-                    return;
-                }
-                var msg = 'Заявка с сайта vershina8848.ru:%0AИмя: ' + encodeURIComponent(name) +
-                    '%0AТелефон: ' + encodeURIComponent(phone) +
-                    (address ? '%0AАдрес: ' + encodeURIComponent(address) : '') +
-                    (service ? '%0AУслуга: ' + encodeURIComponent(service) : '') +
-                    (area ? '%0AПлощадь: ' + encodeURIComponent(area) + ' м²' : '');
-                if (hint) hint.classList.add('hidden');
-                window.open('https://wa.me/79996368698?text=' + msg, '_blank', 'noopener,noreferrer');
-            });
-        })();
+
     </script>
 
     <!-- SCROLL-АНИМАЦИИ: JS -->
@@ -2769,5 +2746,6 @@
             });
         });
 </script>
+<script src="/assets/leads.js?v=1" defer></script>
 </body>
 </html>
