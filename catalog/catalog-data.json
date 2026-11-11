@@ -31,8 +31,8 @@
     "description": "Работает при низком напряжении (130 В). Оснащён функцией I Feel с датчиком в пульте. Имеет двусторонний дренаж. Тройная шумоизоляция компрессора обеспечивает тихую работу. Выполняет самоочистку внутреннего и внешнего блоков.",
     "images": [
       "https://aux-air.ru/erc/2025/02/20/fab34c467eec2631e60ee5140c1251a1d91b61a4.png",
-      "https://aux-air.ru/erc/2025/02/20/beffe2edb4b0e21113de1c73c9769c825eb1555f.png",
-      "https://aux-air.ru/erc/2025/02/20/30c45f8613bca4e12f53cf8f649a7b7286bb33df.png"
+      "https://aux-air.ru/erc/2025/02/20/30c45f8613bca4e12f53cf8f649a7b7286bb33df.png",
+      "https://aux-air.ru/erc/2025/02/20/beffe2edb4b0e21113de1c73c9769c825eb1555f.png"
     ],
     "image": "/assets/products/cards/1001.jpg"
   },
@@ -55,9 +55,9 @@
     ],
     "description": "Отличается очень низким уровнем шума (19 дБ). Оснащён текстильной панелью, которая не бликует и не желтеет. Поддерживает воздушный поток на 180° (не дует прямо). Имеет полноразмерный фильтр. Предоставляется гарантия 5 лет.",
     "images": [
-      "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_main.png",
       "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_indoor1.png",
       "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_indoor3.png",
+      "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_main.png",
       "https://comfortsamara.ru/uploads/2024/08/ballu-boho-dc_pult.png"
     ],
     "image": "/assets/products/cards/1002.jpg"
@@ -93,10 +93,10 @@
     ],
     "description": "Управляется через смартфон (в базовой комплектации). Электронный внутренний блок с возможностью автоперезапуска настроек. Оснащён защитой от замерзания помещения (+8°C). Поддерживает режим осушения.",
     "images": [
-      "https://daichi.market/upload/iblock/9e8/u3k0tnnrm1o29xag6efuikvnr6imj1aj/Oblozhka.jpg",
       "https://daichi.market/upload/iblock/cf8/mf6oef2le7v6lekreqk4pv9il3tfqrwa/08.jpg",
-      "https://daichi.market/upload/iblock/a86/v2va6cslzbnhzs06sryt6f6z152hq7h5/10.jpg",
-      "https://daichi.market/upload/iblock/106/qpp641p915wiuqfa8jg55uiz46m54uuq/09.jpg"
+      "https://daichi.market/upload/iblock/106/qpp641p915wiuqfa8jg55uiz46m54uuq/09.jpg",
+      "https://daichi.market/upload/iblock/9e8/u3k0tnnrm1o29xag6efuikvnr6imj1aj/Oblozhka.jpg",
+      "https://daichi.market/upload/iblock/a86/v2va6cslzbnhzs06sryt6f6z152hq7h5/10.jpg"
     ],
     "image": "/assets/products/cards/1003.jpg"
   },
@@ -131,9 +131,9 @@
     ],
     "description": "Оснащён фильтром высокой плотности для улавливания мелкой пыли. Покрытие Golden Fin защищает от соли и влаги. Есть система обнаружения утечки хладагента с защитой компрессора. Работает при низком напряжении. Возможна работа до -15°C.",
     "images": [
-      "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/YUKI_20_Ozon_8-700x700.jpg",
       "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-2-700x700.jpg",
       "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-3-700x700.jpg",
+      "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/YUKI_20_Ozon_8-700x700.jpg",
       "https://kentatsu-kondicioner.ru/image/cache/catalog/NEW%20TOVAR/yuki/yuki-4-700x700.jpg"
     ],
     "image": "/assets/products/cards/1004.jpg"
@@ -207,8 +207,8 @@
     ],
     "description": "Один из самых тихих бюджетных вариантов (23 дБ). Выполнен из качественного ABS-пластика, устойчивого к пожелтению. Оснащён режимом оттаивания Defrost. Имеет усиленную систему фильтрации. Гарантия составляет 5 лет.",
     "images": [
-      "https://images.satu.kz/218908399_w640_h640_218908399.jpg",
       "https://images.satu.kz/218908890_w640_h640_218908890.jpg",
+      "https://images.satu.kz/218908399_w640_h640_218908399.jpg",
       "https://images.satu.kz/218908888_w640_h640_218908888.jpg"
     ],
     "image": "/assets/products/cards/1006.jpg"
@@ -317,9 +317,9 @@
     ],
     "description": "Поддерживает стандартные функции охлаждения и обогрева. Оснащён базовой системой фильтрации. Отличается простотой управления и надёжной работой.",
     "images": [
-      "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1-700x700.jpg",
       "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_1-700x700.jpg",
       "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_2-700x700.jpg",
+      "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1-700x700.jpg",
       "https://axioma.com.ru/image/cache/catalog/product-img/ASX07D1-ASB07D1/Axioma-ASX07D1-ASB07D1_3-700x700.jpg"
     ],
     "image": "/assets/products/cards/1009.jpg"
@@ -396,10 +396,10 @@
     ],
     "description": "Классическая сплит-система без инвертора. Обеспечивает быстрое охлаждение и обогрев. Оснащена базовой системой фильтрации воздуха, режимом сна и таймером. Отличается простотой эксплуатации и доступной стоимостью.",
     "images": [
-      "https://climstore.ru/upload/iblock/e17/2atbdii53jko2k7676g2qsuym0o9n2cd.jpg",
       "https://climstore.ru/upload/resize_cache/iblock/2c8/700_700_1/wxjj6z8zize2h83d4hpf439f3n6x3ije.jpg",
       "https://climstore.ru/upload/resize_cache/iblock/cce/700_700_1/1g5umx9c207vjyms379f4c8gb7poxkua.jpg",
       "https://climstore.ru/upload/resize_cache/iblock/65c/700_700_1/fiasrwb9s8mb49thtmobtzyctv9l5y47.jpg",
+      "https://climstore.ru/upload/iblock/e17/2atbdii53jko2k7676g2qsuym0o9n2cd.jpg",
       "https://climstore.ru/upload/resize_cache/iblock/672/700_700_1/9jqubelyypk5a28vf5xzhdznl4sydnl3.jpg"
     ],
     "image": "/assets/products/cards/1011.jpg"

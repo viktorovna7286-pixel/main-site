@@ -46,3 +46,17 @@ window.PRODUCT_GALLERY_ASSETS = {
   "https://cdn.entero.ru/l/4f/1c/4f1c4a5ca6900c5587cdd371f991d6ee.jpg": "/assets/products/gallery/1-2.png?v=c68f06c95367",
   "https://cdn.entero.ru/l/ac/45/ac45921ed55debc734e51f9d276ac09e.jpg": "/assets/products/gallery/1-3.png?v=8d124b52e6fa"
 };
+window.PRODUCT_GALLERY_ROLES = {
+  "/assets/products/gallery/1001-2.png": "remote",
+  "/assets/products/gallery/1002-4.png": "remote",
+  "/assets/products/gallery/1003-3.png": "remote",
+  "/assets/products/gallery/1004-4.png": "remote",
+  "/assets/products/gallery/1005-4.png": "remote",
+  "/assets/products/gallery/1006-3.png": "remote",
+  "/assets/products/gallery/1007-3.png": "remote",
+  "/assets/products/gallery/1009-4.png": "remote",
+  "/assets/products/gallery/1010-3.png": "remote",
+  "/assets/products/gallery/1011-5.png": "remote",
+  "/assets/products/gallery/1012-3.png": "remote",
+  "/assets/products/gallery/1-3.png": "remote"
+};

@@ -29,6 +29,8 @@ def main():
     rows = json.loads(args.manifest.read_text(encoding='utf-8'))
     mask_file = Path(__file__).with_name('reviewed-gallery-masks.json')
     reviewed_masks = json.loads(mask_file.read_text(encoding='utf-8')) if mask_file.exists() else {}
+    role_file = Path(__file__).with_name('gallery-image-roles.json')
+    image_roles = json.loads(role_file.read_text(encoding='utf-8')) if role_file.exists() else {}
     session = None
     mapping = {}
     report = []
@@ -136,7 +138,8 @@ def main():
         print(f'{key}: {result.size}', flush=True)
     (output.parent / 'gallery-index.js').write_text(
         '// Original URLs map to locally hosted transparent images.\nwindow.PRODUCT_GALLERY_ASSETS = ' +
-        json.dumps(mapping, ensure_ascii=False, indent=2) + ';\n', encoding='utf-8')
+        json.dumps(mapping, ensure_ascii=False, indent=2) + ';\nwindow.PRODUCT_GALLERY_ROLES = ' +
+        json.dumps({f'/assets/products/gallery/{key}.png': role for key, role in image_roles.items()}, indent=2) + ';\n', encoding='utf-8')
     (output / 'sources.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
     # Review sheet is saved outside the published catalog.
     thumb_w, thumb_h, cols = 240, 210, 5
