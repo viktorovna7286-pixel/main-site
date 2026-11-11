@@ -79,7 +79,7 @@ $authorized = !empty($_SESSION['catalog_admin']);
 $csrf = '<input type="hidden" name="csrf" value="' . h($_SESSION['csrf_leads']) . '">';
 ?>
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Заявки · 8848 ВЕРШИНА</title>
-<link rel="stylesheet" href="/assets/fonts/fonts.css"><style>
+<link rel="stylesheet" href="/assets/fonts/fonts.css?v=7406384041"><style>
 *{box-sizing:border-box}body{margin:0;background:#111;color:#eee;font:15px Manrope,sans-serif}main{max-width:1100px;margin:auto;padding:32px 20px}h1,h2{font-family:Unbounded,sans-serif}h1{font-size:26px}h2{font-size:18px}a{color:#e8c96b}section,article{background:#1a1a1a;border:1px solid #34302a;border-radius:18px;padding:24px;margin:20px 0}label{display:block;margin:12px 0}input,select,button{font:inherit;padding:12px;border-radius:9px;border:1px solid #555;background:#222;color:#fff}input{width:100%;max-width:600px}button{cursor:pointer;background:#c9a84c;color:#111;font-weight:700}p{line-height:1.65}small,.muted{color:#aaa}.notice{padding:14px;border:1px solid #c9a84c;border-radius:9px}.error{color:#ffa8a8}header{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.details{display:grid;grid-template-columns:1fr 1fr;gap:10px}.details p{margin:4px 0;overflow-wrap:anywhere}.inline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.badge{color:#e8c96b} @media(max-width:600px){.details{grid-template-columns:1fr}section,article{padding:16px}}
 </style></head><body><main><header><h1>Заявки с сайта</h1><a href="/catalog/admin.php">Каталог</a></header>
 <?php if ($error): ?><p class="notice error"><?= h($error) ?></p><?php endif ?>
