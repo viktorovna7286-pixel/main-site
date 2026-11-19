@@ -1,0 +1,15 @@
+.section-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:12px 4%;background:var(--paper);color:var(--ink);border-bottom:1px solid color-mix(in srgb,var(--ink) 18%,transparent)}
+.section-nav-links{display:flex;flex:1;min-width:0;gap:24px;overflow-x:auto;scrollbar-width:none;align-items:center}
+.section-nav-links::-webkit-scrollbar{display:none}
+.section-nav a{white-space:nowrap;font-size:11px;padding:10px 0;border-bottom:2px solid transparent;opacity:.65}
+.section-nav a[aria-current=location]{opacity:1;border-color:currentColor}
+.section-nav button{flex-shrink:0;min-width:40px;min-height:40px;border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:50%;font-size:20px}
+.section-nav button:disabled{opacity:.25;cursor:default}
+main>section:not(.hero){scroll-margin-top:0}
+.hero-copy>.pill{display:inline-flex;margin-top:24px}
+.hero-copy p{max-width:620px}
+@media(max-width:600px){.section-nav{padding:8px 4%;gap:8px}.section-nav-links{gap:20px}.section-nav a{font-size:10px}.section-nav button{min-width:34px;min-height:34px}.hero-copy>.pill{margin-top:20px}.hero-copy{bottom:100px}.hero-copy p{font-size:12px}}
+
+/* Project titles follow the shared heading font and selector. */
+#projects .photo-card strong{font-family:var(--display);font-size:calc(clamp(28px,3vw,43px)*var(--font-scale));font-weight:400;line-height:1.15;letter-spacing:-.035em;text-transform:none}
+@media(max-width:600px){#projects .photo-card strong{font-size:calc(27px*var(--font-scale))}#projects .photo-card:first-child strong{font-size:calc(34px*var(--font-scale))}}

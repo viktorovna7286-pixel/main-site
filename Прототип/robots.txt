@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://interior-brand-palette-lab.sunsetwaffle1.chatgpt.site/sitemap.xml

@@ -1,0 +1,28 @@
+:root{--ease-editorial:cubic-bezier(.22,.61,.36,1)}
+html{scroll-behavior:smooth}
+body .motion-ready{opacity:0;transform:translateY(18px);transition:opacity .85s var(--ease-editorial),transform .85s var(--ease-editorial);transition-delay:var(--reveal-delay,0ms)}
+body .motion-ready.is-visible{opacity:1;transform:none}
+body :is(.btn,.pill,.theme){transition:background-color .28s,color .28s,transform .32s var(--ease-editorial),box-shadow .32s}
+body :is(.btn,.pill):hover{transform:translateY(-2px);box-shadow:0 7px 24px #00000012}
+body :is(.btn,.pill):active{transform:translateY(0) scale(.985)}
+body .hero-copy{animation:hero-arrive 1.15s var(--ease-editorial) both}
+body .reference-hero>img{animation:hero-settle 1.7s var(--ease-editorial) both;transform-origin:55% 50%}
+body .project img{transition:transform 1.05s var(--ease-editorial),filter .65s}
+body .project:hover img{transform:scale(1.025)}
+body :is(#process,#implementation) .work-cell img{transition:opacity .65s var(--ease-editorial),transform .95s var(--ease-editorial);transform:scale(1.07)}
+body :is(#process,#implementation) .work-cell:hover img,body :is(#process,#implementation) .work-cell:focus-visible img,body :is(#process,#implementation) .work-cell[aria-pressed=true] img{transform:scale(1);opacity:1}
+body :is(#process,#implementation) .work-cell .work-bottom{transition:transform .55s var(--ease-editorial)}
+body :is(#process,#implementation) .work-cell:hover .work-bottom,body :is(#process,#implementation) .work-cell[aria-pressed=true] .work-bottom{transform:translateY(-4px)}
+body :is(#process,#implementation) .work-cell:before{content:'';position:absolute;inset:-50%;background:linear-gradient(110deg,transparent 40%,#ffffff00 44%,#ffffff1c 49%,#ffffff00 54%,transparent 60%);transform:translateX(-75%);opacity:0;z-index:-1;pointer-events:none}
+body :is(#process,#implementation) .work-cell.is-delighted:before{animation:photo-glimmer .95s var(--ease-editorial) both}
+body :is(#process,#implementation) .work-cell.is-delighted .work-reveal{animation:arrow-arrive .65s var(--ease-editorial)}
+body dialog[open]{animation:dialog-arrive .3s var(--ease-editorial)}
+body dialog[open]::backdrop{animation:backdrop-arrive .3s}
+body .section-lines{transition:opacity .7s}
+@keyframes hero-arrive{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes hero-settle{from{transform:scale(1.035)}to{transform:scale(1)}}
+@keyframes photo-glimmer{0%{opacity:0;transform:translateX(-75%)}25%{opacity:1}100%{opacity:0;transform:translateX(75%)}}
+@keyframes arrow-arrive{0%{transform:translate(-3px,3px);opacity:.5}100%{transform:none;opacity:1}}
+@keyframes dialog-arrive{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes backdrop-arrive{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}body .motion-ready{opacity:1;transform:none}}

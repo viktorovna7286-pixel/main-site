@@ -1,0 +1,17 @@
+/* Shared approved visual language: echo titles, curved intersecting lines, rounded photos. */
+:root{--radius-photo:20px}
+body img{border-radius:var(--radius-photo)}
+body .reference-hero,body .statement,body .project,body #about .about-photo{border-radius:var(--radius-photo);overflow:hidden}
+body #about .about-photo img,body #projectDialog img{border-radius:var(--radius-photo)}
+body #process .work-cell{border-radius:var(--radius-photo);border:1px solid var(--line)}
+body #process .work-grid{border:0;gap:12px}
+body #process .work-cell:after,body .project>span{border-radius:var(--radius-photo)}
+body .echo-section{position:relative;isolation:isolate;overflow:hidden}
+body .echo-section h2[data-echo]{position:relative;z-index:1}
+body .echo-section h2[data-echo]:before{content:attr(data-echo);position:absolute;left:22px;top:-.17em;font-family:var(--font-display);font-weight:300;line-height:1.15;font-size:1.55em;letter-spacing:-.055em;white-space:nowrap;opacity:.055;color:var(--paper);pointer-events:none;z-index:-1}
+body .section-lines{position:absolute;inset:0;width:100%;height:100%;z-index:-1;color:var(--paper);opacity:.065;pointer-events:none;fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+body #about.about-reference:before{display:none}
+body #about .about-echo{opacity:.055}
+@media(max-width:480px){:root{--radius-photo:15px}body .echo-section h2[data-echo]:before{left:10px;font-size:1.3em;top:-.25em}body #process .work-grid{gap:8px}body #process .work-cell{padding:14px}}
+
+body #about .about-demo-note{font-size:9px;letter-spacing:.035em;opacity:.4;margin:15px 0 0;max-width:none}body #about .about-fact{min-width:0}body #about .about-fact strong{white-space:nowrap}body #about .about-fact:nth-child(2){gap:10px}body #about .about-fact:nth-child(2) strong{font-size:clamp(17px,1.7vw,24px)}@media(max-width:480px){body #about .about-fact:nth-child(2) strong{font-size:17px}}

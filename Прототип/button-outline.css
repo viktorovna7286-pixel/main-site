@@ -1,0 +1,14 @@
+/* Latest button rule: transparent, fine outline, two square and two rounded corners. */
+:root{--radius-button:22px 0 22px 0}
+body :is(.btn,.pill,.theme),body header .pill,body .reference-hero .btn,body .estimate-panel .btn,body dialog .btn,body #custom .btn{background:transparent;border:1px solid currentColor;border-radius:var(--radius-button);color:var(--ink);box-shadow:none}
+body header .pill,body .reference-hero .btn,body .contact .btn{color:var(--surface)}
+body :is(.btn,.pill,.theme):hover,body header .pill:hover,body .reference-hero .btn:hover{background:transparent;box-shadow:none}
+body .theme[aria-pressed=true]{background:transparent;color:var(--ink);border-width:1px;outline:1px solid currentColor;outline-offset:2px}
+body :is(.btn,.pill):hover{filter:brightness(1.1)}
+body .reference-hero .hero-bottom{display:flex;align-items:center;justify-content:center;left:0;right:0;bottom:28px}
+body .reference-hero .hero-scroll{position:static;display:flex!important;width:80px;height:36px;transform:none}
+@media(max-width:480px){:root{--radius-button:18px 0 18px 0}body .reference-hero .hero-bottom{display:flex;bottom:24px;left:0;right:0}body .reference-hero .hero-scroll{position:static;transform:none;width:60px}}
+
+/* Latest geometry: four equally softened corners, approximately 25% of height. */
+:root{--radius-button:11px}body :is(.btn,.pill,.theme),body header .pill,body .reference-hero .btn,body .estimate-panel .btn,body dialog .btn,body #custom .btn{border-radius:var(--radius-button)}
+@media(max-width:480px){:root{--radius-button:10px}}

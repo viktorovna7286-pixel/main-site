@@ -1,0 +1,41 @@
+name: Deploy Atlas to Prototype
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Прототип/**'
+      - '.github/workflows/deploy-atlas.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vershina-hosting
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Atlas files
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          site = Path('Прототип/index.html')
+          assert site.is_file(), 'Atlas index.html is missing'
+          assert 'Atlas Group' in site.read_text(encoding='utf-8'), 'Wrong site'
+          PY
+      - name: Deploy Atlas via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./Прототип/
+          server-dir: /www/vershina8848.ru/Прототип/
+          state-name: .atlas-deploy-state.json
+          dangerous-clean-slate: false

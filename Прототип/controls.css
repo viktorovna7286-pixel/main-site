@@ -1,0 +1,21 @@
+/* Approved global rule: full-width hero; rounded, borderless CTA plates. */
+:root{--radius-button:999px;--radius-panel:18px}
+body .reference-hero{margin:0;border:0;border-radius:0;width:100%}
+body :is(.btn,.pill,.theme){border:0;border-radius:var(--radius-button);box-shadow:none}
+body header .pill{border:0;border-radius:var(--radius-button);background:var(--paper);color:var(--ink);padding:11px 22px}
+body .reference-hero .btn{border:0;border-radius:var(--radius-button);background:var(--paper);color:var(--ink);padding:12px 22px;backdrop-filter:none}
+body .reference-hero .btn:hover,body header .pill:hover{background:var(--surface)}
+body .theme{background:color-mix(in srgb,var(--ink) 7%,transparent);padding:9px 14px}
+body .theme[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+body :is(.estimate-panel,.contact-card,dialog){border-radius:var(--radius-panel)}
+body .close{border:0;border-radius:var(--radius-button)}
+body #projectDialog .close{border-radius:var(--radius-button)}
+@media(max-width:480px){body header .pill{padding:9px 13px}body .reference-hero .btn{padding:11px 15px}}
+
+/* Hero footer: extended CTA and a generous open-chevron indicator. */
+body .reference-hero .hero-bottom{grid-template-columns:minmax(0,1fr) 80px minmax(0,1fr);gap:35px;align-items:center}
+body .reference-hero .hero-bottom>.btn{width:100%;max-width:none;min-height:52px;padding:14px 28px}
+body .reference-hero .hero-scroll{width:80px;height:34px;display:flex;align-items:center;justify-content:center;opacity:.85}
+body .reference-hero .hero-scroll svg{width:78px;height:25px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:800px){body .reference-hero .hero-bottom{grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);gap:16px}body .reference-hero .hero-scroll{width:54px}body .reference-hero .hero-scroll svg{width:52px;height:20px}body .reference-hero .hero-bottom>.btn{padding:13px 18px;min-height:46px}}
+@media(max-width:480px){body .reference-hero .hero-bottom{grid-template-columns:1fr 1.2fr;gap:18px}body .reference-hero .hero-scroll{display:flex!important;position:absolute;left:50%;bottom:58px;transform:translateX(-50%);width:60px}body .reference-hero .hero-scroll svg{width:58px;height:22px}body .reference-hero .hero-bottom>.btn{padding:12px 15px;min-height:44px}}

@@ -1,0 +1,1 @@
+document.querySelectorAll(':is(#process,#implementation) .work-cell').forEach(cell=>{cell.addEventListener('click',()=>{const next=cell.getAttribute('aria-pressed')!=='true';document.querySelectorAll(':is(#process,#implementation) .work-cell').forEach(other=>other.setAttribute('aria-pressed','false'));cell.setAttribute('aria-pressed',String(next))})});

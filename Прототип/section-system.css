@@ -1,0 +1,27 @@
+/* Canonical block system: two alternating backgrounds, one heading accent. */
+:root{--block-dark:var(--ink);--block-light:var(--paper);--section-heading-size:23px;--section-heading-leading:1.2}
+body main>section.tone-dark{background:var(--block-dark)!important;color:var(--paper)!important;--section-text:var(--paper);--section-accent:var(--accent);--line:color-mix(in srgb,var(--paper) 18%,transparent)}
+body main>section.tone-light{background:var(--block-light)!important;color:var(--ink)!important;--section-text:var(--ink);--section-accent:color-mix(in srgb,var(--accent) 65%,var(--ink));--line:color-mix(in srgb,var(--ink) 18%,transparent)}
+body main>section:not(#home) h2,body main #about h2,body main #services .service-label,body main .statement h2{font-family:var(--font-display)!important;font-weight:300!important;font-size:var(--section-heading-size)!important;line-height:var(--section-heading-leading)!important;letter-spacing:-.035em!important;color:var(--section-accent);text-transform:uppercase}
+body main>section:not(#home) h2 em{color:inherit}
+body main>section:not(#home) :is(.eyebrow,.section-lines){color:var(--section-text)}
+body main>section:not(#home) h2[data-echo]:before{color:var(--section-text)}
+body main #about .about-number{color:var(--section-accent)}
+body main #about .about-echo{color:var(--section-text)}
+body main #process :is(.eyebrow,.process-stage small,.work-cell,.section-lines){color:var(--section-text)}
+body main #process.echo-section h2[data-echo]:before{color:var(--section-text)}
+body main #process .work-cell:hover,body main #process .work-cell:focus-visible,body main #process .work-cell[aria-pressed=true]{color:var(--paper)}
+body main #contact .btn{color:var(--section-text)}
+body main .estimate-panel{background:transparent;border:1px solid var(--line);color:var(--section-text)}
+body main .estimate-panel :is(select,.btn){color:var(--section-text)}
+body main .statement{display:grid;grid-template-columns:1fr 1fr;gap:8%;min-height:0;padding:85px 7%;border-radius:0;overflow:visible}
+body main .statement>img{position:static;inset:auto;display:block;width:100%;height:420px;object-fit:cover;border-radius:var(--radius-photo)}
+body main .statement:after{display:none}
+body main .statement>div{padding:0;align-self:center;color:var(--section-text)}
+body main .statement p{font-size:12px}
+body main .statement h2 span,body main .statement h2 em{color:inherit}
+body main #services .service-label:after{background:var(--section-accent)}
+@media(max-width:800px){body main .statement{grid-template-columns:1fr;gap:35px;padding:65px 6%}body main .statement>img{height:350px}}
+@media(max-width:480px){:root{--section-heading-size:22px}body main .statement{padding:55px 7%}body main .statement>img{height:280px}}
+
+body main #implementation .work-cell{color:var(--section-text);border:1px solid var(--line);border-radius:var(--radius-photo)}body main #implementation .work-cell:hover,body main #implementation .work-cell:focus-visible,body main #implementation .work-cell[aria-pressed=true]{color:var(--paper)}body main #implementation .work-grid{border:0;gap:12px}body main #implementation .work-cell:after{border-radius:var(--radius-photo)}body main #implementation .work-caption{font-size:9px;opacity:.6;margin-top:16px}body main #implementation .work-name{font-size:clamp(20px,2.1vw,30px);line-height:1.2}@media(max-width:480px){body main #implementation .work-name{font-size:16px;letter-spacing:-.045em!important}body main #implementation .work-grid{gap:8px}}

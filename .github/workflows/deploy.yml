@@ -4,6 +4,17 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'Прототип/**'
+      - '.github/workflows/deploy-atlas.yml'
+      - 'ATLAS-DEPLOY.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vershina-hosting
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -24,3 +35,5 @@ jobs:
             **/.git*
             **/.git*/**
             .github/**
+            Прототип/**
+            ATLAS-DEPLOY.md
