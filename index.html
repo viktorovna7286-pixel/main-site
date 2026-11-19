@@ -1677,24 +1677,18 @@
         .works-card--compact .works-caption { padding: 0.5rem 1.25rem 1.5rem; font-size: 0.9rem; line-height: 1.7; }
         .works-card--compact .works-caption strong { font-size: 1rem; margin-bottom: 0.5rem; }
         .works-card--compact .works-photo-hint { margin-top: 0.75rem; font-size: 0.8rem; }
-        .works-showcase { margin-top: 3rem; padding: clamp(1rem, 3vw, 2.5rem); background: #161616; }
-        .works-showcase-heading { display: flex; justify-content: space-between; align-items: start; gap: 2rem; margin-bottom: 2rem; }
-        .works-showcase-label { font-size: 0.75rem; color: #c9a84c; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
-        .works-showcase-heading h3 { font-size: clamp(1.25rem, 2.5vw, 2rem); max-width: 40rem; }
-        .works-showcase-description { max-width: 38rem; color: #aaa; margin-top: 1rem; line-height: 1.7; }
-        .works-showcase-count { flex-shrink: 0; color: #e8c96b; font-size: 1.5rem; font-weight: 700; line-height: 1.4; }
-        .works-showcase-count small { font-size: 0.75rem; color: #aaa; font-weight: 400; }
-        .works-showcase-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-        .works-showcase-grid img { aspect-ratio: 4 / 3; border-radius: 0.75rem; }
+        .works-galleries { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 1rem; }
+        .works-showcase { margin: 0; padding: clamp(0.75rem, 2vw, 1.25rem); background: #161616; overflow: visible; }
+        .works-showcase-heading h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); }
+        .works-showcase-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+        .works-showcase-grid img { aspect-ratio: 4 / 3; border-radius: 0.5rem; }
         .works-showcase-grid img[hidden] { display: none; }
-        .works-showcase-more { display: flex; gap: 1rem; align-items: center; justify-content: center; width: 100%; padding: 1rem; margin-top: 1.5rem; border: 1px solid #63532b; border-radius: 0.75rem; color: #e8c96b; font-weight: 600; transition: background 0.2s; }
-        .works-showcase-more:hover { background: rgba(201,168,76,0.1); }
-        .works-showcase-more:focus-visible { outline: 2px solid #e8c96b; outline-offset: 4px; }
-        @media (max-width: 767px) {
-            .works-showcase-heading { flex-direction: column; gap: 1rem; }
-            .works-showcase-count br { display: none; }
-            .works-showcase-count small { margin-left: 0.5rem; }
-            .works-showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+        .works-showcase-more { display: flex; gap: 0.5rem; align-items: center; justify-content: center; width: 100%; padding: 0.55rem; margin: 0.65rem 0; background: #161616; border: 1px solid #63532b; border-radius: 0.5rem; color: #e8c96b; font-weight: 600; }
+        .works-showcase-more[aria-expanded="true"] { position: sticky; top: var(--works-header-offset, 6rem); z-index: 2; }
+        .works-showcase-more:hover { background: #282315; }
+        .works-showcase-more:focus-visible { outline: 2px solid #e8c96b; outline-offset: 3px; }
+        @media (max-width: 639px) {
+            .works-galleries { grid-template-columns: 1fr; }
         }
 
         h1, h2, h3, h4, h5, h6 { font-family: 'Unbounded', sans-serif !important; font-style: normal; }
@@ -2086,180 +2080,68 @@
             <p class="works-intro font-description px-2">
                 От первых трасс до готовой системы. Посмотрите, как выглядят наши работы на реальных объектах в Сочи.
             </p>
-            <div class="works-track">
-                <figure class="works-card works-card--compact">
-                    <div class="works-case-gallery">
-                        <img class="works-case-main" src="assets/cases/neskuchny-stage1-1.png" alt="ГК Нескучный сад — этап 1, трассы под кондиционеры" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-1.png" />
-                        <div class="works-case-thumbs">
-                            <img src="assets/cases/neskuchny-stage1-2.png" alt="ГК Нескучный сад — этап 1, прокладка трасс" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-2.png" />
-                            <img src="assets/cases/neskuchny-stage1-3.png" alt="ГК Нескучный сад — этап 1, общий вид объекта" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-3.png" />
-                            <img src="assets/cases/neskuchny-stage1-4.png" alt="ГК Нескучный сад — этап 1, разводка коммуникаций" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-4.png" />
-                            <img src="assets/cases/neskuchny-stage1-5.png" alt="ГК Нескучный сад — этап 1, трассы под 6 кондиционеров" loading="lazy" data-lightbox="assets/cases/neskuchny-stage1-5.png" />
-                        </div>
+            <div class="works-galleries">
+                <figure class="works-card works-showcase" id="indoor-works">
+                    <figcaption class="works-showcase-heading"><h3>Внутренние блоки</h3></figcaption>
+                    <button type="button" class="works-showcase-more" aria-expanded="false" aria-controls="indoor-works-photos" data-showcase-more>Показать все фото <span aria-hidden="true">↓</span></button>
+                    <div class="works-showcase-grid" id="indoor-works-photos">
+                        <img src="assets/cases/indoor/indoor-1518.webp" alt="Daikin на стене с растительным рисунком" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1518.webp" />
+                        <img src="assets/cases/indoor/indoor-0241.webp" alt="Carrera рядом с окном и зеркальной панелью" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0241.webp" />
+                        <img src="assets/cases/indoor/indoor-0279.webp" alt="Чёрный внутренний блок Haier" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0279.webp" />
+                        <img src="assets/cases/indoor/indoor-3312.webp" alt="Ballu на стене с молдингами" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3312.webp" />
+                        <img src="assets/cases/indoor/indoor-1081.webp" alt="Золотистый Hisense над дверным проёмом" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1081.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-3211.webp" alt="Centek на фактурной серой стене" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3211.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2940.webp" alt="Electrolux рядом с окном и трековым светильником" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2940.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-a85d8b13-08fa-4886-b105-41633db76253.webp" alt="Kentatsu рядом с подвесным светильником" loading="lazy" data-lightbox="assets/cases/indoor/indoor-a85d8b13-08fa-4886-b105-41633db76253.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-3250.webp" alt="Монтаж внутреннего блока — фото 95" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3250.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-3300.webp" alt="Монтаж внутреннего блока — фото 96" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3300.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-3309.webp" alt="Монтаж внутреннего блока — фото 97" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3309.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-3409.webp" alt="Монтаж внутреннего блока — фото 99" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3409.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-0df28e44-153c-43fa-8d28-ed1ecf4e39e7.webp" alt="Монтаж внутреннего блока — фото 9" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0df28e44-153c-43fa-8d28-ed1ecf4e39e7.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-937d9055-279c-40e1-bc31-3094d6ab7dc9.webp" alt="Монтаж внутреннего блока — фото 14" loading="lazy" data-lightbox="assets/cases/indoor/indoor-937d9055-279c-40e1-bc31-3094d6ab7dc9.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-camphoto_758783491.webp" alt="Монтаж внутреннего блока — фото 18" loading="lazy" data-lightbox="assets/cases/indoor/indoor-camphoto_758783491.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-0127.webp" alt="Монтаж внутреннего блока — фото 20" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0127.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-0133.webp" alt="Монтаж внутреннего блока — фото 21" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0133.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-0258.webp" alt="Монтаж внутреннего блока — фото 24" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0258.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-0262.webp" alt="Монтаж внутреннего блока — фото 26" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0262.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-0520.webp" alt="Монтаж внутреннего блока — фото 28" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0520.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1029.webp" alt="Монтаж внутреннего блока — фото 33" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1029.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1030.webp" alt="Монтаж внутреннего блока — фото 34" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1030.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1075.webp" alt="Монтаж внутреннего блока — фото 38" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1075.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1166.webp" alt="Монтаж внутреннего блока — фото 40" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1166.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1172.webp" alt="Монтаж внутреннего блока — фото 42" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1172.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1308.webp" alt="Монтаж внутреннего блока — фото 45" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1308.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1311.webp" alt="Монтаж внутреннего блока — фото 47" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1311.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1419.webp" alt="Монтаж внутреннего блока — фото 50" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1419.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1469.webp" alt="Монтаж внутреннего блока — фото 52" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1469.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1493.webp" alt="Монтаж внутреннего блока — фото 54" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1493.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1537.webp" alt="Монтаж внутреннего блока — фото 59" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1537.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-1962.webp" alt="Монтаж внутреннего блока — фото 65" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1962.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2224.webp" alt="Монтаж внутреннего блока — фото 68" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2224.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2227.webp" alt="Монтаж внутреннего блока — фото 69" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2227.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2321.webp" alt="Монтаж внутреннего блока — фото 71" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2321.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2330.webp" alt="Монтаж внутреннего блока — фото 73" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2330.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2515.webp" alt="Монтаж внутреннего блока — фото 77" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2515.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2568.webp" alt="Монтаж внутреннего блока — фото 78" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2568.webp" hidden />
+                        <img src="assets/cases/indoor/indoor-2993.webp" alt="Монтаж внутреннего блока — фото 83" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2993.webp" hidden />
                     </div>
-                    <figcaption class="works-caption font-description">
-                        <strong style="color:#e8c96b;font-weight:600;">ГК «Нескучный сад», Сочи</strong><br>
-                        Завершён первый этап на объекте:
-                        <a href="https://neskuchniy-sochi.ru/" target="_blank" rel="noopener noreferrer" style="color:#e8c96b;text-decoration:none;">neskuchniy-sochi.ru</a>.<br>
-                        Для управляющей компании гостиничного комплекса заложены труботрассы под 6 кондиционеров.<br>
-                        Проект поэтапно — первый шаг выполнен чисто и в срок.
-                        <span class="works-photo-hint">+4 фото в просмотре</span>
-                    </figcaption>
                 </figure>
-                <figure class="works-card works-card--compact">
-                    <div class="works-case-gallery">
-                        <img class="works-case-main" src="assets/cases/ministerial-lakes-4.png" alt="ЖК Министерские озёра — наружные блоки на фасаде" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-4.png" />
-                        <div class="works-case-thumbs">
-                            <img src="assets/cases/ministerial-lakes-1.png" alt="ЖК Министерские озёра — наружный блок Centek" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-1.png" />
-                            <img src="assets/cases/ministerial-lakes-2.png" alt="ЖК Министерские озёра — внутренний блок" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-2.png" />
-                            <img src="assets/cases/ministerial-lakes-3.png" alt="ЖК Министерские озёра — внутренний блок на лоджии" loading="lazy" data-lightbox="assets/cases/ministerial-lakes-3.png" />
-                        </div>
-                    </div>
-                    <figcaption class="works-caption font-description">
-                        <strong style="color:#e8c96b;font-weight:600;">ЖК «Министерские озёра»</strong><br>
-                        Демонтаж и установка новой системы, трасса у соседей, работа на высоте.
-                        <span style="color:#9ca3af;font-style:italic;">«Рекомендую!» — Татьяна С.</span>
-                        <span class="works-photo-hint">+3 фото в просмотре</span>
-                    </figcaption>
-                </figure>
-
-
-
-
-            </div>
-
-            <figure class="works-card works-showcase" id="indoor-works">
-                <figcaption class="works-showcase-heading">
-                    <div>
-                        <h3>Монтаж внутренних блоков</h3>
-                        <p class="works-showcase-description">Как выглядят установленные кондиционеры в интерьере — у окна, над дверным проёмом и в коридоре.</p>
-                    </div>
-                </figcaption>
-                <div class="works-showcase-grid" id="indoor-works-photos">
-                    <img src="assets/cases/indoor/indoor-1518.webp" alt="Daikin на стене с растительным рисунком" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1518.webp" />
-                    <img src="assets/cases/indoor/indoor-0241.webp" alt="Carrera рядом с окном и зеркальной панелью" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0241.webp" />
-                    <img src="assets/cases/indoor/indoor-0279.webp" alt="Чёрный внутренний блок Haier" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0279.webp" />
-                    <img src="assets/cases/indoor/indoor-3312.webp" alt="Ballu на стене с молдингами" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3312.webp" />
-                    <img src="assets/cases/indoor/indoor-1081.webp" alt="Золотистый Hisense над дверным проёмом" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1081.webp" />
-                    <img src="assets/cases/indoor/indoor-3211.webp" alt="Centek на фактурной серой стене" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3211.webp" />
-                    <img src="assets/cases/indoor/indoor-2940.webp" alt="Electrolux рядом с окном и трековым светильником" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2940.webp" />
-                    <img src="assets/cases/indoor/indoor-a85d8b13-08fa-4886-b105-41633db76253.webp" alt="Kentatsu рядом с подвесным светильником" loading="lazy" data-lightbox="assets/cases/indoor/indoor-a85d8b13-08fa-4886-b105-41633db76253.webp" />
-                    <img src="assets/cases/indoor/indoor-0df28e44-153c-43fa-8d28-ed1ecf4e39e7.webp" alt="Монтаж внутреннего блока — фото 9" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0df28e44-153c-43fa-8d28-ed1ecf4e39e7.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1f16463a-3f27-4cc7-9f32-169116b50e5e.webp" alt="Монтаж внутреннего блока — фото 10" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1f16463a-3f27-4cc7-9f32-169116b50e5e.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2bdefd70-218c-4e83-83ce-259e850de1b1.webp" alt="Монтаж внутреннего блока — фото 11" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2bdefd70-218c-4e83-83ce-259e850de1b1.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-19fc3c4e-d85f-4b5f-8498-9d2703eab9bd.webp" alt="Монтаж внутреннего блока — фото 12" loading="lazy" data-lightbox="assets/cases/indoor/indoor-19fc3c4e-d85f-4b5f-8498-9d2703eab9bd.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-277f68e5-3ad5-41b8-81de-1409fc736be3.webp" alt="Монтаж внутреннего блока — фото 13" loading="lazy" data-lightbox="assets/cases/indoor/indoor-277f68e5-3ad5-41b8-81de-1409fc736be3.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-937d9055-279c-40e1-bc31-3094d6ab7dc9.webp" alt="Монтаж внутреннего блока — фото 14" loading="lazy" data-lightbox="assets/cases/indoor/indoor-937d9055-279c-40e1-bc31-3094d6ab7dc9.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-8605285b-5d8d-4375-935e-680c12877a4e.webp" alt="Монтаж внутреннего блока — фото 15" loading="lazy" data-lightbox="assets/cases/indoor/indoor-8605285b-5d8d-4375-935e-680c12877a4e.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-a007b65b-2910-42c1-9689-b0ee7622e2f2.webp" alt="Монтаж внутреннего блока — фото 16" loading="lazy" data-lightbox="assets/cases/indoor/indoor-a007b65b-2910-42c1-9689-b0ee7622e2f2.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-b710505b-f98b-403f-a249-4e647cfbf71b.webp" alt="Монтаж внутреннего блока — фото 17" loading="lazy" data-lightbox="assets/cases/indoor/indoor-b710505b-f98b-403f-a249-4e647cfbf71b.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-camphoto_758783491.webp" alt="Монтаж внутреннего блока — фото 18" loading="lazy" data-lightbox="assets/cases/indoor/indoor-camphoto_758783491.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0125.webp" alt="Монтаж внутреннего блока — фото 19" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0125.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0127.webp" alt="Монтаж внутреннего блока — фото 20" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0127.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0133.webp" alt="Монтаж внутреннего блока — фото 21" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0133.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0134.webp" alt="Монтаж внутреннего блока — фото 22" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0134.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0243.webp" alt="Монтаж внутреннего блока — фото 23" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0243.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0258.webp" alt="Монтаж внутреннего блока — фото 24" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0258.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0259.webp" alt="Монтаж внутреннего блока — фото 25" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0259.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0262.webp" alt="Монтаж внутреннего блока — фото 26" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0262.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0278.webp" alt="Монтаж внутреннего блока — фото 27" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0278.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0520.webp" alt="Монтаж внутреннего блока — фото 28" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0520.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0521.webp" alt="Монтаж внутреннего блока — фото 29" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0521.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0522.webp" alt="Монтаж внутреннего блока — фото 30" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0522.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0523.webp" alt="Монтаж внутреннего блока — фото 31" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0523.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-0524.webp" alt="Монтаж внутреннего блока — фото 32" loading="lazy" data-lightbox="assets/cases/indoor/indoor-0524.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1029.webp" alt="Монтаж внутреннего блока — фото 33" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1029.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1030.webp" alt="Монтаж внутреннего блока — фото 34" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1030.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1031.webp" alt="Монтаж внутреннего блока — фото 35" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1031.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1071.webp" alt="Монтаж внутреннего блока — фото 36" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1071.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1073.webp" alt="Монтаж внутреннего блока — фото 37" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1073.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1075.webp" alt="Монтаж внутреннего блока — фото 38" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1075.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1080.webp" alt="Монтаж внутреннего блока — фото 39" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1080.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1166.webp" alt="Монтаж внутреннего блока — фото 40" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1166.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1169.webp" alt="Монтаж внутреннего блока — фото 41" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1169.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1172.webp" alt="Монтаж внутреннего блока — фото 42" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1172.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1174.webp" alt="Монтаж внутреннего блока — фото 43" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1174.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1211.webp" alt="Монтаж внутреннего блока — фото 44" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1211.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1308.webp" alt="Монтаж внутреннего блока — фото 45" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1308.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1310.webp" alt="Монтаж внутреннего блока — фото 46" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1310.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1311.webp" alt="Монтаж внутреннего блока — фото 47" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1311.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1404.webp" alt="Монтаж внутреннего блока — фото 48" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1404.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1405.webp" alt="Монтаж внутреннего блока — фото 49" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1405.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1419.webp" alt="Монтаж внутреннего блока — фото 50" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1419.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1466.webp" alt="Монтаж внутреннего блока — фото 51" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1466.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1469.webp" alt="Монтаж внутреннего блока — фото 52" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1469.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1476.webp" alt="Монтаж внутреннего блока — фото 53" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1476.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1493.webp" alt="Монтаж внутреннего блока — фото 54" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1493.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1495.webp" alt="Монтаж внутреннего блока — фото 55" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1495.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1519.webp" alt="Монтаж внутреннего блока — фото 56" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1519.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1533.webp" alt="Монтаж внутреннего блока — фото 57" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1533.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1536.webp" alt="Монтаж внутреннего блока — фото 58" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1536.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1537.webp" alt="Монтаж внутреннего блока — фото 59" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1537.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1539.webp" alt="Монтаж внутреннего блока — фото 60" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1539.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1751.webp" alt="Монтаж внутреннего блока — фото 61" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1751.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1752.webp" alt="Монтаж внутреннего блока — фото 62" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1752.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1753.webp" alt="Монтаж внутреннего блока — фото 63" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1753.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1754.webp" alt="Монтаж внутреннего блока — фото 64" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1754.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1962.webp" alt="Монтаж внутреннего блока — фото 65" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1962.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1964.webp" alt="Монтаж внутреннего блока — фото 66" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1964.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-1967.webp" alt="Монтаж внутреннего блока — фото 67" loading="lazy" data-lightbox="assets/cases/indoor/indoor-1967.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2224.webp" alt="Монтаж внутреннего блока — фото 68" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2224.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2227.webp" alt="Монтаж внутреннего блока — фото 69" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2227.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2295.webp" alt="Монтаж внутреннего блока — фото 70" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2295.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2321.webp" alt="Монтаж внутреннего блока — фото 71" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2321.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2323.webp" alt="Монтаж внутреннего блока — фото 72" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2323.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2330.webp" alt="Монтаж внутреннего блока — фото 73" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2330.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2353.webp" alt="Монтаж внутреннего блока — фото 74" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2353.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2384.webp" alt="Монтаж внутреннего блока — фото 75" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2384.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2513.webp" alt="Монтаж внутреннего блока — фото 76" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2513.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2515.webp" alt="Монтаж внутреннего блока — фото 77" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2515.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2568.webp" alt="Монтаж внутреннего блока — фото 78" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2568.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2636.webp" alt="Монтаж внутреннего блока — фото 79" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2636.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2661.webp" alt="Монтаж внутреннего блока — фото 80" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2661.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2682.webp" alt="Монтаж внутреннего блока — фото 81" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2682.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2942.webp" alt="Монтаж внутреннего блока — фото 82" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2942.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-2993.webp" alt="Монтаж внутреннего блока — фото 83" loading="lazy" data-lightbox="assets/cases/indoor/indoor-2993.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3078.webp" alt="Монтаж внутреннего блока — фото 84" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3078.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3080.webp" alt="Монтаж внутреннего блока — фото 85" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3080.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3119.webp" alt="Монтаж внутреннего блока — фото 86" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3119.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3134.webp" alt="Монтаж внутреннего блока — фото 87" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3134.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3135.webp" alt="Монтаж внутреннего блока — фото 88" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3135.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3179.webp" alt="Монтаж внутреннего блока — фото 89" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3179.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3181.webp" alt="Монтаж внутреннего блока — фото 90" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3181.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3199.webp" alt="Монтаж внутреннего блока — фото 91" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3199.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3200.webp" alt="Монтаж внутреннего блока — фото 92" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3200.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3209.webp" alt="Монтаж внутреннего блока — фото 93" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3209.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3248.webp" alt="Монтаж внутреннего блока — фото 94" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3248.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3250.webp" alt="Монтаж внутреннего блока — фото 95" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3250.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3300.webp" alt="Монтаж внутреннего блока — фото 96" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3300.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3309.webp" alt="Монтаж внутреннего блока — фото 97" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3309.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3314.webp" alt="Монтаж внутреннего блока — фото 98" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3314.webp" hidden />
-                    <img src="assets/cases/indoor/indoor-3409.webp" alt="Монтаж внутреннего блока — фото 99" loading="lazy" data-lightbox="assets/cases/indoor/indoor-3409.webp" hidden />
-                </div>
-                <button type="button" class="works-showcase-more" aria-expanded="false" aria-controls="indoor-works-photos" data-showcase-more data-preview-count="8">Показать все 99 фото <span aria-hidden="true">↓</span></button>
-            </figure>
-            <figure class="works-card works-showcase" id="outdoor-works">
-                <figcaption class="works-showcase-heading">
-                    <div>
-                        <p class="works-showcase-label">Результат нашей работы</p>
-                        <h3>Наружные блоки. Готово к работе.</h3>
-                        <p class="works-showcase-description">В корзинах ЖК, на кронштейнах и на высоте. Десятки установок — детали каждой можно рассмотреть на фото.</p>
-                    </div>
-                    <span class="works-showcase-count">39 фото<br><small>реальных монтажей</small></span>
-                </figcaption>
-                <div class="works-showcase-grid">
+                <figure class="works-card works-showcase" id="outdoor-works">
+                    <figcaption class="works-showcase-heading"><h3>Наружные блоки</h3></figcaption>
+                    <button type="button" class="works-showcase-more" aria-expanded="false" aria-controls="outdoor-works-photos" data-showcase-more>Показать все фото <span aria-hidden="true">↓</span></button>
+                    <div class="works-showcase-grid" id="outdoor-works-photos">
                         <img src="assets/cases/outdoor/outdoor-01.png" alt="Установка наружного блока в Сочи — работа 1" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-01.png" />
                         <img src="assets/cases/outdoor/outdoor-02.png" alt="Установка наружного блока в Сочи — работа 2" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-02.png" />
                         <img src="assets/cases/outdoor/outdoor-03.png" alt="Установка наружного блока в Сочи — работа 3" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-03.png" />
                         <img src="assets/cases/outdoor/outdoor-04.png" alt="Установка наружного блока в Сочи — работа 4" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-04.png" />
-                        <img src="assets/cases/outdoor/outdoor-05.png" alt="Установка наружного блока в Сочи — работа 5" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-05.png" />
-                        <img src="assets/cases/outdoor/outdoor-06.png" alt="Установка наружного блока в Сочи — работа 6" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-06.png" />
-                        <img src="assets/cases/outdoor/outdoor-07.png" alt="Установка наружного блока в Сочи — работа 7" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-07.png" />
-                        <img src="assets/cases/outdoor/outdoor-08.png" alt="Установка наружного блока в Сочи — работа 8" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-08.png" />
-                        <img src="assets/cases/outdoor/outdoor-09.png" alt="Установка наружного блока в Сочи — работа 9" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-09.png" />
-                        <img src="assets/cases/outdoor/outdoor-10.png" alt="Установка наружного блока в Сочи — работа 10" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-10.png" />
-                        <img src="assets/cases/outdoor/outdoor-11.png" alt="Установка наружного блока в Сочи — работа 11" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-11.png" />
-                        <img src="assets/cases/outdoor/outdoor-12.png" alt="Установка наружного блока в Сочи — работа 12" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-12.png" />
+                        <img src="assets/cases/outdoor/outdoor-05.png" alt="Установка наружного блока в Сочи — работа 5" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-05.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-06.png" alt="Установка наружного блока в Сочи — работа 6" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-06.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-07.png" alt="Установка наружного блока в Сочи — работа 7" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-07.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-08.png" alt="Установка наружного блока в Сочи — работа 8" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-08.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-09.png" alt="Установка наружного блока в Сочи — работа 9" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-09.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-10.png" alt="Установка наружного блока в Сочи — работа 10" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-10.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-11.png" alt="Установка наружного блока в Сочи — работа 11" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-11.png" hidden />
+                        <img src="assets/cases/outdoor/outdoor-12.png" alt="Установка наружного блока в Сочи — работа 12" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-12.png" hidden />
                         <img src="assets/cases/outdoor/outdoor-13.png" alt="Установка наружного блока в Сочи — работа 13" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-13.png" hidden />
                         <img src="assets/cases/outdoor/outdoor-14.png" alt="Установка наружного блока в Сочи — работа 14" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-14.png" hidden />
                         <img src="assets/cases/outdoor/outdoor-15.png" alt="Установка наружного блока в Сочи — работа 15" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-15.png" hidden />
@@ -2287,9 +2169,9 @@
                         <img src="assets/cases/outdoor/outdoor-37.png" alt="Установка наружного блока в Сочи — работа 37" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-37.png" hidden />
                         <img src="assets/cases/outdoor/outdoor-38.png" alt="Установка наружного блока в Сочи — работа 38" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-38.png" hidden />
                         <img src="assets/cases/outdoor/outdoor-39.png" alt="Установка наружного блока в Сочи — работа 39" loading="lazy" data-lightbox="assets/cases/outdoor/outdoor-39.png" hidden />
-                </div>
-                <button type="button" class="works-showcase-more" aria-expanded="false" aria-controls="outdoor-works" data-showcase-more>Показать все 39 фото <span aria-hidden="true">↓</span></button>
-            </figure>
+                    </div>
+                </figure>
+            </div>
         </div>
     </section>
 
@@ -2617,33 +2499,13 @@
         })();
 
         (function () {
-            document.querySelectorAll('.works-case-gallery').forEach(function (gallery) {
-                var main = gallery.querySelector('.works-case-main');
-                var thumbs = gallery.querySelectorAll('.works-case-thumbs img');
-                if (!main || !thumbs.length) return;
-                thumbs.forEach(function (thumb) {
-                    thumb.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        var full = thumb.getAttribute('data-lightbox') || thumb.src;
-                        main.src = thumb.src;
-                        main.setAttribute('data-lightbox', full);
-                        main.alt = thumb.alt || '';
-                        thumbs.forEach(function (t) { t.classList.remove('is-active'); });
-                        thumb.classList.add('is-active');
-                    });
-                });
-            });
-        })();
-
-        (function () {
             var overlay = document.getElementById('lightbox');
             var imgEl = document.getElementById('lightbox-img');
             var closeBtn = overlay ? overlay.querySelector('[data-lightbox-close]') : null;
             var prevBtn = overlay ? overlay.querySelector('[data-lightbox-prev]') : null;
             var nextBtn = overlay ? overlay.querySelector('[data-lightbox-next]') : null;
             if (!overlay || !imgEl) return;
-            var thumbs = Array.prototype.slice.call(document.querySelectorAll('.works-card img[data-lightbox]'));
+            var thumbs = [];
             var currentIndex = 0;
             function showImage(index) {
                 if (!thumbs.length) return;
@@ -2663,9 +2525,13 @@
                 imgEl.src = '';
                 document.body.style.overflow = '';
             }
-            thumbs.forEach(function (thumb, index) {
-                thumb.addEventListener('click', function () {
-                    openLb(index);
+            document.querySelectorAll('.works-showcase-grid').forEach(function (grid) {
+                var photos = Array.from(grid.querySelectorAll('img[data-lightbox]'));
+                photos.forEach(function (photo, index) {
+                    photo.addEventListener('click', function () {
+                        thumbs = photos;
+                        openLb(index);
+                    });
                 });
             });
             if (prevBtn) prevBtn.addEventListener('click', function (e) {
@@ -2846,14 +2712,20 @@
     </script>
 <script>
         document.querySelectorAll('[data-showcase-more]').forEach(function (button) {
+            var gallery = button.closest('.works-showcase');
+            var photos = Array.from(document.getElementById(button.getAttribute('aria-controls')).querySelectorAll('img'));
+            var extraPhotos = photos.filter(function (photo) { return photo.hidden; });
             button.addEventListener('click', function () {
                 var expanded = button.getAttribute('aria-expanded') === 'true';
-                var photos = button.closest('.works-showcase').querySelectorAll('.works-showcase-grid img');
-                var previewCount = Number(button.dataset.previewCount || 12);
-                photos.forEach(function (photo, index) { if (index >= previewCount) photo.hidden = expanded; });
+                var headerOffset = document.querySelector('.site-header').getBoundingClientRect().bottom + 8;
+                gallery.style.setProperty('--works-header-offset', headerOffset + 'px');
+                if (expanded) {
+                    var galleryTop = gallery.getBoundingClientRect().top;
+                    if (galleryTop < headerOffset) window.scrollBy(0, galleryTop - headerOffset);
+                }
+                extraPhotos.forEach(function (photo) { photo.hidden = expanded; });
                 button.setAttribute('aria-expanded', String(!expanded));
-                button.innerHTML = expanded ? 'Показать все ' + photos.length + ' фото <span aria-hidden="true">↓</span>' : 'Свернуть галерею <span aria-hidden="true">↑</span>';
-                if (expanded) button.closest('.works-showcase').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                button.innerHTML = expanded ? 'Показать все фото <span aria-hidden="true">↓</span>' : 'Свернуть галерею <span aria-hidden="true">↑</span>';
             });
         });
 </script>
