@@ -78,7 +78,7 @@ function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, u
 
 const caseGalleries = {
   'apartment-f-dialog': [apartmentFPhotos, 'assets/apartment-f/gallery/', caseDescriptions],
-  'apartment-g-dialog': [apartmentGPhotos, 'assets/apartment-g/', {}, true, '?v=3']
+  'apartment-g-dialog': [apartmentGPhotos, 'assets/apartment-g/', {}, true, '?v=4']
 };
 
 document.querySelectorAll('[data-case]').forEach(link => {
