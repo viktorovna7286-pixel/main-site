@@ -10,7 +10,7 @@ const apartmentFPhotos = apartmentFRooms.flatMap(({ room, ids }) =>
 const caseAssets = 'assets/apartment-f/gallery/';
 const caseDescriptions = {
   '7060': 'Гостиная с подсвеченной лестницей',
-  '7088': 'Кухонный остров у окна',
+  '7108': 'Кухонный остров у окна',
   '7143': 'Подсветка ступеней и стеклянное ограждение',
   '7181': 'Спальня на втором уровне',
   '7192': 'Туалетный столик у окна',
