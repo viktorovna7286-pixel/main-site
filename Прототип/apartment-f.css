@@ -1,4 +1,4 @@
-#apartment-f-dialog {
+.case-dialog {
   width: min(1240px, calc(100% - 4rem));
   max-width: none;
   max-height: calc(100dvh - 3rem);
@@ -13,11 +13,11 @@
   box-shadow: 0 24px 90px #080c1066;
   scrollbar-color: #757e86 #1b2229;
 }
-#apartment-f-dialog::backdrop {
+.case-dialog::backdrop {
   background: #6473844d;
   backdrop-filter: blur(16px) saturate(.72);
 }
-html:has(#apartment-f-dialog[open]) { overflow: hidden; }
+html:has(.case-dialog[open]) { overflow: hidden; }
 .f-case-header {
   display: flex;
   justify-content: space-between;
@@ -32,7 +32,7 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   font: 500 clamp(2.2rem, 5vw, 4rem)/1.03 var(--display, Georgia, serif);
 }
 .f-case-intro { margin: 0; max-width: 42rem; color: #e1dfdc; font-size: 1rem; line-height: 1.5; }
-#apartment-f-dialog button {
+.case-dialog button {
   color: inherit;
   font: inherit;
   cursor: pointer;
@@ -47,8 +47,8 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   border-radius: 50%;
   background: #ffffff0d;
 }
-#apartment-f-dialog .f-case-close { flex: 0 0 44px; font-size: 1.75rem; line-height: 1; }
-#apartment-f-dialog button:focus-visible { outline: 2px solid #f4d5a5; outline-offset: 3px; }
+.case-dialog .f-case-close { flex: 0 0 44px; font-size: 1.75rem; line-height: 1; }
+.case-dialog button:focus-visible { outline: 2px solid #f4d5a5; outline-offset: 3px; }
 .f-case-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(176px, 21vw, 272px);
@@ -63,7 +63,7 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   overflow: hidden;
   background: #101519;
 }
-#apartment-f-dialog .f-case-stage img {
+.case-dialog .f-case-stage img {
   position: absolute;
   inset: 0;
   display: block;
@@ -79,7 +79,7 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   padding-top: .7rem;
   font-variant-numeric: tabular-nums;
 }
-#apartment-f-dialog .f-case-controls button { font-size: 1.4rem; }
+.case-dialog .f-case-controls button { font-size: 1.4rem; }
 .f-case-photo-meta { min-width: 8rem; text-align: center; font-size: .9rem; line-height: 1.35; }
 .f-case-room { display: block; color: #e1dfdc; }
 .f-case-counter { color: #d4c9b7; }
@@ -93,7 +93,7 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   max-height: clamp(170px, calc(100dvh - 360px), 680px);
   padding: 4px;
 }
-#apartment-f-dialog .f-case-thumb {
+.case-dialog .f-case-thumb {
   display: block;
   overflow: hidden;
   padding: 0;
@@ -102,12 +102,12 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   border: 2px solid transparent;
   border-radius: 6px;
 }
-#apartment-f-dialog .f-case-thumb[aria-current="true"] { border-color: #f4d5a5; }
-#apartment-f-dialog .f-case-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.case-dialog .f-case-thumb[aria-current="true"] { border-color: #f4d5a5; }
+.case-dialog .f-case-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
 @media (max-width: 680px) {
-  #apartment-f-dialog { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); border-radius: 13px; }
+  .case-dialog { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); border-radius: 13px; }
   .f-case-layout { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
   .f-case-stage { height: clamp(180px, 78vw, 360px); }
   .f-case-thumbs { display: flex; max-height: none; }
-  #apartment-f-dialog .f-case-thumb { flex: 0 0 68px; }
+  .case-dialog .f-case-thumb { flex: 0 0 68px; }
 }
