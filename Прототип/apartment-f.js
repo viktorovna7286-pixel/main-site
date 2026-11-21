@@ -13,7 +13,7 @@ const caseDescriptions = {
   '7126-retouched': 'Раковина и овальное зеркало'
 };
 
-function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, useRoomAsDescription = false) {
+function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, useRoomAsDescription = false, assetQuery = '') {
   const caseImage = caseDialog.querySelector('.f-case-stage img');
   const caseThumbs = caseDialog.querySelector('.f-case-thumbs');
   const caseCounter = caseDialog.querySelector('.f-case-counter');
@@ -27,7 +27,7 @@ function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, u
     button.type = 'button';
     button.className = 'f-case-thumb';
     button.setAttribute('aria-label', describePhoto(id, room, index));
-    thumb.src = caseAssets + id + '-thumb.webp';
+    thumb.src = caseAssets + id + '-thumb.webp' + assetQuery;
     thumb.alt = '';
     thumb.loading = 'lazy';
     thumb.decoding = 'async';
@@ -42,7 +42,7 @@ function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, u
     const { id, room } = photos[caseIndex];
     caseRoom.textContent = room;
     caseImage.alt = describePhoto(id, room, caseIndex);
-    caseImage.src = caseAssets + id + '.webp';
+    caseImage.src = caseAssets + id + '.webp' + assetQuery;
     caseCounter.textContent = (caseIndex + 1) + ' / ' + photos.length;
     const currentThumb = caseButtons[caseIndex];
     currentThumb.setAttribute('aria-current', 'true');
@@ -78,7 +78,7 @@ function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, u
 
 const caseGalleries = {
   'apartment-f-dialog': [apartmentFPhotos, 'assets/apartment-f/gallery/', caseDescriptions],
-  'apartment-g-dialog': [apartmentGPhotos, 'assets/apartment-g/', {}, true]
+  'apartment-g-dialog': [apartmentGPhotos, 'assets/apartment-g/', {}, true, '?v=2']
 };
 
 document.querySelectorAll('[data-case]').forEach(link => {
