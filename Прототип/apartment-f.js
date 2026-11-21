@@ -9,6 +9,7 @@ const apartmentFPhotos = apartmentFRooms.flatMap(({ room, ids }) =>
 );
 const caseAssets = 'assets/apartment-f/gallery/';
 const caseDescriptions = {
+  'upper-bathroom-wide': 'Верхний санузел: светлая ниша и отделка душевой',
   'bathroom-retouched': 'Раковина и душевая в отражении',
   '7060-retouched': 'Гостиная с подсвеченной лестницей',
   '7108-retouched': 'Кухонный остров у окна',
