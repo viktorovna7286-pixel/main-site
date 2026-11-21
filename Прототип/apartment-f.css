@@ -57,14 +57,15 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
 }
 .f-case-viewer { min-width: 0; margin: 0; }
 .f-case-stage {
-  display: grid;
-  place-items: center;
+  position: relative;
   height: clamp(200px, calc(100dvh - 320px), 720px);
   border-radius: 10px;
   overflow: hidden;
   background: #101519;
 }
 #apartment-f-dialog .f-case-stage img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -79,7 +80,9 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   font-variant-numeric: tabular-nums;
 }
 #apartment-f-dialog .f-case-controls button { font-size: 1.4rem; }
-.f-case-counter { min-width: 6ch; text-align: center; font-size: .9rem; }
+.f-case-photo-meta { min-width: 8rem; text-align: center; font-size: .9rem; line-height: 1.35; }
+.f-case-room { display: block; color: #e1dfdc; }
+.f-case-counter { color: #d4c9b7; }
 .f-case-gallery h3 { margin: 0 0 .65rem; font-family: inherit; font-size: .9rem; font-weight: 600; line-height: 1.4; color: #e1dfdc; }
 .f-case-thumbs {
   display: grid;
@@ -100,7 +103,7 @@ html:has(#apartment-f-dialog[open]) { overflow: hidden; }
   border-radius: 6px;
 }
 #apartment-f-dialog .f-case-thumb[aria-current="true"] { border-color: #f4d5a5; }
-#apartment-f-dialog .f-case-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+#apartment-f-dialog .f-case-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
 @media (max-width: 680px) {
   #apartment-f-dialog { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); border-radius: 13px; }
   .f-case-layout { grid-template-columns: minmax(0, 1fr); gap: .7rem; }

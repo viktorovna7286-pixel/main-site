@@ -3,6 +3,10 @@ const caseLink = document.querySelector('[data-apartment-f]');
 const caseImage = caseDialog.querySelector('.f-case-stage img');
 const caseThumbs = caseDialog.querySelector('.f-case-thumbs');
 const caseCounter = caseDialog.querySelector('.f-case-counter');
+const caseRoom = caseDialog.querySelector('.f-case-room');
+const apartmentFPhotos = apartmentFRooms.flatMap(({ room, ids }) =>
+  ids.map(id => ({ id, room }))
+);
 const caseAssets = 'assets/apartment-f/gallery/';
 const caseDescriptions = {
   '7060': 'Гостиная с подсвеченной лестницей',
@@ -15,12 +19,12 @@ const caseDescriptions = {
 };
 let caseIndex = 0;
 
-const caseButtons = apartmentFPhotos.map((id, index) => {
+const caseButtons = apartmentFPhotos.map(({ id, room }, index) => {
   const button = document.createElement('button');
   const thumb = document.createElement('img');
   button.type = 'button';
   button.className = 'f-case-thumb';
-  button.setAttribute('aria-label', caseDescriptions[id] || ('Фотография ' + (index + 1)));
+  button.setAttribute('aria-label', caseDescriptions[id] || (room + ', фотография ' + (index + 1)));
   thumb.src = caseAssets + id + '-thumb.webp';
   thumb.alt = '';
   thumb.loading = 'lazy';
@@ -33,8 +37,9 @@ const caseButtons = apartmentFPhotos.map((id, index) => {
 function showCasePhoto(index) {
   caseButtons[caseIndex].removeAttribute('aria-current');
   caseIndex = (index + apartmentFPhotos.length) % apartmentFPhotos.length;
-  const id = apartmentFPhotos[caseIndex];
-  caseImage.alt = caseDescriptions[id] || ('Апартамент F, фотография ' + (caseIndex + 1));
+  const { id, room } = apartmentFPhotos[caseIndex];
+  caseRoom.textContent = room;
+  caseImage.alt = caseDescriptions[id] || (room + ', фотография ' + (caseIndex + 1));
   caseImage.src = caseAssets + id + '.webp';
   caseCounter.textContent = (caseIndex + 1) + ' / ' + apartmentFPhotos.length;
   const currentThumb = caseButtons[caseIndex];
