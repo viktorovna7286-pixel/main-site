@@ -6,234 +6,275 @@
   <title>Апартамент G — ремонт в процессе — Atlas Group</title>
   <meta name="description" content="Фотографии апартамента G на текущем этапе ремонта. Кухня, гостиная, спальня, санузлы и детали отделки.">
   <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../residence.css">
+  <link rel="stylesheet" href="../../apartment-f.css?v=14">
   <style>
-    :root { color-scheme: light; background: #f2efe9; color: #182b40; font: 100%/1.65 Arial, sans-serif; }
-    body { margin: 0; }
-    main, header, footer { width: min(92%, 1160px); margin-inline: auto; }
-    header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; border-bottom: 1px solid #182b4038; }
-    header img { vertical-align: middle; width: 128px; height: auto; }
-    a { color: inherit; text-underline-offset: .25em; }
-    h1, h2 { font-family: Georgia, serif; font-weight: 400; line-height: 1.08; margin: 0 0 1rem; }
-    h1 { font-size: clamp(3rem, 8vw, 7rem); }
-    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
-    .intro { padding-block: clamp(2rem, 6vw, 5rem) 2rem; }
-    .location, figcaption { color: #46596b; font-size: .9rem; }
-    .intro p:last-child { max-width: 39rem; font-size: clamp(1.05rem, 2vw, 1.3rem); }
-    figure { margin: 0; }
-    figure img { display: block; width: 100%; height: auto; border-radius: 5px; }
-    figcaption { margin-top: .6rem; }
-    section { margin-block: clamp(3rem, 8vw, 6rem); }
-    section p { max-width: 43rem; margin-bottom: 1.5rem; }
-    .pair { display: grid; grid-template-columns: 1.6fr 1fr; align-items: start; gap: clamp(1rem, 3vw, 2rem); }
-    .pair--portrait { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 840px; }
-    .bedroom-details { margin-top: clamp(1rem, 3vw, 2rem); }
-    footer { border-top: 1px solid #182b4038; padding-block: 2rem 3rem; }
-    .button { display: inline-block; padding: .75rem 1.15rem; color: #f2efe9; background: #182b40; border-radius: 4px; }
-    @media (max-width: 620px) { .pair, .pair--portrait { grid-template-columns: 1fr; } }
-    .case-status { margin: 0 0 .75rem; color: #46596b; font-weight: 600; }
-    .case-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: clamp(1.25rem, 3.5vw, 3rem); }
-    .case-gallery .wide { grid-column: 1 / -1; }
-    .case-gallery a { display: block; }
-    @media (max-width: 620px) { .case-gallery { grid-template-columns: 1fr; } }
+    body { display: grid; align-content: center; gap: 1rem; min-height: 100dvh; padding-block: 1rem; background: #293541; }
+    .case-page { --display: Unbounded, Manrope, sans-serif; max-height: none; overflow: visible; }
+    .case-page :is(.f-case-header h1) { font-weight: 300; }
+    .case-page .f-case-close { text-decoration: none; }
+    .case-page-contact { color: #f4f0ea; text-align: center; text-decoration: underline; text-underline-offset: .25em; }
   </style>
+  <noscript>
+    <style>
+      .case-page .f-case-layout { display: none; }
+      .case-rooms, .case-gallery { display: flex; flex-wrap: wrap; gap: 1rem; }
+      .case-fallback { padding: 1rem; }
+      .case-fallback h2 { color: inherit; margin-block: 1.5rem .75rem; }
+      .case-gallery figure { width: min(100%, 320px); }
+      .case-gallery img { height: auto; }
+    </style>
+  </noscript>
 </head>
 <body>
-  <header>
-    <a href="../../index.html" aria-label="Atlas Group — главная"><img src="../../assets/brand/Atlas_Group_Logo_Dark.svg" alt="Atlas Group"></a>
-    <a href="../../index.html#projects">Все интерьеры</a>
-  </header>
-
-  <main>
-    <div class="intro">
-      <p class="case-status">Ремонт в процессе</p>
-      <h1>Апартамент G</h1>
-      <p>Показываем текущий этап ремонта. В кадре уже видны кухонные фасады, стеновые панели, освещение и облицовка санузлов. Работы продолжаются.</p>
+<main class="case-dialog case-page" tabindex="0" data-case-assets="../../assets/apartment-g/" id="apartment-g-dialog" aria-labelledby="apartment-g-title">
+  <div class="f-case-header">
+    <div>
+      <p class="f-case-location">Ремонт в процессе</p>
+      <h1 id="apartment-g-title">Апартамент G</h1>
+      <p class="f-case-intro">Текущий этап ремонта. На фотографиях видны отделка, освещение и работы на объекте.</p>
     </div>
-    <div class="case-gallery" aria-label="Фотографии апартамента G">
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_6802.webp?v=5" aria-label="Открыть фото: Кухня с тёмными фасадами"><img src="../../assets/apartment-g/IMG_6802.webp?v=5" width="2200" height="1238" fetchpriority="high" alt="Кухня с тёмными фасадами"></a>
-        <figcaption>Кухня с тёмными фасадами</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_6803.webp?v=5" aria-label="Открыть фото: Кухня у панорамного остекления"><img src="../../assets/apartment-g/IMG_6803.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Кухня у панорамного остекления"></a>
-        <figcaption>Кухня у панорамного остекления</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_6811.webp?v=5" aria-label="Открыть фото: Комната с угловым остеклением"><img src="../../assets/apartment-g/IMG_6811.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Комната с угловым остеклением"></a>
-        <figcaption>Комната с угловым остеклением</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_6812.webp?v=5" aria-label="Открыть фото: Панели в спальне"><img src="../../assets/apartment-g/IMG_6812.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Панели в спальне"></a>
-        <figcaption>Панели в спальне</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6813.webp?v=5" aria-label="Открыть фото: Бра и фурнитура на стеновой панели"><img src="../../assets/apartment-g/IMG_6813.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Бра и фурнитура на стеновой панели"></a>
-        <figcaption>Бра и фурнитура на стеновой панели</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6814.webp?v=5" aria-label="Открыть фото: Окно в спальне"><img src="../../assets/apartment-g/IMG_6814.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Окно в спальне"></a>
-        <figcaption>Окно в спальне</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6976.webp?v=5" aria-label="Открыть фото: Примыкание ступени к полу"><img src="../../assets/apartment-g/IMG_6976.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Примыкание ступени к полу"></a>
-        <figcaption>Примыкание ступени к полу</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6977.webp?v=5" aria-label="Открыть фото: Кромка ступени"><img src="../../assets/apartment-g/IMG_6977.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Кромка ступени"></a>
-        <figcaption>Кромка ступени</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6986.webp?v=5" aria-label="Открыть фото: Фактура светлой стены"><img src="../../assets/apartment-g/IMG_6986.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Фактура светлой стены"></a>
-        <figcaption>Фактура светлой стены</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6987.webp?v=5" aria-label="Открыть фото: Древесная фактура"><img src="../../assets/apartment-g/IMG_6987.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Древесная фактура"></a>
-        <figcaption>Древесная фактура</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6988.webp?v=5" aria-label="Открыть фото: Коридор с трековым светом"><img src="../../assets/apartment-g/IMG_6988.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Коридор с трековым светом"></a>
-        <figcaption>Коридор с трековым светом</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6994.webp?v=5" aria-label="Открыть фото: Санузел в процессе работ"><img src="../../assets/apartment-g/IMG_6994.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Санузел в процессе работ"></a>
-        <figcaption>Санузел в процессе работ</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6998.webp?v=5" aria-label="Открыть фото: Настенный светильник в коридоре"><img src="../../assets/apartment-g/IMG_6998.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Настенный светильник в коридоре"></a>
-        <figcaption>Настенный светильник в коридоре</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_6999.webp?v=5" aria-label="Открыть фото: Трековые светильники и подсветка"><img src="../../assets/apartment-g/IMG_6999.webp?v=5" width="1339" height="2200" loading="lazy" decoding="async" alt="Трековые светильники и подсветка"></a>
-        <figcaption>Трековые светильники и подсветка</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7001.webp?v=5" aria-label="Открыть фото: Коридор со стороны остекления"><img src="../../assets/apartment-g/IMG_7001.webp?v=5" width="1238" height="2200" loading="lazy" decoding="async" alt="Коридор со стороны остекления"></a>
-        <figcaption>Коридор со стороны остекления</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7002.webp?v=5" aria-label="Открыть фото: Коридор, вид с другой стороны"><img src="../../assets/apartment-g/IMG_7002.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Коридор, вид с другой стороны"></a>
-        <figcaption>Коридор, вид с другой стороны</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7003.webp?v=5" aria-label="Открыть фото: Вид из коридора в столовую"><img src="../../assets/apartment-g/IMG_7003.webp?v=5" width="1238" height="2200" loading="lazy" decoding="async" alt="Вид из коридора в столовую"></a>
-        <figcaption>Вид из коридора в столовую</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7006.webp?v=5" aria-label="Открыть фото: Трековое освещение у каменных панелей"><img src="../../assets/apartment-g/IMG_7006.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Трековое освещение у каменных панелей"></a>
-        <figcaption>Трековое освещение у каменных панелей</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7011.webp?v=5" aria-label="Открыть фото: Комната в процессе работ"><img src="../../assets/apartment-g/IMG_7011.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Комната в процессе работ"></a>
-        <figcaption>Комната в процессе работ</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7015.webp?v=5" aria-label="Открыть фото: Подсветка потолочной ниши"><img src="../../assets/apartment-g/IMG_7015.webp?v=5" width="1238" height="2200" loading="lazy" decoding="async" alt="Подсветка потолочной ниши"></a>
-        <figcaption>Подсветка потолочной ниши</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7016.webp?v=5" aria-label="Открыть фото: Световая линия вдоль стены"><img src="../../assets/apartment-g/IMG_7016.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Световая линия вдоль стены"></a>
-        <figcaption>Световая линия вдоль стены</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7018.webp?v=5" aria-label="Открыть фото: Трек и контурная подсветка потолка"><img src="../../assets/apartment-g/IMG_7018.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Трек и контурная подсветка потолка"></a>
-        <figcaption>Трек и контурная подсветка потолка</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7024.webp?v=5" aria-label="Открыть фото: Каменные панели у входа в столовую"><img src="../../assets/apartment-g/IMG_7024.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Каменные панели у входа в столовую"></a>
-        <figcaption>Каменные панели у входа в столовую</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7351.webp?v=5" aria-label="Открыть фото: Спальня со стороны входа"><img src="../../assets/apartment-g/IMG_7351.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Спальня со стороны входа"></a>
-        <figcaption>Спальня со стороны входа</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7357.webp?v=5" aria-label="Открыть фото: Спальня с панелями за изголовьем"><img src="../../assets/apartment-g/IMG_7357.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Спальня с панелями за изголовьем"></a>
-        <figcaption>Спальня с панелями за изголовьем</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7370.webp?v=5" aria-label="Открыть фото: Санузел с подвесным унитазом"><img src="../../assets/apartment-g/IMG_7370.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Санузел с подвесным унитазом"></a>
-        <figcaption>Санузел с подвесным унитазом</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7371.webp?v=5" aria-label="Открыть фото: Потолок санузла в процессе монтажа"><img src="../../assets/apartment-g/IMG_7371.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Потолок санузла в процессе монтажа"></a>
-        <figcaption>Потолок санузла в процессе монтажа</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7374.webp?v=5" aria-label="Открыть фото: Смеситель у ванны"><img src="../../assets/apartment-g/IMG_7374.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Смеситель у ванны"></a>
-        <figcaption>Смеситель у ванны</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7375.webp?v=5" aria-label="Открыть фото: Стык двух видов облицовки"><img src="../../assets/apartment-g/IMG_7375.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Стык двух видов облицовки"></a>
-        <figcaption>Стык двух видов облицовки</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7376.webp?v=5" aria-label="Открыть фото: Крючки на стене санузла"><img src="../../assets/apartment-g/IMG_7376.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Крючки на стене санузла"></a>
-        <figcaption>Крючки на стене санузла</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7379.webp?v=5" aria-label="Открыть фото: Спальня с угловым остеклением"><img src="../../assets/apartment-g/IMG_7379.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Спальня с угловым остеклением"></a>
-        <figcaption>Спальня с угловым остеклением</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7381.webp?v=5" aria-label="Открыть фото: Спальня, вид на панорамное окно"><img src="../../assets/apartment-g/IMG_7381.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Спальня, вид на панорамное окно"></a>
-        <figcaption>Спальня, вид на панорамное окно</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7383.webp?v=5" aria-label="Открыть фото: Подсветка над стеновыми панелями в спальне"><img src="../../assets/apartment-g/IMG_7383.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Подсветка над стеновыми панелями в спальне"></a>
-        <figcaption>Подсветка над стеновыми панелями в спальне</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7394.webp?v=5" aria-label="Открыть фото: Гостиная вдоль панорамных окон"><img src="../../assets/apartment-g/IMG_7394.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Гостиная вдоль панорамных окон"></a>
-        <figcaption>Гостиная вдоль панорамных окон</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7395.webp?v=5" aria-label="Открыть фото: Гостиная с мягкой мебелью"><img src="../../assets/apartment-g/IMG_7395.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Гостиная с мягкой мебелью"></a>
-        <figcaption>Гостиная с мягкой мебелью</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7402.webp?v=5" aria-label="Открыть фото: Потолок гостиной в процессе работ"><img src="../../assets/apartment-g/IMG_7402.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Потолок гостиной в процессе работ"></a>
-        <figcaption>Потолок гостиной в процессе работ</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7410.webp?v=5" aria-label="Открыть фото: Проход из гостиной в соседние помещения"><img src="../../assets/apartment-g/IMG_7410.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Проход из гостиной в соседние помещения"></a>
-        <figcaption>Проход из гостиной в соседние помещения</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7425.webp?v=5" aria-label="Открыть фото: Кухня-столовая с подвесными светильниками"><img src="../../assets/apartment-g/IMG_7425.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Кухня-столовая с подвесными светильниками"></a>
-        <figcaption>Кухня-столовая с подвесными светильниками</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7427.webp?v=5" aria-label="Открыть фото: Гостиная с настенными светильниками"><img src="../../assets/apartment-g/IMG_7427.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Гостиная с настенными светильниками"></a>
-        <figcaption>Гостиная с настенными светильниками</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7432.webp?v=5" aria-label="Открыть фото: Стеновые панели и трековый свет в коридоре"><img src="../../assets/apartment-g/IMG_7432.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Стеновые панели и трековый свет в коридоре"></a>
-        <figcaption>Стеновые панели и трековый свет в коридоре</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7435.webp?v=5" aria-label="Открыть фото: Электрощит"><img src="../../assets/apartment-g/IMG_7435.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Электрощит"></a>
-        <figcaption>Электрощит</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7437.webp?v=5" aria-label="Открыть фото: Помещение в процессе отделки"><img src="../../assets/apartment-g/IMG_7437.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Помещение в процессе отделки"></a>
-        <figcaption>Помещение в процессе отделки</figcaption>
-      </figure>
-      <figure class="wide">
-        <a href="../../assets/apartment-g/IMG_7445.webp?v=5" aria-label="Открыть фото: Столовая, вид на подвесные светильники"><img src="../../assets/apartment-g/IMG_7445.webp?v=5" width="2200" height="1238" loading="lazy" decoding="async" alt="Столовая, вид на подвесные светильники"></a>
-        <figcaption>Столовая, вид на подвесные светильники</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7457.webp?v=5" aria-label="Открыть фото: Комната со стремянкой и рабочим освещением"><img src="../../assets/apartment-g/IMG_7457.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Комната со стремянкой и рабочим освещением"></a>
-        <figcaption>Комната со стремянкой и рабочим освещением</figcaption>
-      </figure>
-      <figure>
-        <a href="../../assets/apartment-g/IMG_7465.webp?v=5" aria-label="Открыть фото: Душевая в процессе работ"><img src="../../assets/apartment-g/IMG_7465.webp?v=5" width="1237" height="2200" loading="lazy" decoding="async" alt="Душевая в процессе работ"></a>
-        <figcaption>Душевая в процессе работ</figcaption>
-      </figure>
+    <a class="f-case-close" href="../../index.html#projects" aria-label="Вернуться ко всем интерьерам">×</a>
+  </div>
+  <div class="f-case-layout">
+    <figure class="f-case-viewer">
+      <div class="f-case-stage"><img src="../../assets/apartment-g/IMG_7427.webp?v=5" alt="Гостиная с настенными светильниками"></div>
+      <figcaption class="f-case-controls">
+        <button type="button" data-case-prev aria-label="Предыдущая фотография">‹</button>
+        <span class="f-case-photo-meta" aria-live="polite"><span class="f-case-room"></span><span class="f-case-counter"></span></span>
+        <button type="button" data-case-next aria-label="Следующая фотография">›</button>
+      </figcaption>
+    </figure>
+    <div class="f-case-gallery">
+      <h3>Все фотографии</h3>
+      <div class="f-case-thumbs"></div>
     </div>
-  </main>
-  <footer>
-    <a class="button" href="../../index.html#contact">Обсудить свой проект</a>
-  </footer>
+  </div>
+  <noscript>
+  <div class="case-fallback">
+    <nav class="case-rooms" aria-label="Помещения апартамента">
+      <a href="#living">Гостиная</a>
+      <a href="#kitchen">Кухня-столовая</a>
+      <a href="#bedroom">Спальня</a>
+      <a href="#bathrooms">Санузлы</a>
+      <a href="#hallway">Коридор</a>
+      <a href="#details">Детали отделки</a>
+    </nav>
+    <section id="living" aria-labelledby="living-title">
+      <h2 id="living-title">Гостиная</h2>
+      <div class="case-gallery">
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7427.webp?v=5" aria-label="Открыть фото: Гостиная с настенными светильниками"><img src="../../assets/apartment-g/IMG_7427-preview.webp" width="900" height="506" fetchpriority="high" decoding="async" alt="Гостиная с настенными светильниками"></a>
+          <figcaption>Гостиная с настенными светильниками</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7394.webp?v=5" aria-label="Открыть фото: Гостиная вдоль панорамных окон"><img src="../../assets/apartment-g/IMG_7394-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Гостиная вдоль панорамных окон"></a>
+          <figcaption>Гостиная вдоль панорамных окон</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7395.webp?v=5" aria-label="Открыть фото: Гостиная с мягкой мебелью"><img src="../../assets/apartment-g/IMG_7395-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Гостиная с мягкой мебелью"></a>
+          <figcaption>Гостиная с мягкой мебелью</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7402.webp?v=5" aria-label="Открыть фото: Потолок гостиной в процессе работ"><img src="../../assets/apartment-g/IMG_7402-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Потолок гостиной в процессе работ"></a>
+          <figcaption>Потолок гостиной в процессе работ</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7410.webp?v=5" aria-label="Открыть фото: Проход из гостиной в соседние помещения"><img src="../../assets/apartment-g/IMG_7410-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Проход из гостиной в соседние помещения"></a>
+          <figcaption>Проход из гостиной в соседние помещения</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="kitchen" aria-labelledby="kitchen-title">
+      <h2 id="kitchen-title">Кухня-столовая</h2>
+      <div class="case-gallery">
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6802.webp?v=5" aria-label="Открыть фото: Кухня с тёмными фасадами"><img src="../../assets/apartment-g/IMG_6802-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Кухня с тёмными фасадами"></a>
+          <figcaption>Кухня с тёмными фасадами</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6803.webp?v=5" aria-label="Открыть фото: Кухня у панорамного остекления"><img src="../../assets/apartment-g/IMG_6803-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Кухня у панорамного остекления"></a>
+          <figcaption>Кухня у панорамного остекления</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7425.webp?v=5" aria-label="Открыть фото: Кухня-столовая с подвесными светильниками"><img src="../../assets/apartment-g/IMG_7425-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Кухня-столовая с подвесными светильниками"></a>
+          <figcaption>Кухня-столовая с подвесными светильниками</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7445.webp?v=5" aria-label="Открыть фото: Столовая, вид на подвесные светильники"><img src="../../assets/apartment-g/IMG_7445-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Столовая, вид на подвесные светильники"></a>
+          <figcaption>Столовая, вид на подвесные светильники</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="bedroom" aria-labelledby="bedroom-title">
+      <h2 id="bedroom-title">Спальня</h2>
+      <div class="case-gallery">
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7357.webp?v=5" aria-label="Открыть фото: Спальня с панелями за изголовьем"><img src="../../assets/apartment-g/IMG_7357-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Спальня с панелями за изголовьем"></a>
+          <figcaption>Спальня с панелями за изголовьем</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7351.webp?v=5" aria-label="Открыть фото: Спальня со стороны входа"><img src="../../assets/apartment-g/IMG_7351-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Спальня со стороны входа"></a>
+          <figcaption>Спальня со стороны входа</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7379.webp?v=5" aria-label="Открыть фото: Спальня с угловым остеклением"><img src="../../assets/apartment-g/IMG_7379-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Спальня с угловым остеклением"></a>
+          <figcaption>Спальня с угловым остеклением</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7381.webp?v=5" aria-label="Открыть фото: Спальня, вид на панорамное окно"><img src="../../assets/apartment-g/IMG_7381-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Спальня, вид на панорамное окно"></a>
+          <figcaption>Спальня, вид на панорамное окно</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7383.webp?v=5" aria-label="Открыть фото: Подсветка над стеновыми панелями в спальне"><img src="../../assets/apartment-g/IMG_7383-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Подсветка над стеновыми панелями в спальне"></a>
+          <figcaption>Подсветка над стеновыми панелями в спальне</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6811.webp?v=5" aria-label="Открыть фото: Комната с угловым остеклением"><img src="../../assets/apartment-g/IMG_6811-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Комната с угловым остеклением"></a>
+          <figcaption>Комната с угловым остеклением</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6812.webp?v=5" aria-label="Открыть фото: Панели в спальне"><img src="../../assets/apartment-g/IMG_6812-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Панели в спальне"></a>
+          <figcaption>Панели в спальне</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6813.webp?v=5" aria-label="Открыть фото: Бра и фурнитура на стеновой панели"><img src="../../assets/apartment-g/IMG_6813-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Бра и фурнитура на стеновой панели"></a>
+          <figcaption>Бра и фурнитура на стеновой панели</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6814.webp?v=5" aria-label="Открыть фото: Окно в спальне"><img src="../../assets/apartment-g/IMG_6814-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Окно в спальне"></a>
+          <figcaption>Окно в спальне</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="bathrooms" aria-labelledby="bathrooms-title">
+      <h2 id="bathrooms-title">Санузлы</h2>
+      <div class="case-gallery">
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7370.webp?v=5" aria-label="Открыть фото: Санузел с подвесным унитазом"><img src="../../assets/apartment-g/IMG_7370-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Санузел с подвесным унитазом"></a>
+          <figcaption>Санузел с подвесным унитазом</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7371.webp?v=5" aria-label="Открыть фото: Потолок санузла в процессе монтажа"><img src="../../assets/apartment-g/IMG_7371-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Потолок санузла в процессе монтажа"></a>
+          <figcaption>Потолок санузла в процессе монтажа</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7374.webp?v=5" aria-label="Открыть фото: Смеситель у ванны"><img src="../../assets/apartment-g/IMG_7374-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Смеситель у ванны"></a>
+          <figcaption>Смеситель у ванны</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7375.webp?v=5" aria-label="Открыть фото: Стык двух видов облицовки"><img src="../../assets/apartment-g/IMG_7375-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Стык двух видов облицовки"></a>
+          <figcaption>Стык двух видов облицовки</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7376.webp?v=5" aria-label="Открыть фото: Крючки на стене санузла"><img src="../../assets/apartment-g/IMG_7376-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Крючки на стене санузла"></a>
+          <figcaption>Крючки на стене санузла</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6994.webp?v=5" aria-label="Открыть фото: Санузел в процессе работ"><img src="../../assets/apartment-g/IMG_6994-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Санузел в процессе работ"></a>
+          <figcaption>Санузел в процессе работ</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7465.webp?v=5" aria-label="Открыть фото: Душевая в процессе работ"><img src="../../assets/apartment-g/IMG_7465-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Душевая в процессе работ"></a>
+          <figcaption>Душевая в процессе работ</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="hallway" aria-labelledby="hallway-title">
+      <h2 id="hallway-title">Коридор</h2>
+      <div class="case-gallery">
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6988.webp?v=5" aria-label="Открыть фото: Коридор с трековым светом"><img src="../../assets/apartment-g/IMG_6988-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Коридор с трековым светом"></a>
+          <figcaption>Коридор с трековым светом</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7001.webp?v=5" aria-label="Открыть фото: Коридор со стороны остекления"><img src="../../assets/apartment-g/IMG_7001-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Коридор со стороны остекления"></a>
+          <figcaption>Коридор со стороны остекления</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7002.webp?v=5" aria-label="Открыть фото: Коридор, вид с другой стороны"><img src="../../assets/apartment-g/IMG_7002-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Коридор, вид с другой стороны"></a>
+          <figcaption>Коридор, вид с другой стороны</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7003.webp?v=5" aria-label="Открыть фото: Вид из коридора в столовую"><img src="../../assets/apartment-g/IMG_7003-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Вид из коридора в столовую"></a>
+          <figcaption>Вид из коридора в столовую</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7024.webp?v=5" aria-label="Открыть фото: Каменные панели у входа в столовую"><img src="../../assets/apartment-g/IMG_7024-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Каменные панели у входа в столовую"></a>
+          <figcaption>Каменные панели у входа в столовую</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7006.webp?v=5" aria-label="Открыть фото: Трековое освещение у каменных панелей"><img src="../../assets/apartment-g/IMG_7006-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Трековое освещение у каменных панелей"></a>
+          <figcaption>Трековое освещение у каменных панелей</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6998.webp?v=5" aria-label="Открыть фото: Настенный светильник в коридоре"><img src="../../assets/apartment-g/IMG_6998-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Настенный светильник в коридоре"></a>
+          <figcaption>Настенный светильник в коридоре</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7432.webp?v=5" aria-label="Открыть фото: Стеновые панели и трековый свет в коридоре"><img src="../../assets/apartment-g/IMG_7432-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Стеновые панели и трековый свет в коридоре"></a>
+          <figcaption>Стеновые панели и трековый свет в коридоре</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7435.webp?v=5" aria-label="Открыть фото: Электрощит"><img src="../../assets/apartment-g/IMG_7435-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Электрощит"></a>
+          <figcaption>Электрощит</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section id="details" aria-labelledby="details-title">
+      <h2 id="details-title">Детали отделки</h2>
+      <div class="case-gallery">
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6976.webp?v=5" aria-label="Открыть фото: Примыкание ступени к полу"><img src="../../assets/apartment-g/IMG_6976-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Примыкание ступени к полу"></a>
+          <figcaption>Примыкание ступени к полу</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6977.webp?v=5" aria-label="Открыть фото: Кромка ступени"><img src="../../assets/apartment-g/IMG_6977-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Кромка ступени"></a>
+          <figcaption>Кромка ступени</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6986.webp?v=5" aria-label="Открыть фото: Фактура светлой стены"><img src="../../assets/apartment-g/IMG_6986-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Фактура светлой стены"></a>
+          <figcaption>Фактура светлой стены</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6987.webp?v=5" aria-label="Открыть фото: Древесная фактура"><img src="../../assets/apartment-g/IMG_6987-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Древесная фактура"></a>
+          <figcaption>Древесная фактура</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_6999.webp?v=5" aria-label="Открыть фото: Трековые светильники и подсветка"><img src="../../assets/apartment-g/IMG_6999-preview.webp" width="548" height="900" loading="lazy" decoding="async" alt="Трековые светильники и подсветка"></a>
+          <figcaption>Трековые светильники и подсветка</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7011.webp?v=5" aria-label="Открыть фото: Комната в процессе работ"><img src="../../assets/apartment-g/IMG_7011-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Комната в процессе работ"></a>
+          <figcaption>Комната в процессе работ</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7015.webp?v=5" aria-label="Открыть фото: Подсветка потолочной ниши"><img src="../../assets/apartment-g/IMG_7015-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Подсветка потолочной ниши"></a>
+          <figcaption>Подсветка потолочной ниши</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7016.webp?v=5" aria-label="Открыть фото: Световая линия вдоль стены"><img src="../../assets/apartment-g/IMG_7016-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Световая линия вдоль стены"></a>
+          <figcaption>Световая линия вдоль стены</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7018.webp?v=5" aria-label="Открыть фото: Трек и контурная подсветка потолка"><img src="../../assets/apartment-g/IMG_7018-preview.webp" width="900" height="506" loading="lazy" decoding="async" alt="Трек и контурная подсветка потолка"></a>
+          <figcaption>Трек и контурная подсветка потолка</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7437.webp?v=5" aria-label="Открыть фото: Помещение в процессе отделки"><img src="../../assets/apartment-g/IMG_7437-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Помещение в процессе отделки"></a>
+          <figcaption>Помещение в процессе отделки</figcaption>
+        </figure>
+        <figure>
+          <a href="../../assets/apartment-g/IMG_7457.webp?v=5" aria-label="Открыть фото: Комната со стремянкой и рабочим освещением"><img src="../../assets/apartment-g/IMG_7457-preview.webp" width="506" height="900" loading="lazy" decoding="async" alt="Комната со стремянкой и рабочим освещением"></a>
+          <figcaption>Комната со стремянкой и рабочим освещением</figcaption>
+        </figure>
+      </div>
+    </section>
+  </div>
+  </noscript>
+</main>
+<a class="case-page-contact" href="../../index.html#contact">Обсудить свой проект</a>
+<script defer src="../../assets/apartment-g/photos.js?v=2"></script>
+<script defer src="../../apartment-f.js?v=14"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ html:has(.case-dialog[open]) { overflow: hidden; }
   padding: clamp(1rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.5rem) 1rem;
 }
 .f-case-location { margin: 0; color: #d4c9b7; font-size: .875rem; }
-.f-case-header h2 {
+.f-case-header :is(h1, h2) {
   margin: .15rem 0 .4rem;
   color: inherit;
   font: 500 clamp(2.2rem, 5vw, 4rem)/1.03 var(--display, Georgia, serif);
@@ -110,4 +110,17 @@ html:has(.case-dialog[open]) { overflow: hidden; }
   .f-case-stage { height: clamp(180px, 78vw, 360px); }
   .f-case-thumbs { display: flex; max-height: none; }
   .case-dialog .f-case-thumb { flex: 0 0 68px; }
+}
+
+
+.f-case-thumb-room {
+  grid-column: 1 / -1;
+  margin: .15rem 0;
+  color: #d4c9b7;
+  font-weight: 500;
+  line-height: 1.35;
+  font-size: .8rem;
+}
+@media (max-width: 680px) {
+  .f-case-thumb-room { flex: 0 0 min-content; align-self: center; }
 }

@@ -1,4 +1,4 @@
-const apartmentFPhotos = apartmentFRooms.flatMap(({ room, ids }) =>
+const apartmentFPhotos = typeof apartmentFRooms === 'undefined' ? [] : apartmentFRooms.flatMap(({ room, ids }) =>
   ids.map(id => ({ id, room }))
 );
 const caseDescriptions = {
@@ -13,21 +13,22 @@ const caseDescriptions = {
   '7126-retouched': 'Раковина и овальное зеркало'
 };
 
-function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, useRoomAsDescription = false, assetQuery = '') {
+function bindCase(caseDialog, caseLinks, photos, caseAssets, descriptions = {}, assetQuery = '') {
   const caseImage = caseDialog.querySelector('.f-case-stage img');
   const caseThumbs = caseDialog.querySelector('.f-case-thumbs');
   const caseCounter = caseDialog.querySelector('.f-case-counter');
   const caseRoom = caseDialog.querySelector('.f-case-room');
-  const describePhoto = (id, room, index) => descriptions[id] || (useRoomAsDescription ? room : room + ', фотография ' + (index + 1));
+  const describePhoto = (photo, index) => photo.description || descriptions[photo.id] || photo.room + ', фотография ' + (index + 1);
   let caseIndex = 0;
+  let opener;
 
-  const caseButtons = photos.map(({ id, room }, index) => {
+  const caseButtons = photos.map((photo, index) => {
     const button = document.createElement('button');
     const thumb = document.createElement('img');
     button.type = 'button';
     button.className = 'f-case-thumb';
-    button.setAttribute('aria-label', describePhoto(id, room, index));
-    thumb.src = caseAssets + id + '-thumb.webp' + assetQuery;
+    button.setAttribute('aria-label', describePhoto(photo, index));
+    thumb.src = caseAssets + photo.id + '-thumb.webp' + assetQuery;
     thumb.alt = '';
     thumb.loading = 'lazy';
     thumb.decoding = 'async';
@@ -38,11 +39,11 @@ function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, u
 
   function showCasePhoto(index) {
     caseButtons[caseIndex].removeAttribute('aria-current');
-    caseIndex = (index + photos.length) % photos.length;
-    const { id, room } = photos[caseIndex];
-    caseRoom.textContent = room;
-    caseImage.alt = describePhoto(id, room, caseIndex);
-    caseImage.src = caseAssets + id + '.webp' + assetQuery;
+    caseIndex = index;
+    const photo = photos[caseIndex];
+    caseRoom.textContent = photo.description || photo.room;
+    caseImage.alt = describePhoto(photo, caseIndex);
+    caseImage.src = caseAssets + photo.id + '.webp' + assetQuery;
     caseCounter.textContent = (caseIndex + 1) + ' / ' + photos.length;
     const currentThumb = caseButtons[caseIndex];
     currentThumb.setAttribute('aria-current', 'true');
@@ -57,31 +58,55 @@ function bindCase(caseDialog, caseLink, photos, caseAssets, descriptions = {}, u
     }
   }
 
-  caseLink.addEventListener('click', event => {
-    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    if (!caseThumbs.childElementCount) caseThumbs.append(...caseButtons);
-    caseDialog.showModal();
+  function movePhoto(offset) {
+    showCasePhoto((caseIndex + offset + photos.length) % photos.length);
+  }
+
+  function renderThumbnails() {
+    if (caseThumbs.childElementCount) return;
+    photos.forEach((photo, index) => {
+      if (photo.description && photo.room !== photos[index - 1]?.room) {
+        const heading = document.createElement('h4');
+        heading.className = 'f-case-thumb-room';
+        heading.textContent = photo.room;
+        caseThumbs.append(heading);
+      }
+      caseThumbs.append(caseButtons[index]);
+    });
+  }
+
+  if (caseDialog instanceof HTMLDialogElement) {
+    caseLinks.forEach(link => link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      opener = link;
+      renderThumbnails();
+      caseDialog.showModal();
+      showCasePhoto(caseIndex);
+    }));
+    caseDialog.querySelector('.f-case-close').addEventListener('click', () => caseDialog.close());
+    caseDialog.addEventListener('close', () => opener?.focus({ preventScroll: true }));
+  } else {
+    renderThumbnails();
     showCasePhoto(caseIndex);
-  });
-  caseDialog.querySelector('.f-case-close').addEventListener('click', () => caseDialog.close());
-  caseDialog.querySelector('[data-case-prev]').addEventListener('click', () => showCasePhoto(caseIndex - 1));
-  caseDialog.querySelector('[data-case-next]').addEventListener('click', () => showCasePhoto(caseIndex + 1));
+  }
+  caseDialog.querySelector('[data-case-prev]').addEventListener('click', () => movePhoto(-1));
+  caseDialog.querySelector('[data-case-next]').addEventListener('click', () => movePhoto(1));
   caseDialog.addEventListener('keydown', event => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
-    showCasePhoto(caseIndex + (event.key === 'ArrowLeft' ? -1 : 1));
+    movePhoto(event.key === 'ArrowLeft' ? -1 : 1);
     if (event.target.classList.contains('f-case-thumb')) caseButtons[caseIndex].focus({ preventScroll: true });
   });
-  caseDialog.addEventListener('close', () => caseLink.focus({ preventScroll: true }));
 }
 
-const caseGalleries = {
-  'apartment-f-dialog': [apartmentFPhotos, 'assets/apartment-f/gallery/', caseDescriptions],
-  'apartment-g-dialog': [apartmentGPhotos, 'assets/apartment-g/', {}, true, '?v=5']
-};
-
-document.querySelectorAll('[data-case]').forEach(link => {
-  const id = link.getAttribute('aria-controls');
-  bindCase(document.getElementById(id), link, ...caseGalleries[id]);
-});
+const apartmentFDialog = document.getElementById('apartment-f-dialog');
+if (apartmentFDialog && apartmentFPhotos.length) {
+  bindCase(apartmentFDialog, document.querySelectorAll('[data-case][aria-controls="apartment-f-dialog"]'),
+    apartmentFPhotos, 'assets/apartment-f/gallery/', caseDescriptions);
+}
+const apartmentGDialog = document.getElementById('apartment-g-dialog');
+if (apartmentGDialog && typeof apartmentGPhotos !== 'undefined') {
+  bindCase(apartmentGDialog, document.querySelectorAll('[data-case][aria-controls="apartment-g-dialog"]'),
+    apartmentGPhotos, apartmentGDialog.dataset.caseAssets || 'assets/apartment-g/', {}, '?v=5');
+}
