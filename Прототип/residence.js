@@ -11,14 +11,12 @@ headingColor.oninput=()=>{setHeading(headingColor.value);try{localStorage.setIte
 document.getElementById('resetAccent').onclick=()=>{try{localStorage.removeItem('residence-heading')}catch{}resetHeading()};
 document.getElementById('themes').addEventListener('click',()=>{resetHeading();try{localStorage.removeItem('residence-heading')}catch{}});
 document.querySelectorAll('.fields input').forEach(i=>i.addEventListener('input',resetHeading));resetHeading();try{const c=localStorage.getItem('residence-heading');if(/^#[0-9a-f]{6}$/i.test(c))setHeading(c)}catch{}
-document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>{const category=b.dataset.category;document.querySelectorAll('[data-category]').forEach(t=>t.setAttribute('aria-selected',String(t===b)));document.querySelector('.gallery').classList.toggle('filtered',category!=='all');document.querySelectorAll('[data-kind]').forEach(card=>card.hidden=category!=='all'&&card.dataset.kind!==category)});
 document.querySelectorAll('.stage').forEach(b=>b.onclick=()=>{const open=b.getAttribute('aria-expanded')!=='true';document.querySelectorAll('.stage').forEach(s=>s.setAttribute('aria-expanded',String(s===b&&open)))});
 document.querySelectorAll('.service').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)document.querySelectorAll('.service').forEach(o=>{if(o!==d)o.open=false})}));
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');observer.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.section-heading,.about-grid,.principles,.gallery,.service-list,.budget-grid,.process-panels,.life-grid,.story,.comfort-grid,.clarity-grid').forEach(e=>{e.classList.add('reveal','ready');observer.observe(e)})}
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}}));
 
 document.getElementById('save').addEventListener('click',resetHeading);
-document.querySelectorAll('.tabs [role=tab]').forEach((tab,i,all)=>{tab.tabIndex=tab.getAttribute('aria-selected')==='true'?0:-1;tab.addEventListener('click',()=>all.forEach(t=>t.tabIndex=t===tab?0:-1));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%all.length;if(e.key==='ArrowLeft')next=(i-1+all.length)%all.length;if(e.key==='Home')next=0;if(e.key==='End')next=all.length-1;if(next!==undefined){e.preventDefault();all[next].focus();all[next].click()}})});
 const menuDialog=document.getElementById('siteMenu'),menuToggle=document.getElementById('menuToggle');
 menuToggle.onclick=()=>{menuDialog.style.setProperty('--menu-top',Math.max(16,menuToggle.getBoundingClientRect().bottom+18)+'px');menuDialog.showModal();menuToggle.setAttribute('aria-expanded','true')};
 document.getElementById('closeMenu').onclick=()=>menuDialog.close();
