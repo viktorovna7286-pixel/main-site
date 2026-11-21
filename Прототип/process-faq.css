@@ -1,14 +1,14 @@
-.renovation-steps {
+#clarity {
     color: var(--paper);
     background: var(--ink);
 }
 
-.renovation-steps .section-heading {
+#clarity .section-heading {
     text-align: center;
     margin: 0 0 34px;
 }
 
-.renovation-steps h2 { color: inherit; }
+#clarity h2 { color: inherit; }
 
 .renovation-scene {
     position: relative;
@@ -41,34 +41,25 @@
     align-items: end;
     gap: 24px;
     width: 100%;
-    min-height: 350px;
+    min-height: 325px;
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 
 .renovation-card {
     padding: clamp(20px, 2.6vw, 34px);
-    color: var(--ink);
-    background: color-mix(in srgb, var(--paper) 94%, var(--accent));
-    border: 1px solid color-mix(in srgb, var(--accent) 60%, var(--paper));
+    color: #f5f8fa;
+    background: linear-gradient(145deg, #d9e3e723, transparent 65%), rgb(16 29 42 / 64%);
+    border: 1px solid #d9e3e759;
     border-radius: 16px;
+    box-shadow: inset 0 1px 0 #ffffff24, 0 16px 36px #0a101c38;
+    -webkit-backdrop-filter: blur(14px) saturate(110%);
+    backdrop-filter: blur(14px) saturate(110%);
 }
 
 
 .renovation-card:nth-child(2) { align-self: start; --atlas-motion-delay: 90ms; }
 .renovation-card:nth-child(3) { --atlas-motion-delay: 180ms; }
-
-.renovation-number {
-    display: grid;
-    place-items: center;
-    width: 35px;
-    height: 35px;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    font-size: 13px;
-    margin-bottom: 18px;
-}
 
 .renovation-card h3 {
     font-size: calc(clamp(28px, 2.6vw, 36px) * var(--font-scale));
@@ -207,11 +198,7 @@
 @media (max-width: 620px) {
     .renovation-list, #questions { grid-template-columns: 1fr; }
     .renovation-picture { border-radius: 40px 40px 8px 8px; }
-    .renovation-number { margin-bottom: 12px; }
-    .faq-picture { display: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
+    @media (prefers-reduced-motion: reduce) {
     .atlas-intro { display: none; }
     [data-atlas-reveal].is-revealed,
     #questions .faq-accordion details p { animation: none; }

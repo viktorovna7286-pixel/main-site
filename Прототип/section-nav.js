@@ -9,7 +9,7 @@
   let active = 0, frame = 0, wheelSum = 0, wheelTime = 0, lockedUntil = 0;
   function select(index) {
     active = index;
-    nav.dataset.surface = sections[index].matches(".projects,.stories,.renovation-steps,.clarity,.contact") ? "dark" : "light";
+    nav.dataset.surface = sections[index].matches(".projects,.stories,.clarity,.contact") ? "dark" : "light";
     links.forEach((link, i) => {
       if (i === index) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
