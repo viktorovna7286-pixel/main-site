@@ -9,6 +9,7 @@ const apartmentFPhotos = apartmentFRooms.flatMap(({ room, ids }) =>
 );
 const caseAssets = 'assets/apartment-f/gallery/';
 const caseDescriptions = {
+  'bathroom-retouched': 'Раковина и душевая в отражении, фото с ИИ-ретушью',
   '7060': 'Гостиная с подсвеченной лестницей',
   '7108': 'Кухонный остров у окна',
   '7143': 'Подсветка ступеней и стеклянное ограждение',
@@ -38,7 +39,7 @@ function showCasePhoto(index) {
   caseButtons[caseIndex].removeAttribute('aria-current');
   caseIndex = (index + apartmentFPhotos.length) % apartmentFPhotos.length;
   const { id, room } = apartmentFPhotos[caseIndex];
-  caseRoom.textContent = room;
+  caseRoom.textContent = id === 'bathroom-retouched' ? room + ' · ИИ-ретушь' : room;
   caseImage.alt = caseDescriptions[id] || (room + ', фотография ' + (caseIndex + 1));
   caseImage.src = caseAssets + id + '.webp';
   caseCounter.textContent = (caseIndex + 1) + ' / ' + apartmentFPhotos.length;
