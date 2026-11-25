@@ -16,7 +16,7 @@
       const rect = section.getBoundingClientRect();
       return rect.top <= midpoint && midpoint < rect.bottom;
     });
-    bar.dataset.surface = surface?.matches("#about, #solutions, #questions") ? "light" : "dark";
+    bar.dataset.surface = surface?.matches("#about, #advantages, #solutions, #questions") ? "light" : "dark";
     const line = bar.offsetHeight + 20;
     let active = -1;
     sections.forEach((section, index) => {

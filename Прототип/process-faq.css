@@ -78,12 +78,13 @@
     background: color-mix(in srgb, var(--paper) 96%, var(--ink));
 }
 
-#questions .section-heading { margin: 0; }
+#questions .section-heading { width: fit-content; max-width: 100%; margin: 0; }
 #questions .section-heading h2 br { display: initial; }
 #questions .section-heading h2 em::before { content: none; }
 
 .faq-picture {
-    width: min(92%, 330px);
+    width: 100%;
+    contain: inline-size;
     aspect-ratio: 1.5;
     margin-top: 38px;
     overflow: hidden;

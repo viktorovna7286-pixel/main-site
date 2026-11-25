@@ -61,7 +61,7 @@
 .home-logo img { height: auto; object-fit: contain; }
 .home-nav, .home-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px clamp(12px, 1.6vw, 28px); }
 .home-nav a, .home-phone, .home-work-link { font-size: var(--type-body); font-weight: 550; }
-.home-nav a:hover, .home-phone:hover, .home-work-link:hover { text-decoration: underline; text-underline-offset: .25em; }
+
 .home-actions .menu-toggle { display: none; }
 .home-phone { white-space: nowrap; }
 
@@ -145,14 +145,24 @@
   text-align: center;
   white-space: nowrap;
 }
-.atlas-ticker-item span { display: inline-block; width: .8em; height: .75em; margin-inline: .65em; background: currentColor; mask: url("assets/brand/atlas-symbol.svg") center / contain no-repeat; }
+.atlas-ticker-item span {
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  margin-inline: .65em;
+  vertical-align: -.12em;
+  background: url("assets/brand/Atlas_Group_Arch_Web.svg") center / contain no-repeat;
+}
 .atlas-ticker-toggle { min-width: 48px; padding: 8px; font-size: var(--type-body); }
 .atlas-ticker-toggle:focus-visible { outline-offset: -5px; }
 @keyframes atlas-ticker-scroll { to { transform: translateX(-50%); } }
 
 #contact { border-radius: 0; background: var(--ink); }
 #contact .contact-layout { width: min(88%, 1500px); margin-inline: auto; padding-inline: 0; }
-#contact::after { background: linear-gradient(90deg, #071019dc, #07101985); }
+#contact::after { content: none; }
+#contact .contact-photo { position: absolute; inset: 0; overflow: hidden; border-radius: var(--panel-radius); }
+#contact .contact-photo img { border-radius: 0; object-position: 50% 65%; }
+#contact .contact-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #071019dc, #07101985); }
 #briefForm {
   min-width: 0;
   padding: clamp(18px, 3vw, 38px);
@@ -247,13 +257,13 @@
   letter-spacing: normal;
 }
 
-.home-nav a[aria-current="location"] { text-decoration: underline; text-underline-offset: .35em; }
-#about .principles { align-items: start; }
-#about .principles > div { grid-template-columns: 26px minmax(0, 1fr); column-gap: 14px; align-items: start; }
-#about .principles strong { line-height: 1.25; }
-#about .line-icon { grid-row: 1; display: grid; place-items: center; height: calc(var(--type-subheading) * 1.25); color: color-mix(in srgb, var(--ink) 65%, var(--accent)); }
-#about .line-icon svg { display: block; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-#about .principles p { grid-column: 2; }
+
+.advantages .principles { align-items: start; }
+.advantages .principles > div { grid-template-columns: 26px minmax(0, 1fr); column-gap: 14px; align-items: start; }
+.advantages .principles strong { line-height: 1.25; }
+.advantages .line-icon { grid-row: 1; display: grid; place-items: center; height: calc(var(--type-subheading) * 1.25); color: color-mix(in srgb, var(--ink) 65%, var(--accent)); }
+.advantages .line-icon svg { display: block; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.advantages .principles p { grid-column: 2; }
 
 .atlas-cursor { display: none; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -272,17 +282,12 @@
     transition: transform .19s ease, opacity .16s ease, background-color .19s ease;
   }
   .atlas-cursor.is-visible::before { opacity: 1; transform: translate(-50%, -50%) scale(1.45); background: #b7cbd648; }
-  :is(.home-nav, .atlas-footer-grid) a, .home-work-link { transition: text-underline-offset .2s ease; }
-  :is(.home-nav, .atlas-footer-grid) a:hover, .home-work-link:hover { text-underline-offset: .45em; }
+  .atlas-footer-grid a { transition: text-underline-offset .2s ease; }
+  .atlas-footer-grid a:hover { text-underline-offset: .45em; }
   .atlas-action, .renovation-link, .menu-toggle { transition: scale .16s ease; }
   :is(.atlas-action, .renovation-link, .menu-toggle):active { scale: .97; }
 }
 
-.projects .photo-card { padding: 12px; background: color-mix(in srgb, var(--ink) 80%, var(--paper)); }
-.projects .photo-card::after { inset: 12px; }
-.projects .photo-card--in-progress { background: var(--paper); }
-.projects .photo-card--in-progress .project-status { top: 22px; left: 22px; }
-.projects .photo-card--in-progress > span { padding: 12px 8px 4px; }
 .projects .photo-card:hover img { transform: none; filter: brightness(1.09); }
 .projects .photo-card img { transition: filter .25s ease; }
 .renovation-link:is(:hover, :focus-visible) { background: #a9c5d7; color: #101d2a; }
@@ -290,3 +295,29 @@
 #about .text-link { border-bottom: 0; }
 #about .text-link:hover { text-decoration: underline; text-underline-offset: .3em; }
 @media (prefers-reduced-motion: reduce) { .projects .photo-card img { transition: none; } }
+
+.advantages { background: color-mix(in srgb, var(--paper) 82%, white); }
+.advantages h2 { color: var(--ink); }
+.advantages .principles { margin: 28px 0 0; padding: 0; gap: clamp(14px, 2.3vw, 30px); align-items: stretch; }
+.advantages .principles > div { padding: clamp(16px, 2vw, 26px); border-radius: var(--panel-radius); background: color-mix(in srgb, var(--paper) 58%, white); grid-template-rows: auto 1fr; }
+@media (min-width: 601px) and (max-width: 900px) { .advantages .principles { grid-template-columns: 1fr; } }
+
+.home-actions .atlas-action, .home-mobile-action { border: 0; }
+:is(.home-nav a, .home-phone, .home-work-link) {
+  position: relative;
+  isolation: isolate;
+  text-decoration: none;
+}
+:is(.home-nav a, .home-phone, .home-work-link)::before {
+  content: "";
+  position: absolute;
+  inset: -.35em -.5em;
+  z-index: -1;
+  border-radius: 100px;
+  background: color-mix(in srgb, currentColor 19%, transparent);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+:is(.home-nav a, .home-phone, .home-work-link):is(:hover, :focus-visible, [aria-current="location"])::before { opacity: 1; }
+.home-work-link::before { inset-block: 0; }
+@media (prefers-reduced-motion: reduce) { :is(.home-nav a, .home-phone, .home-work-link)::before { transition: none; } }
