@@ -1,8 +1,19 @@
-const fontMap={cormorant:['Cormorant, Georgia, serif',1],noto:['Noto, Georgia, serif',.8],unbounded:['Unbounded, Arial, sans-serif',.65]};
+const fontMap={cormorant:['Cormorant, Georgia, serif',1],noto:['Noto, Georgia, serif',.8],unbounded:['Unbounded, Arial, sans-serif',.65],
+  'rubik-golos':['Rubik, Arial, sans-serif',.85,'Golos Text, Arial, sans-serif'],
+  'unbounded-onest':['Unbounded, Arial, sans-serif',.65,'Onest, Arial, sans-serif'],
+  'unbounded-montserrat':['Unbounded, Arial, sans-serif',.65,'Montserrat, Arial, sans-serif']
+};
 const styleToggle=document.getElementById('styleToggle'),stylePanel=document.getElementById('stylePanel');
 styleToggle.onclick=()=>{stylePanel.hidden=!stylePanel.hidden;styleToggle.setAttribute('aria-expanded',String(!stylePanel.hidden))};
-function setFont(key){if(!fontMap[key])return;document.documentElement.style.setProperty('--display',fontMap[key][0]);document.documentElement.style.setProperty('--font-scale',fontMap[key][1]);document.querySelectorAll('[data-font]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.font===key)));try{localStorage.setItem('residence-font',key)}catch{}}
-document.querySelectorAll('[data-font]').forEach(b=>b.onclick=()=>setFont(b.dataset.font));try{setFont(localStorage.getItem('residence-font')||'cormorant')}catch{}
+function setFont(key){if(!Object.hasOwn(fontMap,key))return;
+  const [display,scale,text]=fontMap[key];
+  const style=document.documentElement.style;
+  style.setProperty('--display',display);
+  style.setProperty('--font-scale',scale);
+  style.setProperty('--body-font',text||'Manrope, Arial, sans-serif');
+  style.setProperty('--paired-display',text?display:'');
+  document.querySelectorAll('[data-font]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.font===key)));try{localStorage.setItem('residence-font-preset',key)}catch{}}
+document.querySelectorAll('[data-font]').forEach(b=>b.onclick=()=>setFont(b.dataset.font));try{setFont(localStorage.getItem('residence-font-preset')||'unbounded-montserrat')}catch{}
 const headingColor=document.getElementById('headingColor');
 function setHeading(color){document.documentElement.style.setProperty('--heading',color);headingColor.value=color;document.getElementById('accentCode').textContent=color.toUpperCase()}
 function readableAccent(color){const rgb=color.slice(1).match(/../g).map(v=>parseInt(v,16));const ink=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim().slice(1).match(/../g).map(v=>parseInt(v,16));return '#'+rgb.map((v,i)=>Math.round(v*.45+ink[i]*.55).toString(16).padStart(2,'0')).join('')}

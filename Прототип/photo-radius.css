@@ -1,0 +1,17 @@
+:root {
+  --photo-radius: 25px;
+}
+
+img:not([src$=".svg" i]),
+.hero,
+.contact,
+.budget-photo,
+.photo-card,
+.f-case-stage,
+.case-dialog .f-case-thumb {
+  border-radius: var(--photo-radius);
+}
+
+:is(.photo-card, .case-dialog .f-case-thumb) img {
+  border-radius: inherit;
+}

@@ -2,6 +2,18 @@
     const intro = document.querySelector('.atlas-intro');
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
 
+    const ticker = document.querySelector(".atlas-ticker");
+    if (ticker) {
+        const toggle = ticker.querySelector(".atlas-ticker-toggle");
+        ticker.classList.add("is-playing");
+        toggle.hidden = false;
+        toggle.addEventListener("click", () => {
+            const paused = ticker.classList.toggle("is-paused");
+            toggle.setAttribute("aria-label", paused ? "Продолжить бегущую строку" : "Приостановить бегущую строку");
+            toggle.firstElementChild.textContent = paused ? "▶" : "Ⅱ";
+        });
+    }
+
     if (intro && !motion.matches && !location.hash) {
         const key = 'atlas-home-intro';
         let seen = false;

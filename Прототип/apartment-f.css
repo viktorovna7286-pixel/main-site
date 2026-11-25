@@ -25,13 +25,13 @@ html:has(.case-dialog[open]) { overflow: hidden; }
   gap: 1rem;
   padding: clamp(1rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.5rem) 1rem;
 }
-.f-case-location { margin: 0; color: #d4c9b7; font-size: .875rem; }
+.f-case-location { margin: 0; color: #d4c9b7; font-size: var(--type-caption); }
 .f-case-header :is(h1, h2) {
   margin: .15rem 0 .4rem;
   color: inherit;
-  font: 500 clamp(2.2rem, 5vw, 4rem)/1.03 var(--display, Georgia, serif);
+  font: 500 var(--type-heading)/1.12 var(--display, Unbounded, Arial, sans-serif);
 }
-.f-case-intro { margin: 0; max-width: 42rem; color: #e1dfdc; font-size: 1rem; line-height: 1.5; }
+.f-case-intro { margin: 0; max-width: 42rem; color: #e1dfdc; font-size: var(--type-body); line-height: 1.5; }
 .case-dialog button {
   color: inherit;
   font: inherit;
@@ -59,17 +59,18 @@ html:has(.case-dialog[open]) { overflow: hidden; }
 .f-case-stage {
   position: relative;
   height: clamp(200px, calc(100dvh - 320px), 720px);
-  border-radius: 10px;
   overflow: hidden;
   background: #101519;
 }
 .case-dialog .f-case-stage img {
   position: absolute;
   inset: 0;
+  margin: auto;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 .f-case-controls {
   display: flex;
@@ -80,10 +81,10 @@ html:has(.case-dialog[open]) { overflow: hidden; }
   font-variant-numeric: tabular-nums;
 }
 .case-dialog .f-case-controls button { font-size: 1.4rem; }
-.f-case-photo-meta { min-width: 8rem; text-align: center; font-size: .9rem; line-height: 1.35; }
+.f-case-photo-meta { min-width: 8rem; text-align: center; font-size: var(--type-caption); line-height: 1.35; }
 .f-case-room { display: block; color: #e1dfdc; }
 .f-case-counter { color: #d4c9b7; }
-.f-case-gallery h3 { margin: 0 0 .65rem; font-family: inherit; font-size: .9rem; font-weight: 600; line-height: 1.4; color: #e1dfdc; }
+.f-case-gallery h3 { margin: 0 0 .65rem; font-family: inherit; font-size: var(--type-caption); font-weight: 600; line-height: 1.4; color: #e1dfdc; }
 .f-case-thumbs {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -100,7 +101,6 @@ html:has(.case-dialog[open]) { overflow: hidden; }
   aspect-ratio: 4 / 3;
   background: #101519;
   border: 2px solid transparent;
-  border-radius: 6px;
 }
 .case-dialog .f-case-thumb[aria-current="true"] { border-color: #f4d5a5; }
 .case-dialog .f-case-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
@@ -119,11 +119,11 @@ html:has(.case-dialog[open]) { overflow: hidden; }
   color: #d4c9b7;
   font-weight: 500;
   line-height: 1.35;
-  font-size: .8rem;
+  font-size: var(--type-caption);
 }
 @media (max-width: 680px) {
   .f-case-thumb-room { flex: 0 0 min-content; align-self: center; }
 }
 
-.f-case-credit { margin: 0; padding: 0 clamp(1rem, 3vw, 2.5rem) 1.25rem; color: #d4c9b7; font-size: .875rem; }
-.apartment-gallery-dialog .f-case-header h2 { font-family: Unbounded, Manrope, sans-serif; font-weight: 300; }
+.f-case-credit { margin: 0; padding: 0 clamp(1rem, 3vw, 2.5rem) 1.25rem; color: #d4c9b7; font-size: var(--type-caption); }
+.apartment-gallery-dialog .f-case-header h2 { font-family: var(--paired-display, Unbounded, Manrope, sans-serif); font-weight: 300; }

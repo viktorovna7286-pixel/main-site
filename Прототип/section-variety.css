@@ -4,13 +4,13 @@
 #questions .section-heading>.eyebrow{margin-bottom:20px}
 #questions .section-heading h2 br{display:none}
 #questions .section-heading h2 em:before{content:' '}
-#questions .section-heading>p{margin-top:20px;font-size:14px}
+#questions .section-heading>p{margin-top:20px;font-size:var(--type-body)}
 #questions .section-heading>p br{display:none}
 #questions .section-heading>p br:after{content:' '}
 #questions>.section-heading+div{max-width:920px;margin:0}
 #questions details{border-bottom:1px solid color-mix(in srgb,var(--ink) 20%,transparent)}
 #questions details:first-child{border-top:1px solid color-mix(in srgb,var(--ink) 20%,transparent)}
-#questions summary{font:16px/1.6 Manrope,Arial,sans-serif;padding:25px 4px;gap:25px}
+#questions summary{font:var(--type-body)/1.6 var(--body-font,Manrope,Arial,sans-serif);padding:25px 4px;gap:25px}
 #questions summary b{font-weight:300;font-size:24px;flex-shrink:0}
-#questions details p{font-size:16px;line-height:1.8;padding:0 45px 26px 4px;max-width:820px}
-@media(max-width:600px){#questions{padding-top:55px;padding-bottom:55px}#questions .section-heading{text-align:left;margin-bottom:30px}#questions summary{font-size:14px;padding:22px 0}#questions details p{font-size:14px;padding:0 15px 22px 0}}
+#questions details p{font-size:var(--type-body);line-height:1.8;padding:0 45px 26px 4px;max-width:820px}
+@media(max-width:600px){#questions{padding-top:55px;padding-bottom:55px}#questions .section-heading{text-align:left;margin-bottom:30px}#questions summary{font-size:var(--type-body);padding:22px 0}#questions details p{font-size:var(--type-body);padding:0 15px 22px 0}}

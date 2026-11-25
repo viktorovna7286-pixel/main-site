@@ -1,0 +1,17 @@
+@font-face{font-family:Unbounded;src:url(assets/fonts/unbounded.ttf);font-weight:200 900;font-display:swap}
+@font-face {
+  font-family: Montserrat;
+  src: url(assets/fonts/montserrat.ttf);
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --type-heading: clamp(32px, 4vw, 42px);
+  --type-subheading: clamp(20px, 2.35vw, 24px);
+  --type-body: clamp(15px, 1.5vw, 17px);
+  --type-caption: clamp(12px, 1.15vw, 13px);
+}
+
+h1, h2 { font-weight: 500; }
+h3, #projects .photo-card strong { font-weight: 500; }

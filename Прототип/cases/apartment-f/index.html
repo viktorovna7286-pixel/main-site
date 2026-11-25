@@ -7,20 +7,20 @@
   <meta name="description" content="Двухуровневый апартамент в Сочи. Кухня с островом, подсветка лестницы и отделка санузла на фотографиях готового интерьера.">
   <link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
   <style>
-    :root { color-scheme: light; background: #f2efe9; color: #182b40; font: 100%/1.65 Arial, sans-serif; }
-    body { margin: 0; }
+    :root { color-scheme: light; background: #f2efe9; color: #182b40; font: 100%/1.65 Montserrat, Arial, sans-serif; }
+    body { margin: 0; font-size: var(--type-body); }
     main, header, footer { width: min(92%, 1160px); margin-inline: auto; }
     header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; border-bottom: 1px solid #182b4038; }
     header img { vertical-align: middle; width: 128px; height: auto; }
     a { color: inherit; text-underline-offset: .25em; }
-    h1, h2 { font-family: Georgia, serif; font-weight: 400; line-height: 1.08; margin: 0 0 1rem; }
-    h1 { font-size: clamp(3rem, 8vw, 7rem); }
-    h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+    h1, h2 { font-family: Unbounded, Arial, sans-serif; font-weight: 400; line-height: 1.08; margin: 0 0 1rem; }
+    h1 { font-size: var(--type-heading); }
+    h2 { font-size: var(--type-heading); }
     .intro { padding-block: clamp(2rem, 6vw, 5rem) 2rem; }
-    .location, figcaption { color: #46596b; font-size: .9rem; }
-    .intro p:last-child { max-width: 39rem; font-size: clamp(1.05rem, 2vw, 1.3rem); }
+    .location, figcaption { color: #46596b; font-size: var(--type-caption); }
+    .intro p:last-child { max-width: 39rem; font-size: var(--type-body); }
     figure { margin: 0; }
-    figure img { display: block; width: 100%; height: auto; border-radius: 5px; }
+    figure img { display: block; width: 100%; height: auto; }
     figcaption { margin-top: .6rem; }
     section { margin-block: clamp(3rem, 8vw, 6rem); }
     section p { max-width: 43rem; margin-bottom: 1.5rem; }
@@ -31,6 +31,7 @@
     .button { display: inline-block; padding: .75rem 1.15rem; color: #f2efe9; background: #182b40; border-radius: 4px; }
     @media (max-width: 620px) { .pair, .pair--portrait { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="../../prototype-fonts.css"><link rel="stylesheet" href="../../photo-radius.css">
 </head>
 <body>
   <header>
