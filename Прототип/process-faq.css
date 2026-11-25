@@ -67,8 +67,7 @@
 }
 
 .renovation-card p { font-size: var(--type-body); font-weight: 400; line-height: 1.55; }
-.renovation-link { margin-bottom: 24px; background: var(--paper); color: var(--ink); font-size: var(--type-body); }
-.renovation-link:hover { color: var(--paper); background: var(--ink); }
+.renovation-link { margin-bottom: 24px; }
 
 #questions {
     display: grid;

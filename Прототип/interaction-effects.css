@@ -1,0 +1,79 @@
+:root {
+  --interaction-fast: 180ms ease;
+  --interaction-image: 360ms cubic-bezier(.2,.7,.25,1);
+}
+
+:is(button:not(:disabled), summary):not(.atlas-action, .f-case-thumb) {
+  transition: background-color var(--interaction-fast), filter var(--interaction-fast), scale var(--interaction-fast);
+}
+
+a[href]:not(.atlas-action, .photo-card, .home-nav a, .home-phone) {
+  border-radius: 5px;
+  transition: background-color var(--interaction-fast), filter var(--interaction-fast);
+}
+
+:is(input, select, textarea):not(:disabled) {
+  transition: background-color var(--interaction-fast), border-color var(--interaction-fast);
+}
+#briefForm :is(input, select, textarea):focus-visible {
+  background-color: color-mix(in srgb, var(--ink) 87%, var(--paper));
+  border-color: var(--paper);
+}
+
+#projects .photo-card {
+  transition: translate var(--interaction-fast), box-shadow var(--interaction-fast);
+}
+#projects .photo-card img,
+.case-dialog .f-case-thumb,
+.case-fallback a img,
+.case-gallery a img {
+  transition: scale var(--interaction-image), filter var(--interaction-fast);
+}
+#projects .photo-card:hover img { transform: none; }
+
+:is(button:not(:disabled), summary, a.atlas-action):active { scale: .97; }
+.f-case-thumb:active { scale: .96; }
+
+@media (hover: hover) and (pointer: fine) {
+  :is(button:not(:disabled), summary):not(.atlas-action, .f-case-thumb):hover {
+    background-color: color-mix(in srgb, currentColor 12%, transparent);
+  }
+  a[href]:not(.atlas-action, .photo-card, .home-nav a, .home-phone):hover {
+    background-color: color-mix(in srgb, currentColor 10%, transparent);
+  }
+  #projects .photo-card:hover {
+    translate: 0 -3px;
+    box-shadow: 0 12px 24px #080c1038;
+  }
+  #projects .photo-card:hover img { scale: 1.025; filter: brightness(1.07); }
+  .case-dialog .f-case-thumb:hover,
+  .case-fallback a:hover img,
+  .case-gallery a:hover img { scale: 1.035; filter: brightness(1.12); }
+}
+
+#projects .photo-card:active { translate: 0 0; scale: .99; }
+.atlas-action { transition: scale var(--interaction-fast); }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-brand-pattern].is-revealed::before {
+    animation: atlas-pattern-in 1.25s cubic-bezier(.2,.7,.25,1) both;
+  }
+  @keyframes atlas-pattern-in {
+    from { opacity: 0; background-position: right -34px top 0; }
+    to { background-position: right 0 top 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --interaction-fast: 0ms;
+    --interaction-image: 0ms;
+  }
+  html { scroll-behavior: auto; }
+  :is(button, summary, a.atlas-action):active,
+  #projects .photo-card:hover img,
+  .case-dialog .f-case-thumb:is(:hover, :active),
+  .case-fallback a:hover img,
+  .case-gallery a:hover img { scale: 1; }
+  #projects .photo-card:is(:hover, :active) { translate: none; scale: 1; }
+}

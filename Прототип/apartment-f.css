@@ -125,3 +125,5 @@ html:has(.case-dialog[open]) { overflow: hidden; }
 
 .f-case-credit { margin: 0; padding: 0 clamp(1rem, 3vw, 2.5rem) 1.25rem; color: #d4c9b7; font-size: var(--type-caption); }
 .apartment-gallery-dialog .f-case-header h2 { font-family: var(--paired-display, Unbounded, Manrope, sans-serif); font-weight: 300; }
+
+.f-case-thumb-phase { color: #f4f0ea; font-weight: 700; margin-block: .65rem .2rem; }

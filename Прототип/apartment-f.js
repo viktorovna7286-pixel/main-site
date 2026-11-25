@@ -9,7 +9,7 @@ const caseDescriptions = {
   '7143': 'Подсветка ступеней и стеклянное ограждение',
   '7181': 'Спальня на втором уровне',
   '7192': 'Туалетный столик у окна',
-  '7117-retouched': 'Санузел с тонированной перегородкой',
+  '7117-retouched-ai': 'Санузел с тонированной перегородкой',
   '7126-retouched': 'Раковина и овальное зеркало'
 };
 
@@ -65,7 +65,15 @@ function bindCase(caseDialog, caseLinks, photos, caseAssets, descriptions = {}, 
   function renderThumbnails() {
     if (caseThumbs.childElementCount) return;
     photos.forEach((photo, index) => {
-      if (photo.room && photo.room !== photos[index - 1]?.room) {
+      const previous = photos[index - 1];
+      const newPhase = photo.phase && photo.phase !== previous?.phase;
+      if (newPhase) {
+        const phase = document.createElement("h4");
+        phase.className = "f-case-thumb-room f-case-thumb-phase";
+        phase.textContent = photo.phase;
+        caseThumbs.append(phase);
+      }
+      if (photo.room && (newPhase || photo.room !== previous?.room)) {
         const heading = document.createElement('h4');
         heading.className = 'f-case-thumb-room';
         heading.textContent = photo.room;

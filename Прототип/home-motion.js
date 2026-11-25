@@ -58,7 +58,7 @@
             });
         }, {threshold: 0.12});
 
-        document.querySelectorAll('[data-atlas-reveal]').forEach(item => observer.observe(item));
+        document.querySelectorAll('[data-atlas-reveal], [data-brand-pattern]').forEach(item => observer.observe(item));
     }
 })();
 
