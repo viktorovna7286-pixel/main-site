@@ -65,7 +65,7 @@ function bindCase(caseDialog, caseLinks, photos, caseAssets, descriptions = {}, 
   function renderThumbnails() {
     if (caseThumbs.childElementCount) return;
     photos.forEach((photo, index) => {
-      if (photo.description && photo.room !== photos[index - 1]?.room) {
+      if (photo.room && photo.room !== photos[index - 1]?.room) {
         const heading = document.createElement('h4');
         heading.className = 'f-case-thumb-room';
         heading.textContent = photo.room;
