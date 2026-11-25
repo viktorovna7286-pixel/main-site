@@ -249,3 +249,27 @@
 #about .line-icon { grid-row: 1; display: grid; place-items: center; height: calc(var(--type-subheading) * 1.25); color: color-mix(in srgb, var(--ink) 65%, var(--accent)); }
 #about .line-icon svg { display: block; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 #about .principles p { grid-column: 2; }
+
+.atlas-cursor { display: none; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .atlas-cursor { display: block; position: fixed; inset: 0 auto auto 0; z-index: 60; pointer-events: none; }
+  .atlas-cursor::before {
+    content: "";
+    display: block;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #d4e1e8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #101d2a66;
+    background: #b7cbd633;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.65);
+    transition: transform .19s ease, opacity .16s ease, background-color .19s ease;
+  }
+  .atlas-cursor.is-visible::before { opacity: .72; transform: translate(-50%, -50%) scale(1); }
+  .atlas-cursor.is-visible.is-interactive::before { opacity: 1; transform: translate(-50%, -50%) scale(1.55); background: #b7cbd648; }
+  :is(.home-nav, .atlas-footer-grid) a, .home-work-link { transition: text-underline-offset .2s ease; }
+  :is(.home-nav, .atlas-footer-grid) a:hover, .home-work-link:hover { text-underline-offset: .45em; }
+  .atlas-action, .renovation-link, .menu-toggle { transition: scale .16s ease; }
+  :is(.atlas-action, .renovation-link, .menu-toggle):active { scale: .97; }
+}

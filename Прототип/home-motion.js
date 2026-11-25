@@ -61,3 +61,34 @@
         document.querySelectorAll('[data-atlas-reveal]').forEach(item => observer.observe(item));
     }
 })();
+
+(() => {
+    const eligible = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    const halo = document.createElement("div");
+    halo.className = "atlas-cursor";
+    halo.setAttribute("aria-hidden", "true");
+    document.body.append(halo);
+    let frame = 0;
+    let pointer;
+
+    function hide() {
+        halo.classList.remove("is-visible", "is-interactive");
+        cancelAnimationFrame(frame);
+        frame = 0;
+    }
+
+    document.addEventListener("pointermove", event => {
+        if (!eligible.matches || event.pointerType !== "mouse" || event.target.closest("dialog[open]")) return hide();
+        pointer = event;
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+            frame = 0;
+            halo.style.transform = "translate3d(" + pointer.clientX + "px, " + pointer.clientY + "px, 0)";
+            halo.classList.toggle("is-interactive", Boolean(pointer.target.closest("a[href], button:not(:disabled), summary")));
+            halo.classList.add("is-visible");
+        });
+    }, { passive: true });
+    document.documentElement.addEventListener("pointerleave", hide);
+    addEventListener("blur", hide);
+    eligible.addEventListener("change", hide);
+})();
