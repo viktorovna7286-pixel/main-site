@@ -28,7 +28,7 @@ function bindCase(caseDialog, caseLinks, photos, caseAssets, descriptions = {}, 
     button.type = 'button';
     button.className = 'f-case-thumb';
     button.setAttribute('aria-label', describePhoto(photo, index));
-    thumb.src = caseAssets + photo.id + '-thumb.webp' + assetQuery;
+    thumb.src = photo.thumb || caseAssets + photo.id + '-thumb.webp' + assetQuery;
     thumb.alt = '';
     thumb.loading = 'lazy';
     thumb.decoding = 'async';
@@ -43,7 +43,7 @@ function bindCase(caseDialog, caseLinks, photos, caseAssets, descriptions = {}, 
     const photo = photos[caseIndex];
     caseRoom.textContent = photo.description || photo.room;
     caseImage.alt = describePhoto(photo, caseIndex);
-    caseImage.src = caseAssets + photo.id + '.webp' + assetQuery;
+    caseImage.src = photo.src || caseAssets + photo.id + '.webp' + assetQuery;
     caseCounter.textContent = (caseIndex + 1) + ' / ' + photos.length;
     const currentThumb = caseButtons[caseIndex];
     currentThumb.setAttribute('aria-current', 'true');
@@ -75,14 +75,18 @@ function bindCase(caseDialog, caseLinks, photos, caseAssets, descriptions = {}, 
     });
   }
 
+  function openCase(link) {
+    opener = link;
+    renderThumbnails();
+    caseDialog.showModal();
+    showCasePhoto(caseIndex);
+  }
+
   if (caseDialog instanceof HTMLDialogElement) {
     caseLinks.forEach(link => link.addEventListener('click', event => {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      opener = link;
-      renderThumbnails();
-      caseDialog.showModal();
-      showCasePhoto(caseIndex);
+      openCase(link);
     }));
     caseDialog.querySelector('.f-case-close').addEventListener('click', () => caseDialog.close());
     caseDialog.addEventListener('close', () => opener?.focus({ preventScroll: true }));
@@ -98,6 +102,7 @@ function bindCase(caseDialog, caseLinks, photos, caseAssets, descriptions = {}, 
     movePhoto(event.key === 'ArrowLeft' ? -1 : 1);
     if (event.target.classList.contains('f-case-thumb')) caseButtons[caseIndex].focus({ preventScroll: true });
   });
+  return openCase;
 }
 
 const apartmentFDialog = document.getElementById('apartment-f-dialog');

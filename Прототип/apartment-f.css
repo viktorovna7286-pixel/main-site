@@ -124,3 +124,6 @@ html:has(.case-dialog[open]) { overflow: hidden; }
 @media (max-width: 680px) {
   .f-case-thumb-room { flex: 0 0 min-content; align-self: center; }
 }
+
+.f-case-credit { margin: 0; padding: 0 clamp(1rem, 3vw, 2.5rem) 1.25rem; color: #d4c9b7; font-size: .875rem; }
+.apartment-gallery-dialog .f-case-header h2 { font-family: Unbounded, Manrope, sans-serif; font-weight: 300; }
