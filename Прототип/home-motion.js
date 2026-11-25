@@ -72,19 +72,19 @@
     let pointer;
 
     function hide() {
-        halo.classList.remove("is-visible", "is-interactive");
+        halo.classList.remove("is-visible");
         cancelAnimationFrame(frame);
         frame = 0;
     }
 
     document.addEventListener("pointermove", event => {
         if (!eligible.matches || event.pointerType !== "mouse" || event.target.closest("dialog[open]")) return hide();
+        if (!event.target.closest("button:not(:disabled), [role=button], a.atlas-action, a.pill, a.btn")) return hide();
         pointer = event;
         if (frame) return;
         frame = requestAnimationFrame(() => {
             frame = 0;
             halo.style.transform = "translate3d(" + pointer.clientX + "px, " + pointer.clientY + "px, 0)";
-            halo.classList.toggle("is-interactive", Boolean(pointer.target.closest("a[href], button:not(:disabled), summary")));
             halo.classList.add("is-visible");
         });
     }, { passive: true });

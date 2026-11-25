@@ -1,17 +1,14 @@
-:root {
-  --photo-radius: 25px;
-}
+:root { --panel-radius: 25px; }
 
 img:not([src$=".svg" i]),
-.hero,
-.contact,
-.budget-photo,
 .photo-card,
+.case-dialog,
+.case-dialog .f-case-thumb,
 .f-case-stage,
-.case-dialog .f-case-thumb {
-  border-radius: var(--photo-radius);
-}
-
-:is(.photo-card, .case-dialog .f-case-thumb) img {
-  border-radius: inherit;
+#home::before,
+#contact::after,
+.projects .photo-card::after,
+.renovation-picture,
+.faq-picture {
+  border-radius: var(--panel-radius);
 }
