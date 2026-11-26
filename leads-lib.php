@@ -46,7 +46,7 @@ function leads_telegram(string $token, string $method, array $payload = []): arr
 }
 function leads_message(array $lead): string {
     $lines = ['Новая заявка · 8848 ВЕРШИНА', '№ ' . $lead['id'], 'Имя: ' . $lead['name'], 'Телефон: ' . $lead['phone']];
-    foreach (['service' => 'Услуга', 'product' => 'Кондиционер', 'address' => 'Адрес', 'area' => 'Площадь, м²'] as $key => $label) {
+    foreach (['service' => 'Услуга', 'product' => 'Кондиционер', 'address' => 'Адрес', 'area' => 'Площадь, м²', 'channel' => 'Способ связи', 'task' => 'О проекте'] as $key => $label) {
         if (!empty($lead[$key])) $lines[] = $label . ': ' . $lead[$key];
     }
     $lines[] = 'Заявки: https://vershina8848.ru/leads-admin.php';
@@ -70,7 +70,7 @@ function leads_limit(string $scope, int $max, int $seconds): bool {
 }
 function leads_validate(array $input): array {
     $out = [];
-    foreach (['name' => 100, 'phone' => 40, 'address' => 300, 'service' => 120, 'area' => 12] as $key => $limit) {
+    foreach (['name' => 100, 'phone' => 40, 'address' => 300, 'service' => 120, 'area' => 12, 'channel' => 40, 'task' => 2000] as $key => $limit) {
         if (isset($input[$key]) && !is_scalar($input[$key])) throw new InvalidArgumentException('Проверьте поля формы.');
         $value = trim((string)($input[$key] ?? ''));
         if (strlen($value) > $limit * 4 || !preg_match('//u', $value) || preg_match('/[\x00-\x08\x0B\x0C\x0E-\x1F]/', $value)) throw new InvalidArgumentException('Проверьте поля формы.');

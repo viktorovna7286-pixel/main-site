@@ -38,6 +38,54 @@ document.getElementById('closeMenu').onclick=()=>menuDialog.close();
 menuDialog.addEventListener('close',()=>{menuToggle.setAttribute('aria-expanded','false');menuToggle.focus()});
 menuDialog.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menuDialog.close()));
 document.querySelectorAll('[data-channel]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('briefChannel').value=a.dataset.channel}));
-let briefBlobUrl;
-document.getElementById('briefForm').addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const name=form.elements.name.value.trim(),phone=form.elements.phone.value.trim();if(!name||phone.replace(/\D/g,'').length<7){document.getElementById('briefPhone').setCustomValidity('Укажите телефон, содержащий не менее 7 цифр.');document.getElementById('briefPhone').reportValidity();return}const content=['Заявка на обсуждение проекта — Atlas Group','', 'Имя: '+name,'Телефон: '+phone,'Удобный способ связи: '+form.elements.channel.value,'','О проекте:',form.elements.task.value.trim()||'Пожелания пока не указаны.','','Подготовлено локально. Заявка не отправлена.'].join('\n');if(briefBlobUrl)URL.revokeObjectURL(briefBlobUrl);briefBlobUrl=URL.createObjectURL(new Blob(['\ufeff'+content],{type:'text/plain;charset=utf-8'}));document.getElementById('downloadBrief').href=briefBlobUrl;document.getElementById('briefResult').hidden=false;document.getElementById('downloadBrief').focus()});
-document.getElementById('briefPhone').addEventListener('input',e=>e.target.setCustomValidity(''));
+const briefForm = document.getElementById('briefForm');
+const briefResult = document.getElementById('briefResult');
+let briefRequestId;
+
+briefForm.addEventListener('input', () => {
+  briefRequestId = undefined;
+  briefResult.hidden = true;
+});
+
+briefForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const submit = briefForm.querySelector('[type="submit"]');
+  if (submit.disabled) return;
+
+  const { name, phone, channel, task } = Object.fromEntries(new FormData(briefForm));
+  const digits = phone.replace(/\D/g, '');
+  if (!name.trim() || digits.length < 10 || digits.length > 15) {
+    briefResult.textContent = 'Укажите имя и корректный телефон.';
+    briefResult.hidden = false;
+    briefResult.focus();
+    return;
+  }
+
+  briefRequestId ||= crypto.randomUUID();
+  submit.disabled = true;
+  submit.textContent = 'Отправляем…';
+  briefResult.hidden = true;
+
+  try {
+    const response = await fetch('../leads-api.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ request_id: briefRequestId, name, phone, channel, task, service: 'Ремонт под ключ' })
+    });
+    const result = await response.json();
+    if (!response.ok || result.ok !== true) {
+      briefResult.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.';
+    } else {
+      briefForm.reset();
+      briefRequestId = undefined;
+      briefResult.textContent = 'Спасибо! Мы скоро свяжемся с вами.';
+    }
+  } catch {
+    briefResult.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.';
+  } finally {
+    submit.disabled = false;
+    submit.textContent = 'Отправить заявку';
+    briefResult.hidden = false;
+    briefResult.focus();
+  }
+});

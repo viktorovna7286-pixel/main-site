@@ -45,7 +45,7 @@ async function prepareApartmentDialog(url) {
   close.autofocus = true;
   close.textContent = '×';
   header.querySelector('.f-case-close').replaceWith(close);
-  dialog.append(header, page.querySelector('.f-case-layout'), page.querySelector('.f-case-credit'));
+  dialog.append(header, page.querySelector('.f-case-layout'));
   document.body.append(dialog);
   return bindCase(dialog, [], photos);
 }
